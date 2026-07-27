@@ -1,0 +1,8 @@
+# Cursor Remote Control workspace marker
+.env
+*.env
+**/.env
+**/__pycache__/
+**/.venv/
+**/node_modules/
+wireguard/backups/
