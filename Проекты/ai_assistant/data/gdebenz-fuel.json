@@ -1,0 +1,48 @@
+{
+  "fresh_minutes": 45,
+  "quiet_start": 23,
+  "quiet_end": 7,
+  "default_city": "Симферополь",
+  "monitoring_disabled": true,
+  "chats": {
+    "5765008800": {
+      "enabled": false,
+      "city": "Симферополь",
+      "lat": 44.9521459,
+      "lon": 34.1024858,
+      "bbox": [
+        44.8658263,
+        34.0039229,
+        45.029250499999996,
+        34.2239159
+      ],
+      "fuel": "92,95",
+      "interval_min": 30,
+      "last_check": "2026-08-04 16:46:21",
+      "display_name": "Симферополь, Сімферопольський район, Республика Крым, Україна",
+      "scope": "city"
+    },
+    "0": {
+      "city": "Симферополь",
+      "lat": 44.9521459,
+      "lon": 34.1024858,
+      "bbox": [
+        44.8908263,
+        34.0289229,
+        45.0042505,
+        34.1989159
+      ],
+      "enabled": false,
+      "fuel": "92,95",
+      "interval_min": 30
+    }
+  },
+  "sources": [
+    "gdebenz",
+    "gdebenz.su",
+    "azs-crimea",
+    "atan",
+    "toplivo.tbank.ru"
+  ],
+  "alert_email": ""
+}
