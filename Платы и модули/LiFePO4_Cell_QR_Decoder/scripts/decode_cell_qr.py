@@ -176,21 +176,31 @@ def parse_local(code: str) -> dict[str, Any]:
 
 
 def fetch_source(src: dict[str, str], code: str, timeout: float = 25.0) -> dict[str, Any]:
-    qs = urllib.parse.urlencode({"code": code})
-    url = f"{src['url']}?{qs}"
+    sep = "&" if "?" in src["url"] else "?"
+    url = f"{src['url']}{sep}{urllib.parse.urlencode({'code': code})}"
     req = urllib.request.Request(
         url,
         headers={
             "User-Agent": UA,
             "Referer": src["referer"],
             "X-Requested-With": "XMLHttpRequest",
-            "Accept": "application/json, text/javascript, */*; q=0.01",
+            "Accept": "*/*",
         },
     )
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw = resp.read().decode("utf-8", errors="replace")
-        data = json.loads(raw)
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            return {
+                "ok": False,
+                "http_ok": True,
+                "api_code": None,
+                "raw_res": raw[:500],
+                "fields": {},
+                "error": f"не JSON: {exc}; body={raw[:120]!r}",
+            }
         fields = parse_html_fields(data.get("res") or "")
         return {
             "ok": True,
