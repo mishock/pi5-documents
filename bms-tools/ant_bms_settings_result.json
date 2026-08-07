@@ -1,0 +1,38 @@
+{
+  "before": {
+    "ov_alarm_mV": 4350,
+    "ov_protect_mV": 4400,
+    "ov_recovery_mV": 4380,
+    "pack_ov": 640,
+    "balance_limit_mV": 4300,
+    "balance_start_mV": 4150,
+    "balance_delta_mV": 2
+  },
+  "after": {
+    "ov_alarm_mV": 4150,
+    "ov_protect_mV": 4200,
+    "ov_recovery_mV": 4100,
+    "pack_ov": 546,
+    "balance_limit_mV": 4200,
+    "balance_start_mV": 4000,
+    "balance_delta_mV": 2
+  },
+  "balancer_before": 0,
+  "balancer_after": 1,
+  "ov_ok": true,
+  "cells_now_mV": [
+    4259,
+    4259,
+    4258,
+    4258,
+    4259,
+    4258,
+    4258,
+    4258,
+    4259,
+    4258,
+    4258,
+    4257,
+    4259
+  ]
+}

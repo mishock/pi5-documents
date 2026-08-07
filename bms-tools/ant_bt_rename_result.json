@@ -1,0 +1,29 @@
+{
+  "device_classic": {
+    "mac": "AA:BB:CC:91:23:45",
+    "advertised_name": "BMS-ANT24C",
+    "local_alias": "BMS-ANT24C-2345"
+  },
+  "device_ble": {
+    "mac": "AA:BB:CC:92:23:45",
+    "advertised_name": "ANT-BLE24C",
+    "local_alias": "ANT-BLE24C-2345"
+  },
+  "serial_suffix_used": "2345",
+  "serial_source": "last 4 hex digits of Bluetooth MAC (…:23:45)",
+  "remote_rename": {
+    "status": "not_supported_on_this_firmware",
+    "reason": "BMS only speaks legacy 5A5A/A5A5/DBDB protocol; modern 7E A1 Bluetooth_ADD_Set (addr 302) and BlueToothName (addr 684) get no response on Classic SPP and BLE",
+    "attempted": [
+      "modern read/write Bluetooth_ADD/Name over RFCOMM (CRC BE/LE)",
+      "modern over BLE FFE1 (legacy DBDB works, 7E A1 timeout)",
+      "legacy write addr 47=2345 (readback ok but advertised name unchanged; restored to 35)"
+    ]
+  },
+  "rfcomm": {
+    "device": "/dev/rfcomm0",
+    "bind": "AA:BB:CC:91:23:45 channel 1",
+    "live_ok": true
+  },
+  "note": "На этой плате (legacy) смену рекламируемого BT-имени делает только прошивка с MaYi/7E A1. Локальный Alias в BlueZ на Pi изменён."
+}

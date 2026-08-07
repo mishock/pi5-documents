@@ -1,0 +1,103 @@
+{
+  "profile": "13S NMC/Li-ion max cell 4.20V + auto balance",
+  "target": {
+    "1": 4180,
+    "3": 4200,
+    "5": 4150,
+    "2": 3100,
+    "4": 3000,
+    "6": 3050,
+    "7": 546,
+    "8": 390,
+    "13": 4200,
+    "14": 4000,
+    "15": 20,
+    "24": 13
+  },
+  "before": {
+    "cell_ov_alarm_mV": 4150,
+    "cell_uv_alarm_mV": 3100,
+    "cell_ov_protect_mV": 4200,
+    "cell_uv_protect_mV": 3000,
+    "cell_ov_recovery_mV": 4100,
+    "cell_uv_recovery_mV": 3050,
+    "pack_ov": 546,
+    "pack_uv": 390,
+    "chg_oc_protect": 1500,
+    "chg_oc_delay_s": 30,
+    "dsg_oc_protect": 4000,
+    "dsg_oc_delay_s": 30,
+    "balance_limit_mV": 4200,
+    "balance_start_mV": 4000,
+    "balance_delta_mV": 2,
+    "balance_current": 18,
+    "cell_count_setting": 13
+  },
+  "after": {
+    "cell_ov_alarm_mV": 4180,
+    "cell_uv_alarm_mV": 3100,
+    "cell_ov_protect_mV": 4200,
+    "cell_uv_protect_mV": 3000,
+    "cell_ov_recovery_mV": 4150,
+    "cell_uv_recovery_mV": 3050,
+    "pack_ov": 546,
+    "pack_uv": 390,
+    "chg_oc_protect": 1500,
+    "chg_oc_delay_s": 30,
+    "dsg_oc_protect": 4000,
+    "dsg_oc_delay_s": 30,
+    "balance_limit_mV": 4200,
+    "balance_start_mV": 4000,
+    "balance_delta_mV": 20,
+    "balance_current": 18,
+    "cell_count_setting": 13
+  },
+  "status": {
+    "total_V": 55.4,
+    "current_A": 0.4,
+    "soc": 99,
+    "cells_V": [
+      4.258,
+      4.259,
+      4.258,
+      4.257,
+      4.258,
+      4.258,
+      4.257,
+      4.258,
+      4.259,
+      4.258,
+      4.258,
+      4.257,
+      4.257
+    ],
+    "max_V": 4.259,
+    "min_V": 4.257,
+    "delta_mV": 2,
+    "charge_mos": {
+      "code": 5,
+      "text": "Total overpressure"
+    },
+    "discharge_mos": {
+      "code": 1,
+      "text": "On"
+    },
+    "balancer": {
+      "code": 1,
+      "text": "Exceeds limit equilibrium"
+    }
+  },
+  "checks": {
+    "cell_ov_protect_4.200": true,
+    "cell_ov_alarm_4.180": true,
+    "cell_ov_recovery_4.150": true,
+    "pack_ov_54.6": true,
+    "pack_uv_ok": true,
+    "balance_limit_4.200": true,
+    "balance_start_4.000": true,
+    "balance_delta_20mV": true,
+    "cell_count_13": true,
+    "balancer_not_off": true
+  },
+  "note": "Если ячейки >4.20V / пак >54.6V — Charge MOSFET в защите это нормально. Заряд вернётся после снижения ниже recovery (~4.15V / ~соответствующего пака)."
+}

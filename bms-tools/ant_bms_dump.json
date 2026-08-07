@@ -1,0 +1,124 @@
+{
+  "responses": [
+    {
+      "label": "legacy_status",
+      "tx": "5A 5A 00 00 01 01",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "legacy_ble_db",
+      "tx": "DB DB 00 00 00 00",
+      "rx_len": 140,
+      "rx": "AA 55 AA FF 02 2A 10 A2 10 A3 10 A2 10 A2 10 A2 10 A2 10 A2 10 A2 10 A3 10 A2 10 A2 10 A1 10 A3 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 63 05 F5 E1 00 05 DD 41 2E 00 CB A1 0A 0A 87 C4 72 00 1B 00 1B 00 1C 00 1C FF E2 FF E2 01 01 00 03 E8 00 17 00 00 00 00 16 02 10 A3 0C 10 A1 10 A2 0D 00 00 00 6F 00 6C 02 AA 00 00 00 00 1C 01 19 27"
+    },
+    {
+      "label": "modern_status",
+      "tx": "7E A1 01 00 00 BE 18 55 AA 55",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "modern_device_info",
+      "tx": "7E A1 02 6C 02 20 58 C4 AA 55",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "jbd_basic",
+      "tx": "DD A5 03 00 FF FD 77",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "jbd_cells",
+      "tx": "DD A5 04 00 FF FC 77",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "jbd_hw",
+      "tx": "DD A5 05 00 FF FB 77",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "ascii_help",
+      "tx": "68 65 6C 70 0D 0A",
+      "rx_len": 0,
+      "rx": ""
+    },
+    {
+      "label": "ascii_AT",
+      "tx": "41 54 0D 0A",
+      "rx_len": 0,
+      "rx": ""
+    }
+  ],
+  "parsed": [
+    {
+      "protocol": "legacy",
+      "total_voltage_V": 55.4,
+      "current_A": 0.4,
+      "power_W": 22,
+      "soc_pct": 99,
+      "capacity_setting_Ah": 100.0,
+      "capacity_remaining_Ah": 98.386,
+      "cycle_capacity_Ah": 13345.034,
+      "total_runtime_s": 176669810,
+      "total_runtime": "2044 days, 18:56:50",
+      "temperatures_C": [
+        27,
+        27,
+        28,
+        28,
+        -30,
+        -30
+      ],
+      "charge_mosfet": {
+        "code": 1,
+        "status": "On"
+      },
+      "discharge_mosfet": {
+        "code": 1,
+        "status": "On"
+      },
+      "balancer": {
+        "code": 0,
+        "status": "Off"
+      },
+      "cells_V": [
+        4.258,
+        4.259,
+        4.258,
+        4.258,
+        4.258,
+        4.258,
+        4.258,
+        4.258,
+        4.259,
+        4.258,
+        4.258,
+        4.257,
+        4.259
+      ],
+      "cell_count": 13,
+      "max_cell": {
+        "index": 2,
+        "voltage_V": 4.259
+      },
+      "min_cell": {
+        "index": 12,
+        "voltage_V": 4.257
+      },
+      "avg_cell_V": 4.258,
+      "delta_cell_V": 0.002,
+      "discharge_mosfet_ds_V": 0.0,
+      "drive_voltage_discharge_V": 11.1,
+      "drive_voltage_charge_V": 10.8,
+      "balance_bitmask": "0x00000000",
+      "system_log": "0x1C01",
+      "raw_hex": "AA 55 AA FF 02 2A 10 A2 10 A3 10 A2 10 A2 10 A2 10 A2 10 A2 10 A2 10 A3 10 A2 10 A2 10 A1 10 A3 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04 63 05 F5 E1 00 05 DD 41 2E 00 CB A1 0A 0A 87 C4 72 00 1B 00 1B 00 1C 00 1C FF E2 FF E2 01 01 00 03 E8 00 17 00 00 00 00 16 02 10 A3 0C 10 A1 10 A2 0D 00 00 00 6F 00 6C 02 AA 00 00 00 00 1C 01 19 27"
+    }
+  ]
+}
