@@ -1,0 +1,26 @@
+{
+  "code": "04QCB72JB8800JFCF0021605",
+  "checked_at": "2026-08-07",
+  "sources": {
+    "basen": {
+      "code": 200,
+      "res": "\n            <div><strong>Code Check...</strong></div>\n            <div id=\"codenum\">Code: 04QCB72JB8800JFCF0021605</div>\n            <div id=\"iscode\" class=\"right\" style=\"color:green\">Code seems right.</div>\n            <div id=\"islength\" class=\"right\" style=\"color:green\">Code length is right.</div>\n            <dl><dt>Manufacturer:</dt><dd>EVE Power</dd></dl><dl><dt>Product Type:</dt><dd>Battery Cell</dd></dl><dl><dt>Battery Type:</dt><dd>LiFePO4</dd></dl><dl><dt>Nominal Capacity:</dt><dd>230Ah (LF230)</dd></dl><dl><dt>Nominal Voltage:</dt><dd>3.2V</dd></dl><dl><dt>Production Date:</dt><dd>15/Dec/2025</dd></dl><dl><dt>Manufacturer Website:</dt><dd><a target=\"_blank\" style=\"color:#fed000\" href=\"https://www.evebattery.com/\">https://www.evebattery.com/</a></dd></dl>"
+    },
+    "xihopower": {
+      "code": 200,
+      "res": "\n            <div><strong>Code Check...</strong></div>\n            <div id=\"codenum\">Code: 04QCB72JB8800JFCF0021605</div>\n            <div id=\"iscode\" class=\"right\" style=\"color:green\">Code seems right.</div>\n            <div id=\"islength\" class=\"right\" style=\"color:green\">Code length is right.</div>\n            <dl><dt>Manufacturer:</dt><dd>EVE</dd></dl><dl><dt>Product Type:</dt><dd>Battery Cell</dd></dl><dl><dt>Battery Type:</dt><dd>LiFePO4</dd></dl><dl><dt>Nominal Capacity:</dt><dd>235AH/230AH</dd></dl><dl><dt>Nominal Voltage:</dt><dd>3.2V</dd></dl><dl><dt>Production Date:</dt><dd>15/Dec/2025</dd></dl><dl><dt>Manufacturer Website:</dt><dd><a target=\"_blank\" style=\"color:#fed000\" href=\"https://www.evebattery.com/\">https://www.evebattery.com/</a></dd></dl>"
+    }
+  },
+  "summary": {
+    "valid": true,
+    "manufacturer": "EVE Power (04Q)",
+    "product_type": "ячейка (C)",
+    "chemistry": "LiFePO4 (B)",
+    "model": "LF230",
+    "capacity_ah": "230 (Basen: 230Ah LF230; Xiho: 235/230Ah)",
+    "voltage_v": 3.2,
+    "production_date": "2025-12-15",
+    "serial": "0021605",
+    "spec_code": "72"
+  }
+}

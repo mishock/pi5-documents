@@ -1,0 +1,12 @@
+{
+  "module": "LiFePO4_Cell_QR_Decoder",
+  "sources": [
+    "https://www.gobelpower.com/lifepo4_decoder.html",
+    "https://hakadilifepo4.com/pages/qr-code-hakadi-lifepo4-energy-solutions-supplier",
+    "https://www.xihopower.com/ru/qr-decoder/Cell_QR_Decoder/"
+  ],
+  "downloads": [
+    "xihopower_cell_qr_decoder.html"
+  ],
+  "notes": "Gobel/Hakadi HTML — Cloudflare 403 с Pi; Xiho HTML сохранён; проверка кода через Basen+Xiho API"
+}
