@@ -2,6 +2,8 @@
 
 ## Текущий фокус
 
+- **Режим QR LiFePO4 (2026-08-07):** кидать код/фото → макс. поля; `Платы и модули/LiFePO4_Cell_QR_Decoder/scripts/decode_cell_qr.py`.
+
 - **LiFePO4 QR (2026-08-07):** `Платы и модули/LiFePO4_Cell_QR_Decoder/` — декодеры Gobel/Hakadi/Xiho; пример `04QCB72…` = EVE LF230 230Ач 15.12.2025.
 
 - **Kali БК 5″ (2026-08-07):** **запущен** — `ui/bc.py` в tmux `bc`; KKL `/dev/vag-kkl`→ttyUSB0. Старт: `start_bc.sh`.
