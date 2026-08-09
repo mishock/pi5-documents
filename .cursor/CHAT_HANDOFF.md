@@ -1,3 +1,14 @@
+## Текущий фокус
+
+- **FIS→MFA (2026-08-09):** pin ø **14.1** / trip 124.5 / fuel0≈37.6 на Kali (`data/mfa_state.json`); BC стартовал; **LIVE verify ждёт** (Kali offline). Проверка: `/tmp/bc_live.json` → avg=14.1, avg_spd~26, fuel~20.
+- **A4 B5 КПП (2026-08-09):** завод АКПП 01N → МКПП владельцем; адрес 02 не опрашивать; OBD без CAN.
+- **Коммуналка ежемесячно (постоянно):** новые чеки+показания каждый месяц; все чеки хранить; таймер `komunalka-drive-sync.timer`.
+- **Коммуналка (2026-08-09):** Drive https://drive.google.com/drive/folders/1zbPCmouSU8yJhr-tGwe5BKfQsRqeN14b — в корне только 5 папок услуг (без файлов); CSV/PDF внутри папок. **Где счётчик — CSV в натуральных единицах (вода/газ м³, энергия кВт·ч); газ ~4.455 м³/сут, вода ~0.439 м³/сут. Скрипты `export-crimea-energy.mjs`, `export-all-services-to-drive.mjs` (`scrapeGas` → `?page=pokazaniya`). Жилсервис/экор — без CSV-сводки (нет счётчика), только PDF. Экор: type не только m.
+
+
+## Текущий фокус
+Двери БК — **ЦЗ 0x35** LIVE («все закрыты»). Comfort 0x46 нет. Handshake `~kb2`. Файлы на Kali: `~/Projects/cluster_pi/{kw1281_client.py,ui/doors.py,ui/obd_feed.py,data/door_map.json}`.
+
 # Handoff (кратко)
 
 ## Текущий фокус
@@ -95,3 +106,6 @@
 - **ANT BMS web v2.4.3 (2026-07-09):** убран долгий hang `Connecting BLE`: вызовы `bluetoothctl/hciconfig` теперь с timeout, connect fail-fast до ~45с (6 попыток), UI timeout `/api/connect` 50с, SW cache `v9`, app `2.4.3`.
 - **ANT BMS web v2.4.5 (2026-07-09):** ускорен BLE connect до максимально быстрого режима: если сессия уже активна с тем же MAC — мгновенный возврат, connect дедлайн ~20с, 3 попытки, сокращены ожидания `Connected/ServicesResolved`, UI timeout 25с, SW cache `v10`.
 - **Cursor Agent PWA / WS т
+## Kali БК опрос (2026-08-07)
+- Макс. частота: poll=0, G1 каждый цикл, G2↔G3, sleep 2ms ≈1.6 Hz
+- Старт: `tmux … start_bc.sh` / `bash ~/Projects/cluster_pi/scripts/start_bc.sh`
