@@ -44,7 +44,7 @@ views:
       - type: markdown
         content: |
           ## BMS-ANT24C — пакет
-          Лог с Pi каждые 10 с. График общего напряжения: разряд вниз, заряд вверх, отсечка по MOS.
+          Лог с Pi каждые 5 мин. График общего напряжения: разряд вниз, заряд вверх, отсечка по MOS.
           Зарядный MOS в OV protect не включится, пока ячейки не опустятся ниже восстановления (~4.150 В).
 
       - type: entities
@@ -108,7 +108,7 @@ views:
       - type: history-graph
         title: Напряжение пакета — 24 часа
         hours_to_show: 24
-        refresh_interval: 30
+        refresh_interval: 300
         entities:
           - entity: sensor.ant24c_pack_voltage
             name: Пакет V
@@ -116,7 +116,7 @@ views:
       - type: history-graph
         title: Ток — 24 часа
         hours_to_show: 24
-        refresh_interval: 30
+        refresh_interval: 300
         entities:
           - entity: sensor.ant24c_current
             name: Ток A
@@ -124,7 +124,7 @@ views:
       - type: history-graph
         title: SOC — 24 часа
         hours_to_show: 24
-        refresh_interval: 60
+        refresh_interval: 300
         entities:
           - entity: sensor.ant24c_soc
             name: SOC

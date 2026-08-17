@@ -1,6 +1,6 @@
 # ANT BMS-ANT24C — локальный лог
 
-Опрос Classic SPP (`AA:BB:CC:91:23:45`) каждые **10 с**.
+Опрос Classic SPP (`AA:BB:CC:91:23:45`) каждые **5 мин**.
 
 - CSV: `logs/ant24c.csv`
 - События циклов: `logs/ant24c_cycles.jsonl` (`charge_cut` / `discharge_cut` + пик/пол напряжения)

@@ -14,7 +14,8 @@ import serial
 MAC = os.environ.get("ANT24C_MAC", "AA:BB:CC:91:23:45")
 RFCOMM = os.environ.get("ANT24C_RFCOMM", "/dev/rfcomm0")
 RFCOMM_N = os.environ.get("ANT24C_RFCOMM_N", "0")
-INTERVAL = float(os.environ.get("ANT24C_INTERVAL", "10"))
+INTERVAL = float(os.environ.get("ANT24C_INTERVAL", "300"))
+FAIL_SLEEP = float(os.environ.get("ANT24C_FAIL_SLEEP", "15"))
 IDLE_A = float(os.environ.get("ANT24C_IDLE_A", "1.0"))
 
 BASE = Path(os.environ.get("ANT24C_BASE", "/home/pi/Documents/bms-tools"))
@@ -503,7 +504,7 @@ def main() -> None:
                     bind_rfcomm()
                     fails = 0
                 write_ha({}, "offline", state, False)
-                sleep_checking_cmd(INTERVAL, ser, state)
+                sleep_checking_cmd(FAIL_SLEEP, ser, state)
                 continue
             fails = 0
             sample = parse(frame)
