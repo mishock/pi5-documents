@@ -1,0 +1,74 @@
+homeassistant:
+  packages: !include_dir_named packages
+
+frontend:
+config:
+history:
+logbook:
+map:
+ssdp:
+zeroconf:
+sun:
+system_health:
+mobile_app:
+
+# Температура CPU Pi5. Значения публикует systemd timer pi5-ha-cpu-temp.timer
+# (scripts/publish_cpu_temp.sh → config/host_status/cpu_temp.txt) каждые 5 минут.
+# Не ставить путь с пробелами в cron без кавычек — иначе файл не обновляется.
+recorder:
+  purge_keep_days: 30
+  exclude:
+    domains:
+      - sun
+
+command_line:
+  - sensor:
+      name: "Pi5 CPU Temperature"
+      unique_id: pi5_cpu_temp
+      command: "cat /config/host_status/cpu_temp.txt 2>/dev/null || echo 0"
+      unit_of_measurement: "°C"
+      device_class: temperature
+      scan_interval: 300
+
+homekit:
+  - name: HASS Bridge
+    pincode: 126-30-126
+    port: 21064
+    ip_address: 0.0.0.0
+    advertise_ip: 10.1.30.126
+    filter:
+      include_entities:
+        - switch.switch_2
+        - switch.led2_2
+        # switch.gpio13 отключён: BCM 13 = пищалка многофункциональной HAT
+  # ESP Camera HK — временно отключён: camera.esp_camera нет (камера offline / без pairing).
+  # Вернуть блок ниже после pairing (finish-esp-camera-ha.sh), затем restart HA.
+  # - name: ESP Camera HK
+  #   pincode: 126-31-126
+  #   port: 21065
+  #   ip_address: 0.0.0.0
+  #   advertise_ip: 10.1.30.126
+  #   mode: accessory
+  #   filter:
+  #     include_entities:
+  #       - camera.esp_camera
+  #   entity_config:
+  #     camera.esp_camera:
+  #       video_codec: copy
+
+lovelace:
+  mode: storage
+  dashboards:
+    pi5-monitor:
+      mode: yaml
+      title: Pi 5
+      icon: mdi:raspberry-pi
+      show_in_sidebar: true
+      filename: dashboards/pi5.yaml
+    ant-bms-24c:
+      mode: yaml
+      title: ANT BMS24C
+      icon: mdi:car-battery
+      show_in_sidebar: true
+      filename: dashboards/ant-bms-24c.yaml
+

@@ -8,6 +8,6 @@
 
 Сервисы: `ant24c-rfcomm.service`, `ant24c-logger.service`.
 
-Home Assistant: вкладка **Pi 5 → ANT 24C** (`/pi5-monitor/ant24c`).
+Home Assistant: отдельный дашборд **ANT BMS24C** в боковом меню (`/ant-bms-24c/home`).
 
 Управление MOSFET / балансиром: HA пишет `host_status/ant24c_cmd.json`, логгер (единственный владелец `/dev/rfcomm0`) шлёт legacy `A5 A5` (пароль F1–F4, заряд FA, разряд F9, балансир FC, apply FF).
