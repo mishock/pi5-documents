@@ -1,0 +1,114 @@
+# ANT BMS-ANT24C — локальный лог разряда/заряда (опрос RFCOMM → host_status/ant24c.json)
+
+command_line:
+  - sensor:
+      name: "ANT24C Pack Voltage"
+      unique_id: ant24c_pack_voltage
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('pack_V') or 0)\""
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 15
+  - sensor:
+      name: "ANT24C Current"
+      unique_id: ant24c_current
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('current_A') or 0)\""
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      scan_interval: 15
+  - sensor:
+      name: "ANT24C SOC"
+      unique_id: ant24c_soc
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('soc') or 0)\""
+      unit_of_measurement: "%"
+      device_class: battery
+      state_class: measurement
+      scan_interval: 15
+  - sensor:
+      name: "ANT24C Remaining"
+      unique_id: ant24c_remain
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('remain_Ah') or 0)\""
+      unit_of_measurement: "Ah"
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "ANT24C Voltage Min Seen"
+      unique_id: ant24c_pack_v_min
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('pack_v_min') or 0)\""
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "ANT24C Voltage Max Seen"
+      unique_id: ant24c_pack_v_max
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('pack_v_max') or 0)\""
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "ANT24C Last Charge Peak"
+      unique_id: ant24c_last_charge_peak
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('last_charge_peak_V') or 0)\""
+      unit_of_measurement: "V"
+      device_class: voltage
+      scan_interval: 30
+  - sensor:
+      name: "ANT24C Last Discharge Floor"
+      unique_id: ant24c_last_discharge_floor
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('last_discharge_floor_V') or 0)\""
+      unit_of_measurement: "V"
+      device_class: voltage
+      scan_interval: 30
+  - sensor:
+      name: "ANT24C Mode"
+      unique_id: ant24c_mode
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('mode') or 'offline')\""
+      scan_interval: 15
+  - sensor:
+      name: "ANT24C Charge MOS"
+      unique_id: ant24c_charge_mos
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('charge_mos') or '—')\""
+      scan_interval: 15
+  - sensor:
+      name: "ANT24C Discharge MOS"
+      unique_id: ant24c_discharge_mos
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('discharge_mos') or '—')\""
+      scan_interval: 15
+  - sensor:
+      name: "ANT24C Balancer"
+      unique_id: ant24c_balancer
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/ant24c.json')).get('balancer') or '—')\""
+      scan_interval: 15
+  - switch:
+      name: "ANT24C Charge MOSFET"
+      unique_id: ant24c_sw_charge
+      command_on: "python3 /config/host_status/ant24c_switch.py charge 1"
+      command_off: "python3 /config/host_status/ant24c_switch.py charge 0"
+      command_state: "python3 /config/host_status/ant24c_switch.py state charge"
+      value_template: "{{ value == 'on' }}"
+      command_timeout: 20
+      scan_interval: 10
+      icon: mdi:battery-charging
+  - switch:
+      name: "ANT24C Discharge MOSFET"
+      unique_id: ant24c_sw_discharge
+      command_on: "python3 /config/host_status/ant24c_switch.py discharge 1"
+      command_off: "python3 /config/host_status/ant24c_switch.py discharge 0"
+      command_state: "python3 /config/host_status/ant24c_switch.py state discharge"
+      value_template: "{{ value == 'on' }}"
+      command_timeout: 20
+      scan_interval: 10
+      icon: mdi:battery-minus
+  - switch:
+      name: "ANT24C Balancer"
+      unique_id: ant24c_sw_balancer
+      command_on: "python3 /config/host_status/ant24c_switch.py balancer 1"
+      command_off: "python3 /config/host_status/ant24c_switch.py balancer 0"
+      command_state: "python3 /config/host_status/ant24c_switch.py state balancer"
+      value_template: "{{ value == 'on' }}"
+      command_timeout: 20
+      scan_interval: 10
+      icon: mdi:scale-balance
