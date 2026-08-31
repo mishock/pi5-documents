@@ -18,7 +18,8 @@ add_key() {
 
 add_key pi3 pi
 add_key 127.0.0.1 pi   # Pi 5 local
-add_key 100.102.159.200 pi 2>/dev/null || true
-ssh -o BatchMode=yes -J pi3 kali@10.0.20.42 "grep -qF '$MARKER' ~/.ssh/authorized_keys 2>/dev/null || echo '$PUBLINE' >> ~/.ssh/authorized_keys; chmod 600 ~/.ssh/authorized_keys; echo OK kali" 2>/dev/null || echo "SKIP kali (offline)"
+# Kali — домашняя LAN (через Pi 3)
+PUBLINE="$(cat "$PUB")"
+ssh -o BatchMode=yes pi3 "ssh -o BatchMode=yes -o ConnectTimeout=8 kali@10.0.20.42 \"grep -qF '$MARKER' ~/.ssh/authorized_keys 2>/dev/null || echo '$PUBLINE' >> ~/.ssh/authorized_keys; chmod 600 ~/.ssh/authorized_keys; echo OK kali-lan\"" 2>/dev/null || echo "SKIP kali (offline)"
 
 echo "Готово."

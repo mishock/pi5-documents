@@ -1,13 +1,13 @@
-# Cursor Agent — ПК Артёма (через Pi 3)
+# Cursor Agent — ПК Артёма (через Pi 3, домашняя LAN)
 
-Установка **Cursor Agent CLI** на Windows-ПК **Шпак Артём** с доступом к малинкам (Pi 3, Pi 5, Kali) по NetBird + SSH.
+Установка **Cursor Agent CLI** на Windows-ПК **Шпак Артём**. Pi 3 и ПК Артёма в одной сети **GARAGE** (`10.0.20.0/24`) — **NetBird не нужен**.
 
 ## Быстрый старт (Артём)
 
-1. **NetBird** — установить с https://netbird.io/, войти в **семейный аккаунт**, статус Connected.
+1. Подключиться к домашней Wi‑Fi **GARAGE**.
 2. **Скачать пакет с Pi 3** (PowerShell):
    ```powershell
-   scp -r pi@100.102.186.61:~/artem-cursor-agent $env:USERPROFILE\Downloads\artem-cursor-agent
+   scp -r pi@10.0.20.56:~/artem-cursor-agent $env:USERPROFILE\Downloads\artem-cursor-agent
    ```
 3. **Установить**:
    ```powershell
@@ -16,25 +16,23 @@
    ```
 4. **Проверка**:
    ```powershell
+   ping 10.0.20.56
    ssh pi3 hostname
    agent --version
    agent -p "ответь одним словом: OK"
    ```
 
-## Доступ
+## Доступ (LAN)
 
-| Узел | SSH | Назначение |
-|------|-----|------------|
-| **pi3** | `ssh pi3` | Гараж, 24/7, OpenCode, голос |
-| **pi5** | `ssh pi5` | Основной «мозг», Documents |
-| **kali** | `ssh kali` | Через pi3, OBD/приборка |
-| **pi5-wan** | `ssh pi5-wan` | Pi 5 с работы (без NetBird) |
-
-**PWA Джарвис (чат + голос):** https://91.215.61.76:8767/app/
+| Команда | IP | Назначение |
+|---------|-----|------------|
+| `ssh pi3` | **10.0.20.56** | Малинка в гараже |
+| `ssh kali` | **10.0.20.42** | Kali в гараже (если включена) |
+| `ssh pi5-wan` | 91.215.61.76 | Pi 5 на работе (опционально, WAN) |
 
 ## Credentials (не коммитить)
 
-Папка `credentials/` — только на Pi 5 и в bundle на Pi 3:
+Папка `credentials/` — на Pi 3 в bundle и локально на Pi 5:
 
 - `artem_ed25519` / `.pub` — SSH-ключ
 - `cursor-api-key.txt` — User API Key Cursor
@@ -53,6 +51,6 @@ bash Проекты/artem-cursor-agent/scripts/install-ssh-keys-mesh.sh
 
 ## Безопасность
 
-- Приватный ключ **не** отправлять в Telegram и не публиковать.
+- Приватный ключ **не** отправлять в Telegram.
 - Bundle на Pi 3: `chmod 600` на credentials.
-- Отозвать доступ: удалить строку `artem-shpak-cursor-agent` из `~/.ssh/authorized_keys` на каждой малинке.
+- Отозвать доступ: удалить `artem-shpak-cursor-agent` из `~/.ssh/authorized_keys`.

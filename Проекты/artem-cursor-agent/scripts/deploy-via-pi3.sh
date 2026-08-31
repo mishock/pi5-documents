@@ -25,7 +25,7 @@ scp -o BatchMode=yes "$ROOT/scripts/install-cursor-agent-windows.ps1" "${HOST}:$
 ssh -o BatchMode=yes "$HOST" "cd '$REMOTE_DIR' && tar -xzf bundle.tar.gz && chmod 700 credentials && chmod 600 credentials/* && ls -la"
 
 echo ""
-echo "OK. На ПК Артёма (PowerShell, NetBird Connected):"
-echo "  scp -r pi@100.102.186.61:~/artem-cursor-agent %USERPROFILE%\\Downloads\\artem-cursor-agent"
+echo "OK. На ПК Артёма (PowerShell, Wi‑Fi GARAGE, NetBird не нужен):"
+echo "  scp -r pi@10.0.20.56:~/artem-cursor-agent %USERPROFILE%\\Downloads\\artem-cursor-agent"
 echo "  cd %USERPROFILE%\\Downloads\\artem-cursor-agent"
 echo "  powershell -ExecutionPolicy Bypass -File install-cursor-agent-windows.ps1"

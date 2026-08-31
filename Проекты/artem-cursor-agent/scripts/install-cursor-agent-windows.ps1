@@ -49,39 +49,30 @@ Copy-Item $keySrc $keyDst -Force
 if (Test-Path $keyPub) { Copy-Item $keyPub (Join-Path $sshDir "artem_ed25519.pub") -Force }
 icacls $keyDst /inheritance:r /grant:r "$env:USERNAME:(R)" | Out-Null
 
-# 4. SSH config — малинки через NetBird
+# 4. SSH config — домашняя LAN 10.0.20.0/24 (NetBird не нужен)
 $sshConfig = Join-Path $sshDir "config"
 $meshBlock = @"
 
-# === Малинки Шпак (Cursor Agent / мониторинг) ===
-Host pi3 pi3-netbird
-    HostName 100.102.186.61
+# === Малинки Шпак — домашняя сеть GARAGE (без NetBird) ===
+Host pi3
+    HostName 10.0.20.56
     User pi
     IdentityFile ~/.ssh/artem_ed25519
     IdentitiesOnly yes
-    ConnectTimeout 25
+    ConnectTimeout 10
     ServerAliveInterval 15
     ServerAliveCountMax 4
 
-Host pi5 pi5-netbird
-    HostName 100.102.159.200
-    User pi
-    IdentityFile ~/.ssh/artem_ed25519
-    IdentitiesOnly yes
-    ConnectTimeout 25
-    ServerAliveInterval 15
-    ServerAliveCountMax 4
-
-Host kali kali-netbird
-    HostName 100.102.121.127
+Host kali
+    HostName 10.0.20.42
     User kali
     IdentityFile ~/.ssh/artem_ed25519
     IdentitiesOnly yes
-    ProxyJump pi3
-    ConnectTimeout 30
+    ConnectTimeout 10
     ServerAliveInterval 15
     ServerAliveCountMax 4
 
+# Pi 5 на работе — только если есть доступ (WAN)
 Host pi5-wan
     HostName 91.215.61.76
     User pi
@@ -126,9 +117,9 @@ $cliConfig = Join-Path $cursorDir "cli-config.json"
     hasChangedDefaultModel = $true
 } | ConvertTo-Json -Depth 5 | Set-Content $cliConfig -Encoding UTF8
 
-Write-Step "Проверка"
-Write-Host "1. Установите NetBird: https://netbird.io/ — тот же аккаунт, что у семьи"
-Write-Host "2. После Connected: ssh pi3"
-Write-Host "3. Cursor Agent: agent -p `"привет`""
-Write-Host "4. PWA Джарвис (Pi5): https://91.215.61.76:8767/app/"
+Write-Step "Проверка (домашняя Wi‑Fi GARAGE, NetBird не нужен)"
+Write-Host "1. ping 10.0.20.56"
+Write-Host "2. ssh pi3 hostname"
+Write-Host "3. ssh kali hostname   # Kali 10.0.20.42, если включена"
+Write-Host "4. Cursor Agent: agent -p `"привет`""
 Write-Host "`nГотово." -ForegroundColor Green
