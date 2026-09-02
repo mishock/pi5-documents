@@ -1,242 +1,206 @@
-## Фокус (2026-08-09, FIS→MFA 14.1)
+## Фокус (2026-09-02, GEM e6 BMC CAN — **OK**)
 
-**Эталон с фото OEM FIS:** ø **14.1**, trip **124.5**, odo **248881**, +27.5°C, ОЖ ~90, бак ~½.
-**Экран БК до правки:** ø 13.5, бак **832** (глюк), ср.скорость **250**, поездка 20:18.
-**Записано на Kali** (до обрыва связи): `data/mfa_state.json` — `seed_avg_l100=14.1`, `fuel0=37.555` (20+124.5×14.1/100), `seed_avg_speed=26`, `pin_avg=true`; `data/fis_photo_refs.json`; BC `tmux`/`ui/bc.py` запущен.
-**Не подтверждено LIVE:** Kali offline (NetBird/LAN). Проверка: `ssh kali` → `/tmp/bc_live.json` → `avg=14.1`, `avg_spd~26`, `fuel~20`, `drive_min~287`.
+**Неисправная:** VIN `5ACA6AGA3H0002115` — CAN-эмулятор BMC **v4 работает**, **DTC нет** (подтверждено 2026-09-02).  
+**Скрипт Pi:** `…/scripts/can-bmc-emulate.py` · **STM32 H503:** `…/firmware/gem_bmc_can_emu_h503/` · CAN: **SN65HVD230 (VP230)** на B7/B8 (см. PINOUT) · **Arduino legacy:** `…/firmware/gem_bmc_can_emu/`  
+**Памятка:** `…/notes/BMC_CAN_EMULATOR_v4_OK.md` · карта `notes/CAN_BUS_MAP.md`  
+**Запуск Pi:** `can-setup.sh --bitrate 250000` → `ai-tmux run gem-bmc-emu 'python3 …/can-bmc-emulate.py'`  
+**Дальше:** прошить H503 (`flash.sh stlink`), подключить SN65HVD230 + реле X3, проверить на машине.
 
-## Фокус (2026-08-09, БК LIVE)
+## Фокус (2026-08-31, Cursor Agent — Артём)
 
-**LIVE** приборка 0x17: одо ~248880, наружн. ~27°C. `cluster-bc.service` active.
+**Сделано:** проект `Проекты/artem-cursor-agent/` — LAN **10.0.20.56** (pi3), NetBird не нужен. Bundle на Pi 3 обновлён.
 
-## Фокус (2026-08-09, БК Kali)
+## Фокус (2026-08-31, Учёба Артём → Drive)
 
-**cluster-bc.service** active — `ui/bc.py --poll 0` от приборки (KKL `/dev/vag-kkl`). XFCE autostart выключен.
+**Постоянно:** учёба **Шпак Артём** (Арем) — папка Drive **«Учёба Артём»** `1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V`. По вопросам про учёбу — **сначала Drive**; сводка `Сводка_родительское_собрание_2026.md`. Правило: `.cursor/rules/artem-study-drive.mdc`, справочник: `.cursor/GOOGLE_SERVICES.md`.
 
-## Фокус (2026-08-09, A4 КПП)
+**Ожидается (2026-09-01):** новый договор + документы по **налоговому вычету** → анализ и обновление сводки на Drive.
 
-**Подтверждено:** с завода АКПП **01N**, МКПП поставил владелец. CAN диагностики нет; был только возможный ECM↔TCM. Доки: `Платы и модули/Audi_A4_B5_ECU_AHL_3B0_907_557_B/TECH_SUMMARY.md`, `.cursor/data/audi_a4_vehicle_profile.yaml`.
+**Авто (с 2026-08-31):** проверка папки **каждый понедельник 09:00** (`artem-study-drive-check.timer`) + **по твоему запросу**. Проект: `Проекты/artem-study-drive/`.
 
-## Фокус (2026-08-09, Вода полный обход)
+## Фокус (2026-08-28, A11096 EmKit→Pylon)
 
-ЛК проверен целиком: **11** показаний и **6** OFD — больше сайт не отдаёт. Добавлены **24** PDF детализаций (`Чеки/Детализация/`). Скрипт `voda-full-export.mjs`.
+**Must:** `firmware_EmKit_to_Pylon_Must/` — мост EmKit→CAN для MUST, `firmware_EmKit_to_Pylon_Must_standalone.bin` 14112 B.
 
-## Фокус (2026-08-09, Коммуналка ежемесячно)
+**Сделано:** Pylon LV v1.2 — кадры `351/355/356/359/35C/35E`, `pylon_lv_config.h` (16S LFP), маппинг alarm по Battery-Emulator. Сборка + прошивка ST-Link verify OK.
+**Памятка:** `firmware_EmKit_to_Pylon_Deye/README.md`, `…/notes/СОВМЕСТИМОСТЬ_A11034R6.md`.
+**Дальше:** RS485 A11034↔A11096 → живые U/I на Deye; при другом пакете — править `pylon_lv_config.h`.
 
-**Постоянно:** каждый месяц — новые чеки PDF + показания счётчиков на Drive; **все чеки хранить**. Авто: `komunalka-drive-sync.timer` (3-е, 10:00). `DRIVE_SYNC.md`, правило `komunalka-drive-monthly.mdc`.
+## Фокус (2026-08-27, .cursorignore Arduino)
 
-## Фокус (2026-08-09, Drive корень)
+**Сделано:** из `.cursorignore` убраны `Проекты/Arduino/` и `Arduino/` — значки «запрет» в explorer.
+**Нужно:** Reload Window в Cursor, если иконки остались.
 
-**Коммуналка Drive:** в корне только 5 папок услуг, файлов нет.
+## Фокус (2026-08-24, HA Pi5)
 
-## Фокус (2026-08-09, сводка только со счётчиком)
+**Причина:** после reboot контейнер `homeassistant` не стартовал — device `/dev/gpiochip0` отсутствует на Pi 5.
+**Сделано:** убран из `home_assistant/docker-compose.yml`; оставлены gpiochip15 + gpiomem0.
+**Проверено:** `:8123` → 200.
 
-**Правило:** CSV-сводка расхода — только вода/газ/энергия (м³ / кВт·ч). Жилсервис и экор — без сводки, только PDF в `Чеки/`. Старые `ПЛАТЕЖИ*.csv` удалены с Drive.
+## Фокус (2026-08-24, RS485 ANT BMS J75H)
 
-## Фокус (2026-08-09, счётчики м³/кВт·ч)
+**Связь:** OK. Порт `/dev/ttyAMA0`, baud **9600**, modern `7E A1`.
+**BMS:** `ANT@BLE16ZNUB-J75H` · hw `16ZNJARB170A` · sw `16ZNUB00-241008A`.
+**Памятка:** `Платы и модули/RS485_CAN_HAT/ANT_BMS_J75H_RS485.md`, `bms-tools/README_ant_j75h_rs485.md`.
+**Проверка:** `python3 bms-tools/ant_bms_probe.py --port /dev/ttyAMA0 --baud 9600`.
 
-**Правило:** где есть счётчик — CSV расхода в натуральных единицах (вода/газ м³, энергия кВт·ч), не в ₽.
-Вода Drive: `средний_м3_в_сутки` ≈ 0.439; газ ≈ 4.455 м³/сутки; энергия ≈ 6.573 кВт·ч/сутки. Жилсервис/экор — без счётчика, ₽.
+## Фокус (2026-08-24, RS485 ANT BMS J75H)
 
-## Фокус (2026-08-09, Газ м³)
+**BMS:** `ANT@BLE16ZNUB-J75H` (`65:E4:71:8F:2B:A3`).
+**Связь RS485:** ЕСТЬ на **/dev/ttyAMA0 @ 9600** (не 19200). Протокол modern `7E A1`.
+**Info:** hw `16ZNJARB170A`, sw `16ZNUB00-241008A` (CRC OK, совпадает с BLE).
+**Проверка:** `python3 -c` опрос status/info на 9600 через `bms-tools` / ttyAMA0.
 
-**Газ Drive:** `РАСХОД_ГАЗ.csv` — расход в **м³**, не рубли. Архив `?page=pokazaniya`, средний **~4.455 м³/сутки** (7774→9440, 374 дн.). Скрипт: `buildGasVolumeCsv` + `scrapeGas` → pokazaniya.
+## Фокус (2026-08-20, MUST PV18-4024 — ещё один инвертор)
 
-## Фокус (2026-08-08, Коммуналка Drive all)
+**Сделано:** рабочий профиль залит в ещё один `Must_PV18-4024_PRO_II` по USB `/dev/ttyUSB0`, Modbus `19200`, slave `4`.
+**Проверено:** после `must-verify-profile.py --fix` — **20/20 OK**; проблемный `20117` (выход 230 В / raw 225) доведён автоматической фиксацией.
+**Команды:** `bash Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/scripts/must-apply-working.sh` → `python3 .../must-verify-profile.py --fix`.
 
-**Drive:** [Коммуналка](https://drive.google.com/drive/folders/1zbPCmouSU8yJhr-tGwe5BKfQsRqeN14b)
-**Выгрузка:** `SERVICE=all node scripts/export-all-services-to-drive.mjs`
-- Крымэнерго: 22 PDF + CSV (ранее)
-- Вода: 6 PDF + РАСХОД_ВОДА.csv (~0.439 м³/сутки)
-- Газ: 35 PDF + РАСХОД_ГАЗ.csv (~4.455 м³/сутки)
-- Экор: 12 PDF счетов + ПЛАТЕЖИ_И_СЧЕТА.csv (~4.11 ₽/сутки)
-- Жилсервис: 19 PDF (обороты+квитанция) + ПЛАТЕЖИ.csv (~24.65 ₽/сутки); OFD нет
+## Фокус (2026-08-18, .cursorignore)
 
-## Фокус (2026-08-08, Коммуналка)
+**Сделано:** из `.cursorignore` убраны `Платы и модули/` и `**/.cursor/`. Read/Grep по модулям и `chat.md` снова работают. Откат: `20260818T161600`.
 
-**Drive:** [Коммуналка](https://drive.google.com/drive/folders/1zbPCmouSU8yJhr-tGwe5BKfQsRqeN14b) — папки услуг; Крымэнерго PDF+CSV.
-**Хранение:** только Google Drive; на Pi `/tmp` → заливка → удаление (`exports/` снят). Скрипт `scripts/export-crimea-energy.mjs`.
-**Сайт:** :8000, `komunalka.service` active.
+## Фокус (2026-08-18, LP16-48100 в инверторе)
 
-## Фокус (2026-08-08, машинка на БК)
+**АКБ:** MUST LP16-48100, 51.2 В / 100 А·ч. Штатная пара — PV18-8048 PRO II (не 4024).
+**Уставки:** 14=LI, 37=SOC, 40=UNI, 41=Must New; ток ≤100 А; Bulk 57.6 В (OVP BMS 58.4 В).
+**Источники:** `Платы и модули/Солнечные_инверторы/Must_LP16-48100/` + `notes/СОВМЕСТИМОСТЬ_PV18-8048.md`.
 
-## Фокус (2026-08-08, LIVE + фото FIS)
+## Фокус (2026-08-18, Vega MT X LTE — 3 CAN)
 
-**Правило:** живые K-line — основа; фото штатного FIS — эталон калибровки.
-**Сейчас:** LIVE `out=30.0`, ø **13.5** (pin с фото); FIS-фото было +31.5 / Ø13.5.
-**Файлы Kali:** `data/fis_photo_refs.json`, `data/mfa_state.json`, `scripts/sync_mfa_oem.py`, `AGENTS.md`, `ui/obd_feed.py`.
+**Авто:** Touareg GP 2009 3.0 TDI CASA. Блок умеет 3 CAN — подключаем все.
+**Схема:** CAN1 Drive Train 500 (оранж/чёрный), CAN2 Komfort 100 (оранж/зелёный), CAN3 Infotainment 100 (оранж/фиолетовый). Gateway в J285.
+**Файлы:** `Платы и модули/Vega_MT_X_LTE/INSTALL_Touareg_GP_2009_CASA.pdf` (5 стр.), `.md`, `PINOUT.md`. Справка шин: `downloads/SSP_298_Touareg_electrical.pdf`.
 
+## Фокус (2026-08-18, Vega MT X LTE PDF)
 
-## Фокус (2026-08-08, UI БК светлее)
+**Модуль:** в `Платы и модули/Vega_MT_X_LTE/` добавлен читабельный PDF `INSTALL_Touareg_GP_2009_CASA.pdf` и исходник `INSTALL_Touareg_GP_2009_CASA.html`.
+**Проверено:** `libreoffice --headless` успешно собрал PDF, файл на месте рядом с `.md`.
 
-**Правка:** контрастнее палитра, Lato, градиенты панелей, зебра строк, крупнее шрифты; машинка ярче, капот > багажник.
-**Файлы Kali:** `~/Projects/cluster_pi/ui/bc.py`, `ui/car_doors_widget.py`.
+## Фокус (2026-08-18, Vega MT X LTE / Touareg GP)
 
+**Модуль:** `Платы и модули/Vega_MT_X_LTE/` создан по стандарту: `source_url.txt`, `source_page.html`, `download_report.json`, `downloads/`, `extracted/`, `pic/`, `PINOUT.md`, `TECH_SUMMARY.md`.
+**Добавлено:** практическая инструкция `INSTALL_Touareg_GP_2009_CASA.md` для `Volkswagen Touareg GP 2009 3.0 TDI CASA`: питание `30`, отдельный `15`, старт с одной пары `CAN`, без постоянного монтажа на `OBD`.
+**Проверено:** скачаны мануал/протоколы/прошивка/сертификаты, сохранены 3 фото устройства, архив драйвера распакован в `extracted/stsw-stm32102/`.
 
-## Фокус (2026-08-08, схема машины)
+## Фокус (2026-08-17, n8n удалён)
 
-**Правка:** капот длиннее/шире багажника (~24% vs ~10% высоты), нос читается сверху.
-**Файл:** `kali:~/Projects/cluster_pi/ui/car_doors_widget.py` (бэкап `.bak-*`).
+**Проект:** `Проекты/n8n` снят целиком. Docker, MCP, WAN `:5679`, вкладка PWA — нет.
+**Дашборд Малинка 5** живёт в `Проекты/Cursor Agent/` (`scripts/build-pi5-dash.py`, `data/pi5.html`, timer `pi5-dash-refresh`).
+**Проверено:** порты 5678/5679 закрыты; `/malinka-dash` 200; MCP только `google`.
 
+## Фокус (2026-08-17, Ungate status bar)
 
-## Фокус (2026-08-08, калибровка дверей)
+**Пропала** нижняя кнопка Ungate: `show()` ждал async bootstrap после Reload. Исправлено — показывается сразу (приоритет 1000).
+**Нужно:** `Ctrl+Shift+P` → **Developer: Reload Window**. Или сразу **Ungate: Open Dashboard**.
 
-**Готово:** fl (b6), **fr (b7)**, trunk (G1f3.b7). LIVE `ok`, `doors_open=[]` при закрытых.
-**Осталось:** rl / rr / hood — по одной панели.
-**Файл:** `kali:~/Projects/cluster_pi/data/door_map.json`
 
 
-**UI:** вместо текста дверей — вид сверху (как FIS Audi): капот / FL·FR / RL·RR / багажник; открытое — янтарным.
-**Файл:** `kali:~/Projects/cluster_pi/ui/car_doors_widget.py`, правки `ui/bc.py`.
-**Калибровка ЦЗ:** fl + trunk; остальные панели загорятся после привязки битов.
+**Готово:** туннель живой `https://stated-not-scholarships-allergy.trycloudflare.com` (health 200). Base URL в Cursor: `…/v1`.
+**Запас:** WAN `http://91.215.61.76:47821` (Keenetic electro+office + UFW).
+**OAuth ChatGPT:** `:1455` слушает с старта API на `0.0.0.0`. Повторный Login; если Chrome снова на Windows localhost — в адресной строке сменить порт `1455` → `47821`, query оставить.
+**Процессы:** tmux `job-ungate-api`, `job-ungate-tunnel`.
 
-## Фокус (2026-08-08, фикс залипания LIVE)
 
-**Баг:** при сбое G1 в state писался `rpm/speed=None` → на экране «—»; зелёный «Связь» при этом оставался.
-**Фикс:** кэш rpm/speed/temp; `_set` не затирает телеметрию None; старт с приборки; XFCE autostart БК отключён (дубль с systemd).
-**Двери:** опрос ~18 с после LIVE; багажник G1f3.b7.
+## Фокус (2026-08-17, EmKit BMS отваливался)
 
-## Фокус (2026-08-08, стабильность приборки)
+**Проект:** `Проекты/web_config_bms/` — HTTPS `:8443` висел на TLS handshake интернет-сканера (однопоточный `wrap_socket` на listen).
+**Сделано:** handshake в рабочем потоке + таймаут 8 с; `Restart=always`; watchdog `web-config-bms-watch.timer` (2 мин).
+**Проверено:** `https://127.0.0.1:8443/` 200; `/api/status` → `bms_emkit` up; незавершённый TLS больше не блокирует GET.
 
-**Причина:** после ЦЗ 0x35 шина «глухая»; цикл снова лез в двери → приборка не поднималась.
-**Фикс:** LIVE-сессии ~40 опросов; двери раз/~45 с только после успеха; пауза 2 с; connect retry×3; без ЦЗ при fail.
-**Файл:** `kali:~/Projects/cluster_pi/ui/obd_feed.py`
 
-## Фокус (2026-08-08, автозапуск БК Kali)
 
-**Проверено:** LIVE (out/odo/rpm), сервис `cluster-bc.service` **active + enabled**.
-**Автозагрузка:** systemd `WantedBy=graphical.target` + резерв `~/.config/autostart/cluster-bc.desktop`.
-**Файлы:** `scripts/systemd/cluster-bc.service`, `scripts/install-bc-autostart.sh`, `scripts/start_bc_autostart.sh`.
-**Проверка:** `systemctl status cluster-bc`; `journalctl -u cluster-bc -b`.
+**Не Cursor.** PI5_Работа в приложении ChatGPT. Телефон не ходит на :22; релей через десктоп Windows, затем SSH на Pi.
+**Сделано:** Codex CLI 0.147.0 на Pi (`~/.local/bin/codex`), в login PATH. `codex login --device-auth` с Pi — 403 (OpenAI).
+**Нужно:** на Windows в ChatGPT Connections SSH-хост `91.215.61.76` user `pi` порт `22`; десктоп не закрывать.
 
-## Фокус (2026-08-08, быстрый опрос БК)
+## Фокус (2026-08-14, SSH WAN Malinka 5)
 
-**Кластер:** inter-byte 1 ms → G1 ~**3.7 Hz** в сессии; `door_break_every=8`.
-**Двери:** каждый break (не раз/20 с); только G1; connect `fast+hot`; ~6.3 с (лимит 5-baud).
-**Масло/SRI:** раз в **180 с** (тяжёлый kw1281test).
-**prepare_port:** без bash на каждом цикле.
-**Файлы Kali:** `kw1281_client.py`, `kw1281_runner.py`, `ui/obd_feed.py`, `ui/doors.py`, `data/door_map.json`.
+**Проект:** Keenetic / Pi 5. На электроцехе `:22` уже шёл на wlan0 Pi 5; на офисе правила не было.
+**Сделано:** `ip static tcp ISP 22 192.168.1.2 22` на office. WAN `ssh pi@91.215.61.76`, алиас `pi5-wan`.
+**Проверено:** TCP + ssh-keyscan WAN — ключ совпал с sshd Pi 5. Скрипт `Документы/.cursor/scripts/install-pi5-ssh-wan-portforward.sh`.
 
-## Фокус (2026-08-08, двери через ЦЗ 0x35)
+## Фокус (2026-08-14, Ungate proxy timeout)
 
-**Факт:** Comfort 0x46 нет; двери читаются с **ЦЗ 0x35** (8L0862257G ZV-Pumpe).
-**Handshake:** без complement sync, только `~kb2` (как key2_only).
-**Данные:** G1 field1 byte `b` bit6 = водительская (1=открыта). Остальные двери — по одной.
-**Калибровка FL:** G1 field1 byte `b` bit6 (открыта → b=64).
+**Проект:** `ungate/` — `GET /settings failed: extension proxy timeout`: новый UI ждал api-proxy, хост расширения без хендлера.
+**Сделано:** сначала fetch (localhost / tunnel / asExternalUri), proxy — запасной. Сборка в `orchidfiles.ungate-1.7.9`.
+**Нужно:** закрыть вкладку Ungate и открыть снова со статус-бара (или Reload Window).
 
-**Файлы Kali:** `kw1281_client.py`, `ui/doors.py`, `data/door_map.json`, `ui/obd_feed.py`.
-**Калибровка:** открыть дверь и сверить бит (при необходимости поправить `door_map.json`).
+## Фокус (2026-08-14, Ungate HTTP/2)
 
-## Фокус (2026-08-08, зажигание всегда ON)
+**Проект:** `ungate/` — Cursor не перезагрузил JS, туннель оставался QUIC. Обёртка `~/.ungate/bin/cloudflared` всегда добавляет `--protocol http2`.
+**Сейчас:** процесс с http2, в логе `Initial protocol http2` / `Registered … protocol=http2`. URL в панели Ungate (Settings).
+**Проверено:** `ps` — `--protocol http2`; статус running.
 
-**Стенд:** зажигание **всегда ON** — не просить включать.
-**Двери:** Comfort **0x46 нет**; статус с **ЦЗ 0x35** (G1 k=16).
-**БК:** LIVE с приборки 0x17; масло/ТО из SRI; двери с ЦЗ.
+## Фокус (2026-08-14, Ungate Failed to fetch)
 
-## Фокус (2026-08-08, сервис масла на БК)
+**Проект:** `ungate/` — туннель `--protocol http2` (QUIC на Pi рвался). Сборка в `orchidfiles.ungate-1.7.9`.
+**Проверено:** connector `protocol=http2`, `ha_connections=1`, стабильный. trycloudflare с Pi всё ещё 1033 — нужен Restart tunnel после Reload Window; если URL снова мёртвый — проброс Keenetic `:47821`.
+**Дашборд fetch:** починен ранее (api-proxy).
 
-**SRI с приборки:** adaptation ch5 → **2000 км** до OIL; ch6 → **7000 км** до IN1.
-**UI:** «Замена масла», «ТО (осмотр)».
-**Файлы:** `ui/service_oil.py`, `data/service_oil.json`.
+## Фокус (2026-08-14, Ungate Failed to fetch)
 
-## Фокус (2026-08-08, двери на БК) — устарело, см. ЦЗ 0x35 выше
+**Проект:** `ungate/` — дашборд Analytics на SSH: `Failed to fetch`, webview ходил на `localhost` ПК, API на Pi (`:47821`).
+**Сделано:** запросы через extension host (`api-proxy`). Сборка в `~/.cursor-server/extensions/orchidfiles.ungate-1.7.9`.
+**Проверено:** API `/health` 200; тесты extension 63. Нужен **Reload Window**.
 
-**UI:** строка «Двери» / «Открыты: …»; опрос ЦЗ 0x35 каждые ~20 с.
+## Фокус (2026-08-14, БК Pico Audi)
 
-## Фокус (2026-08-07, точность БК)
+**Проект:** `Проекты/audi_bc_pico/` — 16:38 py залиты, ACM жив. Нажать Reset на Eval (жёлтый, потом WAIT). Без UART.
+**Проверено:** UF2+upload 14:49, Pico `2e8a:0005`. MADCTL `0x48` (вверх ногами → `0x88`).
+**K-line:** UART0 CP2102; USB-KKL в Eval USB не хост.
 
-**Сверка online:** G1/G2/G3 сырьё ≡ `bc_live` (Δ=0): spd 0, rpm 0 (мотор off), out 34°C, ОЖ 67°C, бак 20 л (a=100 b=2), одо 248880.
-**RPM:** стандарт k1 врёт (10240); БК верно `0.2*a*b`.
-**MFA** (ø/∅/время/trip) — наш трекер из одо/бака, не штатный экран MFA.
-**Отчёт:** `kali:…/data/bc_accuracy.txt`, `.cursor/data/bc_accuracy.txt`
+## Фокус (2026-08-14, Mint Live USB 10.10.0.85)
 
-## Фокус (2026-08-07, БК ровнее)
+**Хост:** `eltavr-mint` · Linux Mint 22.1 Live USB · user `mint` · ключ Pi 5 `id_ed25519`.
+**Сеть:** Home `10.10.0.85/24` (провод `enp4s0`, SSID ELEKTRO). Pi 5 в Guest — SSH через Keenetic (`ssh mint`).
+**Проверено:** вход OK; `sshd` active; overlay `/cow` ~819 МБ.
+**Windows (2026-08-14):** система на NVMe `SYSTEMA`, не на HDD. SAM: `Растислав` и `Admin` — пароль пустой (`chntpw`). Учётки «Расуль» нет. HDD `DATA` 931 ГБ — данные, без SAM.
 
-**UI:** строгая сетка метрик — равный шаг строк, числа в одну колонку (mono), единицы фиксировано справа; курсор скрыт.
-**Файл:** `kali:~/Projects/cluster_pi/ui/bc.py`. LIVE.
+## Фокус (2026-08-14, БК Pico Audi)
 
-## Фокус (2026-08-07, БК дизайн)
+**Проект:** `Проекты/audi_bc_pico/` — БК на Pico-Eval-Board 3.5″ для A4 B5 Y921OE.
+**Режим:** DEMO на экране; LIVE — JSON UART0 (CP2102) с Kali.
+**Проверено:** MicroPython на Pico (`2e8a:0005`), залиты `lcd.py`/`bc.py`/`main.py`.
+**Плата:** `Платы и модули/Pico-Eval-Board/`.
 
-**UI:** спокойный тёмный MFD, шрифты Liberation/DejaVu, крупная скорость, список с полными подписями, низ — пробег/суточный/топливо.
-**Файл:** `kali:~/Projects/cluster_pi/ui/bc.py`. LIVE после рестарта.
+## Фокус (2026-08-14, Pico-Eval-Board)
 
-## Фокус (2026-08-07, бак 20 л)
+**Папка:** `Платы и модули/Pico-Eval-Board/` — Waveshare, IPS 3.5″ ILI9488 480×320 + XPT2046, ICM-20948, SDIO, PCM5101A.
+**Доки:** `PINOUT.md`, `TECH_SUMMARY.md`. Схема и демо в `downloads/` / `extracted/`.
+**Проверено:** схема PDF 771 KB, demo zip 6.9 MB распакован; даташит PCM5101A с wiki не скачался (таймаут).
+**БК Audi:** `Проекты/audi_bc_pico/` — DEMO на этом экране.
 
-**Факт:** приборка 0x17 G2/k19 стабильно `a=100 b=2` → **20.0 л** (формула `a*b*0.1`). БК показывает то, что шлёт комби.
-**Важно:** цифровой канал грубый (**шаг ~10 л**); подлив меньше шага на цифре не видно. Стрелка бака может врать иначе.
-**UI:** подпись «Топливо в баке (шаг ~10 л)» + ур.N.
+## Фокус (2026-08-13, дашборд Pi 5)
 
-## Фокус (2026-08-07, БК подписи)
+**Один экран:** https://91.215.61.76:5679/webhook/pi5 и PWA вкладка **Малинка 5** (`/sites/malinka/`).
+**Сценарий:** `bS8g9qac1sGRGl0X` (published) — единственный; три ленты: страница, Google, сервисы Pi 5. Остальные 11 в архиве.
+**Проверено:** webhook 200 HTML, `/malinka-dash` 200, `/api/sites` содержит malinka.
 
-**UI:** без значков — полные надписи: «Температура снаружи», «…охлаждающей жидкости», «Топливо в баке», средний/мгновенный расход, запас хода, напряжение сети.
-**Кнопки:** «Сброс MFA», «Выход». LIVE на Kali.
-**Файл:** `kali:~/Projects/cluster_pi/ui/bc.py`
+## Фокус (2026-08-13, n8n Google)
 
-## Фокус (2026-08-07, БК 5″ полноценный)
+**Проект:** `Проекты/n8n/`. Credentials: Sheets / Drive / Gmail / Calendar.
+**Карта:** `ilCWoMl0r96yGVXw`. Просмотр: UPS, расходники, SMS, ОТК АКБ, Коммуналка папки/файлы, Музыка/учёба, Gmail, календарь — все execute success.
+**Скрипты хоста не отключал.** PDF с почты `qUxdqEgCEdQ6BOFo` — черновик.
 
-**UI:** весь экран 800×480 — скорость+rpm, 3×3 (out/ОЖ/бак/ø/∅/время/мгнов/запас/Ubat), одо+trip, СБРОС MFA / ВЫХ.
-**Данные:** LIVE trip **124.5** км, avg 12.5, out/ОЖ/бак с 0x17. Ubat — н/д (SIMOS).
-**Файлы Kali:** `~/Projects/cluster_pi/ui/bc.py`, `ui/obd_feed.py` (trip_km, reset_mfa).
-**Старт:** `bash ~/Projects/cluster_pi/scripts/start_bc.sh` (tmux `bc`).
+## Фокус (2026-08-13, n8n)
 
-## Фокус (2026-08-07, напряжение бортсети)
+**Проект:** `Проекты/n8n/` — self-hosted n8n **2.34.5**, Docker `n8n`, `restart: unless-stopped`.
+**URL:** WAN https://91.215.61.76:5679/ ; LAN https://10.1.30.126:5679/ ; HTTP LAN :5678.
+**Проверено:** WAN `/healthz` 200, HTML 200. Проброс Keenetic electro+office **5679**. Голый **5678 на WAN не открыт**.
+**MCP:** Cursor подключён (`~/.cursor/mcp.json` → `n8n`, `/mcp-server/http`).
+**PWA Сайты:** вкладка **n8n** → `/sites/n8n/` (прокси `:5678`). Проверено: HTML/REST/HTTPS 200, health up. SW **v71**. Ctrl+F5.
 
-**Итог:** KKL **не** АЦП — только шина. В MB приборки **0x17 G1–G10** напряжения нет.
-**Двигатель 0x01** (SIMOS, sync 0x95) коннект есть, measuring blocks пустые → Ubat (обычно G3/k6) недоступен.
-**ABS 0x03** — скорости/биты, не Ubat. БК снова LIVE.
+## Фокус (2026-08-12, VPN_Server)
 
-## Фокус (2026-08-07, Kali БК частый опрос)
+**Причина:** техработы Fornex — обновление сети США (Dallas), **полное отключение** услуг USA **09:00–15:00 МСК** 12.08.2026. VPS `89.127.199.6` в US → сеть мертва, reboot fail ожидаем.
+**Действие:** ждать до ~15:00; watcher `vpn-wait-fix2` поднимет `x-ui` после SSH.
+**Не чинить reboot/Stop-Start** до конца окна.
 
-**Сделано:** `poll_s=0`, FPS=60; G1 каждый цикл, G2/G3 чередуются; inter-byte sleep 5→2 ms.
-**Проверено:** ~**1.6 polls/s** LIVE (было ~1.0); out/ОЖ/бак/одо в норме.
-**Файлы Kali:** `~/Projects/cluster_pi/ui/obd_feed.py`, `kw1281_client.py`, `ui/bc.py`, `scripts/start_bc.sh --poll 0`.
-**tmux:** `bc` (сокет `/tmp/tmux-kali-bc/sock` если default глючит).
+## Фокус (2026-08-12, Cursor Pi 5)
 
-## Фокус (2026-08-07, датчик салона)
-
-**Фото:** одо 248881, суточный trip **124.5 км**, вольтметр ~12 В; наклейка **4D0 963 503 B** — датчик t° салона (на климат).
-**K-line:** trip/салон в MB нет; Klima 0x08 sync C6 будится, MB пусто. На БК — out/ОЖ/одо из 0x17.
-
-## Фокус (2026-08-07, Kali БК max 0x17)
-
-**Экран 2×4:** rpm, out °C, ОЖ, бак L, одо, trip, мгнов, avg.
-**Live:** rpm 0 (мотор off), out 34, ОЖ 67, бак 20 л, одо 248880.
-**Файлы Kali:** `~/Projects/cluster_pi/ui/{bc,obd_feed}.py`
-
-## Фокус (2026-08-07, режим QR LiFePO4)
-
-**Режим:** пользователь кидает код/фото QR ячейки → ответ с макс. характеристиками.
-**Скрипт:** `Платы и модули/LiFePO4_Cell_QR_Decoder/scripts/decode_cell_qr.py`
-**Сервисы:** Basen + Xiho (авто); Gobel/Hakadi — вручную/если доступны.
-
-## Фокус (2026-08-07, Kali БК MFA)
-
-**UI:** наружная t° (G2), ОЖ (G3), мгновенный/средний расход (Δ бака+одо), trip km/min.
-**Проверено:** out 35°C, ОЖ 74°C, бак ~20 л; avg/inst — после движения.
-**Файлы на Kali:** `~/Projects/cluster_pi/ui/{bc,obd_feed}.py`
-
-## Фокус (2026-08-07, LiFePO4 QR)
-
-**Папка:** `Платы и модули/LiFePO4_Cell_QR_Decoder/`.
-**Пример:** `04QCB72JB8800JFCF0021605` → EVE LF230, 230Ач, 3.2В, 15.12.2025.
-**Сервисы:** Gobel / Hakadi / Xiho (+ Basen API).
-
-## Фокус (2026-08-07, Kali БК K-line)
-
-**Диагноз:** KKL OK; приборка **0x17** live; двигатель **0x01 SIMOS** (B5/95) без measuring blocks.
-**БК:** feed=`cluster`, tmux `bc`; формула k7=`0.01*a*b`.
-
-## Фокус (2026-08-07, Kali БК запущен)
-
-**Статус:** `ui/bc.py` запущен на Kali (tmux `bc`), DISPLAY=:0.
-**Старт:** `bash ~/Projects/cluster_pi/scripts/start_bc.sh`
-**KKL:** `/dev/vag-kkl` → ttyUSB0 (FTDI) подключён.
-
-## Фокус (2026-08-07, Kali БК MFD готов)
-
-**Сделано:** `ui/bc.py` стиль color MFD (скорость крупно + сетка 2×3), live на Kali `:0`.
-**Старт:** `bash ~/Projects/cluster_pi/scripts/start_bc.sh`
-**Скрин:** отправлен на mishock24@gmail.com (локально не храним).
+**Проверено:** `cursor-upgrade-pi5.sh` — IDE **3.15.6**, Agent CLI **2026.08.11-e8db854** (уже latest).
 
 ## Фокус (2026-08-07, Kali БК 5″)
 
@@ -967,6 +931,3 @@
 
 На Pi 5 mp3 **не хранить**: tmp → Drive «Музыка» → удалить. Без Telegram.
 - GEM e6 2017: с gemcar.com скачан Owner’s Manual 2017 EN; схем/service нет (только owner).
-## Музыка Drive — папки артистов (2026-08-08)
-
-Всегда `Музыка/<исполнитель>/`, создавать если нет. Не в корень. Temp→Drive→удалить с Pi5. Без Telegram.

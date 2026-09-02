@@ -1,0 +1,26 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m33",
+    "extra_flags": "-DSTM32H5 -DSTM32H5xx -DSTM32H503xx -DARDUINO_GENERIC_H503CBTX",
+    "f_cpu": "250000000L",
+    "mcu": "stm32h503cbt6",
+    "product_line": "STM32H503xx",
+    "variant": "STM32H5xx/H503CB(T-U)"
+  },
+  "debug": {
+    "jlink_device": "STM32H503CB",
+    "openocd_target": "stm32h5x",
+    "svd_path": "STM32H503.svd"
+  },
+  "frameworks": ["arduino"],
+  "name": "PB MCU01 H503A (STM32H503CB)",
+  "upload": {
+    "maximum_ram_size": 32768,
+    "maximum_size": 131072,
+    "protocol": "stlink",
+    "protocols": ["stlink", "dfu", "jlink"]
+  },
+  "url": "https://pb-embedded.ru/products/tproduct/466974915232-pbmcu01h503a",
+  "vendor": "PB-Embedded"
+}

@@ -1,4 +1,48 @@
+## GEM e6 BMC CAN (2026-09-02) — **работает**
+
+- **Папка:** `Платы и модули/Электрокары/Polaris_GEM_e6_2017/`
+- **Подтверждено:** CAN-эмулятор **v4** на неисправной (`5ACA6AGA3H0002115`) — приборка OK, **без DTC** (P1824/P1827 ушли)
+- **Памятка:** `notes/BMC_CAN_EMULATOR_v4_OK.md`
+- **Скрипт:** `scripts/can-bmc-emulate.py` · **запуск:** `can-setup.sh 250k` → `ai-tmux run gem-bmc-emu 'python3 …/can-bmc-emulate.py'`
+- **Карта:** `notes/CAN_BUS_MAP.md` · эталон `logs/20260902-123304_working_key_off.log`
+- **Дальше:** прошить H503 (`flash.sh stlink`), SN65HVD230 + реле X3 — `notes/BMC_EMULATOR_PLAN.md`
+
+## Текущий фокус** папка https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V · сводка `Сводка_родительское_собрание_2026.md`. **Ожидается ~2026-09-01:** новый договор + документы по налоговому вычету → анализ и обновление сводки.
+- **.cursorignore Arduino (2026-08-27):** убраны `Проекты/Arduino/` и `Arduino/` из ignore; значки запрета в explorer.
+- **HA Pi5 (2026-08-24):** после reboot не стартовал из‑за `/dev/gpiochip0` (нет на 6.12). Убран из `home_assistant/docker-compose.yml`. UI `:8123` → 200.
+- **RS485 ANT J75H (2026-08-24):** связь OK. `/dev/ttyAMA0` **9600**, modern `7E A1`. BMS `ANT@BLE16ZNUB-J75H` / hw `16ZNJARB170A`. Памятка: `Платы и модули/RS485_CAN_HAT/ANT_BMS_J75H_RS485.md`. Проверка: `python3 bms-tools/ant_bms_probe.py --port /dev/ttyAMA0 --baud 9600`.
+- **MUST PV18-4024 PRO II (2026-08-20):** ещё один инвертор прошит рабочим профилем через USB `/dev/ttyUSB0`, Modbus `19200`, slave `4`. После `must-verify-profile.py --fix` — **20/20 OK**. Если снова не сойдётся `20117`, сразу запускать `python3 Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/scripts/must-verify-profile.py --fix`.
+- **.cursorignore (2026-08-18):** `Платы и модули/` открыта для агента; `**/.cursor/` сужен до backups/data/build. Файл: `Documents/.cursorignore`.
+- **MUST LP16-48100 (2026-08-18):** в инверторе 48 В — тип LI, протокол Must New (прог. 41), CAN DIP №11; Bulk **57.6 В**, ток **≤100 А** (лучше 50 А). Не к PV18-4024.
+
 ## Текущий фокус
+- **Vega MT X LTE / Touareg GP (2026-08-18):** монтаж на **все 3 CAN**. PDF: `Платы и модули/Vega_MT_X_LTE/INSTALL_Touareg_GP_2009_CASA.pdf`. CAN1 Antrieb 500, CAN2 Komfort 100, CAN3 Infotainment 100. Gateway в комбинации J285.
+
+## Текущий фокус
+- **Vega MT X LTE PDF (2026-08-18):** в `Платы и модули/Vega_MT_X_LTE/` собран `INSTALL_Touareg_GP_2009_CASA.pdf` из HTML-версии инструкции; лежит рядом с `.md`.
+
+## Текущий фокус
+- **Vega MT X LTE / Touareg GP (2026-08-18):** создан модуль `Платы и модули/Vega_MT_X_LTE/` с исходной страницей, загрузками, фото, `PINOUT.md`, `TECH_SUMMARY.md`, `INSTALL_Touareg_GP_2009_CASA.md`. Стартовая схема для `Touareg GP 2009 CASA`: `+30`, масса, отдельный `IGN 15`, одна пара `CAN`; `K-Line` только при отдельной задаче.
+
+## Текущий фокус
+- **n8n (2026-08-17):** полностью удалён. Дашборд Малинка 5 — `Cursor Agent`, timer `pi5-dash-refresh`.
+- **Ungate (2026-08-17):** туннель `https://stated-not-scholarships-allergy.trycloudflare.com` health 200; WAN `:47821` Keenetic OK; OAuth `:1455` всегда слушает. Повторный Login ChatGPT.
+- **EmKit BMS (2026-08-17):** `:8443` больше не вешается на TLS-сканеры. Handshake в потоке, watchdog `web-config-bms-watch.timer`. Проверка: `curl -sk https://127.0.0.1:8443/` → 200; PWA `/sites/bms_emkit/`.
+- **SSH WAN Malinka 5 (2026-08-14):** `ssh pi@91.215.61.76` (Keenetic office+electro :22). Скрипт `bash Документы/.cursor/scripts/install-pi5-ssh-wan-portforward.sh`. Алиас `pi5-wan`.
+- **Ungate (2026-08-14):** `extension proxy timeout` — UI ждал старый хост. Закрыть вкладку Ungate и открыть снова.
+- **Ungate (2026-08-14):** Analytics `Failed to fetch` на Remote SSH — прокси через extension host. После правки: Reload Window. API `:47821` живой.
+- **БК Pico Audi (2026-08-14):** без машины, отладка UART0 JSON/KW1281. Экран: RPM / код / ОЖ. 16:06.
+- **Mint Live USB (2026-08-14):** `10.10.0.85` `eltavr-mint`, user `mint`. С Pi 5: `ssh mint`. Windows на NVMe: пароли `Растислав` и `Admin` сброшены (пустые). HDD DATA без SAM.
+- **Pico-Eval-Board (2026-08-14):** `Платы и модули/Pico-Eval-Board/` — PINOUT + TECH_SUMMARY; схема/демо скачаны. Pico в комплект не входит.
+- **Дашборд Pi 5 (2026-08-17):** снимок без n8n — `Проекты/Cursor Agent/scripts/build-pi5-dash.py` → `data/pi5.html`; timer `pi5-dash-refresh`; PWA **Малинка 5** `/malinka-dash`.
+- **n8n (2026-08-17):** удалён (Docker, MCP, Keenetic `:5679`, папка `Проекты/n8n`). Не поднимать.
+
+## Текущий фокус
+- **БК минимальный ЭБУ (2026-08-09):** `bc_ecu.py` — RPM/ОЖ/V; Kali `start_bc.sh`. V канал пока пустой.
+
+## Текущий фокус
+- **БК freeze (2026-08-09):** починен `_recv_block` + ЦЗ off; `cluster-bc` LIVE ~250мс. RPM с ЭБУ сейчас 0 — проверить при заведённом моторе.
+- **ЭБУ 0x01 (2026-08-09):** SIMOS AHL **9600** бод; ident+MB (02/F4) работают. БК `engine_cl`.
 
 - **FIS→MFA (2026-08-09):** pin ø **14.1** / trip 124.5 / fuel0≈37.6 на Kali (`data/mfa_state.json`); BC стартовал; **LIVE verify ждёт** (Kali offline). Проверка: `/tmp/bc_live.json` → avg=14.1, avg_spd~26, fuel~20.
 - **A4 B5 КПП (2026-08-09):** завод АКПП 01N → МКПП владельцем; адрес 02 не опрашивать; OBD без CAN.
