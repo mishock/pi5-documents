@@ -1,3 +1,85 @@
+## Фокус (2026-09-07, Audi A4 B5 расходники)
+
+**Сделано:** `Платы и модули/Audi_A4_B5/FILTERS_AND_WIPERS.md` — фильтры (масло/воздух/салон/топливо) + щётки 530 мм, OEM и Mann/Bosch/Mahle; **04E 115 561 H не подходит** на AHL.
+
+## Фокус (2026-09-07, PWA UUID resume)
+
+**Проблема:** PWA ошибка `Persistent-session chat ID must be a UUID` (id `agent-…`).
+**Причина:** новый `cursor-agent` ждёт чистый UUID; в localStorage остался префикс `agent-`.
+**Сделано:** normalize в `llm/cursor_cli_client.py` + PWA + WS; retry без resume; SW v74; MVP перезапущен.
+**Проверка:** WS с `agent-179824f3-…` → ответ «ок», agent_id без префикса.
+**Пользователю:** обновить страницу PWA (Ctrl+F5).
+
+## Фокус (2026-09-07, ANT BMS V2 регистрация)
+
+**Сделано:** аккаунт cloud ANT BMS V2 через email API; активация письма; login OK.
+**Логин:** mishock24@gmail.com · **uid:** 842247 · заметка: `Проекты/Arduino/firmware/ANT_BMS/notes/ANT_BMS_V2_ACCOUNT.md`
+**Важно:** в приложении входить по почте (SMS/+86 обходим email-register).
+
+## Фокус (2026-09-07, RC не сохраняет тумблер)
+
+**Суть:** облако `remoteControlEnabled=true` уже сохранено. Тумблер «Remote Control» в Glass — локальный enroll; при закрытии окна сбрасывается; enroll не пишется (gate/provider).
+**Сделано:** `~/bin/cursor-rc-force-on.sh` (enroll keys + облако + прокси/Wayland); док `REMOTE_CONTROL.md`.
+**Правило:** Agents не закрывать; не дёргать тумблер. Worker systemd отдельно online.
+
+## Фокус (2026-09-07, Remote Control OFF)
+
+**Проблема:** тумблер Remote Control сам OFF — IDE без прокси → `permission_denied` region → catch ставит OFF.
+**Сделано:** `~/bin/cursor-with-proxy.sh` (`--proxy-server=10809`), desktop/shim/open-agents; `cursor-keep-awake` (fix argv); cloud `remoteControlEnabled=true`; worker active.
+**Проверка:** новый лог `20260907T123037` без `failed to load remote control` / region на BC; xray принимает api2; keep-awake active.
+**Важно:** запускать Cursor только через прокси-обёртку, не `/usr/share/cursor/cursor` напрямую.
+
+## Фокус (2026-09-07, PWA чат)
+
+**Проблема:** PWA `https://10.1.30.126:8767/app/` не отвечал («Ты тут?», «Фоновая задача…»).
+**Причина:** cursor-sdk CreateAgent OK, но run → status=error ~90с (пустой result); CLI `cursor-agent -p` при этом работает.
+**Сделано:** `CURSOR_LLM_BACKEND=cli`, `llm/cursor_cli_client.py`; lifespan без двойного bridge; proxy timeout fix.
+**Проверка:** WS `/ws/chat` «Ты тут?» → ответ ~17с. Обновить страницу PWA / очистить чат.
+
+## Фокус (2026-09-07, Telegram Cursor)
+
+**Проблема:** в Telegram Cursor Agent не отвечал — у бота был только SOCKS для Telegram, `agent -p` без `HTTPS_PROXY` → HTTP 403.
+**Сделано:** `HTTPS_PROXY=http://127.0.0.1:10809` в `Проекты/ai_assistant/.env` + unit; `setdefault` в `cursor_agent_client.py`; сервис перезапущен.
+**Проверка:** `systemctl --user is-active ai-assistant-telegram`; `agent -p` с прокси → OK.
+
+## Фокус (2026-09-07, Cursor Pi5)
+
+**Проблема:** self-hosted worker `cursor-self-hosted-worker` падал каждые ~10 с — без `HTTPS_PROXY` API Cursor из РФ недоступен.
+**Сделано:** в `~/.config/cursor-worker.env` + unit прокси `http://127.0.0.1:10809`; worker **active**, `worker debug` → **1 worker**. IDE: `http.proxy` в settings. PWA `:8766` health/bridge OK.
+**Проверка:** `systemctl --user is-active cursor-self-hosted-worker cursor-proxy-http`; `cursor-agent worker debug`.
+
+## Фокус (2026-09-04, GEM ESP32-C3 веб UI)
+
+**Сделано:** v0.3 SoftAP `GEM-BMC` / `gem-bmc-cfg` → http://192.168.4.1/ — MAC ANT в NVS + статус реле/BLE/CAN. Прошито.
+**Дальше:** телефон → WiFi GEM-BMC → задать MAC; проводка CAN/реле.
+
+## Фокус (2026-09-04, GEM ESP32-C3 + реле)
+
+**Сделано:** v0.2 — реле K5/K12/VCM/K7 + interlock как H503 (GPIO0/1/2/3 + GPIO10); сборка OK `releases/gem_bmc_can_emu_esp32c3_v0.2.bin`.
+**Пины:** CAN 4/5; реле 0/1/2/3; IL 10; LED 8.
+**Прошивка:** v0.2 залита на Super Mini (`/dev/ttyACM0`, esptool OK).
+**Дальше:** проводка SN65 + реле/опто по PINOUT; закрыть ANT на телефоне; тест.
+
+## Фокус (2026-09-04, GEM ESP32-C3 + ANT BLE)
+
+**Сделано:** папка `firmware/gem_bmc_can_emu_esp32c3/` — TWAI CAN v4 + NimBLE→ANT (SOC/U), сборка **OK** (`releases/gem_bmc_can_emu_esp32c3_v0.1.bin`, 566 KB).
+**Пины:** GPIO4 TX / GPIO5 RX → SN65HVD230; LED GPIO8.
+**Важно:** overlay SOC/U в `0CFF0EF3` экспериментальный (шкала в логе не доказана); без BLE — чистый v4.
+**Дальше:** прошить Super Mini, закрыть ANT на телефоне, тест на машине + уточнить карту байтов.
+
+## Фокус (2026-09-03, MUST PV18-4024 — заливка)
+
+**Сделано:** ещё один `Must_PV18-4024_PRO_II` по USB `/dev/ttyUSB0` — снимок + рабочий профиль.
+**Проверено:** `must-verify-profile.py --fix` — **20/20 OK** (20117=225). АКБ при заливе **24.0 В**.
+**Снимки сегодня:** `factory-settings/inverter_factory_20260903_130250.json`, ранее `…_111458.json`.
+**Команды:** `bash …/Must_PV18-4024_PRO_II/scripts/must-apply-working.sh` → `python3 …/must-verify-profile.py --fix`.
+
+## Фокус (2026-09-03, Deye SUN-20K + 3× RW-F16 PDF)
+
+**Сделано:** PDF схема + инструкция Parallel Mode 2 (BAT1=№1+№2, BAT2=№3, CAN daisy-chain).
+**Файл:** `Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/generated/Deye_SUN-20K_3xRW-F16_Installation_Setup_RU.pdf` (копия в `Deye_RW-F16/generated/`).
+**Скрипт:** `…/scripts/generate_3x_rwf16_pdf.py`. Меню: Lithium Mode **00**, ёмкость **942 Ah**, ток **300 А**.
+
 ## Фокус (2026-09-02, GEM e6 BMC CAN — **OK**)
 
 **Неисправная:** VIN `5ACA6AGA3H0002115` — CAN-эмулятор BMC **v4 работает**, **DTC нет** (подтверждено 2026-09-02).  
