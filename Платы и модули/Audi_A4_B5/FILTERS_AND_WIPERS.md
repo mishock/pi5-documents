@@ -97,6 +97,29 @@
 
 ---
 
+## Магазин «Вариант» (Симферополь)
+
+**Сайт:** [variantauto.com](https://www.variantauto.com/) (домен **variantavto.com** не открывается — опечатка).  
+**Адрес:** Симферополь, ул. Севастопольская 41/5 · **+7 978 753-11-46**  
+**Поиск:** [search.html?article=…](https://www.variantauto.com/search.html) — вбить артикул, выбрать бренд.  
+**Проверено:** 2026-09-07 (склад Симферополь, наличие через API).
+
+| Что | Рекомендация в «Вариант» | Цена | Наличие | Поиск на сайте |
+|-----|--------------------------|------|---------|----------------|
+| Масло | **MANN-FILTER W71275** (OEM 06A 115 433 E) | **430 ₽** | ✅ склад | [W71275 + MANN-FILTER](https://www.variantauto.com/search.html?article=W71275&brand=MANN-FILTER) |
+| Воздух | **ZEKKERT LF1513** (аналог 058 133 843 / Mann C 2640) | **410 ₽** | ✅ склад | [058133843 + VAG](https://www.variantauto.com/search.html?article=058133843&brand=VAG) |
+| Салон | **RIGINAL RGCU3955** (аналог 8A0 819 439 A / Mann CU 3955) | от **254 ₽** | ❌ под заказ | [CU3955 + MANN-FILTER](https://www.variantauto.com/search.html?article=CU3955&brand=MANN-FILTER) |
+| Топливо | **ZEKKERT KF5072** (аналог 1H0 201 511 A) | **440 ₽** | ✅ склад | [1H0201511A + VAG](https://www.variantauto.com/search.html?article=1H0201511A&brand=VAG) |
+| Щётки ×2 | **MASUMA MU021U** 525 мм (близко к OEM 530 мм; **2 шт.**) | **500 ₽/шт** | ✅ 1 шт на складе* | [8D1955425A + VAG](https://www.variantauto.com/search.html?article=8D1955425A&brand=VAG) |
+| Щётки ×2 (лучше) | **BOSCH 3397004671** 530 мм — **2 шт.** | ~**350 ₽/шт** | ❌ под заказ | [3397004671 + BOSCH](https://www.variantauto.com/search.html?article=3397004671&brand=BOSCH) |
+
+\*На момент проверки на складе была **1× MU021U**; вторую — заказ или **BOSCH 3397004671** (530 мм, точнее под A4 B5).
+
+**Купить сразу (≈2280 ₽ + салон):** Mann W71275 + Zekkert LF1513 + Zekkert KF5072 + 2× щётки.  
+**Mann C 2640 / CU 3955 / WK 842 / OEM VAG** на складе **не было** — только аналоги или доставка.
+
+---
+
 ## Связанное
 
 - ЭБУ AHL: `../Audi_A4_B5_ECU_AHL_3B0_907_557_B/TECH_SUMMARY.md`
