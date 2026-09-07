@@ -1,3 +1,17 @@
+## Фокус (2026-09-07, Aqara G2 → HA Pi3)
+
+**Модель:** ZNSXJ12LM · `Camera-Hub-G2H-EAA1` @ `10.0.20.5:45029`.
+**Блокер:** камера спарена с **Apple Home** — HA pairing недоступен, пока не снять из «Дом».
+**Готово:** скрипты `discover/pair/add-aqara-g2-camera-ha` на Pi3; док `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/`.
+**Дальше:** HomeKit-код → `bash scripts/add-aqara-g2-camera-ha.sh XXX-XX-XXX` на Pi3.
+
+## Фокус (2026-09-07, ANT BMS графики)
+
+**Проблема:** history-graph «иголки» 0↔54 В / 0↔100% при offline BMS.
+**Сделано:** логгер hold-last; `ant24c_read.py` (exit 1); template `*_graph`; purge ~3900 нулей; дашборд на graph-сенсоры.
+**Проверка:** `pack_voltage_graph`=54.0, `soc_graph`=98.0; zeros в истории = 0.
+**Файлы:** `home_assistant/config/packages/ant24c.yaml`, `dashboards/ant-bms-24c.yaml`, `bms-tools/ant24c_logger.py`.
+
 ## Фокус (2026-09-07, Audi A4 B5 расходники)
 
 **Сделано:** `Платы и модули/Audi_A4_B5/FILTERS_AND_WIPERS.md` — фильтры (масло/воздух/салон/топливо) + щётки 530 мм, OEM и Mann/Bosch/Mahle; **04E 115 561 H не подходит** на AHL.

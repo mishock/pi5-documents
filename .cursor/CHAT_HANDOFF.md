@@ -1,3 +1,43 @@
+## Aqara G2 → HA Pi3 (2026-09-07)
+
+- **Найдено:** `Camera-Hub-G2H-EAA1` `10.0.20.5` (ZNSXJ12LM) + `Camera-Hub-G2H-EE74` `10.0.20.6` (CH-H01).
+- **Блокер:** обе в Apple Home (mDNS `paired`). Снять из «Дом» → код HomeKit → `bash ~/Raspberry_Pi_3_HomePortable/scripts/add-aqara-g2-camera-ha.sh КОД`.
+- **Проверка после pairing:** `camera.aqara_g2` idle, зона garazh.
+
+## ANT BMS24C графики (2026-09-07)
+
+- Иголки убраны: hold-last в логгере + `*_graph` на дашборде + purge нулей из recorder.
+- Проверка: обновить страницу ANT BMS24C в HA (`:8123`).
+
+
+## 2026-09-07 PWA UUID
+- Фикс resume `agent-<uuid>` → UUID; проверить: обновить PWA, отправить «ты тут?».
+## ANT BMS V2 аккаунт (2026-09-07)
+
+- **Логин:** mishock24@gmail.com · **uid:** 842247 · пароль в заметке
+- **Заметка:** `Проекты/Arduino/firmware/ANT_BMS/notes/ANT_BMS_V2_ACCOUNT.md`
+- Вход в приложении по почте; локальный веб без аккаунта: порт 8788
+
+## Cursor Pi5 worker (2026-09-07) — **починен**
+
+- **Причина:** worker без xray HTTP `:10809` → «Failed to reach the Cursor API» / restart loop
+- **Фикс:** `~/.config/cursor-worker.env` (PROXY+NODE_OPTIONS), unit `cursor-self-hosted-worker.service`, `~/bin/cursor-pi5-worker-fix.sh`, IDE `http.proxy`
+- **Проверка:** `systemctl --user is-active cursor-self-hosted-worker` → active; `cd ~/Documents && cursor-agent worker debug` → Non-privacy **1 worker**
+
+## MUST PV18-4024 PRO II (2026-09-03) — **залит (ещё один)**
+
+- **USB:** `/dev/ttyUSB0` (CH340 `1a86:7523`), Modbus `19200` 8N1, slave `4`
+- **Снимки до заливки:** `…/factory-settings/inverter_factory_20260903_130250.json`, ранее `…_111458.json`
+- **Профиль:** `applied-settings/working_profile.registers.json` → verify **20/20 OK**
+- **Повтор:** `bash …/scripts/must-apply-working.sh` → `python3 …/scripts/must-verify-profile.py --fix`
+
+## Deye SUN-20K + 3× RW-F16 (2026-09-03)
+
+- **PDF:** `Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/generated/Deye_SUN-20K_3xRW-F16_Installation_Setup_RU.pdf`
+- **Схема:** Parallel Mode 2 · BAT1 = №1+№2 · BAT2 = №3 · BMS PCS→OUT→IN
+- **Скрипт:** `…/scripts/generate_3x_rwf16_pdf.py`
+- **Настройки:** Lithium Mode 00, 942 Ah, Max A ≤350 (лучше 300)
+
 ## GEM e6 BMC CAN (2026-09-02) — **работает**
 
 - **Папка:** `Платы и модули/Электрокары/Polaris_GEM_e6_2017/`
@@ -7,7 +47,10 @@
 - **Карта:** `notes/CAN_BUS_MAP.md` · эталон `logs/20260902-123304_working_key_off.log`
 - **Дальше:** прошить H503 (`flash.sh stlink`), SN65HVD230 + реле X3 — `notes/BMC_EMULATOR_PLAN.md`
 
-## Текущий фокус** папка https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V · сводка `Сводка_родительское_собрание_2026.md`. **Ожидается ~2026-09-01:** новый договор + документы по налоговому вычету → анализ и обновление сводки.
+## Текущий фокус
+PWA Cursor Agent: LLM backend **cli** (не sdk). Чат на :8767 должен отвечать.
+
+## Текущий фокус (архив)** папка https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V · сводка `Сводка_родительское_собрание_2026.md`. **Ожидается ~2026-09-01:** новый договор + документы по налоговому вычету → анализ и обновление сводки.
 - **.cursorignore Arduino (2026-08-27):** убраны `Проекты/Arduino/` и `Arduino/` из ignore; значки запрета в explorer.
 - **HA Pi5 (2026-08-24):** после reboot не стартовал из‑за `/dev/gpiochip0` (нет на 6.12). Убран из `home_assistant/docker-compose.yml`. UI `:8123` → 200.
 - **RS485 ANT J75H (2026-08-24):** связь OK. `/dev/ttyAMA0` **9600**, modern `7E A1`. BMS `ANT@BLE16ZNUB-J75H` / hw `16ZNJARB170A`. Памятка: `Платы и модули/RS485_CAN_HAT/ANT_BMS_J75H_RS485.md`. Проверка: `python3 bms-tools/ant_bms_probe.py --port /dev/ttyAMA0 --baud 9600`.
@@ -153,3 +196,9 @@
 ## Kali БК опрос (2026-08-07)
 - Макс. частота: poll=0, G1 каждый цикл, G2↔G3, sleep 2ms ≈1.6 Hz
 - Старт: `tmux … start_bc.sh` / `bash ~/Projects/cluster_pi/scripts/start_bc.sh`
+
+### Remote Control (2026-09-07)
+- Причина OFF: region block без прокси IDE.
+- Запуск: `~/bin/cursor-with-proxy.sh` / `cursor-open-agents-documents.sh`.
+- keep-awake: active (исправлен ExecStart).
+- Проверка: нет `not available in your region` в свежем renderer после proxy launch.
