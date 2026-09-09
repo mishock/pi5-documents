@@ -190,6 +190,8 @@ printf '1\n1\n1\n0\n0\n0\n1\n' | xkeen -i
 
 **Pi 5:** systemd `jarvis-agent-routes.service` — host-маршруты к устройствам только на офисном Guest (список: `/etc/jarvis-agent-routes/office-guest.conf`).
 
+**Инвертор «Зарядка»** (`b4:89:70:09:2f:20` → `10.1.30.81`): проброс **`91.215.61.76:8899`** → `10.1.30.81:8899`. Hotspot: `permit` + `conform` (2026-09-09). Снять `permit` из CLI не выходит — только Web UI Keenetic.
+
 Установка / проверка:
 
 ```bash

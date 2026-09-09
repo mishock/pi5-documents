@@ -1,3 +1,38 @@
+## Deye «Зарядка» logger (2026-09-09)
+
+- IP `10.1.30.81`, SN stick `1538281644`, прошивка `V1.4.05_R01D.0B2_M5434`.
+- POST-настройка (cmd, 9600, TCP 8899) + restart — **8899 всё ещё closed**, облако не connected.
+- Скрипт: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/scripts/configure-logger-zaryadka.sh`
+- Роутер: `host b4:89:70:09:2f:20 conform` добавлен; `permit` CLI не снять.
+- Быстрая проверка: `curl -u admin:$PWD http://10.1.30.81/status.html | grep status_a`
+
+## Aqara G2H NOR (2026-09-09)
+
+- В NOR `0x30000` записан **xz** U-Boot (срез FAT `UBOOT` с байта 64, 94656 байт). IPL `0x4000` = `IPL_` цел.
+- Проверка на чипе: `hexdump -s 196608 /dev/mtd0` → `fd 37 7a 58`.
+- Дальше: **вынуть FLASHKA**, цикл питания, UART 115200. С картой IPL грузит `UBOOT` с SD и NOR не смотрит.
+- Док: `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/notes/NOR_UBOOT_XZ.md`
+
+## Adion Expert 6kW Twin (2026-09-08) — **залит**
+
+- S/N **96342510600141**, USB `/dev/hidraw0`, PI30.
+- Профиль: `applied-settings/working_profile.commands` → User 56.0/54.0/46.0, заряд 80 A / сеть 30 A.
+- Дамп: `Платы и модули/Солнечные_инверторы/Adion_Expert_6kW_Twin/applied-settings/units/96342510600141.txt`
+- LCD ещё руками: **28=SIG**, **10=OnL**, **16=UCb**, **33=EDS**, **39=AEN**.
+
+## JK-PB1A16S10P (2026-09-08)
+
+- Папка: `Платы и модули/JK_PB1A16S10P/`
+- Экземпляр: SN `605146845007308`, BLE `A4:C1:38:0C:0B:28`, опция CEHMPRT (CAN, предзаряд, нагрев, сухой контакт, параллель, RS485, температура).
+- Дальше: приложение JK BMS → химия / S / протокол / прошивка. К инвертору не подключать, пока не сверены пины CAN.
+- Прошивки/протоколы: `Платы и модули/JK_PB1A16S10P/notes/FIRMWARE_AND_PROTOCOLS.md`. Файлы 069 V19.21 и V19.31 лежат локально. Не шить.
+
+## Aqara ZNSXJ12LM — HomeKit нет (2026-09-08)
+
+- Камера снова на `3.5.8_0062`, процесс `camera -M` жив, AiNET `10.0.20.22`.
+- Пакет 2.2.3 не встаёт: нет `libdns_sd.so`. Кода HomeKit на ножке нет (QR = серийник).
+- Док: `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/notes/G2_vs_G2H_FLASH.md`.
+
 ## Aqara G2 → HA Pi3 (2026-09-07)
 
 - **Найдено:** `Camera-Hub-G2H-EAA1` `10.0.20.5` (ZNSXJ12LM) + `Camera-Hub-G2H-EE74` `10.0.20.6` (CH-H01).

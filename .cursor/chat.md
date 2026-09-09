@@ -1,3 +1,43 @@
+## Фокус (2026-09-09, Deye «Зарядка» logger)
+
+**Сделано:** POST `cmd` + UART 9600 + TCP :8899 + restart; скрипт `…/Deye_SUN-6.6K-OG03LP1-EU-AM2/scripts/configure-logger-zaryadka.sh`; docs `WIFI_LOGGER_ЗАРЯДКА.md`, `keenetic-routers.md`; router `host … conform`.
+**Проверено:** `:80` OK, SN инвертора `2607250740`; `:8899` closed; remote A/B пусто.
+**Блокер:** порт 8899 не поднимается; Guest Policy0 (XKeen); `permit` с MAC не снимается CLI.
+
+## Фокус (2026-09-09, Aqara G2H NOR)
+
+**Факт:** без карты IPL: `NO SD`, `Verify UBOOT header failed`. Голый xz в `0x30000` не годится.
+**Дальше:** вернуть FLASHKA, записать целый `UBOOT` (uImage `27051956`) в NOR `0x30000`, снова проверить без карты.
+**Док:** `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/notes/NOR_UBOOT_XZ.md`
+**Док:** `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/notes/NOR_UBOOT_XZ.md`
+**Не трогать:** OLD_CAM / образ 16 МБ. HomeKit-код не выдумывать.
+
+## Фокус (2026-09-08, Adion Expert 6kW Twin)
+
+**Сделано:** рабочий профиль залит на S/N **96342510600141** (`/dev/hidraw0`): 22 OK, NAK только `PPVOKC0`.
+**Проверено:** User, bulk 56.0, under 46.0, заряд 80/30 A, bypass/restart on, buzzer on.
+**Дамп:** `Платы и модули/Солнечные_инверторы/Adion_Expert_6kW_Twin/applied-settings/units/96342510600141.txt`
+**LCD вручную:** 28=SIG, 10=OnL, 16=UCb, 33=EDS, 39=AEN.
+
+## Фокус (2026-09-08, JK-PB1A16S10P)
+
+**Плата:** Jikong BMS, этикетка CEHMPRT, 1 А баланс, 100/200 А, 8–16S.
+**SN:** `605146845007308` · **MAC:** `A4:C1:38:0C:0B:28`
+**Папка:** `Платы и модули/JK_PB1A16S10P/`
+**Дальше:** снимок из приложения JK BMS (химия, S, протокол, прошивка). Распиновка RJ45 ещё не сверена с платой.
+**Прошивки/протоколы:** `notes/FIRMWARE_AND_PROTOCOLS.md` — V19.21 и V19.31 (код 069), Monitor 3.11.0, Modbus V1.1, CAN V2.1. Не шить до снимка версии.
+
+## Фокус (2026-09-08, Aqara ZNSXJ12LM)
+
+**Факт:** железо G2H, китайская `3.5.8_0062`. Пакет 2.2.3 сломал камеру (нет `libdns_sd.so`) — откатил, `/tmp/out/camera -M` жив.
+**Wi‑Fi:** AiNET `10.0.20.22`. HAP нет. QR на ножке — серийник, не код HomeKit. В «Дом» с этой прошивки не добавить.
+
+## Фокус (2026-09-07, Aqara G2 «Açúcar» → HA Pi3)
+
+**Камера 3/3:** новая ZNSXJ12LM, **ещё без Wi‑Fi и HomeKit** (не путать с EAA1 `.5` и EE74 `.6` — они в Apple Home).
+**Порядок:** Aqara Home → AiNET 2.4 ГГц → **не** добавлять в «Дом» → код HomeKit → `wait-aqara-g2-camera-ha.sh КОД`.
+**HA:** `camera.acucar`, зона garazh. Док: `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/TECH_SUMMARY.md`.
+
 ## Фокус (2026-09-07, Aqara G2 → HA Pi3)
 
 **Модель:** ZNSXJ12LM · `Camera-Hub-G2H-EAA1` @ `10.0.20.5:45029`.
