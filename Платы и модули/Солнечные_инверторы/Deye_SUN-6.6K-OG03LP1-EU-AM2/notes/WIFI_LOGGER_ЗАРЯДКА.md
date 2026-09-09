@@ -54,12 +54,10 @@ LOGGER_PASS='…' bash Платы\ и\ модули/Солнечные_инве�
 
 ## Роутер (XKeen / Guest)
 
-Инвертор в Guest с политикой **Policy0 (XKeen)**. На роутере:
+Инвертор в Guest (**Policy0 / XKeen**). Автоматически:
 
-- `host b4:89:70:09:2f:20 permit` — снять через CLI **не удалось** (`no … permit` / `no host` — ошибка Keenetic)
-- **2026-09-09:** добавлен `host b4:89:70:09:2f:20 conform` (сохранено)
-
-Если облако не поднимется — убрать `permit` через веб-админку Keenetic или временно отключить Policy0 для Guest.
+- **Обход VPN для logger:** в `/opt/etc/xray/configs/05_routing.json` правило `source 10.1.30.81/32 → direct` (скрипт `Документы/.cursor/scripts/install-zaryadka-xkeen-bypass.sh`, `xkeen -restart`).
+- `host … conform` на Keenetic; `permit` через CLI **не снимается** — на маршрутизацию logger это больше не влияет после bypass в Xray.
 
 ## Solarman / pysolarman
 
@@ -78,8 +76,17 @@ ping -c1 10.1.30.81
 
 Сохранены пользователем 2026-09-09 (WIFI SN / PWD / SN инвертора).
 
-## Что ещё проверить
+## Автонастройка (агент)
 
-1. **Бренд инвертора** в `config_hide.html` (поле `inv_tp`) — в HTML vars пустые; выбрать Deye вручную в браузере.
-2. **Инвертор включён** и отдаёт мощность (сейчас `webdata_now_p` пусто; SN `2607250740` читается).
-3. **Guest + XKeen** — маршрут облака Solarman/Deye через VPN может блокировать Server A.
+```bash
+bash Документы/.cursor/scripts/install-zaryadka-xkeen-bypass.sh
+LOGGER_PASS='…' bash Платы\ и\ модули/…/configure-logger-zaryadka.sh
+```
+
+Пробовано автоматически (2026-09-09): POST cmd/UART/8899, inv_tp 0–30, throughput mode — **`:8899` остаётся closed**; облако A/B пусто. SN инвертора читается (`2607250740`).
+
+## Если облако/8899 не поднимутся
+
+1. **Инвертор включён** и на LCD есть данные (ночью `webdata_now_p` может быть пустым).
+2. **Прошивка logger M5434** — на части ревизий локальный Modbus TCP отключён; облако только через приложение Deye/Solarman.
+3. Веб для ручных правок: **http://91.215.61.76:8081/config_hide.html**

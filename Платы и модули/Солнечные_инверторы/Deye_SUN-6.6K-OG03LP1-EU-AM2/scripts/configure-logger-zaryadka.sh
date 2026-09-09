@@ -30,11 +30,16 @@ post_restart 'uart_setting_baud=9600&uart_setting_data=databit_8&uart_setting_pa
 echo "--- internal TCP server :8899 ---"
 post_restart 'net_setting_pro=TCP&net_setting_cs=SERVER&net_setting_port=8899&net_setting_to=300'
 
+echo "--- optional: inv_tp (Deye) ---"
+if [[ -n "${LOGGER_INV_TP:-}" ]]; then
+	post_restart "inv_tp=${LOGGER_INV_TP}"
+fi
+
 echo "--- check port 8899 ---"
 if timeout 3 bash -c "echo >/dev/tcp/${HOST}/8899" 2>/dev/null; then
 	echo "8899: OPEN"
 else
-	echo "8899: CLOSED (если так — проверить inv_tp/бренд в config_hide.html или прошивку M5434)"
+	echo "8899: CLOSED (прошивка M5434 — локальный TCP может быть отключён)"
 fi
 
-curl -sf "${auth[@]}" "${BASE}/status.html" | grep -oE 'var (status_a|status_b|webdata_now_p)=[^;]*' || true
+curl -sf "${auth[@]}" "${BASE}/status.html" | grep -oE 'var (status_a|status_b|webdata_now_p|webdata_pv_type)=[^;]*' || true
