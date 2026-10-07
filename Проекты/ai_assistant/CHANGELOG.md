@@ -1,3 +1,32 @@
+## 2026-09-25 — Доступ только хозяину (silent deny)
+
+- `TELEGRAM_ALLOW_FROM` уже один user_id; чужие сообщения/callback больше **без ответа** (только лог `blocked`), чтобы не светить бота.
+
+## 2026-09-07 — Telegram Cursor: Authentication required
+
+- Симптом: `⚠ Authentication required. Please run 'agent login'…` (модель grok-4.6 из IDE).
+- Причина: пропал `~/.config/cursor/auth.json` (`agent status` → Not logged in); у бота не было `CURSOR_API_KEY`.
+- Фикс: ключ из `~/cursor-agent/.env` → `Проекты/ai_assistant/.env`; в `cursor_agent_client.py` fallback-чтение того же файла; сервис перезапущен. Проверено: `grok-4.6` / `composer-2.5` → OK.
+
+## 2026-09-07 — Telegram Cursor: HTTP 403 без прокси
+
+- Симптом: в чате Telegram Cursor Agent «не отвечает» / пустой ответ.
+- Причина: у `ai-assistant-telegram` был только `TELEGRAM_HTTPS_PROXY` (SOCKS для api.telegram.org); `agent -p` шёл без `HTTPS_PROXY` → Cursor API `HTTP 403 permission_denied`.
+- Фикс: в `.env` и unit — `HTTPS_PROXY/HTTP_PROXY/ALL_PROXY=http://127.0.0.1:10809`, `NODE_OPTIONS=--use-env-proxy`; в `cursor_agent_client.py` — `setdefault` тех же значений.
+- Проверка: `systemctl --user restart ai-assistant-telegram.service`; в environ процесса есть HTTPS_PROXY.
+
+## 2026-09-07 — VPN после reboot + пульт MUTE
+
+- Причина: флаг `~/.config/vpn-user-disabled` переживал reboot и блокировал watchdog; после MUTE VPN оставался OFF.
+- Флаг перенесён в `/run/vpn-user-disabled` (сбрасывается при reboot) → `xray.service` (enabled) поднимается сам.
+- `argon-vpn-toggle.sh` чистит legacy-флаг, `enable --now xray`, user `cursor-proxy-http` через DBus pi.
+
+## 2026-09-07 — пульт Argon MUTE → VPN (xray.service)
+
+- Причина: IR искал `/home/pi/bin/argon-vpn-toggle.sh`, файла не было → «Нет скрипта переключения».
+- Скрипт восстановлен: системный `xray.service` (+ `cursor-proxy-http`), без Docker `xray-pi5` / wg-exit.
+- Флаг `~/.config/vpn-user-disabled` — `pi5-stack-watchdog` не поднимает xray, пока пользователь сам не включит с пульта.
+
 # Журнал изменений — ai_assistant
 
 ## 2026-08-04 — Бензин: автомониторинг и пуши отключены

@@ -1,10 +1,223 @@
-## Deye «Зарядка» logger (2026-09-09)
+## Xray — ночное автообновление (2026-10-07)
+- Таймер: `xray-nightly-update.timer` → **00:20 MSK** (`Persistent`, + до 2 мин jitter).
+- Скрипт: `~/bin/xray-nightly-update.sh` (VPS `installXray` + Pi5 бинарник, **2× verify**, remediate).
+- Лог: `~/logs/xray-nightly-update.log`. Установка: `Проекты/ai_assistant/scripts/install-xray-nightly-update-timer.sh`.
 
-- IP `10.1.30.81`, SN stick `1538281644`, прошивка `V1.4.05_R01D.0B2_M5434`.
-- POST-настройка (cmd, 9600, TCP 8899) + restart — **8899 всё ещё closed**, облако не connected.
-- Скрипт: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/scripts/configure-logger-zaryadka.sh`
-- Роутер: `host b4:89:70:09:2f:20 conform` добавлен; `permit` CLI не снять.
-- Быстрая проверка: `curl -u admin:$PWD http://10.1.30.81/status.html | grep status_a`
+## VPN 3x-ui — клиент Владимир (2026-10-07)
+- Стабильно: inbound `vless-reality`, email `Владимир`, flow `xtls-rprx-vision`, комментарий «Владимир Шуликов».
+- Подписка: `https://89.127.199.6:2096/sub/9a690f7c-0051-4544-8be4-d83a7578a471` (Hiddify / v2rayN / v2rayNG).
+- Док: `vpn-guide.md` (таблицы клиентов и подписок).
+
+## Камера Hikvision электроцеха → HA + Apple «Дом» (2026-10-07)
+- Стабильно: камера 10.1.30.64 (admin, прошивка 190909); HA `camera.elektrotsekh` + `binary_sensor.elektrotsekh_dvizhenie`; push — `packages/hikvision_elektrotsekh.yaml`; в HomeKit «HASS Bridge» камера с датчиком движения (`exclude_accessory_mode` снят в `core.config_entries`).
+- Проверка: `curl -s -o /dev/null -w '%{http_code}' http://10.1.30.64/`; диагностика HomeKit entry `02271e20a06a7af8829f703427537a32` — аксессуар «Камера электроцех» (службы 110 + 85).
+
+## Коммуналка — тарифы + графики (2026-10-06)
+- Стабильно: `komunalka.service` :8000, PWA `/sites/komunalka/` (таймаут прокси 300 с). История тарифов копится в `Проекты/komunalka/data/tariffs.json`.
+- Проверка: `curl -s http://127.0.0.1:8000/api/tariffs | head -c 300`; `systemctl --user is-active komunalka.service`.
+
+## M350 ЧПУ — прошивка 2026-09-09 + CAM cam20–37 (2026-10-05)
+
+- Фокус: `Платы и модули/M350_CNC_Controller/` (IP 192.168.31.99, SMB1). Доп. CAM cam20–39 (cam38 Z0 щуп+датчик длины, cam39 калибровка щупа). #141=3000 (свой slib-g, подача XY к датчику). Перезагружен 10:04, #141=3000 и #76=Да активны. ОЗУ 57 МБ (scripts/m350-proc.sh). cam10–19 заменены улучшенными (notes/CAM10-19_NEW_20261005.md, откат backups/20261005_my_cam10-19) — ждёт перезагрузки контроллера. Ревизия 2026-10-05: cam20–27,32,33 исправлены (notes/CAM_REVIEW_20261005.md, сим `m350-cam-sim.py --fix`). Картинки cam10–39 новые (m350-cam-pics.py), Al Tie: защита шаг Z=0 + врезание 3°. O502 (slib-g): переезд к датчику без A/B/C (правка той же длины — иначе ломается хоуминг Y O503 до перезагрузки) — ось B = ведомый Y с лимитом 1000 мм/мин тормозила ход из дальнего угла (notes/O502_SLOW_TRAVEL_FIX_20261005.md, откат backups/20261005_o502_before); O9053 без F/ABC, G00 3000 (backups/20261005_rapid_before); DM856 SW3 ON 5.6A; ускорение G00 300, Z 1500/800 (backups/20261005_accel_before); проверка: `cmp` slib-g.nc с generated/o502_fix.
+- Доки: `notes/CAM_ADDONS_20261005.md`, `notes/FIRMWARE_UPDATE_20261005.md`. Сборка: `scripts/m350-cam-addons.py`.
+- Проверка: `smbclient -N -s /tmp/m350-fb/smb.conf //192.168.31.99/CNCDISK -c 'cd CAM; ls'` (30 макросов, NT1).
+
+## GEM ESP32-C3 BMC emu MIN v0.4.0 — TJA1050 (2026-09-30)
+
+- Проводка: VCC→5V, GND, TX→GPIO4, RX→1k→GPIO5 (+2k на GND), CANH p14, CANL p13; 120 Ω в жгуте снять.
+- Прошивка: `bash firmware/gem_bmc_can_emu_esp32c3/scripts/flash-can-min.sh`; MCP2515: `ENV=esp32c3_can_min_mcp …`.
+- Проверка Serial: `CAN TX ok/1s≈115 fail/1s=0 … st=RUN tec=0`.
+
+## GEM H503 BMC emu v4.3.0 — TJA1050 (2026-09-30)
+
+- Проводка: TJA1050 VCC→5V (не 3.3!), GND, TX→B7, RX→B8, CANH→X3 p14, CANL→X3 p13; 120 Ω на модуле в жгуте снять.
+- Прошивка: `bash firmware/gem_bmc_can_emu_h503/scripts/flash.sh openocd` (ST-Link stlink-dap).
+- Проверка: UART 115200 PA9 → `TX ok=~115 fail=0 | RX=…`; LED 1 Гц.
+
+## Текущий фокус
+
+- **Deye 6.6K OG03 + АКБ ЭЛЬТАВР 230 Ач / JK-B2A20S20P (2026-10-01):** SOC JK 98→93 % — уход кулонометра (ячейки 3,44 В < `SOC-100% Volt` 3,50 В), АКБ полная; связи BMS↔Deye нет. Разбор: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/diag_2026-10-01_АКБ_SOC/README.md`. Декодер: `python3 "Платы и модули/BMS/JK_B2A20S20P/scripts/decode_jkcfg.py" <file.jkcfg>`. Файлы с ПК: `scp -O 'pc:C:/Users/Михаил/Downloads/<имя>' .` Шаблон настроек: `…/Deye_SUN-6.6K-OG03LP1-EU-AM2/generated/ШАБЛОН_НАСТРОЕК_Deye6.6K_АКБ_ЭЛЬТАВР_48V230Ah.pdf` (пересборка `python3 scripts/generate_battery_template_pdf.py`). Готовый .jkcfg: `Платы и модули/BMS/JK_B2A20S20P/notes/configs/ELTAVR_48V230Ah_16S_template/` (`scripts/make_jkcfg.py`). PDF BMS: `Платы и модули/BMS/JK_B2A20S20P/generated/` (`scripts/generate_jk_template_pdf.py`). QR→Drive: `scripts/upload_jkcfg_drive.py` (ID в `notes/configs/ELTAVR_48V230Ah_16S_template/drive.json`).
+
+- **BMS (2026-09-30):** все BMS в `Платы и модули/BMS/` (индекс `README.md`): `JK_PB1A16S10P`, `JK_B2A20S20P`, `ANT_BMS_16ZNJ6-16S-130A` (TTL/BLE, ESPHome `ant_bms`). `bms-tools/` в корне — живой сервис `ant24c-logger`, не переносить без остановки сервиса. Проверка: `ls "Платы и модули/BMS"`.
+
+- **Подогрев АКБ через ESP32 (2026-09-30):** `Платы и модули/BMS/JK_B2A20S20P/firmware/esphome_heater/` — `bash build.sh` (сборка OK), `bash build.sh upload /dev/ttyACM0` (нужен `secrets.yaml`). Не прошито.
+
+- **Подогрев АКБ JK (2026-09-30):** `Платы и модули/BMS/JK_B2A20S20P/notes/HEATING.md` — схема HT−/нагреватель/термовыключатель/предохранитель, пороги, тест. Проверка: `ls "Платы и модули/BMS/JK_B2A20S20P/notes"`.
+
+- **JK-B2A20S20P (2026-09-30):** `Платы и модули/BMS/JK_B2A20S20P/` — ревизия V19; DRY нет, реле через порт **P8 报警** (VCC/GND пищалки, напряжение замерить, через оптрон) или ESP32 по UART P5 115200 3,3 В / BLE (`syssi/esphome-jk-bms`). Проверка: `ls "Платы и модули/BMS/JK_B2A20S20P"`.
+
+- **GEM BMC S3-RS485-CAN v0.1.0 (2026-09-30):** `…/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32s3_rs485can/`, прошит на плату. Проверка: `bash scripts/flash.sh` → лог `ok/1s≈141`; на машине ждём `fail=0 tec=0`. CAN H/L → X3 p14/p13, джампер 120 Ω снят.
+- **Deye RW-F16 2×/3× АКБ (2026-09-29):** PDF `Платы и модули/Солнечные_инверторы/Deye_RW-F16/generated/Deye_SUN-20K_{2x,3x}RW-F16_Installation_Setup_RU.pdf` (по одному на вариант). Пересборка обоих: `cd "Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/scripts" && python3 generate_rwf16_system_pdf.py` (аргумент `2`/`3` — один).
+- **GEM BMC S3 v0.2.0 (2026-09-30):** `Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32s3_rs485can/` — BLE→ANT SOC в CAN, Wi‑Fi `GEM-BMC`. Проверка: `bash scripts/flash.sh` (лог: `SOC=…% ANT | BLE conn`, ok+fail≈141); запасная `flash.sh --min`.
+- **PlatformIO Docker (перенесён 2026-09-30):** `Платы и модули/ESP32-S3-RS485-CAN/` (раньше `Проекты/…`). Проверка: `bash scripts/pio.sh run` → SUCCESS; прошить: `bash scripts/flash.sh --monitor` (плата → /dev/ttyACM0).
+- **ESP32-S3-RS485-CAN (2026-09-28):** документация в `Платы и модули/ESP32-S3-RS485-CAN/` (PINOUT, TECH_SUMMARY, schematic, demo). Проверка: `ls "Платы и модули/ESP32-S3-RS485-CAN"`.
+- **Pi3 гараж (2026-09-26):** HA + switch как раньше, **без микрофона INMP441**. Boot: `i2s`/`inmp441-dmic` закомментированы. Switch: 6 реле CH3…CH8. Проверка: `ssh pi@100.102.186.61 'docker ps; curl -s -o /dev/null -w %{http_code} http://127.0.0.1:8123/'`.
+
+## HA Pi3 через Pi5 (2026-09-28 16:15)
+
+- **Стабильно:** `http://10.1.30.126:8124` → HA Pi3 (`systemctl --user status pi3-ha-proxy`). NetBird ПК↔Pi3 флапает (ПК 0.71.2) — обновить клиент на ПК.
+- **Проверка:** `curl -s -o /dev/null -w '%{http_code}' http://10.1.30.126:8124/manifest.json`; флапы: `ssh pi3 'sudo grep -c "dFhcyrdF.*ICE disconnected" /var/log/netbird/client.log'`.
+
+## Pi5 HA — ANT BMS24C графики (2026-09-28 15:50)
+
+- **Стабильно:** `*_graph` с мёртвой зоной (0.15 В / 1.5 % / ±0.3 А), оси фиксированы; откат `agent-change-revert.sh` ID `20260928T154644`.
+- **Проверка:** `docker logs homeassistant --since 10m | grep -i ant24c`; дашборд `http://10.1.30.126:8123/ant-bms-24c/home`.
+
+## Pi3 HA — электросчётчик гаража (2026-09-28 13:35)
+
+- **Стабильно:** CSV `ha_config/data/garage_electric_meter.csv` — источник истины; поле «Текущие показания» (любое устройство) → автоматизация → CSV; при старте HA значение берётся из CSV; `initial` убран.
+- **Проверка:** `ssh pi@100.102.186.61 'tail -3 ~/Raspberry_Pi_3_HomePortable/ha_config/data/garage_electric_meter.csv'`; опечатка (меньше прошлого / >50 kWh/сутки) — откат + уведомление в HA.
+
+## eltavr-bot
+
+- **eltavr-bot** (`Проекты/telegram_bot/`): «Поиск по VIN» починен 2026-09-25 — был зависший polling к Telegram через `10809`. Проверка: `docker logs eltavr-bot --tail 30`, `pending_update_count` через getWebhookInfo.
+
+## Hyperion EOS 0606i (2026-09-23 14:55)
+
+- Модель `#HP-EOS0606i-C`: firmware update **нет** (только PC logging).
+- На Pi5 USB: LAWICEL CANUSB → `/dev/ttyUSB0` (не Hyperion UART).
+- Док: `Платы и модули/Hyperion_EOS_0606i/`.
+
+## krimsvet.ru fix (2026-09-23 10:48)
+
+- Было: `/favicon.ico` 404; `favicon.png`/`apple-touch-icon.png` ≈1MB (фото 1536×1024); в `bundles.json` meta.phone `+79787918507` ≠ сайт.
+- Сделано по FTP (`www/krimsvet.ru/`): нормальные иконки + phone `+79789858707`.
+- Хостинг: REG.RU u3565608 / server276; доступы в письме «Создан хостинг u3565608».
+
+## krimsvet.ru (2026-09-23 10:39)
+
+- Живой лендинг ЭЛЬТАВР: https://krimsvet.ru/ — HTTP 200, калькулятор на `app.js`.
+- Хостинг: REG.RU (`ns1/ns2.hosting.reg.ru`, A `37.140.192.181`).
+- Исходников в `Documents/Проекты` нет — править на хостинге или восстановить из бэкапа REG.RU.
+- Мелочь: `/favicon.ico` → 404 (есть `/favicon.svg` и `/favicon.png`).
+
+## Солнечные панели (2026-09-22 10:45)
+
+- Папка: `Платы и модули/Солнечные_инверторы/Солнечные_панели/`
+- Trina Vertex S+ **TSM-NED9R.28** 445–470 Вт → `Trina_TSM-NED9R.28_445-470W/`
+- Jinko **JKM605-630N-66HL4M-BDV** 605–630 Вт → `Jinko_JKM605-630N-66HL4M-BDV/`
+- Индекс: `Солнечные_панели/README.md`; родительский `Солнечные_инверторы/README.md` обновлён.
+
+## Диск Pi5 (2026-09-22 10:01)
+
+- NVMe: **86G / 117G (77%)**, свободно **~26G** (раньше было хуже: 86%/~17G).
+- Крупное: Cursor snapshots (~7.7G), Docker ~8G, `.cache` 5.2G (playwright 1.9G), apt 1.3G, Arduino/PIO/Gradle/Codex.
+- Безопасная чистка без ломки проектов: `apt clean`, pip cache, playwright, старые Cursor snapshots — по запросу.
+
+## ESP BMC v0.6.13 — P1824/P1827 (2026-09-18 15:18)
+
+- SPN **524273** FMI 31 = P1824 BMC Status Counter; **524237** FMI 31 = P1827 Charger Counter.
+- Фикс: планировщик без `slot=now` (догон +=period); SoftAP off; pure EF3 без overlay.
+- Бин: `…/releases/gem_bmc_can_emu_esp32c3_v0.6.13.bin`
+- На машине: ключ OFF→ON, стереть VEH FAULT, проверить приборку.
+
+## ESP BMC v0.6.12 — BLE BMS выкл (2026-09-18 15:07)
+
+- `ANT_BLE_ENABLE=0` в platformio.ini: нет скана/коннекта к ANT.
+- CAN + реле + SoftAP; эмуляция SOC=100% U=54V.
+- Бин: `…/releases/gem_bmc_can_emu_esp32c3_v0.6.12.bin` (~816 KB).
+- Flash: baud 115200 (460800 на этом USB давал I/O error).
+- Включить BLE снова: `-DANT_BLE_ENABLE=1`.
+
+## ESP BMC v0.6.11 — фикс DTC на приборке (2026-09-18 14:57)
+
+- Причина: `NimBLEScan::start(sec,false)` блокировал loop → тишина CAN → P1824/P1827; плюс 4 кадра/100ms в 3 TXB MCP → fail.
+- Фикс: async/continuous scan; CAN task prio=5; phased 0FF3/10/11/12; Serial не из CAN-задачи.
+- Smoke USB: 24× `ok/1s=141 fail=0 gapMax=10–11ms`, RX~360 (шина живая).
+- Бин: `Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_can_emu_esp32c3_v0.6.11.bin`
+- На машине: ключ OFF→ON, ошибки должны уйти (или стереть сканером).
+
+## ESP BMC v0.6.9 — dual ANT proto (2026-09-18 10:50)
+
+- SoftAP: MAC + протокол (legacy / modern / auto) → NVS `ant_proto`.
+- API: `POST /api/config` `{"mac":"…","proto":"legacy|modern|auto"}`.
+- Текущая BMS ANT-BLE24C → **legacy**. Другая MaYi → **modern**.
+- Бинарь: `…/releases/gem_bmc_can_emu_esp32c3_v0.6.9.bin`
+
+## ESP BMC v0.6.8 — стабильность OK (2026-09-18 10:45)
+- Диск Pi5: 86% (свободно ~17G); Cursor snapshots ~17G — кандидат на чистку.
+
+- Прошивка: `…/firmware/gem_bmc_can_emu_esp32c3/` v0.6.8 (MCP Normal, ALLTXBUSY→reinit, hold last ANT 15с, legacy DBDB, EF3 overlay U/I/SOC).
+- Проверено: Serial soak 55с + 120с → TX fail=0, disconnect=0, SOC=96% ANT.
+- Pi BT logger: `ant24c-logger` / rfcomm **stopped** (не поднимать, пока ESP на BLE). Вернуть: `sudo systemctl start ant24c-rfcomm ant24c-logger`.
+- SoftAP: SSID `GEM-BMC` / http://192.168.4.1/
+
+## Deye F41 / 3ф × 3 (2026-09-17 12:37)
+
+- **F41** = один из параллели в OFF. При 3ф по 1 шт.: на LCD **Master на всех трёх** (A/B/C, SN 01/02/03) — по EN §3.12; не Slave на №2/№3.
+- PDF обновлён: `…/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/LCD_НАСТРОЙКА_3Ф_3шт.pdf`
+
+## Deye 3ф × 3 — LCD чеклист (2026-09-17)
+
+- PDF: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/LCD_НАСТРОЙКА_3Ф_3шт.pdf`
+- №1 Master A/SN01 → L1; №2 Slave B/SN02 → L2; №3 Slave C/SN03 → L3; DIP Parallel ON; Grid Type = Single Phase 230 V / 50 Hz.
+
+## CAN_Sniffer_Shield_LCD (2026-09-16 16:11)
+
+- Баг: после `begin()` режим **LOOPBACK** → шину не видел.
+- Фикс: `CAN.setMode(MCP_NORMAL)`; дефолт **250 kbps**; прошит Uno.
+
+## CAN_Sniffer_Shield_LCD (2026-09-16)
+
+- Дефолт скорости CAN: **250 kbps** (`currentSpeed = CAN_250KBPS`).
+- Прошивка: `firmware/CAN_Sniffer_Shield_LCD/scripts/flash.sh` (Uno `/dev/ttyACM0`).
+
+## Aqara CH-H01 3D65 — motion и хаб (2026-09-16)
+
+- **Дома** (есть хаб + Apple TV в сети): всё OK, **включая motion sensor**.
+- **Гараж** без Home-хаба в той же Wi‑Fi: плитка motion «не отвечает», пуш при детекции может приходить.
+- Эталон камеры: `flip=3` + сток `osd_orig`. Bool-патч не включать без нужды.
+
+## SILA 13S applied (2026-09-16)
+
+- SN `96342504111477`: BVM/BVF **54.0**, BRD **53.0**, BVU **42**, EQ=0, EQV **54.0**, MCG **10**.
+- Apply: `scripts/isolar-apply-13s.sh` (setParam без urlencode). Verify: `scripts/isolar-fetch-settings.sh`.
+
+## SILA Battery 13S Li-ion (2026-09-16)
+
+- Аппарат: **SILA VM II Premium+ 6.2K**, SN `96342504111477` (не Adion).
+- Профиль User: C.V 54.0/54.6, Float 53.5–54.0, Under 42–43, EQ off.
+- Док: `Платы и модули/Солнечные_инверторы/SILA_VM_II_Premium_Plus_6.2K/notes/USER_13S_LION_SETTINGS.md`.
+- Старый `check_Li_ANT_BMS` 56.4/54.0 — только для **LFP 16S**.
+
+## i.Solar Battery 13S Li-ion (2026-09-16)
+
+- Устройство `96342504111477` / WIFI2025031108713: заводские C.V 56.4 / EQ 58.4 **нельзя** на 13S.
+- Профиль: C.V 54.0, Float 53.5–54.0, Under 42–43, EQ off. Док: `Платы и модули/Солнечные_инверторы/Adion_Expert_6kW_Twin/notes/USER_13S_LION_SETTINGS.md`.
+- Офисный Adion LiFePO₄ 16S (56/54/46) — **другой** профиль.
+
+## Aqara CH-H01 3D65 — ЭТАЛОН OK (2026-09-15)
+
+- **Статус:** всё ок на этом этапе (подтвердил пользователь 2026-09-15 ~15:41–15:59).
+- `flip=3` (подвес вверх ногами), `osd=1`, bind **`/mnt/config/osd_orig` → `/etc/osd`** (сток).
+- Timestamp читаемый — **шрифты OSD не крутить**.
+- Live: Wi‑Fi AiNET, без VPN / Private Relay.
+- SD: `/mnt/sdcard/record/`, `cover=1`.
+- Док: `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/notes/CHH01_MAC_3D65.md`.
+
+
+## Bybit API 403 → Tor (2026-09-12)
+- **2026-09-14:** офисный Keenetic ребут → краткий даун ELTAVR_/XKeen; сейчас VLESS OK (`89.127.199.6`).
+
+- **Причина:** xray exit = Dallas US; Bybit CloudFront режет US (+ прямой Крым тоже 403).
+- **Fix:** Tor на VPN_Server (`tor@default`), туннель Pi5 `bybit-tor-tunnel.service` → `127.0.0.1:9051`.
+- Скрипты: `bybit-http.py` (curl+SOCKS), `recv_window` 60s.
+- Проверка: `python3 .cursor/scripts/bybit-balance.py` → live UNIFIED.
+- Установка туннеля: `bash .cursor/scripts/install-bybit-tor-tunnel.sh`
+
+## Aqara G2H Wi‑Fi QR / psk (2026-09-10)
+
+- **Причина:** optical QR → битый `psk` в `/mnt/config/miio/wifi.conf` → штатный `wifi_start.sh` пишет только `/tmp/wpa_supplicant.conf`.
+- **Fix:** hardened `/usr/bin/wifi_start.sh` (orig сохранён); `wifi.conf.good`; док `notes/WIFI_QR_PSK_CORRUPTION.md`.
+- Скрипт: `Платы и модули/Aqara_Camera_G2_ZNSXJ12LM/scripts/wifi_start_hardened.sh`.
+- Камера в AiNET: `10.0.20.22`. Повторный оптический QR Wi‑Fi не нужен.
+
+## Deye «Зарядка» / Solarman Pro (2026-09-10)
+
+- Веб logger: WAN `:8081`, SN stick `1538281644`, инвертор `2607250740`.
+- **Solarman Pro:** автологин невозможен (AWSC slider). Нужен ручной вход → добавить collector `1538281644`.
+- Облако stick: `status_a/b` пустые; Server B на M5434 не сохраняется; XKeen bypass `10.1.30.81→direct` есть.
+- Письмо пользователю: `jarvis-need-user` отправлено.
 
 ## Aqara G2H NOR (2026-09-09)
 
@@ -22,10 +235,10 @@
 
 ## JK-PB1A16S10P (2026-09-08)
 
-- Папка: `Платы и модули/JK_PB1A16S10P/`
+- Папка: `Платы и модули/BMS/JK_PB1A16S10P/`
 - Экземпляр: SN `605146845007308`, BLE `A4:C1:38:0C:0B:28`, опция CEHMPRT (CAN, предзаряд, нагрев, сухой контакт, параллель, RS485, температура).
 - Дальше: приложение JK BMS → химия / S / протокол / прошивка. К инвертору не подключать, пока не сверены пины CAN.
-- Прошивки/протоколы: `Платы и модули/JK_PB1A16S10P/notes/FIRMWARE_AND_PROTOCOLS.md`. Файлы 069 V19.21 и V19.31 лежат локально. Не шить.
+- Прошивки/протоколы: `Платы и модули/BMS/JK_PB1A16S10P/notes/FIRMWARE_AND_PROTOCOLS.md`. Файлы 069 V19.21 и V19.31 лежат локально. Не шить.
 
 ## Aqara ZNSXJ12LM — HomeKit нет (2026-09-08)
 
@@ -57,183 +270,11 @@
 
 - **Причина:** worker без xray HTTP `:10809` → «Failed to reach the Cursor API» / restart loop
 - **Фикс:** `~/.config/cursor-worker.env` (PROXY+NODE_OPTIONS), unit `cursor-self-hosted-worker.service`, `~/bin/cursor-pi5-worker-fix.sh`, IDE `http.proxy`
-- **Проверка:** `systemctl --user is-active cursor-self-hosted-worker` → active; `cd ~/Documents && cursor-agent worker debug` → Non-privacy **1 worker**
+- **Проверка:** `systemctl --user is-active cursor-self-hosted-worker` → active; `cd ~/Documents && cursor-agent worker debug` → Non-privacy **1 wo
 
-## MUST PV18-4024 PRO II (2026-09-03) — **залит (ещё один)**
+### ESP BMC (15:45)
+Текущая прошивка: **MIN v0.3.0** pure CAN (нет BLE/WiFi). `scripts/flash-can-min.sh`.
 
-- **USB:** `/dev/ttyUSB0` (CH340 `1a86:7523`), Modbus `19200` 8N1, slave `4`
-- **Снимки до заливки:** `…/factory-settings/inverter_factory_20260903_130250.json`, ранее `…_111458.json`
-- **Профиль:** `applied-settings/working_profile.registers.json` → verify **20/20 OK**
-- **Повтор:** `bash …/scripts/must-apply-working.sh` → `python3 …/scripts/must-verify-profile.py --fix`
-
-## Deye SUN-20K + 3× RW-F16 (2026-09-03)
-
-- **PDF:** `Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/generated/Deye_SUN-20K_3xRW-F16_Installation_Setup_RU.pdf`
-- **Схема:** Parallel Mode 2 · BAT1 = №1+№2 · BAT2 = №3 · BMS PCS→OUT→IN
-- **Скрипт:** `…/scripts/generate_3x_rwf16_pdf.py`
-- **Настройки:** Lithium Mode 00, 942 Ah, Max A ≤350 (лучше 300)
-
-## GEM e6 BMC CAN (2026-09-02) — **работает**
-
-- **Папка:** `Платы и модули/Электрокары/Polaris_GEM_e6_2017/`
-- **Подтверждено:** CAN-эмулятор **v4** на неисправной (`5ACA6AGA3H0002115`) — приборка OK, **без DTC** (P1824/P1827 ушли)
-- **Памятка:** `notes/BMC_CAN_EMULATOR_v4_OK.md`
-- **Скрипт:** `scripts/can-bmc-emulate.py` · **запуск:** `can-setup.sh 250k` → `ai-tmux run gem-bmc-emu 'python3 …/can-bmc-emulate.py'`
-- **Карта:** `notes/CAN_BUS_MAP.md` · эталон `logs/20260902-123304_working_key_off.log`
-- **Дальше:** прошить H503 (`flash.sh stlink`), SN65HVD230 + реле X3 — `notes/BMC_EMULATOR_PLAN.md`
-
-## Текущий фокус
-PWA Cursor Agent: LLM backend **cli** (не sdk). Чат на :8767 должен отвечать.
-
-## Текущий фокус (архив)** папка https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V · сводка `Сводка_родительское_собрание_2026.md`. **Ожидается ~2026-09-01:** новый договор + документы по налоговому вычету → анализ и обновление сводки.
-- **.cursorignore Arduino (2026-08-27):** убраны `Проекты/Arduino/` и `Arduino/` из ignore; значки запрета в explorer.
-- **HA Pi5 (2026-08-24):** после reboot не стартовал из‑за `/dev/gpiochip0` (нет на 6.12). Убран из `home_assistant/docker-compose.yml`. UI `:8123` → 200.
-- **RS485 ANT J75H (2026-08-24):** связь OK. `/dev/ttyAMA0` **9600**, modern `7E A1`. BMS `ANT@BLE16ZNUB-J75H` / hw `16ZNJARB170A`. Памятка: `Платы и модули/RS485_CAN_HAT/ANT_BMS_J75H_RS485.md`. Проверка: `python3 bms-tools/ant_bms_probe.py --port /dev/ttyAMA0 --baud 9600`.
-- **MUST PV18-4024 PRO II (2026-08-20):** ещё один инвертор прошит рабочим профилем через USB `/dev/ttyUSB0`, Modbus `19200`, slave `4`. После `must-verify-profile.py --fix` — **20/20 OK**. Если снова не сойдётся `20117`, сразу запускать `python3 Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/scripts/must-verify-profile.py --fix`.
-- **.cursorignore (2026-08-18):** `Платы и модули/` открыта для агента; `**/.cursor/` сужен до backups/data/build. Файл: `Documents/.cursorignore`.
-- **MUST LP16-48100 (2026-08-18):** в инверторе 48 В — тип LI, протокол Must New (прог. 41), CAN DIP №11; Bulk **57.6 В**, ток **≤100 А** (лучше 50 А). Не к PV18-4024.
-
-## Текущий фокус
-- **Vega MT X LTE / Touareg GP (2026-08-18):** монтаж на **все 3 CAN**. PDF: `Платы и модули/Vega_MT_X_LTE/INSTALL_Touareg_GP_2009_CASA.pdf`. CAN1 Antrieb 500, CAN2 Komfort 100, CAN3 Infotainment 100. Gateway в комбинации J285.
-
-## Текущий фокус
-- **Vega MT X LTE PDF (2026-08-18):** в `Платы и модули/Vega_MT_X_LTE/` собран `INSTALL_Touareg_GP_2009_CASA.pdf` из HTML-версии инструкции; лежит рядом с `.md`.
-
-## Текущий фокус
-- **Vega MT X LTE / Touareg GP (2026-08-18):** создан модуль `Платы и модули/Vega_MT_X_LTE/` с исходной страницей, загрузками, фото, `PINOUT.md`, `TECH_SUMMARY.md`, `INSTALL_Touareg_GP_2009_CASA.md`. Стартовая схема для `Touareg GP 2009 CASA`: `+30`, масса, отдельный `IGN 15`, одна пара `CAN`; `K-Line` только при отдельной задаче.
-
-## Текущий фокус
-- **n8n (2026-08-17):** полностью удалён. Дашборд Малинка 5 — `Cursor Agent`, timer `pi5-dash-refresh`.
-- **Ungate (2026-08-17):** туннель `https://stated-not-scholarships-allergy.trycloudflare.com` health 200; WAN `:47821` Keenetic OK; OAuth `:1455` всегда слушает. Повторный Login ChatGPT.
-- **EmKit BMS (2026-08-17):** `:8443` больше не вешается на TLS-сканеры. Handshake в потоке, watchdog `web-config-bms-watch.timer`. Проверка: `curl -sk https://127.0.0.1:8443/` → 200; PWA `/sites/bms_emkit/`.
-- **SSH WAN Malinka 5 (2026-08-14):** `ssh pi@91.215.61.76` (Keenetic office+electro :22). Скрипт `bash Документы/.cursor/scripts/install-pi5-ssh-wan-portforward.sh`. Алиас `pi5-wan`.
-- **Ungate (2026-08-14):** `extension proxy timeout` — UI ждал старый хост. Закрыть вкладку Ungate и открыть снова.
-- **Ungate (2026-08-14):** Analytics `Failed to fetch` на Remote SSH — прокси через extension host. После правки: Reload Window. API `:47821` живой.
-- **БК Pico Audi (2026-08-14):** без машины, отладка UART0 JSON/KW1281. Экран: RPM / код / ОЖ. 16:06.
-- **Mint Live USB (2026-08-14):** `10.10.0.85` `eltavr-mint`, user `mint`. С Pi 5: `ssh mint`. Windows на NVMe: пароли `Растислав` и `Admin` сброшены (пустые). HDD DATA без SAM.
-- **Pico-Eval-Board (2026-08-14):** `Платы и модули/Pico-Eval-Board/` — PINOUT + TECH_SUMMARY; схема/демо скачаны. Pico в комплект не входит.
-- **Дашборд Pi 5 (2026-08-17):** снимок без n8n — `Проекты/Cursor Agent/scripts/build-pi5-dash.py` → `data/pi5.html`; timer `pi5-dash-refresh`; PWA **Малинка 5** `/malinka-dash`.
-- **n8n (2026-08-17):** удалён (Docker, MCP, Keenetic `:5679`, папка `Проекты/n8n`). Не поднимать.
-
-## Текущий фокус
-- **БК минимальный ЭБУ (2026-08-09):** `bc_ecu.py` — RPM/ОЖ/V; Kali `start_bc.sh`. V канал пока пустой.
-
-## Текущий фокус
-- **БК freeze (2026-08-09):** починен `_recv_block` + ЦЗ off; `cluster-bc` LIVE ~250мс. RPM с ЭБУ сейчас 0 — проверить при заведённом моторе.
-- **ЭБУ 0x01 (2026-08-09):** SIMOS AHL **9600** бод; ident+MB (02/F4) работают. БК `engine_cl`.
-
-- **FIS→MFA (2026-08-09):** pin ø **14.1** / trip 124.5 / fuel0≈37.6 на Kali (`data/mfa_state.json`); BC стартовал; **LIVE verify ждёт** (Kali offline). Проверка: `/tmp/bc_live.json` → avg=14.1, avg_spd~26, fuel~20.
-- **A4 B5 КПП (2026-08-09):** завод АКПП 01N → МКПП владельцем; адрес 02 не опрашивать; OBD без CAN.
-- **Коммуналка ежемесячно (постоянно):** новые чеки+показания каждый месяц; все чеки хранить; таймер `komunalka-drive-sync.timer`.
-- **Коммуналка (2026-08-09):** Drive https://drive.google.com/drive/folders/1zbPCmouSU8yJhr-tGwe5BKfQsRqeN14b — в корне только 5 папок услуг (без файлов); CSV/PDF внутри папок. **Где счётчик — CSV в натуральных единицах (вода/газ м³, энергия кВт·ч); газ ~4.455 м³/сут, вода ~0.439 м³/сут. Скрипты `export-crimea-energy.mjs`, `export-all-services-to-drive.mjs` (`scrapeGas` → `?page=pokazaniya`). Жилсервис/экор — без CSV-сводки (нет счётчика), только PDF. Экор: type не только m.
-
-
-## Текущий фокус
-Двери БК — **ЦЗ 0x35** LIVE («все закрыты»). Comfort 0x46 нет. Handshake `~kb2`. Файлы на Kali: `~/Projects/cluster_pi/{kw1281_client.py,ui/doors.py,ui/obd_feed.py,data/door_map.json}`.
-
-# Handoff (кратко)
-
-## Текущий фокус
-
-- **Режим QR LiFePO4 (2026-08-07):** кидать код/фото → макс. поля; `Платы и модули/LiFePO4_Cell_QR_Decoder/scripts/decode_cell_qr.py`.
-
-- **LiFePO4 QR (2026-08-07):** `Платы и модули/LiFePO4_Cell_QR_Decoder/` — декодеры Gobel/Hakadi/Xiho; пример `04QCB72…` = EVE LF230 230Ач 15.12.2025.
-
-- **Kali БК 5″ (2026-08-07):** **запущен** — `ui/bc.py` в tmux `bc`; KKL `/dev/vag-kkl`→ttyUSB0. Старт: `start_bc.sh`.
-
-- **Kali приборка LIVE (2026-08-07):** `ui/dashboard.py` + K-line `obd_feed`; старт `scripts/start_dashboard.sh`; нужен KKL `/dev/vag-kkl` + зажигание ON.
-
-- **Kali приборка DEMO 5″ (2026-08-07):** `~/Projects/cluster_pi/ui/dashboard_demo.py` — тест на HDMI 800×480; старт `scripts/start_dashboard_demo.sh`.
-
-- **SILA VM II Premium+ 6.2K (2026-08-06):** `Солнечные_инверторы/SILA_VM_II_Premium_Plus_6.2K/` — VP-MH-PLUS/Axpert OEM; RU только `РУКОВОДСТВО_RU.md`; EN в downloads.
-
-- **Deye 6.6K (2026-08-06):** только SUN-6.6K-OG03LP1-EU-AM2; обязательный RU — `РУКОВОДСТВО_RU.md`; чужие инструкции удалены.
-
-- **Deye SUN-6.6K-OG03LP1-EU-AM2 (2026-08-06):** модель пользователя; `Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/` — 6.6 кВт, АКБ 40–60 В, заряд/разряд 140 А, 2×MPPT, DC 200 А.
-
-- **EZGO ошибки (2026-08-06):** шпаргалка `Платы и модули/Электрокары/EZGO_Club_Car/FAULT_CODES.md` (мигания LED ST Shuttle); extract — `notes/FAULT_CODES_EXTRACT.md`.
-- **EZGO схемы (2026-08-06):** `Электрокары/EZGO_Club_Car/` — SM 612342 + Parts 620365 + ST400 614281; схемы в PDF — `WIRING_REFERENCE.md` (PNG-превью не храним; Owner 605693 удалён).
-- **GEM ошибки (2026-08-06):** шпаргалка `Платы и модули/Электрокары/Polaris_GEM_e6_2017/FAULT_CODES.md`; полный DTC — `notes/DTC_FULL_TABLE.md`.
-- **Солнечные инверторы (2026-08-06):** общая папка `Платы и модули/Солнечные_инверторы/` — MUST / Deye / Adion / сводка токов; новые модели — подпапки туда же (`README.md`).
-- **Электрокары (2026-08-06):** общая папка `Платы и модули/Электрокары/` — GEM + E-Z-GO; новые модели (Club Car…) — подпапки туда же (`README.md`).
-- **EZGO / Club Car:** `Платы и модули/Электрокары/EZGO_Club_Car/` — ST Shuttle 4/6 E SM 612342; Club Car пока пусто.
-- **GEM e6 распиновка:** `Платы и модули/Электрокары/Polaris_GEM_e6_2017/WIRING_REFERENCE.md`.
-- **GEM мануалы (постоянно):** https://brandfolder.com/waev/service-support (Waev Service & Support). Эталон e6 2017: `Платы и модули/Электрокары/Polaris_GEM_e6_2017/` (SM **9940314 R02**). Другая модель GEM → Brandfolder + новая подпапка в `Электрокары/`.
-- **Deye OG03 (2026-08-06):** `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/` — EN manual OG03; RU официальной нет; RU SolarCrown SG01 в downloads.
-
-- **Бензин (2026-08-04):** автопоиск/мониторинг/почта/Telegram — **отключены**. Таймеры gdebenz disabled; `monitoring_disabled: true`. Разовая `/gdebenz` ок; `/gdebenz on` не включает авто.
-
-- **Pi5 HA CPU temp (2026-08-04):** график залипал из-за cron с пробелами; теперь systemd timer `pi5-ha-cpu-temp.timer`. Проверка: обновить дашборд Pi 5.
-
-- **HA Sites (2026-08-04):** `/auth/*` проксируется в HA; Not Found на вкладке исправлен. Проверка: обновить Home Assistant в PWA.
-
-- **EDM (2026-08-04):** `edm-web` снова active после reboot. Удалён вредный `home-pi-Documents.mount` (ordering cycle). Проверка: `systemctl is-active edm-web`; `curl http://127.0.0.1:8080/`; PWA Сайты → EDM.
-
-
-- **Инструкции Эльтавр (2026-08-03):** локально `Инструкции Эльтавр/` (PDF+HTML). Drive — после reauth google-mcp.
-- **Инструкция монитор Эльтавр (2026-08-03):** PDF+HTML на почту mishock24@gmail.com. Drive upload ждёт reauth google-mcp (invalid_grant).
-- **VPN Apple TV (2026-08-01):** в 3x-ui клиент `appletv` (inbound `vless-reality`). Подписка: `https://89.127.199.6:2096/sub/5101960c-1fb4-4c31-b125-fff1e6e29a6b`. Клиент на ТВ: Happ. См. `vpn-guide.md`.
-
-- **Documents / Remote Control (2026-07-29):** канон `/home/pi/Documents`; `/home/pi/Документы` — симлинк. Remote Control worker `total=1`. Проверка: `bash ~/bin/mount-pi5-documents.sh && systemctl --user is-active ai-assistant-telegram cursor-self-hosted-worker`.
-
-- **Pi 3 гараж (2026-07-28 21:03):** online, `ssh pi3`, NetBird `100.102.186.61`, LAN `10.0.20.56`.
-
-- **Начальник:** Владимир Шуликов → `vladimirshulikov2@gmail.com` (правило `.cursor/rules/boss-shulikov.mdc`). «Отправь начальнику» = ему.
-
-- **MUST PH1100 12кВт (2026-07-29):** модель **PH11-12KL3-EU**. Папка: `Платы и модули/Солнечные_инверторы/Must_PH1100_12kW/`. Основная инструкция — русский PDF `downloads/MUST_PH1100_PH11-12KL3-EU_Руководство_RU.pdf` (EN в archive). АКБ 2×230Ач параллель (460Ач), 2×ANT 170А; к MUST 1×50/70; C63×2.
-
-
-- **Kali 5″ HDMI (2026-07-27):** Pi Zero 2 W — 800×480 + XPT2046 OK (fb 800x480, ADS7846, lightdm). Доки: `Платы и модули/HDMI_5inch_800x480_XPT2046/`.
-
-## Быстрые проверки
-
-- `ssh -J pi3 kali@10.0.20.42 'cat /sys/class/graphics/fb0/virtual_size; grep . /sys/class/input/input*/name; systemctl is-active lightdm'`
-- Калибровка тача: `xinput_calibrator` / `swapxy` в dtoverlay
-
-## Ранее
-
-# Handoff (кратко)
-
-## Текущий фокус
-
-- **Начальник:** Владимир Шуликов → `vladimirshulikov2@gmail.com` (правило `.cursor/rules/boss-shulikov.mdc`). «Отправь начальнику» = ему.
-
-- **MUST PV18-4024 PRO II (2026-07-25):** Modbus USB `/dev/ttyUSB0` 19200 slave 4. **Новый инвертор:** `must-apply-working.sh` → verify **20/20 OK**. LCD-only — вручную (`WORKING_PROFILE.md`). RTC по USB не выставляется — WatchPower с ПК.
-
-## Быстрые проверки
-
-- USB: `lsusb | grep 303a:1001` → `/dev/ttyACM0`
-- Пересборка/заливка: `PIO_ENV=esp32-c6-touch-lcd bash …/scripts/{build,flash}.sh`
-- BMS: TX→GPIO7, RX←GPIO6, 3.3 V, 19200
-
-## Ранее
-
-- **ANT BMS web v2.5.4 (2026-07-09):** runtime-парсер расширен под `--297D...`/`+...`; разбор событий стабилен для таких логов.
-- **ANT BMS web v2.5.1 (2026-07-09):** графики получили понятные оси и min/max-статистику по каждому ряду; время теперь явно видно на горизонтальной шкале.
-- **ANT BMS web v2.5.0 (2026-07-09):** в веб-конфигураторе реализована визуализация SystemLog из файла (upload + графики в UI), endpoint `/api/systemlog/analyze` работает на реальном логе.
-- **ANT BMS visual analytics (2026-07-09):** добавлен скрипт `Проекты/Arduino/firmware/ANT_BMS/scripts/visualize_system_log.py`; для `SystemLog_20260709_122623.txt` сгенерированы графики и `events.csv` в `Проекты/Arduino/firmware/ANT_BMS/analysis/SystemLog_20260709_122623/`.
-- **ANT BMS web v2.4.9 (2026-07-09):** scan добирает имена устройств через bluetoothctl fallback; в списке должны появляться имена как в телефоне.
-- **ANT BMS web v2.4.8 (2026-07-09):** исправлено имя устройств в scan-листе: Alias=MAC больше не считается именем, добавлены понятные подписи для безымянных BLE устройств.
-- **ANT BMS log review (2026-07-09):** в `Проекты/Arduino/firmware/ANT_BMS/SystemLog_20260709_122623.txt` выявлены серии UV/дисбаланса (ячейки 12/14/15), частые `CHGOverCurWarning` до ~130A и MOS термокачание `79–80°C` (`Protect/Recover`); часть записей дублируется и содержит нулевые поля (`TotalV/MinUnitV=0`), учитывать как возможный шум логгера.
-
-- **ANT BMS web v2.4.7 (2026-07-09):** scan показывает весь BLE-эфир (убран фильтр по `ANT`/MAC), обновлены тексты списка устройств, версии app `2.4.7`, cache `v12`.
-
-- **ANT BMS web v2.4.6 (2026-07-09):** улучшен дизайн ячеек на «Состоянии», русифицированы типовые ошибки/защиты, ускорен вход в «Параметры» (без блокирующей автозагрузки; чтение по кнопке). Версии: app `2.4.6`, cache `v11`.
-- **Arduino a20014 v26 ANT (2026-07-07):** `Проекты/Arduino/firmware/Eltavr_firmware/a20014_v26_ant` — форк v7; эталон `a20014_plata_monitora/`. Hex: `releases/app/a20014_v26_9600.hex`. ANT: `../../ANT_BMS/PROTOCOL_ANT_BMS.md`.
-- **RS485 ANT BMS (2026-07-08):** на Pi 5 не удалось получить ответ по UART на `ttyAMA0/serial0` при legacy запросах `5A5A...` и новом `7E A1` handshake (ответа нет, похоже BMS не активирована/не в нужном режиме или другой протокол/baud).
-- **TTL ANT BMS (2026-07-08):** на USB‑TTL `ttyUSB0` при 9600/19200/115200 (пассивно и legacy live `5A5A 00 00 00 00`) — ответов нет (0 bytes).
-- **ANT BLE (2026-07-08):** по `bluetoothctl` удалось подключиться к `9B:FD:E9:52:AB:0A` — `Connected: yes` (GATT без проверки).
-- **ANT BMS web v2.4.1 (2026-07-09):** исправлены дубли подписей параметров во всех вкладках; контекстные названия формируются из `field` в `i18n-ru.js`; SW cache `v7`.
-- **ANT BMS web v2.4.2 (2026-07-09):** исправлен сломанный CSS-блок `busy-overlay` (дизайн страницы больше не «плывёт»), `SOC`-таблица переименована в уникальные строки `SOC 100%..0%`, добавлен auto-reconnect после краткого BLE-обрыва (frontend+backend); SW cache `v8`, app `2.4.2`.
-- **ANT BMS web v2.4.3 (2026-07-09):** убран долгий hang `Connecting BLE`: вызовы `bluetoothctl/hciconfig` теперь с timeout, connect fail-fast до ~45с (6 попыток), UI timeout `/api/connect` 50с, SW cache `v9`, app `2.4.3`.
-- **ANT BMS web v2.4.5 (2026-07-09):** ускорен BLE connect до максимально быстрого режима: если сессия уже активна с тем же MAC — мгновенный возврат, connect дедлайн ~20с, 3 попытки, сокращены ожидания `Connected/ServicesResolved`, UI timeout 25с, SW cache `v10`.
-- **Cursor Agent PWA / WS т
-## Kali БК опрос (2026-08-07)
-- Макс. частота: poll=0, G1 каждый цикл, G2↔G3, sleep 2ms ≈1.6 Hz
-- Старт: `tmux … start_bc.sh` / `bash ~/Projects/cluster_pi/scripts/start_bc.sh`
-
-### Remote Control (2026-09-07)
-- Причина OFF: region block без прокси IDE.
-- Запуск: `~/bin/cursor-with-proxy.sh` / `cursor-open-agents-documents.sh`.
-- keep-awake: active (исправлен ExecStart).
-- Проверка: нет `not available in your region` в свежем renderer после proxy launch.
+## 2026-09-30 komunalka
+- Стабильно: Крымэнерго обновляется через вкладку «Сайты» (прокси komunalka timeout 300 с); даты платежей в формате ДД.ММ.ГГГГ.
+- Проверка: `journalctl --user -u komunalka.service | grep "\[energy\]"` — строка `оплаты: последний=…, чеков=5`.
