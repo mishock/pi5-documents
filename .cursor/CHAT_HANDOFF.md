@@ -1,3 +1,29 @@
+## Клиент 3 — «лишний» заряд Deye (2026-10-19)
+
+- Drive: `1YY1IBnegnfZ8-H9vrZnHHqul4aQAfclq`. Локально: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/client3_2026-10-19/`.
+- АКБ/БМС ОК (99 %, 54 В). Жалоба: ~8–10 кВт·ч «заряжено» при почти нулевом разряде; то же на стенде синего цеха.
+- Действия: ток Deye↔JK, ограничить Grid Charge / float с сети.
+
+## Cursor Remote Control (2026-10-16)
+
+- Облако: `remoteControlEnabled=true`, `allowPrivateWorkers=true`.
+- Worker: **Документы на Pi5** online (`cursor-self-hosted-worker.service`).
+- Enroll: текущий auth0; `desktopBridge.enabled=true`.
+- Телефон: тот же аккаунт Cursor → Agents → выбрать worker Pi5.
+- Фикс: `bash ~/bin/cursor-rc-force-on.sh` (не закрывать Agents).
+- Док: `REMOTE_CONTROL.md`
+
+## Adion Expert 6 kW Twin — русский мануал (2026-10-12)
+
+- Файл: `Платы и модули/Солнечные_инверторы/Adion_Expert_6kW_Twin/downloads/ADION_AXPERT_KING_II_6.0kW_TWIN-B_manual_RU.pdf` (85 стр.).
+- EN: `downloads/Axpert_KING-II-TWIN-manual_v1.3_EN.pdf`. Дубликат EN с именем ADION удалён.
+
+## Camera E1 CH-C01E — ребут по UART (2026-10-12)
+
+- Камера на `/dev/ttyUSB0` 115200. Цикл ~20 с: USB Wi‑Fi Bouffalo не виден → нет `wlan0` → `blevent` → `reboot -f`. Карта с OTA видна, прошивка не стартует. Питание по наклейке 5 В / 2 А.
+- `bms-serial-ws.service` disabled: он слал 19200 в тот же порт. Включить обратно только без камеры: `sudo systemctl enable --now bms-serial-ws.service`.
+- Заметка: `Платы и модули/Aqara_Camera_E1_CH-C01E/notes/UART_BOOTLOOP_2026-10-12.md`.
+
 ## Пушкина_29 — обращение и схема двора (2026-10-08)
 - Стабильно: `Пушкина_29/Обращение - Пушкина 29.docx` и `Пушкина_29/Приложение 1 - Схема двора - Пушкина 29.pdf`; под снос только С1, С2 нигде не упоминается, кирпичная клумба П — «не трогать», параллельна дому и заканчивается на уровне центра Д1. Стойки бельевой сушилки под снос — 8 шт.; новая фиолетовая отметка находится между Т1 и О1.
 - Приложение №2 называется `Пушкина_29/Приложение 2 - Чертёж территории - Пушкина 29.pdf`; та же формулировка используется в обращении и на схеме.
