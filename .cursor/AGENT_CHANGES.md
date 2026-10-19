@@ -31,6 +31,24 @@ bash Документы/.cursor/scripts/agent-change-backup.sh --agent cursor --
 
 ## Записи (новые сверху)
 
+### 2026-10-19 18:08 — client3 audio+photos analysis
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/client3_2026-10-19\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261019T180836/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261019T180836`
+
+
+### 2026-10-16 15:19 — RC ON 2026-10-16
+
+- **Агент:** cursor
+- **Проект:** cursor-remote-control
+- **Файлы:** \`REMOTE_CONTROL.md\`
+- **Снимок:** `.cursor/backups/20261016T151929/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261016T151929`
+
+
 ### 2026-10-13 18:11 — manual PDF + TECH_SUMMARY
 
 - **Агент:** cursor

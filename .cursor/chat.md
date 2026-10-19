@@ -1,3 +1,37 @@
+## Фокус (18:08, 2026-10-19) — Клиент 3 Deye + БК
+
+**Drive:** «Видео от клиента 3» (`1YY1IBnegnfZ8-H9vrZnHHqul4aQAfclq`).
+**Голос:** 8 дней на сети; Deye «залил» в АКБ ~8–10 кВт·ч при ~100 Вт разряда; по BMS никто не греется; то же на стенде в синем цеху (~50 Вт).
+**Фото:** АКБ ЭЛЬТАВР 99 % / 54 В ок; Deye заряжено ~9,3 / разряжено ~0,3 кВт·ч.
+**Делать:** сверить ток Deye vs JK; выкл/лимит Grid Charge при полном; не менять БК без замера.
+**Локально:** `…/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/client3_2026-10-19/`.
+
+## Фокус (13:25, 2026-10-18) — Клиент 2 Deye F56
+
+**Drive:** «Видео и фото клиента 2» (`1qLf6JiXp_0zc5Tz9LWPzJQUbCh_aDCff`).
+**Проблема:** без сети F56; на Deye АКБ 30,1/0/9 В при JK 53 В 96 %. С сетью работает.
+**Делать:** замер BAT-клемм vs BMS, DC автомат/кабели, Discharge MOS JK, пороги Shutdown; сброс через сеть+заряд.
+**Локально:** `…/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/client2_2026-10-18/`.
+
+## Фокус (12:56, 2026-10-18) — Deye 6.6 + генератор, видео клиента
+
+**Drive:** папка «Видео от клиента» (`1emZ3rj2TDzz3ft_4m223aRtr7_Z6YnIp`), файл `8819367418405371637.MP4`.
+**Суть:** на LCD был **SmartLoad Output** — поэтому ГУ не на дисплее. Нужно **Generator Input**, выкл SmartLoad; **Gen Charge** в Batt Set2; **Gen connect to grid input** выкл, если ГУ на клеммах GEN.
+**Локально:** `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/video_client_2026-10-18/`.
+
+## Фокус (15:33, 2026-10-16) — Target Unavailable на телефоне
+
+**Причина:** переключение runtime у Cloud-агента на другой репо. Worker только `mishock/pi5-documents`.
+**Сделано:** репо создан/запушен public; worker online; debug видит «Документы на Pi5».
+**Как с телефона:** новый агент → repo `mishock/pi5-documents` → машина «Документы на Pi5».
+
+## Фокус (15:19, 2026-10-16) — Remote Control ON
+
+**Сделано:** облако `remoteControlEnabled=true`, `allowPrivateWorkers=true`; enroll auth0; desktopBridge=true; worker `Документы на Pi5` online.
+**Проверено:** `systemctl --user is-active cursor-self-hosted-worker cursor-redsocks` → active; Private worker started.
+**Телефон:** Cursor app / cursor.com/agents → worker «Документы на Pi5». Окно Agents на Pi5 не закрывать.
+**Док:** `REMOTE_CONTROL.md`
+
 ## Фокус (12:24, 2026-10-12) — Adion, русский мануал
 
 Русское руководство Adion Expert 6 kW Twin возвращено: `Платы и модули/Солнечные_инверторы/Adion_Expert_6kW_Twin/downloads/ADION_AXPERT_KING_II_6.0kW_TWIN-B_manual_RU.pdf`. Байтный дубликат EN удалён.
