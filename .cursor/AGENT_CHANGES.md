@@ -31,6 +31,15 @@ bash Документы/.cursor/scripts/agent-change-backup.sh --agent cursor --
 
 ## Записи (новые сверху)
 
+### 2026-10-20 13:46 — PDF описания неисправности для СЦ + материалы video Drive
+
+- **Агент:** cursor
+- **Проект:** Must_PV18-4024_PRO_II
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/notes/service_fault_2026-10-20\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/CHANGELOG.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/notes/README.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261020T134633/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261020T134633`
+
+
 ### 2026-10-19 18:08 — client3 audio+photos analysis
 
 - **Агент:** cursor

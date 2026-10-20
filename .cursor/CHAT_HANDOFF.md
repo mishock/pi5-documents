@@ -1,3 +1,16 @@
+## Must PV18-4024 — неисправный в СЦ (2026-10-20)
+
+- Drive: `1yqfe13z8Le_DgJHst6iGThGPQWp0O0Gj` (видео + PDF для сервиса).
+- S/N `009000001400028`: не стартует, мигает LCD, запах гари, USB/Modbus молчит.
+- PDF: https://drive.google.com/file/d/1P7DXwD7ohhhCwGMqhojVS0JJJrKQiYIp/view
+- Локально: `Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/notes/service_fault_2026-10-20/`.
+
+## Must PV18-4024 — USB диагностика (2026-10-20)
+
+- Pi: CH340 → `/dev/ttyUSB0` OK; Modbus RTU **молчание**.
+- Старт инвертора: BAT 24 V + ON/OFF; USB только мониторинг.
+- Заметка: `Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/notes/USB_DIAG_2026-10-20.md`.
+
 ## Клиент 3 — «лишний» заряд Deye (2026-10-19)
 
 - Drive: `1YY1IBnegnfZ8-H9vrZnHHqul4aQAfclq`. Локально: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/client3_2026-10-19/`.
