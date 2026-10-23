@@ -9,7 +9,10 @@
 | `pic/panel_INV1_INV2_GEN_breaker_2026-10-23.jpg` | Щит: ИНВ1 / ИНВ2; сила с ГУ — один автомат на оба |
 | `pic/genset_panel_side_2026-10-23.jpg` | Вид с панелью контроллера |
 | `pic/genset_tss_logo_2026-10-23.jpg` | Корпус ТСС |
-| `downloads/SmartGen_HGM6110N_6120N_6110NC_6120NC_en.pdf` | Мануал контроллера SmartGen (типовой для серии) |
+| `downloads/SmartGen_HGM6110N_6120N_6110NC_6120NC_en.pdf` | Мануал контроллера SmartGen |
+| `downloads/TSS_AD-16C-T400_Standart_RE.pdf` | РЭ АД-16С-Т400 (Стандарт), логика Remote Start |
+| `downloads/TSS_AD-16S-T400-1RKM5_datasheet.pdf` | Даташит 16 кВт Prof |
+| `notes/ГОТОВНОСТЬ_ПОДКЛЮЧЕНИЕ_2026-10-23.md` | Чеклист «готов к коннекту» |
 | `TECH_SUMMARY.md` | Паспорт + remote start |
 | `notes/` | Связка с инверторами |
 
