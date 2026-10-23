@@ -1,3 +1,83 @@
+## Уточнение (20:07, 2026-10-23) — схема Аникеева
+
+Сухой контакт **параллелим** (оба Gen Signal ВКЛ). Сила: **один автомат с ГУ → оба INV**. PDF/md обновлены. Выезд ~15:00.
+
+## Фокус (19:56, 2026-10-23) — автозапуск TSS ↔ 2× Deye 20K
+
+**ДГУ:** ТСС TQc 22TS ST / АД-16С-Т400-1РКМ5, 16 кВт, S/N DG030000022116.
+**Инверторы:** 2× Deye SUN-20K-SG05LP3-EU-SM2 (мануал на Pi 5).
+**Готово:** чеклист + PDF; DIN 40/41 = Remote Start (тест на объекте); Gen Signal только Master; Rated 14000 W.
+
+- `Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/notes/АВТОЗАПУСК_ГЕНЕРАТОР_TSS_2xDeye20K.md`
+- `…/generated/АВТОЗАПУСК_TSS_TQc22_2xDeye20K.pdf`
+- `Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/`
+
+## Пометка даты при правках (15:45, 2026-10-23)
+
+**Правило (alwaysApply):** `.cursor/rules/date-stamp-on-changes.mdc` — при любой правке ставить `YYYY-MM-DD` (шапка md, редакция PDF, CHANGELOG). Запрошено пользователем 2026-10-23.
+
+## JK SoftAP CAN RX флеш (11:27, 2026-10-23)
+
+`jk_ble_pylon_deye` **v0.1.6**: лог CAN RX → LittleFS `/canrx.dat` (128 кадров, flush ~1 с), переживает отключение питания. Релиз: `firmware/jk_ble_pylon_deye/releases/jk_ble_pylon_deye_v0.1.6.bin`. После USB: Serial `canlog` или веб.
+
+## Офис XKeen VPN (10:14, 2026-10-23)
+
+ELTAVR_VPN: xray был убит OOM (~245 МБ на 512 МБ Giga). Поднят; `GOMEMLIMIT=100MiB` + policy bufferSize + cron watchdog `/opt/bin/xkeen-watchdog.sh`. Скрипт: `.cursor/scripts/install-office-xkeen-oom-guard.sh`. Док: `keenetic-routers.md` § OOM.
+
+## JK SoftAP captive (10:05, 2026-10-23)
+
+v0.1.1: при подключении к `JK-DEYE` сразу HTML настроек (DNS * + generate_204/hotspot-detect). Прошито FLASH_OK.
+
+## JK BLE → Deye Pylon CAN (09:55, 2026-10-23)
+
+Прошивка `Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/` v0.1.0: JK-B2A20S20P по BLE → CAN Pylon 500k → Deye 6.6K; SoftAP `JK-DEYE`/`jk-deye-cfg` → веб (MAC + скан BLE). Сборка Docker SUCCESS. Релизы `…/releases/jk_ble_pylon_deye_v0.1.0{,_0x0}.bin`. На Deye: Lithium + Pylon. **Прошито** `/dev/ttyACM0` FLASH_OK (09:58).
+
+## ESP BMC MIN v0.4.6 — без WiFi/BLE/сайта (16:56, 2026-10-21)
+
+MIN: `radioForceOff()` при старте; нет web_ui/NimBLE в сборке; Serial `Radio: WiFi OFF, BLE OFF, SoftAP/web NONE`. Прошито MCP. Релизы `…/releases/gem_bmc_esp32c3_v0.4.6_{MCP2515,TJA1050}.bin`.
+
+## ESP BMC LED v0.4.5b (16:50, 2026-10-21)
+
+После v0.4.4 LED «поморгал и потух». Фикс: фаза по millis, CAN OK = в основном ON + пауза 150 мс/с; старт 4 вспышки + 1.5 с сплошной. Serial: `LED=ON(pin=0)`. Прошито MCP `FLASH_OK` (`v0.4.5b`). Релизы: `firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.5_{MCP2515,TJA1050}.bin`.
+
+## Remote Control Pi5 — gmail (15:30, 2026-10-21)
+
+Worker **Документы на Pi5** снова online под **mishock24@gmail.com**. Было: auth.json/API key слетели → Authentication required; на телефоне Cloud + No Computers, CursorDocs=ПК Disconnected (icloud).
+Фикс: восстановил `~/.config/cursor/auth.json` + `CURSOR_API_KEY` в `cursor-worker.env`; enroll google-oauth2; `desktopBridge=true`; RC cloud ON.
+Телефон: Runtime → **Документы на Pi5**, репо `mishock/pi5-documents`. ПК icloud отдельно.
+
+## ESP BMC — модуль MCP2515 (14:51, 2026-10-21)
+
+На стенде и в машине у пользователя **MCP2515**, не синий TJA1050-only. Прошивка: `gem_bmc_esp32c3_v0.4.2_MCP2515.bin` / `ENV=esp32c3_can_min_mcp bash scripts/flash-can-min.sh`.
+
+## ESP32-C3 MIN v0.4.1 — P1820 (14:09, 2026-10-21)
+
+**524254 31 = P1820** checksum Traction Battery Status (`0CFF0EF3`). Фикс: стабильный EF3 + XOR; `0CFF10F3` AE→AF. Релизы `gem_bmc_esp32c3_v0.4.1_{TJA1050,MCP2515}.bin`. **Не прошито** — ESP не на USB.
+
+## Фокус (13:03, 2026-10-21) — Deye Ак-Як 33: шаблон ЭЛЬТАВР записан
+
+**INV** `2607253382` · logger `1538096135` · plant `62828303` Online.
+**Записано и перечитано:** Batt-V **235 Ah** (факт на объекте) · Float 55 / Absorb 56 / EQ 56 · заряд 100 A / разряд 140 A · Activate OFF · Grid Charge 50 A · Gen Start 48 V / 40 A · Gen Force OFF · Low Power + MPPT ON.
+**Grid Start 52 V:** enable выкл (как в шаблоне) — 00E4 остаётся 49 В.
+**Заметка:** `…/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md`.
+
+## Фокус (10:14, 2026-10-21) — Deye Cloud Ак-Як 33
+
+**Аккаунт:** mishock24@gmail.com · станция **Simferopol Ak-Yak 33** · plantId **62828303** · 6.6 kWp · **Online**.
+**Привязано:** Wi‑Fi logger **1538096135** (Auto-adding). Инвертор **2607253382**.
+**Заметка:** `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md`.
+
+## Фокус (15:57, 2026-10-20) — Deye ГУ: заряд только с Gen Force
+
+**Причина:** без Force Deye берёт GEN только если АКБ ≤ **Gen Start**. Start низкий → заряд «только с Force».
+**Фикс:** поднять Start выше текущего В АКБ **или** Force ВКЛ на время ручного ГУ.
+**PDF обновлён:** `…/generated/НАСТРОЙКА_ГЕНЕРАТОРА_Deye6.6K_Load_и_заряд_АКБ.pdf` (§6 FAQ).
+
+## Фокус (15:19, 2026-10-20) — Deye 6.6: PDF настройки ГУ
+
+**Сценарий:** ГУ → Load + заряд АКБ; стоп заряда без отключения ГУ.
+**PDF:** `…/generated/НАСТРОЙКА_ГЕНЕРАТОРА_Deye6.6K_Load_и_заряд_АКБ.pdf`.
+
 ## Фокус (13:46, 2026-10-20) — Must неисправный → PDF для СЦ
 
 **Drive:** «Неисправный инвертор Must» (`1yqfe13z8Le_DgJHst6iGThGPQWp0O0Gj`).

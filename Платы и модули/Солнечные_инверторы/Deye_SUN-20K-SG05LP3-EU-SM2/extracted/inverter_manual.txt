@@ -1,0 +1,4858 @@
+R
+
+Hybrid Inverter
+SUN-14K-SG05LP3-EU-SM2
+SUN-15K-SG05LP3-EU-SM2
+SUN-16K-SG05LP3-EU-SM2
+05/28/2019 15:34:40
+
+SUN-18K-SG05LP3-EU-SM2
+SUN-20K-SG05LP3-EU-SM2
+
+User Manual
+
+0 8.30
+KW
+
+12
+
+ON
+
+0 -3.00
+
+8
+
+0 3.00
+KW
+
+8
+
+KW
+
+25%
+0 -2.00
+KW
+
+8
+
+Contents
+
+1. Safety Introductions
+………………………………………………… 01-02
+2. Product instructions
+………………………………………………… 02-05
+2.1 Product Overview
+2.2 Product Size
+2.3 Product Features
+2.4 Basic System Architecture
+3. Installation
+…………………………………………………………… 06-27
+3.1 Parts list
+3.2 Product handling requirements
+3.3 Mounting instructions
+3.4 Battery connection
+3.5 Grid connection and backup load connection
+3.6 PV Connection
+3.7 CT Connection
+3.7.1 Meter Connection
+3.8 Earth Connection(mandatory)
+3.9 WIFI Connection
+3.10 Wiring System for Inverter
+3.11 Wiring diagram
+3.12 Typical application diagram of diesel generator
+3.13 phase parallel connection diagram
+4. OPERATION …………………………………………………………… 28
+4.1 Power ON/OFF
+4.2 Operation and Display Panel
+5. LCD Display Icons
+…………………………………………………… 29-41
+5.1 Main Screen
+5.2 Solar Power Curve
+5.3 Curve Page-Solar & Load & Grid
+5.4 System Setup Menu
+5.5 Basic Setup Menu
+5.6 Battery Setup Menu
+5.7 System Work Mode Setup Menu
+5.8 Grid Setup Menu
+5.9 Generator Port Use Setup Menu
+5.10 Advanced Function Setup Menu
+5.11 Device Info Setup Menu
+6. Mode …………………………………………………………………… 42-43
+7. Limitation of Liability
+……………………………………………… 43-46
+8. Datasheet ……………………………………………………………… 47-48
+9. Appendix I
+…………………………………………………………… 49-51
+10. Appendix II …………………………………………………………… 52
+11. EU Declaration of Conformity
+…………………………………… 52-53
+
+About This Manual
+
+The manual mainly describes the product informa�on, guidelines for installa�on, opera�on and
+maintenance. The manual cannot include complete informa�on about the photovoltaic (PV)
+system.
+
+How to Use This Manual
+
+Read the manual and other related documents before performing any opera�on on the inverter.
+Documents must be stored carefully and be available at all �mes.
+Contents may be periodically updated or revised due to product development. The informa�on
+in this manual is subject to change without no�ce. The latest manual can be acquired via
+service@deye.com.cn
+
+1. Safety Introduc�ons
+Labels descrip�on
+Label
+
+Description
+
+Caution, risk of electric shock symbol indicates important safety
+instructions, which if not correctly followed, could result in electric shock.
+The DC input terminals of the inverter must not be grounded.
+Surface high temperature, Please do not touch the inverter case.
+The AC and DC circuits must be disconnected separately, and the
+maintenance personnel must wait for � minutes before they are
+completely powered oﬀ before they can start working.
+CE mark of conformity
+Please read the instructions carefully before use.
+Symbol for the marking of electrical and electronics devices according to
+Directive ����/��/EC. Indicates that the device, accessories and the
+packaging must not be disposed as unsorted municipal waste and must be
+collected separately at the end of the usage. Please follow Local Ordinances
+or Regulations for disposal or contact an authorized representative of the
+manufacturer for information concerning the decommissioning of
+equipment.
+
+- 01 -
+
+· This chapter contains important safety and opera�ng instruc�ons. Read and keep this manual
+for future reference.
+· Before using the inverter, please read the instruc�ons and warning signs of the ba�ery and
+corresponding sec�ons in the instruc�on manual.
+· Do not disassemble the inverter. If you need maintenance or repair, take it to a professional
+service center.
+· Improper reassembly may result in electric shock or ﬁre.
+· To reduce risk of electric shock, disconnect all wires before a�emp�ng any maintenance or
+cleaning. Turning oﬀ the unit will not reduce this risk.
+· Cau�on: Only qualiﬁed personnel can install this device with ba�ery.
+· Never charge a frozen ba�ery.
+· For op�mum opera�on of this inverter, please follow required speciﬁca�on to select appropriate
+cable size. It is very important to correctly operate this inverter.
+· Be very cau�ous when working with metal tools on or around ba�eries. Dropping a tool may
+cause a spark or short circuit in ba�eries or other electrical parts, even cause an explosion.
+· Please strictly follow installa�on procedure when you want to disconnect AC or DC terminals.
+Please refer to "Installa�on" sec�on of this manual for the details.
+· Grounding instruc�ons - this inverter should be connected to a permanent grounded wiring
+system. Be sure to comply with local requirements and regula�on to install this inverter.
+· Never cause AC output and DC input short circuited. Do not connect to the mains when DC
+input short circuits.
+
+2. Product Introduc�ons
+This is a mul�func�onal inverter, combining func�ons of inverter, solar charger and ba�ery
+charger to oﬀer uninterrup�ble power support with portable size. Its comprehensive LCD display
+oﬀers user conﬁgurable and easy accessible bu�on opera�on such as ba�ery charging, AC/solar
+charging, and acceptable input voltage based on diﬀerent applica�ons.
+
+- 02 -
+
+2.1 Product Overview
+
+1
+2
+5
+6
+
+7
+8
+9
+10
+11
+12
+
+3
+4
+15
+
+16
+
+13
+14
+
+1: LCD display
+
+6: ParallelModbus port
+
+11: Grid
+
+2: Func�on bu�ons
+
+7: Modbus port
+
+12: DRM port
+
+3: Ba�ery input connectors
+
+8: BMS port
+
+13: Power on/oﬀ bu�on
+
+4: Func�on port
+
+9: Generator input
+
+14: DC switch
+
+5: Meter-485 port
+
+10: Load
+
+15: WiFi Interface
+16: PV input
+
+- 03 -
+
+2.2 Product Size
+456.0
+
+750.0
+798.4
+
+475.0
+
+Inverter Size
+
+290.5
+268.5
+
+- 04 -
+
+2.3 Product Features
+- 230V/400V Three phase Pure sine wave inverter.
+- Self-consump�on and feed-in to the grid.
+- Auto restart while AC is recovering.
+- Programmable supply priority for ba�ery or grid.
+- Programmable mul�ple opera�on modes: On grid, oﬀ grid and UPS.
+- Conﬁgurable ba�ery charging current/voltage based on applica�ons by LCD se�ng.
+- Conﬁgurable AC/Solar/Generator Charger priority by LCD se�ng.
+- Compa�ble with mains voltage or generator power.
+- Overload/over temperature/short circuit protec�on.
+- Smart ba�ery charger design for op�mized ba�ery performance
+- With limit func�on, prevent excess power overﬂow to the grid.
+- Suppor�ng WIFI monitoring and build-in 2 strings of MPP trackers.
+- Smart se�able three stages MPPT charging for op�mized ba�ery performance.
+- Time of use func�on.
+- Smart Load Func�on.
+
+2.4 Basic System Architecture
+The following illustra�on shows basic applica�on of this inverter.
+It also includes following devices to have a Complete running system.
+- Generator or U�lity
+- PV modules
+Consult with your system integrator for other possible system architectures depending on your
+requirements.
+This inverter can power all kinds of appliances in home or oﬃce environment, including motor
+type appliances such as refrigerator and air condi�oner.
+AC cable
+
+DC cable
+
+WiFI
+GPRS
+Cloud services
+
+Solar
+
+Backup Load
+
+phone
+
+On-Grid Home Load
+
+Grid
+CT
+
+Battery
+
+Smart Load
+
+Grid-connected Inverter
+
+Generator
+ATS
+
+- 05 -
+
+3. Installa�on
+3.1 Parts List
+Check the equipment before installa�on. Please make sure nothing is damaged in the package.
+You should have received the items in the following package:
+
+Hybrid inverter
+x1
+
+Wall moun�ng bracket x1
+
+Stainless steel an�-collision
+bolt M8×80
+x4
+
+User
+manual
+Parallel communica�on
+cable x1
+
+Sensor Clamp
+x3
+
+Ba�ery temperature
+sensor x1
+
+User manual x1
+
+Magne�c ring for ba�ery
+x1
+
+Magne�c ring for BMS
+communica�on cable x1
+
+Three-Phase Smart Meter
+
+SET
+
+ESC
+
+Meter(op�onal)
+x1
+
+Datalogger (op�onal) x1
+
+DC+/DC- Plug connectors
+including metal terminal
+xN
+
+Solar Photovoltaic
+Connector Special
+Spanner x1
+
+- 06 -
+
+3.2 Product handling requirements
+Li� the inverter out of the packing box and transport it to designated installa�on loca�on.
+
+transport
+
+CAUTION:
+Improper handling may cause personal injury!
+• Arrange an appropriate number of personnel to carry the inverter according to
+its weight, and installa�on personnel should wear protec�ve equipment such
+as an�-impact shoes and gloves.
+• Placing the inverter directly on a hard ground may cause damage to its metal
+enclosure. Protec�ve materials such as sponge pad or foam cushion should be
+placed underneath the inverter.
+• Move the inverter by one or two people or by using a proper transport tool.
+• Move the inverter by holding the handles on it. Do not move the inverter by
+holding the terminals.
+
+3.3 Moun�ng instruc�ons
+Installa�on Precau�on
+This Hybrid inverter is designed for outdoor use(IP65), Please make sure the installa�on site
+meets below condi�ons:
+· Not in direct sunlight
+· Not in areas where highly ﬂammable materials are stored.
+· Not in poten�al explosive areas.
+· Not in the cool air directly.
+· Not near the television Antenna or antenna cable.
+· Not higher than al�tude of about 3000 meters above sea level.
+· Not in environment of precipita�on or humidity(>95%)
+
+- 07 -
+
+Please AVOID direct sunlight, rain exposure, snow laying up during installa�on and
+opera�on. Before connec�ng all wires, please take oﬀ the metal cover by removing
+screws as shown below:
+
+Installa�ons Tools
+Installa�on tools can refer to the following recommended ones. Also, use other auxiliary tools
+on site.
+
+Protective goggles
+
+Earplugs
+
+Anti-dust mask
+
+Cross screwdriver
+
+Percussion drill
+
+Pliers
+
+Anti-static wrist strap
+
+Wire cutter
+
+Wire stripper
+
+Multimeter ≥���� Vdc RJ�� crimping plier
+
+Work gloves
+
+Work shoes
+
+Utlity Knife
+
+Slotted screwdriver
+
+Marker
+
+Level
+
+Rubber hammer
+
+socket wrenches set
+
+Hydraulic pliers
+
+Heat gun
+
+Crimping tool�-�mm² Solar connector
+wrench
+
+Cleaner
+
+- 08 -
+
+Considering the following points before selec�ng where to install:
+· Please select a ver�cal wall with load-bearing capacity for installa�on, suitable for installa�on
+on concrete or other non-ﬂammable surfaces,installa�on is shown below.
+· Install this inverter at eye level in order to allow the LCD display to be read at all �mes.
+· The ambient temperature is recommeded to be between -40~60℃ to ensure op�mal opera�on.
+· Be sure to keep other objects and surfaces as shown in the diagram to guarantee suﬃcient
+heat dissipa�on and have enough space for removing wires.
+≥500mm
+
+≥500mm
+
+For proper air circula�on to dissipate heat, allow a clearance of approx. 50cm to the side and
+approx. 50cm above and below the unit. And 100cm to the front.
+
+Moun�ng the inverter
+Remember that this inverter is heavy! Please be careful when li�ing out from the package.
+Choose the recommend drill head(as shown in below pic) to drill 4 holes on the wall,
+82-90mm deep.
+1. Use a proper hammer to ﬁt the expansion bolt into the holes.
+2. Carry the inverter and holding it, make sure the hanger aim at the expansion bolt,ﬁx the
+inverter on the wall.
+3. Fasten the screw head of the expansion bolt to ﬁnish the moun�ng.
+
+- 09 -
+
+Inverter hanging plate installa�on
+
+3.4 Ba�ery connec�on
+For safe opera�on and compliance, a separate DC over-current protector or disconnect device is
+required between the ba�ery and the inverter. In some applica�ons, switching devices may not
+be required but over-current protectors are s�ll required. Refer to the typical amperage in the
+table below for the required fuse or circuit breaker size.
+
+Model
+
+Wire Size
+
+Cable(mm 2 )
+
+Torque value(max)
+
+14/15/16kW
+
+0AWG
+
+50
+
+24.5Nm
+
+18/20kW
+
+3/0AWG
+
+70
+
+24.5Nm
+
+Chart 3-2 Cable size
+
+- 10 -
+
+All wiring must be performed by a professional person.
+Connec�ng the ba�ery with a suitable cable is important for safe and eﬃcient
+opera�on of the system. To reduce the risk of injury, refer to Chart 3-2 for
+recommended cables.
+
+88.
+
+7m
+
+m
+
+Please follow below steps to implement ba�ery connec�on:
+1. Please choose a suitable ba�ery cable with correct connector which can well ﬁt into the
+ba�ery terminals.
+2. Use a suitable screwdriver to unscrew the bolts and ﬁt the ba�ery connectors in, then
+fasten the bolt by the screwdriver, make sure the bolts are �ghtened with torque of
+24.5 N.M in clockwise direc�on.
+3. Make sure polarity at both the ba�ery and inverter is correctly connected.
+
+20mm
+
+For 14/15/16/18/20kW model, ba�ery
+connector screw size: M8
+
+Pass the ba�ery power cable
+through the magne�c ring and
+wrap it around the magne�c
+ring two �mes.
+
+Pass the BMS communica�on cable
+through the magne�c ring and wrap
+it around the magne�c ring four �mes.
+
+4. In case of children touch or insects go into the inverter, Please make sure the inverter
+connector is fasten to waterproof posi�on by twist it clockwise.
+Installa�on must be performed with care.
+Before making the ﬁnal DC connec�on or closing DC breaker/disconnect, be sure
+posi�ve(+) must be connect to posi�ve(+) and nega�ve(-) must be connected to
+nega�ve(-). Reverse polarity connec�on on ba�ery will damage the inverter.
+
+- 11 -
+
+3.3.2 Func�on port deﬁni�on
+
+Inverter
+CN2: G_start: 1,2
+G_valve: 3,4
+Grid_Ry: 5,6
+RSD: 7+, 8-
+
+CN1: TEMP: 1,2
+CT_1: 3,4
+CT_2: 5,6
+CT_3: 7,8
+
+CN1
+
+Parallel_A Parallel_B Meter-485
+
+CN2
+
+Modbus
+
+BMS
+
+1 2 3 4 5 6 7 8
+
+1 2 3 4 5 6 7 8
+DRM
+
+Parallel A: Parallel communica�on
+port 1 (CAN interface).
+Parallel B: Parallel communica�on
+port 2 (CAN interface).
+Meter_485: for energy meter
+communica�on.
+Modbus: Reserved.
+BMS: BMS port for ba�ery
+communica�on(CAN/RS485).
+DRM: It is used to accept the
+external input signal(Digital input).
+More details please refer to the P50.
+
+Batt Temp
+Sensor
+CT -L1
+
+CT -L2
+
+Gen start-up
+N/O Relay
+
+CN1:
+CT -L3
+TEMP (1,2): ba�ery temperature sensor for lead
+acid ba�ery.
+CT-L1 (3,4): current transformer (CT1) for“zero export to CT”mode clamps on L1 when in
+three phase system.
+CT-L2 (5,6): current transformer (CT2) for“zero export to CT”mode clamps on L2 when in
+three phase system.
+CT-L3 (7,8): current transformer (CT3) for“zero export to CT”mode clamps on L3 when in
+three phase system.
+CN2:
+G-start (1,2): dry contact signal for startup the diesel generator.
+When the "GEN signal" is ac�ve, the open contact (GS) will switch on (no voltage output).
+G-valve (3,4): Dry contact output. When the inverter
+coil
+is in oﬀ-grid mode and the “signal island mode" is
+relay
+open
+checked, the dry contact will switch on.
+contact
+Grid_Ry (5,6): reserved.
+RSD (7,8): When ba�ery is connected and the
+G
+S
+inverter is in "ON" status, it will provide 12Vdc.
+RSD_input (B,B,+,-): when the terminal “B” & “B” is
+GS (diesel generator startup signal)
+short-circuited with addi�onal wire connec�on, or
+there’s 12Vdc input at the terminal “+ & - “, then the
+12Vdc of RSD+ & RSD- will disappear immediately, and
+the inverter will shutdown immediately.
+
+- 12 -
+
+3.4.3 Temperature sensor connec�on for lead-acid ba�ery
+
+Inverter
+
+12
+
+Temp. sensor
+
+- 13 -
+
+3.5 Grid connec�on and backup load connec�on
+· Before connec�ng to the grid, a separate AC breaker must be installed between the inverter
+and the grid, and also between the backup load and the inverter. This will ensure the inverter
+can be securely disconnected during maintenance and fully protected from over current. The
+recommended of AC breaker for the load port is 100A for 14/15/16/18/20kW.
+The recommended of AC breaker for the grid port is 100A for 14/15/16/18/20kW.
+· There are three terminal blocks with "Grid" "Load"and "GEN" markings. Please do not misconnect
+input and output connectors.
+
+Note:
+
+In ﬁnal installa�on, breaker cer�ﬁed according to IEC 60947-1 and IEC 60947-2
+shall be installed with the equipment.
+All wiring must be performed by a qualiﬁed personnel.It is very important for
+system safety and eﬃcient opera�on to use appropriate cable for AC input
+connec�on. To reduce risk of injury, please use the proper recommended cable
+as below.
+Grid connec�on and backup load connec�on (Copper wires)
+2
+
+Model
+
+Wire Size
+
+Cable(mm )
+
+Torque value(max)
+
+14/15/16kW
+
+12AWG
+
+2.5
+
+1.2Nm
+
+18/20kW
+
+10AWG
+
+4
+
+1.2Nm
+
+Grid connec�on and backup load connec�on (Copper wires) (bypass)
+2
+
+Model
+
+Wire Size
+
+Cable(mm )
+
+Torque value(max)
+
+14/15/16/18/20kW
+
+4AWG
+
+16
+
+1.2Nm
+
+Chart 3-3 Recommended Size for AC wires
+
+Please follow below steps to implement Grid, load and Gen port connec�on:
+1. Before making Grid, load and Gen port connec�on, be sure to turn oﬀ AC breaker or
+disconnector ﬁrst.
+2. Remove insula�on sleeve 10mm length, unscrew the bolts. For GRID port, just insert the wires
+into the terminals according to polari�es indicated on the terminal block. For GEN and Load
+ports, thread the wires through the magne�c ring ﬁrstly, then insert these wires into the
+terminals according to polari�es indicated on the terminal block. Tighten the terminal screws
+and make sure the wires are completely and safely connected.
+
+- 14 -
+
+GRID LOAD GEN
+
+LOAD
+
+GEN
+
+GRID
+
+N L1
+
+N
+
+L2 L3
+L1
+
+- 15 -
+
+L2
+
+L3
+
+Be sure that AC power source is disconnected before a�emp�ng to wire it to the
+unit.
+3. Then, insert AC output wires according to polari�es indicated on the terminal block and �ghten
+terminal. Be sure to connect corresponding N wires and PE wires to related terminals as well.
+4. Make sure the wires are securely connected.
+5. Appliances such as air condi�oner are required at least 2-3 minutes to restart because it is
+required to have enough �me to balance refrigerant gas inside of circuit. If a power shortage
+occurs and recovers in short �me, it will cause damage to your connected appliances. To
+prevent this kind of damage, please check manufacturer of air condi�oner if it is equipped with
+�me-delay func�on before installa�on. Otherwise, this inverter will trigger overload fault and
+cut oﬀ output to protect your appliance but some�mes it s�ll causes internal damage to the air
+condi�oner
+
+3.6 PV Connec�on
+
+Before connec�ng to PV modules, please install a separately DC circuit breaker between
+inverter and PV modules. It is very important for system safety and eﬃcient opera�on to
+use appropriate cable for PV module connec�on. To reduce risk of injury, please use the
+proper recommended cable size as below.
+Model
+
+Wire Size
+
+Cable(mm 2 )
+
+14/15/16/18/20kW
+
+12AWG
+
+2.5
+
+Chart 3-4 Cable size
+To avoid any malfunc�on, do not connect any PV modules with possible current
+leakage to the inverter. For example, grounded PV modules will cause current
+leakage to the inverter. When using PV modules, please ensure the PV+ & PVof solar panel is not connected to the system ground bar.
+It is requested to use PV junc�on box with surge protec�on. Otherwise, it will
+cause damage on inverter when lightning occurs on PV modules.
+
+- 16 -
+
+3.6.1 PV Module Selec�on:
+When selec�ng proper PV modules, please be sure to consider below parameters:
+1) Open circuit Voltage (Voc) of PV modules not exceeds max. PV array open circuit voltage of
+inverter.
+2) Open circuit Voltage (Voc) of PV modules should be higher than min. start voltage.
+3) The PV modules used to connected to this inverter shall be Class A ra�ng cer�ﬁed according
+to lEC 61730.
+Inverter Model
+
+14kW
+
+PV Input Voltage
+
+15kW
+
+16kW
+
+18kW
+
+20kW
+
+550V (160V-800V)
+
+PV Array MPPT Voltage Range
+
+160V-650V
+
+No. of MPP Trackers
+
+2
+
+No. of Strings per MPP Tracker
+
+2+1
+
+Chart 3-5
+
+3.6.2 PV Module Wire Connec�on:
+1. Switch the Grid Supply Main Switch(AC)OFF.
+2. Switch the DC lsolator OFF.
+3. Assemble PV input connector to the inverter.
+
+Safety Hint:
+
+When using PV modules, please ensure the PV+ & PV- of solar panel is not
+connected to the system ground bar.
+
+Safety Hint:
+
+Before connec�on, please make sure the polarity of the output voltage of PV
+array matches the “DC+” and “DC-” symbols.
+
+Safety Hint:
+
+Before connec�ng inverter, please make sure the PV array open circuit voltage is
+within the 800V of the inverter.
+
+Pic 3.2 DC- female connector
+
+Pic 3.1 DC+ male connector
+- 17 -
+
+Safety Hint:
+
+Please use approved DC cable for PV system.
+
+The steps to assemble the DC connectors are listed as follows:
+a)Strip oﬀ the DC wire about 7mm, disassemble the connector cap nut (see picture 3.3).
+
+�mm
+
+�mm
+
+Pic 3.3 Disassemble the connector cap nut
+b) Crimping metal terminals with crimping pliers as shown in picture 3.4.
+
+Crimping plier
+
+Pic 3.4 Crimp the contact pin to the wire
+
+- 18 -
+
+c) Insert the contact pin to the top part of the connector and screw up the cap nut to the top
+part of the connector. (as shown in picture 3.5).
+
+Pic 3.5 connector with cap nut screwed on
+
+d) Finally insert the DC connector into the posi�ve and nega�ve input of the inverter, shown as
+picture 3.6.
+
+Pic 3.6 DC input connec�on
+
+Warning:
+
+Sunlight shines on the panel will generate voltage, high voltage in series may
+cause danger to life. Therefore, before connec�ng the DC input line, the solar
+panel needs to be blocked by the opaque material and the DC switch should
+be 'OFF', otherwise, the high voltage of the inverter may lead to lifethreatening condi�ons.
+
+Warning:
+
+Please use its own DC power connector from the inverter accessories. Do not
+interconnect the connectors of diﬀerent manufacturers.Max. DC input current
+should be 20A. if exceeds, it may damage the inverter and it is not covered by
+Deye warranty.
+
+- 19 -
+
+3.7 CT Connec�on
+GRID
+
+N
+
+L2
+
+L3
+
+Ground
+
+Inverter
+
+White wire 3 4 5 6 7 8
+
+L1
+
+Black wire
+
+CT
+
+Arrow pointing
+to inverter
+
+L1
+CT1
+L2
+CT2
+L3
+CT3
+
+N
+
+Grid
+
+*Note：when the reading of the load power on the LCD is not correct, please
+reverse the CT arrow.
+
+- 20 -
+
+3.7.1 Meter Connec�on
+GRID
+
+N
+
+L1
+
+L2
+
+L3
+
+Ground
+
+Inverter
+Parallel_A Parallel_B Meter-485 port
+
+3
+
+6
+
+9
+
+10
+
+RS485A
+Three-Phase Smart Meter
+
+3
+
+6
+
+9
+
+RS485B
+
+10
+
+L1
+L2
+(1,4,7,10) L3
+
+Three-Phase Smart Meter
+
+SET
+
+4
+
+ESC
+
+4
+
+7
+
+24 25
+1
+
+PE
+N
+L1
+L2
+L3
+
+10
+
+(3,6,9,10)
+
+ESC
+
+RS 485
+
+24 25
+1
+
+SET
+
+7
+
+10
+
+CHINT meter
+
+CHNT DTSU666
+
+Grid
+
+GRID
+
+N
+
+Ground
+
+Inverter
+
+L2
+
+L3
+
+N L3 L2 L1
+5
+
+6
+
+7
+
+RS485B
+
+Parallel_A Parallel_B Meter-485 port
+
+L1
+
+8
+
+RS485A
+GND
+
+Eastron
+
+1 2 3 4
+
+PE
+L1
+L2
+L3
+N
+
+5 6 7 8
+
+L1
+L2
+
+Eastron
+
+L3
+
+L3
+
+L2
+L1
+
+(1,2,3,4)
+
+(5,6,7,8)
+
+B A G
+5
+
+6
+
+7
+
+8
+
+Eastron SDM630-Modbus V2
+
+RS 485
+RS 485 B RS 485 A GND
+
+Eastron meter
+
+- 21 -
+
+Grid
+
+Note:
+
+When the inverter is in the oﬀ-grid state, the N line needs to be connected to the
+earth.
+
+3.8 Earth Connec�on(mandatory)
+Ground cable shall be connected to ground plate on grid side, this prevents electric shock if the
+original protec�ve conductor fails.
+
+Earth connec�on (Copper wires)
+2
+
+Model
+
+Wire Size
+
+Cable(mm )
+
+Torque value(max)
+
+14/15/16kW
+
+12AWG
+
+2.5
+
+1.2Nm
+
+18/20kW
+
+10AWG
+
+4
+
+1.2Nm
+
+Earth connec�on (Copper wires) (bypass)
+2
+
+Model
+
+Wire Size
+
+Cable(mm )
+
+Torque value(max)
+
+14/15/16/18/20kW
+
+4AWG
+
+16
+
+1.2Nm
+
+Warning:
+
+Inverter has built-in leakage current detec�on circuit, The type A RCD can be
+connected to the inverter for protec�on according to the local laws and regula�ons.
+If an external leakage current protec�on device is connected, its opera�ng current
+must be equal to 300 mA or higher, otherwise inverter may not work properly.
+
+3.9 WIFI Connec�on
+For the conﬁgura�on of Wi-Fi Plug, please refer to illustra�ons of the Wi-Fi Plug. The Wi-Fi Plug
+is not a standard conﬁgura�on, it's op�onal.
+
+- 22 -
+
+GEN
+PORT
+
+Battery
+
+- 23 -
+
+PE
+
+AC Breaker
+
+DC Breaker
+
+BMS
+
+R
+S
+T
+
+N
+
+Inverter case grounding
+
+Hybrid Inverter
+
+DC Breaker
+
+PV
+
+Grid
+
+PE
+
+T
+
+S
+
+R
+
+N
+
+Load
+
+PE or
+
+AC Breaker
+
+E-BAR
+
+AC Breaker
+
+R
+
+S T PE
+
+Home Loads
+
+N
+
+RCD
+
+CT3
+
+CT2
+
+CT1
+
+CT
+
+
+  
+
+E-N
+Link
+
+E-BAR
+
+N-BAR
+
+AC Breaker
+
+S
+
+S
+
+PE
+
+T
+
+S
+
+R
+
+N
+
+PE
+
+T
+
+R
+
+R
+T
+
+N
+
+N
+
+RCD
+
+Grid
+
+Load
+
+This diagram is an example for an applica�on that neutral connects with the
+PE in a distribu�on box.
+For countries such as Australia, New Zealand, etc., please follow local wiring
+regula�ons!
+
+3.10 Wiring System for Inverter
+
+- 24 -
+
+Hybrid Inverter
+
+Grouding screw hole in the
+lower right corner
+
+Solar
+Array
+
+Battery
+
+BMS
+
+On-Grid
+
+PE
+
+N
+
+L3
+
+L2
+
+L1
+
+Backup
+
+PE or
+
+E-BAR
+
+CT
+
+RCD
+
+RCD
+
+CT3
+
+CT2
+
+CT1
+
+Home Loads
+
+L1 L2 L3 N PE
+
+300mA RCD
+(Recommended)
+
+E-BAR
+
+PE
+
+N
+
+L3
+
+L2
+
+L1
+
+PE
+
+N
+
+L3
+N
+
+L2
+L3
+
+L2
+
+RCD
+
+L1
+
+L1
+
+Distribution box
+
+Note:Backup func�on is op�onal in German market.please leave backup side empty if backup func�on is not
+available in the inverter.
+
+This diagram is an example for an applica�on in which neutral is separated from the PE in the distribu�on box.
+For countries such as China, Germany,the Czech Republic, Italy, etc., please follow local wiring regua�ons!
+
+Grid
+
+Backup
+Loads
+
+3.11 Wiring diagram
+
+CAN
+
+L wire
+
+N wire
+
+PE wire
+
+BMS
+
+Ground
+
+Inverter
+
+Battery pack(master)
+
+①AC Breaker
+
+Battery pack(slave)
+②AC Breaker
+
+CT1 CT2
+
+Grid
+
+CT3
+
+PE NL1L2L3
+
+③AC Breaker
+
+Home Load
+
+N
+L1
+L2
+L3
+PE
+
+L3
+L2
+L1
+N
+PE
+
+Backup Load
+
+① AC Breaker for backup load
+SUN-14K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-15K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-16K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-18K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-20K-SG05LP3-EU-SM2: 100A AC breaker
+② AC Breaker for grid
+SUN-14K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-15K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-16K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-18K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-20K-SG05LP3-EU-SM2: 100A AC breaker
+③AC Breaker for home load
+Depends on household loads
+
+- 25 -
+
+3.12 Typical applica�on diagram of diesel generator
+CAN
+
+L wire
+
+N wire
+
+PE wire
+CN2:
+
+coil
+
+relay
+
+open
+contact
+
+G
+
+G-start (1,2): dry contact signal for startup
+the diesel generator.
+
+1 2
+
+S
+
+GS (diesel generator startup signal)
+
+BMS
+
+Inverter
+Ground
+
+②AC Breaker
+
+Battery pack(master)
+
+Battery pack(slave)
+
+①AC Breaker
+
+L3
+L2
+L1
+N
+PE
+
+① AC Breaker for backup load
+SUN-14K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-15K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-16K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-18K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-20K-SG05LP3-EU-SM2: 100A AC breaker
+
+L3
+L2
+L1
+N
+PE
+
+Backup Load
+Remotely control signal line
+
+② AC Breaker for Generator port
+SUN-14K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-15K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-16K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-18K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-20K-SG05LP3-EU-SM2: 100A AC breaker
+
+Generator
+
+- 26 -
+
+3.13 Three phase parallel connec�on diagram
+CAN
+
+L wire
+
+N wire
+
+PE wire
+
+Inverter
+No.3
+(slave)
+
+Parallel_A Parallel_B Meter-485
+
+Ground
+
+Inverter
+Inverter
+No.2
+(slave)
+
+①
+
+②
+
+Ground
+
+④
+
+①③⑤ AC Breaker for grid port
+SUN-14K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-15K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-16K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-18K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-20K-SG05LP3-EU-SM2: 100A AC breaker
+
+③
+②④⑥ AC Breaker for backup load
+SUN-14K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-15K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-16K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-18K-SG05LP3-EU-SM2: 100A AC breaker
+SUN-20K-SG05LP3-EU-SM2: 100A AC breaker
+
+Inverter
+No.1
+(master)
+
+⑦AC Breaker for home load
+Depends on household loads
+Ground
+
+⑥
+
+Battery pack(master)
+⑤
+
+Battery pack(slave)
+
+CT1 CT2
+
+CT
+
+Grid
+
+CT3
+
+L3
+L2
+L1
+N
+PE
+
+PE N L1L2L3
+
+⑦
+
+Arrow pointing
+to inverter
+
+Home Load
+
+Master inverter
+
+Slave Inverter
+
+Advanced Function
+Parallel
+
+Modbus SN
+
+Master
+
+01
+
+Paral.
+Set3
+
+Slave
+EX_Meter For CT
+
+Meter Select
+No Meter
+
+0/3
+
+Advanced Function
+
+Parallel
+
+Modbus SN
+
+Master
+
+02
+
+Paral.
+Set3
+
+Slave
+EX_Meter For CT
+
+Backup Load
+
+Slave Inverter
+
+Advanced Function
+
+Meter Select
+No Meter
+
+0/3
+
+- 27 -
+
+Parallel
+
+Modbus SN
+
+Master
+
+03
+
+Paral.
+Set3
+
+Slave
+EX_Meter For CT
+
+Meter Select
+No Meter
+
+0/3
+
+4. OPERATION
+4.1 Power ON/OFF
+Once the unit has been properly installed and the ba�eries are connected well, simply press
+On/Oﬀ bu�on(located on the le� side of the case) to turn on the unit. When system without
+ba�ery connected, but connect with either PV or grid, and ON/OFF bu�on is switched oﬀ, LCD
+will s�ll light up(Display will show OFF), In this condi�on, when switch on ON/OFF bu�on and
+select NO ba�ery,system can s�ll working.
+
+4.2 Opera�on and Display Panel
+The opera�on and display panel, shown in below chart, is on the front panel of the inverter.
+It includes four func�on keys and a LCD display, indica�ng the opera�ng status and input/
+output power informa�on.
+
+Function Key
+
+Description
+
+Esc
+
+To exit se�ng mode
+
+Up
+
+To go to previous selec�on
+
+Down
+
+To go to next selec�on
+
+Enter
+
+To conﬁrm the selec�on
+
+Chart 4-1 Func�on Bu�ons
+
+- 28 -
+
+5. LCD Display Icons
+5.1 Main Screen
+The LCD is touchscreen, below screen shows the overall informa�on of the inverter.
+
+05/28/2019 15:34:40
+
+0 8.30
+KW
+
+12
+
+ON
+
+0 -3.00
+
+8
+
+0 3.00
+KW
+
+8
+
+KW
+
+25%
+0 -2.00
+KW
+
+8
+
+1.The icon in the center of the home screen indicates that the system is Normal opera�on. If it
+turns into "comm./F01~F64" , it means the inverter has communica�on errors or other errors,
+the error message will display under this icon(F01-F64 errors, detail error info can be viewed in
+the System Alarms menu).
+2.At the top of the screen is the �me.
+3.System Setup Icon, Press this set bu�on,you can enter into the system setup screen which
+including Basic Setup, Ba�ery Setup, Grid Setup, System Work Mode, Generator port use,
+Advanced func�on and Li-Ba� info.
+4.The main screen showing the info including Solar, Grid, Load and Ba�ery. Its also displaying the
+energy ﬂow direc�on by arrow. When the power is approximate to high level, the color on the
+panels will changing from green to red so system info showing vividly on the main screen.
+· PV power and Load power always keep posi�ve.
+· Grid power nega�ve means sell to grid, posi�ve means get from grid.
+· Ba�ery power nega�ve means charge, posi�ve means discharge.
+
+- 29-
+
+5.1.1 LCD opera�on ﬂow chart
+
+Solar Page
+
+Solar Graph
+
+Grid Page
+
+Grid Graph
+
+Inverter Page
+Main Screen
+Battery Page
+
+BMS Page
+
+Load Page
+
+Load Graph
+Battery Setting
+System Work Mode
+Grid Setting
+
+System Setup
+
+Gen Port Use
+Basic Setting
+Advanced Function
+Device info
+
+- 30 -
+
+5.2 Solar Power Curve
+Solar
+Power: 1560W
+PV1-V: 286V
+
+PV2-V: 45V
+
+PV1-I: 5.5A
+
+PV2-I: 0.0A
+
+①
+②
+
+③
+
+Today=8.0 KWH
+Total =12.00 KWH
+
+This is Solar Panel detail page.
+① Solar Panel Genera�on.
+② Voltage, Current, Power for each MPPT.
+③ Solar Panel energy for Day and Total.
+
+PV1-P: 1559W PV2-P: 1W
+
+Energy
+0W
+0.0Hz
+
+75W
+232V
+231V
+229V
+
+0V
+0V
+0V
+HM:
+0W
+0W
+0W
+
+25W
+26W
+24W
+
+Load
+SOC:47%
+97W
+
+①
+
+0.0A
+0.0A
+0.0A
+LD:
+0W
+0W
+0W
+
+75W
+50.0Hz
+222V
+0.0A
+230V
+0.0A
+223V
+0.0A
+INV_P:
+25W
+26W
+AC_T:
+24W
+49.9C
+
+Grid
+
+Inverter
+
+BAT_V:52.45V
+1.03 A/ 0.82 A
+27.0C
+
+DC_P1: 0W
+DC_V1: 0V
+DC_I1: 0.0A
+
+DC_P2: 0W
+DC_V2: 0V
+DC_I2: 0.0A
+
+Battery
+
+PV1
+
+PV2
+
+Load
+
+①
+
+Power: 55W
+
+Today=0.5 KWH
+
+③
+
+Total =1.60 KWH
+L1: 220V
+L2: 220V
+L3: 220V
+
+P1: 19W
+P2: 18W
+P3: 18W
+
+②
+Energy
+
+Grid
+
+Press the “Energy “bu�on will enter into the power
+curve page.
+This is Inverter detail page.
+① Inverter Genera�on.
+Voltage, Current, Power for each Phase.
+AC-T: mean Heat-sink temperature.
+
+This is Load detail page.
+① Load Power.
+② Voltage, Power for each Phase.
+③ Daily and total Load consump�on .
+When you check “Selling First” or “Zero export to
+Load” on system work mode page, the informa�on
+on this page is about backup load which connect on
+Load port of hybrid inverter.
+When you check “Zero export to CT”on system work
+mode page, the informa�on on this page is including
+backup load and home load.
+Press the “Energy “ bu�on will enter into the power
+curve page.
+This is Grid detail page.
+
+①
+
+Stand by
+0W
+0.0Hz
+
+CT1： 0W
+
+LD1：0W ②
+
+CT2: 0W
+
+LD2：0W
+
+CT3: 0W
+
+LD3：0W
+
+L1: 0V
+
+L2: 0V
+
+L3: 0V
+
+① Status, Power, Frequency.
+② L: Voltage for each Phase
+CT: Power detected by the external current
+Total =11.60 KWH
+sensors
+SELL
+LD: Power detected using internal sensors on
+AC grid in/out breaker
+Today=0.0KWH
+Total =8.60 KWH
+③ BUY: Energy from Grid to Inverter,
+SELL: Energy from Inverter to grid.
+Energy Press the “Energy “ bu�on will enter into the power
+curve page.
+BUY
+
+Today=2.2KWH
+
+③
+
+- 31 -
+
+Li-BMS
+
+Batt
+Discharge
+
+Mean Voltage:50.34V
+
+Charging Voltage :53.2V
+
+Total Current:55.00A
+
+Discharging Voltage :47.0V
+
+Mean Temp :23.5C
+
+Charging current :50A
+
+Total SOC
+
+Discharging current :25A
+
+:38%
+
+Dump Energy:57Ah
+
+Details
+Data
+
+Request Force Charge
+
+U:49.58V
+
+Sum
+Data
+
+Request Force Charge: It indicates the
+BMS requests hybrid inverter to charge
+the ba�ery ac�vely.
+
+I:2.04A
+Power: 101W
+Temp:25.0C
+
+Energy
+
+Li-BMS
+Volt
+
+Curr
+
+1 50.38V 19.70A
+2 50.33V 19.10A
+3 50.30V 16.90A
+4 0.00V 0.00A
+5 0.00V 0.00A
+6 0.00V 0.00A
+7 0.00V 0.00A
+8 0.00V 0.00A
+9 0.00V 0.00A
+10 0.00V 0.00A
+11 0.00V 0.00A
+12 0.00V 0.00A
+13 0.00V 0.00A
+14 0.00V 0.00A
+15 0.00V 0.00A
+
+This is Ba�ery detail page.
+if you use Lithium Ba�ery, you can enter BMS page.
+
+Temp
+
+SOC
+
+Energy
+
+30.6C
+31.0C
+30.2C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+0.0C
+
+52.0%
+51.0%
+12.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+0.0%
+
+26.0Ah
+25.5Ah
+6.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+0.0Ah
+
+Charge
+Volt
+
+0.0V
+53.2V
+53.2V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+0.0V
+
+Curr
+
+0.0A
+25.0A
+25.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+0.0A
+
+Fault
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+0|0|0
+
+Sum
+Data
+
+Details
+Data
+
+5.3 Curve Page-Solar & Load & Grid
+System Solar Power:Month
+
+Solar Power Production:Day
+2019-5-28
+
+3000W
+
+2000
+
+80%
+
+1600
+
+60%
+
+1200
+
+40%
+
+800
+
+20%
+
+400
+0
+
+1 3 5 7 9 11 13 15 17 19 21 23
+CANCEL
+
+Day
+
+Month
+
+Year
+
+2000
+
+160
+
+1600
+
+120
+
+1200
+
+80
+
+800
+
+40
+
+400
+
+CANCEL
+
+3
+Day
+
+4
+
+5
+
+6
+
+7
+
+8
+
+Month
+
+Day
+
+15
+
+20
+
+Month
+
+25
+
+30
+
+Year
+
+Total
+
+TOTAL
+
+2000KWh
+
+200
+
+2
+
+10
+
+System Grid Power:Total
+
+2019
+
+1
+
+05
+
+CANCEL
+
+Total
+
+System Solar Power:Year
+KWh
+
+5-2019
+
+2000Wh
+
+100%
+
+9
+
+10
+
+11
+
+Year
+
+0
+
+12
+
+20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20
+16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48
+
+CANCEL
+
+Total
+
+Day
+
+Month
+
+Year
+
+Total
+
+Solar power curve for daily, monthly, yearly and total can be roughly checked on the LCD, for more
+accuracy power genera�on, pls check on the monitoring system. Click the up and down arrow to
+check power curve of diﬀerent period.
+
+- 32 -
+
+5.4 System Setup Menu
+System Setup
+
+This is System Setup page.
+System Work Mode
+
+Battery
+Setting
+
+Grid Setting
+
+Gen Port
+Use
+
+Advanced
+Function
+
+Device Info.
+
+Basic
+Setting
+
+5.5 Basic Setup Menu
+Basic Setting
+Time Syncs
+
+Beep
+
+Year
+
+Month
+
+Day
+
+2019
+
+03
+
+17
+
+Hour
+
+Minute
+
+09
+
+15
+
+24-Hour
+
+Factory Reset
+
+Auto Dim
+Basic
+Set
+
+Factory Reset: Reset all parameters of the inverter.
+Lock out all changes: Enable this menu for se�ng
+parameters that require locking and cannot be set up.
+Before performing a successful factory reset and locking
+the systems, to keep all changes you need to type in a
+password to enable the se�ng.
+The password for factory se�ngs is 9999 and for lock
+out is 7777.
+
+Lock out all changes
+
+PassWord
+
+Factory Reset Password: 9999
+X--X--X--X
+
+DEL
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+CANCEL
+
+0
+
+OK
+
+Lock out all changes Password: 7777
+
+- 33 -
+
+5.6 Ba�ery Setup Menu
+Ba�ery capacity: it tells hybrid inverter to know
+your ba�ery bank size.
+
+Battery Setting
+Batt Mode
+Lithium
+
+Batt Capacity
+
+400Ah
+
+Use Batt V
+
+Max A Charge
+
+40A
+
+Use Batt %
+
+Max A Discharge
+
+40A
+
+No Batt
+
+Batt
+Mode
+
+Use Ba� V: Use Ba�ery Voltage for all the se�ngs (V).
+Use Ba� %: Use Ba�ery SOC for all the se�ngs (%).
+Max. A charge/discharge: Max ba�ery charge/discharge
+current(0-260A for 14kW model, 0-280A for 15kW
+model, 0-300A for 16kW model, 0-330A for 18kW model,
+0-350A for 20kW model).
+For AGM and Flooded, we recommend Ah ba�ery
+size x 20%= Charge/Discharge amps.
+. For Lithium, we recommend Ah ba�ery size x 50% =
+Charge/Discharge amps.
+. For Gel, follow manufacturer' s instruc�ons.
+
+Activate Battery
+
+No Ba�: �ck this item if no ba�ery is connected
+to the system.
+Ac�ve ba�ery: This feature will help recover a
+ba�ery that is over discharged by slowly charging
+from the solar array or grid.
+
+Battery Setting
+
+This is Ba�ery Setup page.
+
+Start
+
+30%
+
+30%
+
+A
+
+40A
+
+40A
+
+①
+
+②
+Batt
+Set2
+
+Gen Charge
+
+Grid Charge
+
+Gen Signal
+
+Grid Signal
+
+Gen Max Run Time
+
+24.0 hours
+
+Gen Down Time
+
+0.0 hours
+
+Gen Signal: Normally open relay that closes when the
+Gen Start signal state is ac�ve.
+
+This is Grid Charge, you need select. ②
+Start =30%: No use，Just for customiza�on.
+A
+= 40A: It indicates the Current that the
+Grid charges the Ba�ery.
+Grid Charge: It indicates that the grid charges
+the ba�ery.
+Grid Signal: Disable.
+
+0
+
+2.00
+KW
+
+7
+
+76%
+0 -1.39
+KW
+
+ON
+
+A
+= 40A: Charge rate of 40A from the a�ached
+generator in Amps.
+Gen Charge: uses the gen input of the system to charge
+ba�ery bank from an a�ached generator.
+
+③
+
+07/08/2021 11:11:10
+
+Gen Max Run Time: It indicates the longest �me
+Generator can run in one day, when �me is up, the
+Generator will be turned oﬀ. 24H means that it does
+not shut down all the �me.
+Gen Down Time: It indicates the delay �me of the
+Generator to shut down a�er it has reached the running
+�me.
+
+Thu
+
+This page tells the PV and diesel generator
+power the load and ba�ery.
+
+0
+
+0.00 5
+KW
+
+0
+
+2.00
+5
+KW
+
+Signal
+on
+
+5
+
+①③
+
+Start =30%: Percent S.O.C at 30% system will AutoStart a
+connected generator to charge the ba�ery bank.
+
+- 34 -
+
+Generator
+Power: 6000W
+
+This page tells generator output voltage, frequency,
+power. And, how much energy is used from generator.
+
+Today=10 KWH
+Total =10 KWH
+P_L1: 2KW
+
+V_L1: 230V
+
+P_L2: 2KW
+
+V_L2: 230V
+
+P_L3: 2KW
+
+V_L3: 230V
+
+Battery Setting
+Lithium Mode
+
+00
+
+Shutdown
+
+10%
+
+Low Batt
+
+20%
+
+Restart
+
+40%
+
+Lithium Mode: This is BMS protocol.Please reference
+the document(Approved Ba�ery).
+Shutdown 10%: It indicates the inverter will shutdown
+if the SOC below this value.
+Low Ba� 20%: It indicates the inverter will alarm if the
+SOC below this value.
+Restart 40%: Ba�ery voltage at 40% AC output will
+resume.
+
+Batt
+Set3
+
+Battery Setting
+Float V
+
+①
+
+53.6V
+
+Absorption V
+
+57.6V
+
+Equalization V
+
+57.6V
+
+Equalization Days 30 days
+Equalization Hours 3.0 hours
+
+Shutdown
+
+③
+
+20%
+
+Low Batt
+
+35%
+
+Restart
+
+50%
+
+Batt
+Set3
+
+There are 3 stages of charging the Ba�ery .
+
+①
+
+This is for professional installers, you can keep it
+if you do not know.
+
+②
+
+Shutdown 20%: The inverter will shutdown if the SOC
+below this value.
+Low Ba� 35%: The inverter will alarm if the SOC
+③
+below this value.
+Restart 50%: Ba�ery SOC at 50% AC output will resume.
+
+TEMPCO(mV/C/Cell)
+
+② -5
+
+Batt Resistance
+25mOhms
+
+Recommended ba�ery se�ngs
+Battery Type
+
+Absorption Stage
+
+Float Stage
+
+Equalization Voltage
+(every 30 days 3hr )
+
+AGM (or PCC)
+
+14.2V (57.6V)
+
+13.4V (53.6V)
+
+14.2V (57.6V)
+
+Gel
+
+14.1V (56.4V)
+
+13.5V (54.0V)
+
+Wet
+
+14.7V (59.0V)
+
+Lithium
+
+13.7V (55.0V)
+Follow its BMS voltage parameters
+
+- 35 -
+
+14.7V (59.0V)
+
+5.7 System Work Mode Setup Menu
+System Work Mode
+12000 Max Solar Power
+
+Selling First
+Zero Export To Load
+
+Solar Sell
+
+Zero Export To CT
+
+Solar Sell
+
+Max Sell Power 12000
+
+Zero-export Power
+
+Energy pattern
+
+BattFirst
+
+Grid Peak Shaving
+
+Work
+Mode1
+
+20
+
+LoadFirst
+
+8000 Power
+
+Work Mode
+Selling First: This Mode allows hybrid inverter to sell
+back any excess power produced by the solar panels to
+the grid. If �me of use is ac�ve, the ba�ery energy also
+can be sold into grid.
+The PV energy will be used to power the load and charge
+the ba�ery and then excess energy will ﬂow to grid.
+Power source priority for the load is as follows:
+1. Solar Panels.
+2. Grid.
+3. Ba�eries (un�l programable % discharge is reached).
+
+Zero Export To Load: Hybrid inverter will only provide power to the backup load connected. The hybrid
+inverter will neither provide power to the home load nor sell power to grid. The built-in CT will detect
+power ﬂowing back to the grid and will reduce the power of the inverter only to supply the local load and
+charge the ba�ery.
+
+Solar
+
+Backup Load
+
+On-Grid Home Load
+
+Grid
+
+Battery
+
+Zero Export To CT: Hybrid inverter will not only provide power to the backup load connected but also give
+power to the home load connected. If PV power and ba�ery power is insuﬃcient, it will take grid energy
+as supplement. The hybrid inverter will not sell power to grid. In this mode, a CT is needed. The installa�on
+method of the CT please refer to chapter 3.6 CT Connec�on. The external CT will detect power ﬂowing back
+to the grid and will reduce the power of the inverter only to supply the local load, charge ba�ery and home
+load.
+
+Solar
+
+Backup Load
+
+On-Grid Home Load
+
+Grid
+CT
+
+Battery
+
+Solar Sell: “Solar sell” is for Zero export to load or Zero export to CT: when this item is ac�ve, the surplus
+energy can be sold back to grid. When it is ac�ve, PV Power source priority usage is as follows: load
+consump�on and charge ba�ery and feed into grid.
+Max. sell power: Allowed the maximum output power to ﬂow to grid.
+Zero-export Power: for zero-export mode, it tells the grid output power. Recommend to set it as 20-100W
+to ensure the hybrid inverter won' t feed power to grid.
+Energy Pa�ern: PV Power source priority.
+Ba� First: PV power is ﬁrstly used to charge the ba�ery and then used to power the load. If PV power is
+insuﬃcient, grid will make supplement for ba�ery and load simultaneously.
+Load First: PV power is ﬁrstly used to power the load and then used to charge the ba�ery. If PV power is
+insuﬃcient, Grid will provide power to load.
+Max Solar Power: allowed the maximum DC input power.
+Grid Peak-shaving: when it is ac�ve, grid output power will be limited within the set value. If the load
+power exceeds the allowed value, it will take PV energy and ba�ery as supplement. If s�ll can’t meet the
+load requirement, grid power will increase to meet the load needs.
+
+- 36 -
+
+System Work Mode
+Grid
+Charge Gen
+
+Time Of Use
+Time
+Power
+
+01:00
+
+Batt
+
+5:00
+
+12000
+
+49.0V
+
+05:00
+
+9:00
+
+12000
+
+50.2V
+
+09:00
+
+13:00
+
+12000
+
+50.9V
+
+13:00
+
+17:00
+
+12000
+
+51.4V
+
+17:00
+
+21:00
+
+12000
+
+47.1V
+
+21:00
+
+01:00
+
+12000
+
+49.0V
+
+Work
+Mode2
+
+Battery Setting
+Start
+
+30%
+
+30%
+
+A
+
+40A
+
+40A
+
+Batt
+Set2
+
+Gen Charge
+
+Grid Charge
+
+Gen Signal
+
+Grid Signal
+
+Gen Max Run Time
+
+0.0 hours
+
+Gen Down Time
+
+0.5 hours
+
+System Work Mode
+
+② Grid
+
+Time Of Use
+Time
+Power
+
+Charge Gen
+01:00
+
+Batt
+
+5:00
+
+12000
+
+80%
+
+05:00
+
+8:00
+
+12000
+
+40%
+
+08:00
+
+10:00
+
+12000
+
+40%
+
+10:00
+
+15:00
+
+12000
+
+80%
+
+15:00
+
+18:00
+
+12000
+
+40%
+
+18:00
+
+01:00
+
+12000
+
+35%
+
+Work
+Mode2
+
+System Work Mode
+Mon
+
+Tue
+
+Wed
+
+Thu
+
+Fri
+
+Sat
+
+Sun
+Work
+Mode4
+
+Time of use: it is used to program when to use grid or
+generator to charge the ba�ery, and when to discharge
+the ba�ery to power the load. Only �ck "Time Of Use"
+then the follow items (Grid, charge, �me, power etc.)
+will take eﬀect.
+Note: when in selling ﬁrst mode and click �me of use,
+the ba�ery power can be sold into grid.
+Grid charge: u�lize grid to charge the ba�ery in a �me
+period.
+Gen charge: u�lize diesel generator to charge the ba�ery
+in a �me period.
+Time: real �me, range of 01:00-24:00.
+Note: when the grid is present, only the “�me of use”
+is �cked, then the ba�ery will discharge. Otherwise,
+the ba�ery won’t discharge even the ba�ery SOC is
+full. But in the oﬀ-grid mode (when grid is not
+available, inverter will work in the oﬀ-grid mode
+automa�cally).
+Power: Max. discharge power of ba�ery allowed.
+Ba�(V or SOC %): ba�ery SOC % or voltage at when the
+ac�on is to happen.
+For example
+
+During 01:00-05:00,
+if ba�ery SOC is lower than 80%, it will use grid to charge the
+ba�ery un�l ba�ery SOC reaches 80%.
+During 05:00-08:00,
+if ba�ery SOC is higher than 40%, hybrid inverter will discharge
+the ba�ery un�l the SOC reaches 40%. At the same �me,
+if ba�ery SOC is lower than 40%, then grid will charge the
+ba�ery SOC to 40%.
+During 08:00-10:00,
+if ba�ery SOC is higher than 40%, hybrid inverter will discharge
+the ba�ery un�l the SOC reaches 40%.
+During 10:00-15:00,
+when ba�ery SOC is higher than 80%, hybrid inverter will
+discharge the ba�ery un�l the SOC reaches 80%.
+During 15:00-18:00,
+when ba�ery SOC is higher than 40%, hybrid inverter will discharge
+the ba�ery un�l the SOC reaches 40%.
+During 18:00-01:00,
+when ba�ery SOC is higher than 35%, hybrid inverter will discharge
+the ba�ery un�l the SOC reaches 35%.
+
+It allows users to choose which day to execute the
+se�ng of “Time of Use”.
+For example, the inverter will execute the �me of use
+page on Mon/Tue/Wed/Thu/Fri/Sat only.
+
+- 37 -
+
+5.8 Grid Setup Menu
+Grid Setting/Grid code selection
+
+Grid Mode:General Standard、UL1741 & IEEE1547、
+CPUC RULE21、SRD-UL-1741、CEI 0-21、Australia A、
+Australia B、Australia C、EN50549_CZ-PPDS(>16A)、
+Phase Type
+Grid Frequency
+50HZ
+Grid
+NewZealand、VDE4105、OVE-Direc�ve R25.
+Set1
+0/120/240
+60HZ
+Please follow the local grid code and then choose the
+0/240/120
+corresponding grid standard.
+Grid level: there’re several voltage levels for the inverter
+LN:220VAC LL:380VAC
+Grid Level
+output voltage when it is in oﬀ-grid mode.
+LN:230VAC LL:400VAC,LN:240VAC LL:420VAC,
+LN:120VAC LL:208VAC, LN:133VAC LL:230VAC.
+IT system-neutral is not grounded
+IT system: If the grid system is IT system, then please
+enable this op�on. For example, the IT grid system voltage is 230Vac (the Line voltage between any two live
+lines in a three-phase circuit is 230Vac, and the diagram is as follow) then please enable “IT system” and �ck
+the “Grid level” as LN:133VAC LL:230VAC as below picture shows.
+Grid Mode
+
+General Standard
+
+0/11
+
+U
+V
+W
+
+Grid Setting/Grid code selection
+
+N
+
+Grid Mode
+
+General Standard
+
+Grid Frequency
+
+50HZ
+
+Phase Type
+
+60HZ
+
+Rz
+
+Grid Level
+
+Rz: Large resistance ground resistor. Or the system
+doesn’t have Neutral line
+
+10s
+
+Low frequency 48.00Hz
+
+High frequency
+
+51.50Hz
+
+Low voltage
+
+High voltage
+
+265.0V
+
+185.0V
+
+Reconnect after trip
+
+Reconnect Ramp rate
+High frequency
+
+51.30Hz
+
+Low voltage
+
+High voltage
+
+263.0V
+
+187.0V
+
+Reconnection Time
+
+PF
+
+60s
+
+Grid
+Set2
+
+36s
+
+Low frequency 48.20Hz
+
+①
+
+HV2
+
+265.0V
+
+--
+
+0.10s
+
+1.000
+
+HV1
+
+265.0V
+
+--
+
+0.10s
+
+LV1
+
+185.0V
+
+--
+
+0.10s
+
+LV2
+
+185.0V
+
+--
+
+0.10s
+
+LV3
+
+185.0V
+
+②
+
+Reconnect a�er trip: The allowed grid voltage
+/frequency range for the inverter connects the grid
+a�er the inverter trip from the grid.
+Reconnect Ramp rate:It is the reconnec�on power ramp.
+
+HV1: Level 1 overvoltage protec�on point;
+HV3: Level 3 overvoltage protec�on point.
+
+260.0V
+
+HF3 51.50Hz
+--
+
+0.10s
+
+HF1 51.50Hz
+
+--
+
+0.10s
+
+LF1
+
+48.00Hz
+
+--
+
+0.10s
+
+LF2
+
+48.00Hz
+
+--
+
+0.10s
+
+LF3
+
+48.00Hz
+
+HF2 51.50Hz
+
+IT system-neutral is not grounded
+
+①HV2: Level 2 overvoltage protec�on point; ② 0.10s—Trip �me.
+
+Over voltage U>(10 min. running mean)
+265.0V
+
+LN:133VAC LL:230VAC
+
+Reconnec�on �me: The wai�ng �me period for
+the inverter connects the grid again.
+PF: Power factor which is used to adjust inverter
+reac�ve power.
+
+Grid Setting/IP Protection
+
+HV3
+
+Grid
+Set1
+
+Normal connect: The allowed grid voltage/frequency
+range when the inverter ﬁrst �me connect to the grid.
+Normal Ramp rate: It is the startup power ramp.
+
+Grid Setting/Connect
+Normal Ramp rate
+
+0/120/240
+0/240/120
+
+220VAC 220VAC 220VAC
+
+Normal connect
+
+0/11
+
+Grid
+Set3
+
+LV1: Level 1 undervoltage protec�on point;
+LV2: Level 2 undervoltage protec�on point;
+LV3: Level 3 undervoltage protec�on point.
+HF1: Level 1 over frequency protec�on point;
+HF2: Level 2 over frequency protec�on point;
+HF3: Level 3 over frequency protec�on point.
+LF1: Level 1 under frequency protec�on point;
+LF2: Level 2 under frequency protec�on point;
+LF3: Level 3 under frequency protec�on point.
+
+- 38 -
+
+Grid Setting/F(W)
+F(W)
+Over frequency
+
+Droop F
+
+40%PE/Hz
+
+Start freq F
+
+50.20Hz
+
+Stop freq F
+
+51.5Hz
+
+Start delay F
+
+0.00s
+
+Stop delay F
+
+0.00s
+
+Under frequency
+
+Droop F
+
+40%PE/Hz
+
+Start freq F
+
+49.80Hz
+
+Stop freq F
+
+49.80Hz
+
+Start delay F
+
+0.00s
+
+Stop delay F
+
+0.00s
+
+Grid
+Set4
+
+Grid Setting/V(W) V(Q)
+V(W)
+
+108.0%
+
+P1
+
+V2
+
+110.0%
+
+P2
+
+80%
+
+V3
+
+112.0%
+
+P3
+
+60%
+
+V4
+
+114.0%
+
+P4
+
+40%
+
+V1
+
+V(Q)
+Lock-out/Pn
+
+5%
+
+20%
+
+94.0%
+
+Q1
+
+V2
+
+97.0%
+
+Q2
+
+0%
+
+V3
+
+105.0%
+
+Q3
+
+0%
+
+V4
+
+108.0%
+
+Q4
+
+-44%
+
+V1
+
+100%
+
+Lock-in/Pn
+
+Grid
+Set5
+
+44%
+
+FW: this series inverter is able to adjust inverter output
+power according to grid frequency.
+Droop F: percentage of nominal power per Hz
+For example, “Start freq F＞50.2Hz, Stop freq F＜51.5,
+Droop F=40%PE/Hz” when the grid frequency reaches
+50.2Hz, the inverter will decrease its ac�ve power at
+Droop F of 40%. And then when grid system frequency
+is less than 50.1Hz, the inverter will stop decreasing
+output power.
+For the detailed setup values, please follow the local
+grid code.
+
+V(W): It is used to adjust the inverter ac�ve power
+according to the set grid voltage.
+V(Q): It is used to adjust the inverter reac�ve power
+according to the set grid voltage.
+This func�on is used to adjust inverter output power
+(ac�ve power and reac�ve power) when grid voltage
+changes.
+Lock-in/Pn 5%: When the inverter ac�ve power is less
+than 5% rated power, the VQ mode will not take eﬀect.
+Lock-out/Pn 20%: If the inverter ac�ve power is
+increasing from 5% to 20% rated power, the VQ mode
+will take eﬀect again.
+
+For example: V2=110%, P2=80%. When the grid voltage reaches the 110% �mes of rated grid voltage,
+inverter output power will reduce its ac�ve output power to 80% rated power.
+For example: V1=94%, Q1=44%. When the grid voltage reaches the 94% �mes of rated grid voltage,
+inverter output power will output 44% reac�ve output power.
+For the detailed setup values, please follow the local grid code.
+
+Grid Setting/P(Q) P(F)
+P(Q)
+
+P(PF)
+Lock-in/Pn
+
+Lock-out/Pn
+
+50%
+
+50%
+
+P1
+
+0%
+
+Q1
+
+2%
+
+P1
+
+0%
+
+PF1 -0.000
+
+P2
+
+2%
+
+Q2
+
+0%
+
+P2
+
+0%
+
+PF2
+
+-0.000
+
+P3
+
+0%
+
+Q3
+
+21%
+
+P3
+
+0%
+
+PF3
+
+0.000
+
+22%
+
+Q4
+
+25%
+
+P4
+
+62%
+
+PF4
+
+0.264
+
+P4
+
+Grid
+Set6
+
+Grid Setting/LVRT
+
+Reserved: This func�on is reserved.It is not
+recommended.
+
+L/HVRT
+
+HV3
+
+0%
+
+HV3_T 30.24s
+
+HV2
+
+0%
+
+HV2_T
+
+HV1
+
+0%
+
+HV1_T 22.11s
+
+LV1
+
+0%
+
+LV1_T
+
+22.02s
+
+LV2
+
+0%
+
+LV2_T
+
+0.04s
+
+P(Q): It is used to adjust the inverter reac�ve power
+according to the set ac�ve power.
+P(PF): It is used to adjust the inverter PF according
+to the set ac�ve power.
+For the detailed setup values, please follow the local
+grid code.
+Lock-in/Pn 50%: When the inverter output ac�ve power
+is less then 50% rated power, it won't enter the P(PF)
+mode.
+Lock-out/Pn 50%: When the inverter output ac�ve
+power is higher then 50% rated power, it will enter the
+P(PF) mode.
+Note : only when the grid voltage is equal to or higher
+than 1.05�mes of rated grid voltage, then the P(PF)
+mode will take eﬀect.
+
+Grid
+Set7
+
+0.04s
+
+- 39 -
+
+5.9 Generator Port Use Setup Menu
+GEN PORT USE
+Mode
+Generator Input
+
+GEN connect to Grid input
+
+PORT
+Set1
+
+Rated Power
+8000W
+
+SmartLoad Output
+
+On Grid always on
+
+AC Couple Frz High
+55.00Hz
+
+Micro Inv Input
+
+OFF(V)
+
+51.0V
+
+ON(V)
+
+54.0V
+
+Generator input rated power: allowed Max. power from diesel
+generator.
+GEN connect to grid input: connect the diesel generator to the
+grid input port.
+Smart Load Output: This mode u�lizes the Gen input connec�on
+as an output which only receives power when the ba�ery SOC
+is above a user programmable threshold.
+e.g. ON: 100%, OFF=95%: When the ba�ery bank SOC reaches
+100%, Smart Load Port will switch on automa�cally and power
+the load connected. When the ba�ery bank SOC < 95% , the
+Smart Load Port will switch oﬀ automa�cally.
+
+Ml export to Grid cutoff
+
+Smart Load OFF Ba�
+• Ba�ery SOC at which the Smart load will switch oﬀ.
+Smart Load ON Ba�
+• Ba�ery SOC at which the Smart load will switch on. simultaneously and then the Smart load will switch on.
+On Grid always on: When click "on Grid always on" the smart load will switch on when the grid is present.
+Micro Inv Input: To use the Generator input port as a micro-inverter on grid inverter input (AC coupled), this feature will
+also work with "Grid-Tied" inverters.
+＊Micro Inv Input OFF: when the ba�ery SOC exceeds se�ng value, Microinveter or grid-�ed inverter will shut down.
+＊Micro Inv Input ON: when the ba�ery SOC is lower than se�ng value, Microinveter or grid-�ed inverter will start to
+work.
+AC Couple Frz High: If choosing“Micro Inv input”, as the ba�ery SOC reaches gradually se�ng value (OFF), During the
+process, the microinverter output power will decrease linear. When the ba�ery SOC equals to the se�ng value (OFF),
+the system frequency will become the se�ng value (AC couple Frz high) and the Microinverter will stop working.
+MI export to grid cutsoﬀ: Stop expor�ng power produced by the microinverter to the grid.
+＊Note: Micro Inv Input OFF and On is valid for some certain FW version only.
+
+5.10 Advanced Func�on Setup Menu
+Advanced Function
+Solar Arc Fault ON
+Clear Arc_Fault
+System selfcheck
+DRM
+Signal Island Mode
+Asymmetric phase feeding
+
+Backup Delay
+0ms
+
+Func
+Set1
+
+Gen peak-shaving
+2000：1
+
+CT Ratio
+
+BMS_Err_Stop
+CEI Report
+
+Solar Arc Fault ON: This is only for US.
+System selfcheck: Disable. this is only for factory.
+Gen Peak-shaving: Enable When the power of the
+generator exceeds the rated value of it, the inverter will
+provide the redundant part to ensure that the generator
+will not overload.
+DRM: For AS4777 standard.
+Backup Delay: When the grid cuts oﬀ, the inverter will
+give output power a�er the se�ng �me.
+For example, backup delay: 3ms. the inverter will give
+output power a�er 3ms when the grid cuts oﬀ.
+Note: for some old FW version, the func�on is not available.
+
+BMS_Err_Stop: When it is ac�ve, if the ba�ery BMS failed to communicate with inverter, the inverter will
+stop working and report fault.
+Signal island mode: If "Signal island mode" is checked and When inverter is in oﬀ-grid mode, the relay on
+the Neutral line (load port N line) will switch ON then the N line (load port N line) will bind to inverter ground.
+
+Inverter
+
+Load port
+
+L1 L2 L3 N
+
+Shell
+Ground cable
+
+Relay
+
+Asymmetric phase feeding: If it was checked, the inverter will take power from the grid balance of on each
+phase (L1/L2/L3) when needed.
+
+- 40 -
+
+Advanced Function
+
+This is for Wind Turbine
+
+DC 1 for WindTurbine
+
+I/A
+
+DC 2 for WindTurbine
+
+V1
+
+90V
+
+0.0A
+
+V7
+
+210V
+
+9.0A
+
+V2
+
+110V
+
+1.5A
+
+V8
+
+230V
+
+10.5A
+
+V3
+
+130V
+
+3.0A
+
+V9
+
+250V
+
+12.0A
+
+V4
+
+150V
+
+4.5A
+
+V10
+
+270V
+
+13.5A
+
+V5
+
+170V
+
+6.0A
+
+V11
+
+290V
+
+15.0A
+
+V6
+
+190V
+
+7.5A
+
+V12
+
+310V
+
+16.5A
+
+Wind
+Set2
+
+0
+
+Advanced Function
+Parallel
+
+Modbus SN
+
+Master
+
+00
+
+Paral.
+Set3
+
+Slave
+
+EX_Meter For CT
+
+16.5
+
+310
+
+U/V
+
+Ex_Meter For CT: when using zero-export to CT mode,
+the hybrid inverter can select EX_Meter For CT func�on
+and use the diﬀerent meters.e.g.CHNT and Eastron.
+
+Meter Select
+No Meter
+
+CHNT
+Eastron
+
+0/3
+
+5.11 Device Info Setup Menu
+Li-BMS
+Device Info.
+
+Li-BMS
+Device Info.
+18K
+Inverter SN: 2404098579
+
+Version Info
+
+Fault Log
+
+Flash
+
+HMI: Ver 1001-C047
+MAIN:Ver 2021-1145-1807
+ARC:VerD206
+
+Li-BMS
+Device Info.
+Alarms Code
+1 50.38V 19.70A 30.6C
+52.0%
+2 50.33V 19.10A 31.0C
+51.0%
+3 F56
+50.30V
+16.90A 30.2C
+12.0%
+DC_VoltLow_Fault
+4 0.00V 0.00A
+0.0C
+0.0%
+Grid_Mode_changed
+5 F13
+0.00V
+0.00A
+0.0C
+0.0%
+0.0C
+0.0%
+6 0.00V 0.00A
+F13
+Grid_Mode_changed
+0.0C
+0.0%
+7 0.00V 0.00A
+0.00V
+0.00A
+0.0C
+0.0%
+8 F56
+DC_VoltLow_Fault
+0.00V 0.00A
+0.0C
+0.0%
+10
+
+These page show Inverter ID, Inverter version and alarm
+codes.
+
+Occurred
+26.0Ah 0.0V
+0.0A 0|0|0
+25.5Ah 53.2V 25.0A 0|0|0
+6.0Ah2024-04-29
+53.2V 25.0A
+0|0|0
+09:33
+0.0Ah
+0.0V
+0.0A 0|0|0
+0.0Ah2024-04-29
+0.0V
+0.0A 07:22
+0|0|0
+0.0Ah2024-04-29
+0.0V
+0.0A 03:22
+0|0|0
+0.0Ah
+0.0V
+0.0A 0|0|0
+0.0Ah2024-04-29
+0.0V
+0.0A 03:11
+0|0|0
+0.0Ah
+0.0V
+0.0A 0|0|0
+
+Device
+Sum
+Info
+Data
+
+Details
+Data
+
+HMI: LCD version
+MAIN: Control board FW version
+
+- 41 -
+
+6. Mode
+Mode I:Basic
+AC cable
+
+Backup Load
+
+DC cable
+
+COM cable
+
+On-Grid Home Load
+
+Solar
+
+CT
+
+Battery
+
+Grid
+
+Mode II: With Generator
+AC cable
+
+Solar
+
+Backup Load
+
+DC cable
+
+On-Grid Home Load
+
+CT
+
+Grid
+
+Battery
+Generator
+
+Mode III: With Smart-Load
+AC cable
+
+Backup Load
+
+Solar
+
+DC cable
+
+On-Grid Home Load
+
+CT
+
+Grid
+
+Battery
+Smart Load
+
+Mode IV: AC Couple
+On-Grid+AC couple
+
+Solar
+
+AC cable
+
+DC cable
+
+Backup Load
+
+Battery
+
+On-Grid Inverter
+
+On-Grid Home Load
+
+Smart Load
+
+CT
+
+- 42 -
+
+Grid
+
+The 1st priority power of the system is always the PV power, then 2nd and
+3rd priority power will be the ba�ery bank or grid according to the se�ngs.
+The last power backup will be the Generator if it is available.
+
+7. Limita�on of Liability
+In addi�on to the product warranty described alone, the state and local laws and regula�ons
+provide ﬁnancial compensa�on for the product's power connec�on (including viola�on of implied
+terms and warran�es). The company hereby declares that the terms and condi�ons of the
+product and the policy can and can only legally exclude all liability within a limited scope.
+Error code
+
+Description
+
+F01
+
+DC input polarity reverse fault
+
+Solutions
+1，Check the PV input polarity
+2，Seek help from us, if can not go back to normal state.
+1，The BUS voltage can t be built from PV or battery.
+
+F07
+
+DC_START_Failure
+
+F13
+
+working mode change
+
+F15
+
+AC over current fault of
+software
+
+F16
+
+AC leakage current fault
+
+F18
+
+AC over current fault
+of hardware
+
+F20
+
+DC over current fault ofthe
+hardware
+
+2，Restart the inverter, If the fault still exists, please
+contact us for help
+1. When the grid type and frequency changed it will report F13;
+2. When the battery mode was changed to “No battery”
+mode,it will report F13;
+3. For some old FW version, it will report F13 when the
+system work mode changed;
+4, Generally, it will disappear automatically when shows F13;
+5. If still same, and turn off the DC switch and AC switch and
+wait for one minute and then turn on the DC/AC switch;
+6. Seek help from us, if can not go back to normal state.
+AC side over current fault
+1. Please check whether the backup load power and common
+load power are within the range;
+2. Restart and check whether it is in normal;
+3. Seek help from us, if can not go back to normal state.
+Leakage current fault
+1, Check the PV side cable ground connection
+2, Restart the system 2-3 times
+3, if the fault still existing, please contact us for help.
+AC side over current fault
+1. Please check whether the backup load power and
+commonload power are within the range;
+2. Restart and check whether it is in normal;
+3. Seek help from us, if cannot go back to normal state.
+DC side over current fault
+1. Check PV module connect and battery connect;
+2. When in the off-grid mode, the inverter startup with big
+power load, it may report F20. Please reduce the load power
+connected;
+3. Turn off the DC switch and AC switch and then wait one minute,
+then turn on the DC/AC switch again;
+4. Seek help from us, if can not go back to normal state.
+
+- 43 -
+
+Error code
+
+Description
+
+F21
+
+Tz_HV_Overcurr_fault
+
+BUS over current.
+1, Check the PV input current and battery current setting
+2. Restart the system 2~3 times.
+3. If the fault still exists, please contact us for help.
+
+F22
+
+Tz_EmergStop_Fault
+
+Remotely shutdown
+1, it tells the inverter is remotely controlled.
+
+F23
+
+Tz_GFCI_OC_ current is
+transient over current
+
+F24
+
+F26
+
+Solutions
+
+Leakage current fault
+1. Check PV side cable ground connection.
+2. Restart the system 2~3 times.
+3. If the fault still exists, please contact us for help.
+
+PV isolation resistance is too low
+1. Check the connection of PV panels and inverter is firmly and
+correctly;
+DC insulation failure
+2. Check whether the PE cable of inverter is connected
+to ground;
+3. Seek help from us, if can not go back to normal state.
+1. Please wait for a while and check whether it is normal;
+2. When the load power of 3 phases is big different, it will report
+the F26.
+The DC busbar isunbalanced
+3 .When there’s DC leakage current, it will report F26
+4. Restart the system 2~3 times.
+5. Seek help from us, if can not go back to normal state.
+
+F29
+
+Parallel CAN Bus fault
+
+1. When in parallel mode, check the parallel communication
+cable connection and hybrid inverter communication
+address setting;
+2. During the parallel system startup period, inverters will report
+F29.But when all inverters are in ON status, it will disappear
+automatically;
+3. If the fault still exists, please contact us for help.
+
+F34
+
+AC Overcurrent fault
+
+1, Check the backup load connected, make sure it is in allowed
+power range
+2, If the fault still exists, please contact us for help
+
+Parallel system stop
+
+1, Check the hybrid inverter work status. If there’
+s 1pcs
+hybrid inverter shutdown, all hybrid inverters
+will report F41 fault.
+2, If the fault still exists, please contact us for help
+
+F41
+
+F42
+
+AC line low voltage
+
+Grid voltage fault
+1. Check the AC voltage is in the range of standard voltage
+inspecification;
+2. Check whether grid AC cables are firmly and correctly
+connected;
+3. Seek help from us, if can not go back to normal state.
+
+- 44 -
+
+Error code
+
+Description
+
+Solutions
+
+F46
+
+backup battery fault
+
+1，Please check each battery status, such as voltage/ SOC and
+parameters etc., and make sure all the parameters are same.
+2，If the fault still exists, please contact us for help
+
+F47
+
+AC over frequency
+
+Grid frequency out of range
+1. Check the frequency is in the range of specification or not;
+2. Check whether AC cables are firmly and correctly connected;
+3. Seek help from us, if can not go back to normal state.
+
+F48
+
+AC lower frequency
+
+Grid frequency out of range
+1. Check the frequency is in the range of specification or not;
+2. Check whether AC cables are firmly and correctly connected;
+3. Seek help from us, if can not go back to normal state.
+
+F55
+
+F56
+
+BUS voltage is too high
+1. Check whether battery voltage is too high;
+2. check the PV input voltage, make sure it is within the allowed
+DC busbar voltage is too high
+range;
+3. Seek help from us, if can not go back to normal state.
+Battery voltage low
+1. Check whether battery voltage is too low;
+2. If the battery voltage is too low, using PV or grid to
+DC busbar voltage is too low
+charge thebattery;
+3. Seek help from us, if can not go back to normal state.
+
+F58
+
+BMS communication fault
+
+1, it tells the communication between hybrid inverter and battery
+BMS disconnected when “BMS_Err-Stop” is active”
+2, if don’t want to see this happen, you can disable
+“BMS_Err-Stop” item on the LCD.
+3, If the fault still exists, please contact us for help
+
+F62
+
+DRMs0_stop
+
+1, the DRM function is for Australia market only.
+2, Check the DRM function is active or not
+3, Seek help from us, if can not go back to normal state after
+restart the system
+
+F63
+
+ARC fault
+
+F64
+
+Heat sink high
+temperaturefailure
+
+1. ARC fault detection is only for US market;
+2. Check PV module cable connection and clear the fault;
+3. Seek help from us, if can not go back to normal state
+Heat sink temperature is too high
+1. Check whether the work environment temperature is too high;
+2. Turn off the inverter for 10mins and restart;
+3. Seek help from us, if can not go back to normal state.
+
+Chart 7-1 Fault informa�on
+
+- 45 -
+
+Under the guidance of our company, customers return our products so that our company can
+provide service of maintenance or replacement of products of the same value. Customers need to
+pay the necessary freight and other related costs. Any replacement or repair of the product will
+cover the remaining warranty period of the product. If any part of the product or product is
+replaced by the company itself during the warranty period, all rights and interests of the
+replacement product or component belong to the company.
+Factory warranty does not include damage due to the following reasons:
+· Damage during transporta�on of equipment；
+· Damage caused by incorrect installa�on or commissioning；
+· Damage caused by failure to comply with opera�on instruc�ons, installa�on instruc�ons or
+maintenance instruc�ons；
+· Damage caused by a�empts to modify, alter or repair products；
+· Damage caused by incorrect use or opera�on；
+· Damage caused by insuﬃcient ven�la�on of equipment；
+· Damage caused by failure to comply with applicable safety standards or regula�ons；
+· Damage caused by natural disasters or force majeure (e.g. ﬂoods, lightning, overvoltage, storms,
+ﬁres, etc.)
+In addi�on, normal wear or any other failure will not aﬀect the basic opera�on of the product.
+Any external scratches, stains or natural mechanical wear does not represent a defect in the
+product.
+
+- 46 -
+
+8. Datasheet
+Model
+Battery Input Data
+
+Ba�ery Type
+Ba�ery Voltage Range(V)
+Max. Charging Current(A)
+Max. Discharging Current(A)
+Charging Strategy for Li-ion Ba�ery
+Number of Ba�ery Input
+
+SUN-14KSG05LP3EU-SM2
+
+SUN-15KSG05LP3EU-SM2
+
+350
+350
+
+21000
+
+22500
+
+27000
+
+30000
+
+330-650
+
+350-650
+
+420-650
+
+470-650
+
+15000
+16000
+18000
+16500
+17600
+19800
+2 �mes of rated power, 10s
+22.8/21.8
+24.3/23.2
+27.3/26.1
+22.8/21.8
+24.3/23.2
+27.3/26.1
+70
+50
+53.4
+60
+94
+220/380V,230/400V 0.85Un-1.1Un
+3L+N+PE
+50Hz/45Hz-55Hz 60Hz/55Hz-65Hz
+0.8 leading-0.8 lagging
+<3% (of nominal power)
+<0.5%In
+
+20000
+22000
+
+AC Input/Output Data
+
+Eﬃciency
+
+SUN-20KSG05LP3EU-SM2
+
+260
+260
+
+Rated AC Input/Output Ac�ve Power(W)
+14000
+Max. AC Input/Output Apparent Power(VA)
+15400
+Peak Power (oﬀ-grid)(W)
+21.3/20.3
+Rated AC Input/Output Current(A)
+21.3/20.3
+Max. AC Input/Output Current(A)
+Max. Con�nuous AC Passthrough (grid to load)(A)
+Max. Output Fault Current(A)
+46.8
+Max. Output Overcurrent Protec�on(A)
+Rated Input/Output Voltage/Range(V)
+Grid Connec�on Form
+Rated Input/Output Grid Frequency/Range
+Power Factor Adjustment Range
+Total Current Harmonic Distor�on THDi
+DC Injec�on Current
+
+SUN-18KSG05LP3EU-SM2
+
+Lead-acid or Lithium-ion
+40-60
+280
+300
+330
+280
+300
+330
+Self-adap�on to BMS
+2
+
+PV String Input Data
+
+Max. PV Input Power(W)
+Max. PV Input Voltage(V)
+Start-up Voltage(V)
+PV Input Voltage Range(V)
+MPPT Voltage Range(V)
+Full Load MPPT Voltage Range(V)
+Rated PV Input Voltage(V)
+Max. Opera�ng PV Input Current(A)
+Max. Input Short-Circuit Current(A)
+No. of MPP Trackers/No. of Strings MPP Tracker
+Max. Inverter Backfeed Current to The Array
+
+SUN-16KSG05LP3EU-SM2
+
+Max. Eﬃciency
+Euro Eﬃciency
+MPPT Eﬃciency
+
+24000
+800
+160
+160-800
+160-650
+380-650
+550
+36+20
+54+30
+2/2+1
+0
+
+97.60%
+97.00%
+>99%
+
+Equipment Protection
+
+DC Polarity Reverse Connec�on Protec�on
+AC Output Overcurrent Protec�on
+AC Output Overvoltage Protec�on
+AC Output Short Circuit Protec�on
+Thermal Protec�on
+DC Terminal Insula�on Impedance Monitoring
+
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+
+- 47 -
+
+30.4/29
+30.4/29
+66.8
+
+DC Component Monitoring
+Ground Fault Current Monitoring
+Power Network Monitoring
+Island Protec�on Monitoring
+Earth Fault Detec�on
+DC Input Switch
+Overvoltage Load Drop Protec�on
+Residual Current (RCD) Detec�on
+Surge Protec�on Level
+
+Interface
+
+Display
+Communica�on Interface
+Monitor Mode
+
+General Data
+
+Opera�ng Temperature Range
+Permissible Ambient Humidity
+Permissible Al�tude
+Noise
+Ingress Protec�on(IP) Ra�ng
+Inverter Topology
+Over Voltage Category
+Cabinet size(W*H*D) [mm]
+Weight(kg)
+Warranty
+Type of Cooling
+Grid Regula�on
+Safety EMC/Standard
+
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+TYPE II(DC), TYPE II(AC)
+LCD+LED
+RS232, RS485, CAN
+GPRS/WIFI/Bluetooth/4G/LAN(op�onal)
+-40 to +60℃, >45℃ Dera�ng
+0-100%
+3000m
+＜ 60 dB
+IP 65
+Non-Isolated
+OVC II(DC), OVC III(AC)
+456W×750H×268.5D (Excluding connectors and brackets)
+50.6
+5 Years/10 Years
+the Warranty Period Depends the Final Installa�on Site of Inverter,
+More Info Please Refer to Warranty Policy
+Intelligent Air Cooling
+IEC 61727,IEC 62116,CEI 0-21,EN 50549,NRS 097,RD 140,
+UNE 217002,OVE-Richtlinie R25,G99,VDE-AR-N 4105
+IEC/EN 61000-6-1/2/3/4, IEC/EN 62109-1, IEC/EN 62109-2
+
+- 48 -
+
+9. Appendix I
+Deﬁni�on of RJ45 Port Pin for BMS
+
+1
+
+485_B
+
+2
+3
+
+485_A
+--
+
+4
+
+CAN-H
+
+5
+
+CAN-L
+
+6
+
+GND_485
+
+7
+
+485_A
+
+8
+
+485_B
+
+BMS 485/CAN Port
+
+12345678
+
+321
+
+RS485 Pin
+
+87654
+
+No.
+
+Deﬁni�on of RJ45 Port Pin for Meter-485
+
+1
+
+METER-485-B
+
+2
+3
+
+METER-485-A
+COM-GND
+
+4
+
+METER-485-B
+
+5
+
+METER-485-A
+
+6
+
+COM-GND
+
+7
+
+METER-485-A
+
+8
+
+METER-485-B
+
+Meter-485 Port
+12345678
+
+321
+
+Meter-485 Pin
+
+87654
+
+No.
+
+Deﬁni�on of RJ45 Port Pin of "Modbus port" for
+remotely monitoring
+
+1
+
+SUNSPE-485_B
+
+2
+
+SUNSPE-485_A
+
+3
+
+GND_SUNSPE-485
+
+4
+
+--
+
+5
+
+--
+
+6
+
+GND_SUNSPE-485
+
+7
+
+SUNSPE-485_A
+
+8
+
+SUNSPE-485_B
+
+Modbus port
+12345678
+
+321
+
+Modbus port
+
+87654
+
+No.
+
+- 49 -
+
+DRM：It is used to accept the external control command.
+Deﬁni�on of RJ45 Port Pin for DRM
+
+DI 1
+
+2
+
+DI 2
+
+3
+
+DI 3
+
+4
+
+DI 4
+
+5
+
+REF
+
+6
+
+GND
+
+7
+
+Reserved
+
+8
+
+Reserved
+
+12345678
+
+321
+
+DRM
+
+1
+
+87654
+
+No.
+
+(PIN 6 REF_2)
+PIN 5 REF_1
+PIN 4 DI 4
+PIN 3 DI 3
+PIN 2 DI 2
+PIN 1 DI 1
+Inverter
+
+100%
+
+K2
+
+60%
+
+K3
+
+30%
+
+K4
+
+0%
+
+RCR
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+5678
+
+1
+
+K1
+
+1234
+
+K1
+K2
+K3
+K4
+- 50 -
+
+RS232
+No.
+
+WIFI/RS232
+
+1
+2
+
+TX
+
+3
+
+RX
+
+4
+5
+
+D-GND
+
+6
+7
+8
+9
+
+12Vdc
+
+5 4 3 2 1
+9 8 7 6
+
+WIFI/RS232
+This RS232 port is used to connect the wiﬁ datalogger
+
+- 51 -
+
+10. Appendix II
+1. Split Core Current Transformer (CT) dimension: (mm)
+2. Secondary output cable length is 4m.
+
+Lead Outside
+
+11. EU Declara�on of Conformity
+
+within the scope of the EU directives
+· Electromagnetic compatibility ����/��/EU (EMC)
+· Low Voltage Directive ����/��/EU (LVD)
+· Restriction of the use of certain hazardous substances ����/��/EU (RoHS)
+
+NINGBO DEYE INVERTER TECHNOLOGY CO., LTD. conﬁrms herewith that the products
+described in this document are in compliance with the fundamental requirements and other
+relevant provisions of the above mentioned directives. The entire EU Declaration of Conformity
+and certiﬁcate can be found at https://www.deyeinverter.com/download/#hybrid-inverter-�.
+
+- 52 -
+
+240508001
+
+www.deyeinverter.com
+
+EU Declaration of Conformity
+Product:Hybrid Inverter
+Models: SUN-14K-SG05LP3-EU-SM2;SUN-15K-SG05LP3-EU-SM2;SUN-16K-SG05LP3-EU-SM2;
+SUN-18K-SG05LP3-EU-SM2;SUN-20K-SG05LP3-EU-SM2;
+Name and address of the manufacturer: Ningbo Deye Inverter Technology Co., Ltd.
+No. 26 South YongJiang Road, Daqi, Beilun, NingBo, China
+
+This declaration of conformity is issued under the sole responsibility of the manufacturer. Also this product
+is under manufacturer’s warranty.
+This declaration of conformity is not valid any longer: if the product is modified, supplemented or changed in
+any other way, as well as in case the product is used or installed improperly.
+The object of the declaration described above is in conformity with the relevant Union harmonization legislation:
+The Low Voltage Directive (LVD) 2014/35/EU;the Electromagnetic Compatibility (EMC) Directive 2014/30/EU;the
+restriction of the use of certain hazardous substances (RoHS) Directive 2011/65/EU.
+References to the relevant harmonized standards used or references to the other technical specifications in
+relation to which conformity is declared:
+LVD:
+
+🔴
+🔴
+
+EN 62109-1:2010
+EN 62109-2:2011
+EMC:
+
+EN IEC 61000-6-1:2019
+EN IEC 61000-6-2:2019
+EN IEC 61000-6-3:2021
+EN IEC 61000-6-4:2019
+EN IEC 61000-3-2:2019/A1:2021
+EN 61000-3-3:2013/A2:2021/AC:2022-01
+EN IEC 61000-3-11:2019
+EN 61000-3-12:2011
+EN 55011:2016/A2:2021
+EN 62920:2017+A11+A1
+
+🔴
+🔴
+🔴
+🔴
+🔴
+🔴
+🔴
+🔴
+🔴
+🔴
+
+Nom et Titre / Name and Title:
+
+Bard Dai
+Senior Standard and Certification Engineer
+
+Au nom de / On behalf of:
+Date / Date (yyyy-mm-dd):
+A / Place：
+
+Ningbo Deye Inverter Technology Co., Ltd.
+2024-05-08
+Ningbo, China
+
+EU DoC – v1
+
+Ningbo Deye Inverter Technology Co., Ltd.
+No. 26 South YongJiang Road, Daqi, Beilun, NingBo, China
+
+2024-05-31
+
+- 53 -
+
+Add.: No.26 South YongJiang Road, Daqi, Beilun, NingBo, China.
+Tel.: +86 (0) 574 8622 8957
+Fax.: +86 (0) 574 8622 8852
+E-mail: service@deye.com.cn
+Web.: www.deyeinverter.com
+
+
