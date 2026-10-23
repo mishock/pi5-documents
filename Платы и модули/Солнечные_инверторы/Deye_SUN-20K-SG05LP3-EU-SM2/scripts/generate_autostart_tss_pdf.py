@@ -133,46 +133,47 @@ def build() -> None:
     story.append(P("Deye SUN-20K ×2 ↔ TSS TQc 22TS ST — автозапуск ДГУ", s["title"]))
     story.append(
         P(
-            "Версия 2026-10-23. Инвертор: SUN-20K-SG05LP3-EU-SM2. ДГУ: АД-16С-Т400-1РКМ5, "
-            "16 кВт / 20 кВА, S/N DG030000022116. Жёлтые строки — ключевые. Колонка «Факт» — на объекте.",
+            "Версия 2026-10-23 (схема Аникеев: параллель сухого контакта + один автомат GEN). "
+            "ДГУ: АД-16С-Т400-1РКМ5, 16 кВт, S/N DG030000022116. Выезд ~15:00. "
+            "Жёлтые — ключевые. «Факт» — на объекте.",
             s["body"],
         )
     )
     story.append(
         P(
-            "ДГУ только 16 кВт — Rated Power и ток заряда ограничить. "
-            "Gen Signal только на Master. G-start = сухой контакт (без напряжения).",
+            "Неважно кто дал команду на пуск — сила с ДГУ идёт на оба INV через один автомат. "
+            "G-start INV1∥INV2 на 40–41. Gen Signal ВКЛ на обоих. ДГУ 16 кВт — не грузить на полную.",
             s["warn"],
         )
     )
 
-    story.append(P("1. Подключение", s["h1"]))
+    story.append(P("1. Подключение (как договорились)", s["h1"]))
     c = s["cell"]
     cb = s["cellb"]
     rows = [
         [P("Пункт", cb), P("Выставить", cb), P("Пояснение", cb), P("Факт", cb)],
         [
-            P("Сигнал пуска", c),
-            P("Master CN2 G-start 1–2 → DIN <b>40</b> и <b>41</b>", c),
-            P("Сначала тест замыканием 40–41 в AUTO. Если нет реакции — пара 22–0", c),
+            P("Сухой контакт", c),
+            P("G-start INV1 <b>∥</b> INV2 → DIN <b>40</b> и <b>41</b>", c),
+            P("NO параллельно: пуск от любого; стоп когда оба разомкнули. Тест 40–41 в AUTO", c),
             P("", c),
         ],
         [
-            P("Slave G-start", c),
-            P("Не подключать", c),
-            P("Gen Signal на Slave = ВЫКЛ", c),
+            P("Gen Signal", c),
+            P("<b>ВКЛ на обоих</b>", c),
+            P("Иначе второй не сможет стартовать ДГУ", c),
             P("", c),
         ],
         [
             P("Сила ДГУ", c),
-            P("L1 L2 L3 N PE → автомат ~32 А → порт GEN", c),
-            P("Не Load / не Grid. Фазировка = Grid", c),
+            P("Один автомат «от генератора» → GEN обоих", c),
+            P("На щите ИНВ1 / ИНВ2. Фазировка = Grid", c),
             P("", c),
         ],
         [
             P("L / N1 на DIN", c),
             P("Не трогать для пуска", c),
-            P("Не сигнал Remote Start", c),
+            P("Не Remote Start", c),
             P("", c),
         ],
         [
@@ -182,18 +183,18 @@ def build() -> None:
             P("", c),
         ],
     ]
-    story.append(make_table(rows, [3.2 * cm, 5.5 * cm, 6.5 * cm, 2.0 * cm], {1, 2}))
+    story.append(make_table(rows, [3.2 * cm, 5.5 * cm, 6.5 * cm, 2.0 * cm], {1, 2, 3}))
     story.append(Spacer(1, 4 * mm))
 
-    story.append(P("2. GEN PORT USE (оба инвертора)", s["h1"]))
+    story.append(P("2. GEN PORT USE (оба одинаково)", s["h1"]))
     rows = [
         [P("Пункт", cb), P("Значение", cb), P("Пояснение", cb), P("Факт", cb)],
         [P("Generator Input", c), P("ВКЛ", c), P("Порт = вход генератора", c), P("", c)],
         [P("SmartLoad / Micro Inv", c), P("ВЫКЛ", c), P("Иначе GEN не примет ДГУ", c), P("", c)],
         [
             P("Rated Power", c),
-            P("<b>14000 W</b>", c),
-            P("Паспорт ДГУ 16 кВт; запас. Не 20000", c),
+            P("<b>7000 W</b> на каждом", c),
+            P("Сумма ~14 кВт ≤ 16 кВт ДГУ. Не 20000", c),
             P("", c),
         ],
         [P("GEN connect to grid input", c), P("ВЫКЛ", c), P("ДГУ в клеммы GEN", c), P("", c)],
@@ -203,27 +204,27 @@ def build() -> None:
 
     story.append(P("3. Battery Setup — Gen Charge / Gen Signal", s["h1"]))
     rows = [
-        [P("Пункт", cb), P("Master", cb), P("Slave", cb), P("Пояснение", cb), P("Факт", cb)],
+        [P("Пункт", cb), P("INV1", cb), P("INV2", cb), P("Пояснение", cb), P("Факт", cb)],
         [P("Gen Charge", c), P("ВКЛ", c), P("ВКЛ", c), P("Заряд АКБ с GEN", c), P("", c)],
         [
             P("Gen Signal", c),
             P("<b>ВКЛ</b>", c),
-            P("<b>ВЫКЛ</b>", c),
-            P("Сухой контакт пуска только с Master", c),
+            P("<b>ВКЛ</b>", c),
+            P("Параллель сухого контакта", c),
             P("", c),
         ],
         [
             P("Start (SOC)", c),
             P("28 %", c),
             P("28 %", c),
-            P("Ниже порога → автостарт (25–30 %)", c),
+            P("Одинаковый порог на обоих", c),
             P("", c),
         ],
         [
             P("Ток заряда A=", c),
-            P("80 A", c),
-            P("80 A", c),
-            P("~4 кВт; запас ДГУ под Load. Подкрутить", c),
+            P("40 A", c),
+            P("40 A", c),
+            P("Сумма ~80 A; запас ДГУ под Load", c),
             P("", c),
         ],
         [
@@ -238,31 +239,35 @@ def build() -> None:
     story.append(make_table(rows, [3.2 * cm, 2.2 * cm, 2.2 * cm, 7.6 * cm, 2.0 * cm], {2, 3, 4}))
     story.append(Spacer(1, 4 * mm))
 
-    story.append(P("4. Advanced + Parallel", s["h1"]))
+    story.append(P("4. Advanced + проверка логики", s["h1"]))
     rows = [
         [P("Пункт", cb), P("Значение", cb), P("Пояснение", cb), P("Факт", cb)],
         [
             P("Gen Peak-shaving", c),
             P("ВКЛ", c),
-            P("Инвертор добирает из АКБ при перегрузе 16 кВт ДГУ", c),
+            P("Добор из АКБ при перегрузе 16 кВт ДГУ", c),
             P("", c),
         ],
-        [P("Parallel role", c), P("INV1 Master / INV2 Slave", c), P("Кабель Parallel_A/B", c), P("", c)],
+        [
+            P("Тест пуска", c),
+            P("От INV1, потом от INV2", c),
+            P("В обоих случаях сила на оба; стоп когда оба сняли сигнал", c),
+            P("", c),
+        ],
     ]
-    story.append(make_table(rows, [3.5 * cm, 4.5 * cm, 7.2 * cm, 2.0 * cm], {1}))
+    story.append(make_table(rows, [3.5 * cm, 4.5 * cm, 7.2 * cm, 2.0 * cm], {1, 2}))
     story.append(Spacer(1, 4 * mm))
 
-    story.append(P("5. Порядок на объекте", s["h1"]))
+    story.append(P("5. Порядок на объекте (~15:00)", s["h1"]))
     story.append(
         P(
-            "☐ AUTO + тест 40–41 (или 22–0) без инвертора &nbsp;&nbsp; "
-            "☐ G-start только Master &nbsp;&nbsp; "
-            "☐ Сила → GEN, фазы OK<br/>"
-            "☐ Меню §2–4 &nbsp;&nbsp; "
-            "☐ Пуск по SOC / Gen Force → на LCD Generator V/f/P &nbsp;&nbsp; "
-            "☐ Нагрузка без захлёба ДГУ<br/>"
-            "☐ Стоп по снятию сигнала / рост SOC &nbsp;&nbsp; "
-            "☐ Записать: пара клемм ____ Start% ____ A= ____ Rated ____",
+            "☐ AUTO + тест 40–41 &nbsp;&nbsp; "
+            "☐ G-start INV1∥INV2 &nbsp;&nbsp; "
+            "☐ Один автомат GEN → оба<br/>"
+            "☐ Gen Signal ВКЛ оба, SOC одинаковый &nbsp;&nbsp; "
+            "☐ Пуск от каждого INV → Generator на LCD<br/>"
+            "☐ Нагрузка без захлёба &nbsp;&nbsp; "
+            "☐ Записать: клеммы ____ Start% ____ A= ____ Rated ____",
             s["body"],
         )
     )
