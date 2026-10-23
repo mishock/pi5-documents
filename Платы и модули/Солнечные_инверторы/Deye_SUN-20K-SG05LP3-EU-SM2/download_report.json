@@ -1,0 +1,28 @@
+{
+  "model": "SUN-20K-SG05LP3-EU-SM2",
+  "downloaded_at": "2026-08-31",
+  "files": [
+  {
+    "name": "Deye_SUN-20K-SG05LP3-EU-SM2_User_Manual_EN.pdf",
+    "source": "solsol.eu (копия Manual_SUN-14-20K-SG05LP3-EU-SM2)",
+    "size_bytes": 9437184
+  },
+  {
+    "name": "Deye_SUN-20K-SG05LP3-EU-SM2_User_Manual_EN_alt.pdf",
+    "source": "shop.solar-kit.eu",
+    "note": "дубликат user manual"
+  },
+  {
+    "name": "Deye_SUN-14-20K-SG05LP3-EU-SM2_Datasheet_EN.pdf",
+    "source": "support.deye-rus.ru"
+  },
+  {
+    "name": "Deye_SUN-14-20K-SG05LP3-EU-SM2_Datasheet_EN_official.pdf",
+    "source": "deye.com/wp-content/uploads/2026/07/"
+  }
+  ],
+  "generated_pdfs": [
+    "generated/Deye_SUN-20K-SG05LP3-EU-SM2_Installation_Setup_RU.pdf",
+    "generated/Deye_SUN-20K-SG05LP3-EU-SM2_2xRW-F16_Full_System_Guide_RU.pdf"
+  ]
+}

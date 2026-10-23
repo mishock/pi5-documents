@@ -1,3 +1,50 @@
+## Фокус — автозапуск TSS + 2× Deye 20K (2026-10-23)
+
+- PDF: `Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/generated/АВТОЗАПУСК_TSS_TQc22_2xDeye20K.pdf`
+- ДГУ папка: `Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/`
+- На объекте: тест 40–41 в AUTO; Gen Signal только Master; Rated Power 14000 W.
+
+- **Пометка даты (2026-10-23):** alwaysApply `date-stamp-on-changes.mdc` — при любой правке YYYY-MM-DD.
+
+## Фокус — офис XKeen / ELTAVR_VPN (2026-10-23)
+
+- Причина сбоя: OOM kill xray на Keenetic Giga (~512 МБ).
+- Сейчас: xray Mixed, `GOMEMLIMIT=100MiB`, RSS ~25 МБ, cron watchdog каждые 2 мин.
+- Проверка: `sshpass -p keenetic ssh -p 222 root@192.168.1.1 'xkeen -status; pidof xray'`
+- После `xkeen -ux`: `bash Документы/.cursor/scripts/install-office-xkeen-oom-guard.sh`
+- Док: `keenetic-routers.md` § OOM.
+
+## Фокус — JK BLE → Deye (2026-10-23)
+
+- Прошивка: `Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/` **v0.1.7**.
+- CAN RX лог во **флеш** (LittleFS `/canlog.dat`, 256 кадров TX+RX) — переживает отключение питания; после USB: Serial `canlog` / веб.
+- Заливка: `ESP_PORT=/dev/ttyACM0 bash scripts/flash.sh -d firmware/jk_ble_pylon_deye -e esp32s3_jk_deye --monitor`.
+- AP `JK-DEYE` / `jk-deye-cfg` → http://192.168.4.1/ ; Deye: Lithium + Pylon, CAN 500k.
+- Релиз: `firmware/jk_ble_pylon_deye/releases/jk_ble_pylon_deye_v0.1.7.bin`.
+
+## Фокус — ESP BMC MIN v0.4.5b LED (2026-10-21)
+MCP прошит; LED=ON в Serial; пульс mostly-ON.
+## Deye Cloud — Ак-Як 33 (2026-10-21)
+
+## Cursor Remote Control (2026-10-21 15:30)
+
+- Аккаунт Pi5/телефон: **mishock24@gmail.com**. Рабочий ПК: **mishock24@icloud.com**.
+- Worker **Документы на Pi5** online (`cursor-self-hosted-worker.service`); auth: `~/.config/cursor/auth.json` + `CURSOR_API_KEY` в `cursor-worker.env`.
+- Телефон: Runtime → Self-Hosted → Документы на Pi5 (не Cloud). Док: `REMOTE_CONTROL.md`.
+
+
+- Plant **62828303** Online; logger **1538096135**; INV **2607253382**.
+- Аккаунт mishock24@gmail.com; env `~/.config/deyecloud.env`.
+- **Шаблон ЭЛЬТАВР записан** (перечитано OK): **235 Ah** (факт на объекте), 100/140 A, Activate OFF, Grid 50 A, Gen 48 V/40 A, LowPower+MPPT ON.
+- Grid Start enable **выкл** (шаблон) → 00E4=49 В нормально.
+- Заметки: `…/notes/DEYE_CLOUD_AK_YAK_33.md`, `…/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md`.
+
+## Deye 6.6K — генератор / Gen Force (2026-10-20)
+
+- Без **Gen Force** заряд от ГУ только если АКБ ≤ **Gen Start**. Ручной ГУ «сейчас» → поднять Start или Force ВКЛ.
+- PDF: `…/Deye_SUN-6.6K-OG03LP1-EU-AM2/generated/НАСТРОЙКА_ГЕНЕРАТОРА_Deye6.6K_Load_и_заряд_АКБ.pdf` (§6 FAQ).
+- Gen charge stop% = 0 если Load с ГУ оставлять после «полной» АКБ.
+
 ## Must PV18-4024 — неисправный в СЦ (2026-10-20)
 
 - Drive: `1yqfe13z8Le_DgJHst6iGThGPQWp0O0Gj` (видео + PDF для сервиса).
