@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""Схема двора Пушкина 29 — ЗУ3 с зонами покрытия.
+"""Схема зон покрытия двора Пушкина 29 (плитка / асфальт).
 
 Обновлено: 2026-10-26
+Стиль как у «Приложение 1 — Схема двора» от 08.10.2026:
+- лист 1: простой заголовок + крупный план;
+- лист 2: условные обозначения.
+
 Источник: notes/zu3_fragment_source_2026-10-26.png
 - розовый контур → асфальт
 - синий контур → плитка
@@ -14,9 +18,11 @@ from collections import deque
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,21 +32,21 @@ VERT_OUT = ROOT / "notes" / "zu3_fragment_vertical_2026-10-26.png"
 ZONES_OUT = ROOT / "notes" / "zu3_fragment_zones_2026-10-26.png"
 UPSCALE = 2
 
-# Палитра оформления (редакция 2026-10-26)
-C_INK = (28, 32, 38)
-C_MUTED = (90, 98, 110)
-C_LINE = (210, 216, 224)
-C_PANEL = (246, 248, 251)
-C_ACCENT = (26, 86, 140)
-C_ASPHALT = (78, 84, 92)
-C_ASPHALT_HATCH = (48, 52, 58)
-C_TILE = (72, 148, 220)
-C_TILE_LIGHT = (186, 218, 248)
-C_TILE_INK = (18, 70, 140)
+# заливки зон (технический стиль, как на схеме двора 08.10)
+C_ASPHALT = (110, 110, 115)
+C_ASPHALT_HATCH = (55, 55, 60)
+C_TILE = (176, 120, 72)
+C_TILE_LIGHT = (220, 180, 130)
 C_PINK = (210, 60, 140)
+C_BLUE = (40, 90, 200)
+
+FONT_REG = "DejaVu"
+FONT_BOLD = "DejaVu-Bold"
+pdfmetrics.registerFont(TTFont(FONT_REG, "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"))
+pdfmetrics.registerFont(TTFont(FONT_BOLD, "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"))
 
 
-def _font(name: str, size: int) -> ImageFont.FreeTypeFont:
+def _pil_font(name: str, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(f"/usr/share/fonts/truetype/dejavu/{name}.ttf", size)
 
 
@@ -199,9 +205,7 @@ def extract_vertical_fragment(src: Path) -> Image.Image:
     if not cands:
         raise RuntimeError("Не удалось получить вертикальный фрагмент")
     vert = max(cands, key=lambda t: t[0])[1]
-    # лёгкое выравнивание наклона (±2°) для более ровной вёрстки
-    best = vert
-    best_score = score(vert)
+    best, best_score = vert, score(vert)
     for fine in (-2.0, -1.0, 1.0, 2.0):
         cand = trim_white(
             vert.rotate(fine, expand=True, fillcolor=(255, 255, 255), resample=Image.Resampling.BICUBIC)
@@ -213,33 +217,16 @@ def extract_vertical_fragment(src: Path) -> Image.Image:
     return vert.resize((vert.size[0] * UPSCALE, vert.size[1] * UPSCALE), Image.Resampling.LANCZOS)
 
 
-def _rounded_label(
-    draw: ImageDraw.ImageDraw,
-    cx: int,
-    cy: int,
-    text: str,
-    font: ImageFont.FreeTypeFont,
-    fg: tuple[int, int, int, int],
-    accent: tuple[int, int, int, int],
-) -> None:
+def _plain_label(draw: ImageDraw.ImageDraw, cx: int, cy: int, text: str, fill) -> None:
+    """Простая подпись как на схеме двора 08.10 — белый прямоугольник, чёрный текст."""
+    font = _pil_font("DejaVuSans-Bold", 30)
     tb = draw.textbbox((0, 0), text, font=font)
     tw, th = tb[2] - tb[0], tb[3] - tb[1]
-    pad_x, pad_y = 16, 10
-    bar_w = 8
-    x0 = cx - (tw + pad_x * 2 + bar_w) // 2
-    y0 = cy - (th + pad_y * 2) // 2
-    x1 = x0 + tw + pad_x * 2 + bar_w
-    y1 = y0 + th + pad_y * 2
-    # тень
-    draw.rounded_rectangle(
-        [x0 + 3, y0 + 4, x1 + 3, y1 + 4],
-        radius=10,
-        fill=(0, 0, 0, 45),
-    )
-    draw.rounded_rectangle([x0, y0, x1, y1], radius=10, fill=(255, 255, 255, 235))
-    draw.rounded_rectangle([x0, y0, x0 + bar_w + 4, y1], radius=10, fill=accent)
-    draw.rectangle([x0 + bar_w, y0, x0 + bar_w + 6, y1], fill=(255, 255, 255, 235))
-    draw.text((x0 + bar_w + pad_x - 2, y0 + pad_y - 1), text, font=font, fill=fg)
+    pad = 6
+    x0, y0 = cx - tw // 2 - pad, cy - th // 2 - pad
+    x1, y1 = cx + tw // 2 + pad, cy + th // 2 + pad
+    draw.rectangle([x0, y0, x1, y1], fill=(255, 255, 255), outline=(0, 0, 0), width=2)
+    draw.text((x0 + pad, y0 + pad - 1), text, font=font, fill=fill)
 
 
 def paint_zones(vert: Image.Image) -> Image.Image:
@@ -273,147 +260,119 @@ def paint_zones(vert: Image.Image) -> Image.Image:
 
     base = arr.astype(np.float32)
     yy, xx = np.indices((h, w))
-    # диагональная штриховка асфальта, «плиточная» сетка для плитки
-    asphalt_hatch = asphalt & (((yy + xx) % 12) < 3)
-    tile_hatch = tile & ((((yy // 8) + (xx // 8)) % 2) == 0) & (((yy % 8) < 6) & ((xx % 8) < 6))
+    # асфальт — серая диагональная штриховка; плитка — «кирпичная» как зона П на схеме 08.10
+    asphalt_hatch = asphalt & (((yy + xx) % 10) < 3)
+    tile_brick = tile & ((yy % 10) < 5)
     out = base.copy()
-    # полупрозрачные заливки — чертёж читается под зонами
-    out[asphalt] = out[asphalt] * 0.68 + np.array(C_ASPHALT, dtype=np.float32) * 0.32
-    out[tile] = out[tile] * 0.62 + np.array(C_TILE_LIGHT, dtype=np.float32) * 0.38
-    out[asphalt_hatch] = out[asphalt_hatch] * 0.78 + np.array(C_ASPHALT_HATCH, dtype=np.float32) * 0.22
-    out[tile_hatch] = out[tile_hatch] * 0.86 + np.array(C_TILE, dtype=np.float32) * 0.14
+    out[asphalt] = out[asphalt] * 0.70 + np.array(C_ASPHALT, dtype=np.float32) * 0.30
+    out[tile] = out[tile] * 0.55 + np.array(C_TILE_LIGHT, dtype=np.float32) * 0.45
+    out[asphalt_hatch] = out[asphalt_hatch] * 0.72 + np.array(C_ASPHALT_HATCH, dtype=np.float32) * 0.28
+    out[tile_brick] = out[tile_brick] * 0.65 + np.array(C_TILE, dtype=np.float32) * 0.35
     out = np.clip(out, 0, 255).astype(np.uint8)
-    # контуры поверх заливки
-    for mask, color in ((pink, C_PINK), (blue, C_TILE)):
-        thick = dilate(mask, 1)
-        out[thick] = color
+    for mask, color in ((pink, C_PINK), (blue, C_BLUE)):
+        out[dilate(mask, 1)] = color
         out[mask] = color
 
-    img = Image.fromarray(out).convert("RGBA")
-    draw = ImageDraw.Draw(img, "RGBA")
-    font = _font("DejaVuSans-Bold", 32)
+    img = Image.fromarray(out)
+    draw = ImageDraw.Draw(img)
 
-    def label_at(mask: np.ndarray, text: str, fg, accent) -> None:
+    def label_at(mask: np.ndarray, text: str, fill) -> None:
         if not mask.any():
             return
         ys, xs = np.where(mask)
         y_lo, y_hi = np.percentile(ys, [30, 70])
         sel = (ys >= y_lo) & (ys <= y_hi)
-        cy = int(np.median(ys[sel]))
-        cx = int(np.median(xs[sel]))
-        _rounded_label(draw, cx, cy, text, font, fg, accent)
+        _plain_label(draw, int(np.median(xs[sel])), int(np.median(ys[sel])), text, fill)
 
-    label_at(asphalt, "АСФАЛЬТ", (*C_INK, 255), (*C_PINK, 255))
-    label_at(tile, "ПЛИТКА", (*C_TILE_INK, 255), (*C_TILE, 255))
-    return img.convert("RGB")
+    label_at(asphalt, "А", (0, 0, 0))
+    label_at(tile, "Пл", (0, 0, 0))
+    return img
 
 
-def _legend_swatch(kind: str, size: int = 36) -> Image.Image:
+def _draw_title(c: canvas.Canvas, pw: float, ph: float, sheet: str) -> float:
+    """Заголовок как на схеме двора 08.10. Возвращает Y низа заголовка."""
+    y = ph - 28
+    c.setFillColorRGB(0, 0, 0)
+    c.setFont(FONT_BOLD, 13)
+    c.drawCentredString(pw / 2, y, "СХЕМА ДВОРА многоквартирного дома № 29 по ул. Пушкина, г. Симферополь")
+    y -= 16
+    c.setFont(FONT_REG, 10)
+    c.drawCentredString(
+        pw / 2,
+        y,
+        f"(приложение № 1 к коллективному обращению от 26.10.2026) — {sheet}",
+    )
+    return y - 10
+
+
+def _draw_footer_page1(c: canvas.Canvas, pw: float) -> None:
+    c.setFillColorRGB(0, 0, 0)
+    c.setFont(FONT_REG, 9)
+    c.drawString(36, 48, "Участок ЗУ3 — зоны покрытия двора (плитка / асфальт).")
+    c.drawString(36, 34, "Лист 1 из 2. Условные обозначения — на листе 2.")
+    c.drawString(36, 18, "Уполномоченное лицо: Валюкевич Н.Г., кв. 18  _____________  (подпись)")
+
+
+def _legend_swatch(kind: str, size: int = 28) -> Image.Image:
     im = Image.new("RGB", (size, size), (255, 255, 255))
     d = ImageDraw.Draw(im)
     if kind == "asphalt":
         d.rectangle([0, 0, size - 1, size - 1], fill=C_ASPHALT, outline=C_PINK, width=2)
-        for i in range(-size, size * 2, 5):
+        for i in range(-size, size * 2, 4):
             d.line([i, 0, i + size, size], fill=C_ASPHALT_HATCH, width=1)
         d.rectangle([0, 0, size - 1, size - 1], outline=C_PINK, width=2)
     else:
-        d.rectangle([0, 0, size - 1, size - 1], fill=C_TILE_LIGHT, outline=C_TILE, width=2)
-        for y in range(4, size, 8):
-            for x in range(4, size, 8):
-                d.rectangle([x, y, x + 4, y + 4], fill=C_TILE)
+        d.rectangle([0, 0, size - 1, size - 1], fill=C_TILE_LIGHT, outline=C_BLUE, width=2)
+        for y in range(0, size, 5):
+            d.rectangle([1, y, size - 2, y + 2], fill=C_TILE)
+        d.rectangle([0, 0, size - 1, size - 1], outline=C_BLUE, width=2)
     return im
 
 
-def _compose_header(pw: int) -> Image.Image:
-    h = 96
-    im = Image.new("RGB", (pw, h), (255, 255, 255))
-    d = ImageDraw.Draw(im)
-    d.rectangle([0, 0, pw, 5], fill=C_ACCENT)
-    d.rectangle([20, 14, pw - 20, h - 6], fill=C_PANEL, outline=C_LINE, width=1)
-    d.rectangle([20, 14, 26, h - 6], fill=C_ACCENT)
+def _draw_legend_page(c: canvas.Canvas, pw: float, ph: float) -> None:
+    y = _draw_title(c, pw, ph, "лист 2 из 2")
+    y -= 18
+    c.setFont(FONT_BOLD, 12)
+    c.drawString(48, y, "Условные обозначения:")
+    y -= 28
 
-    d.text((40, 20), "СХЕМА ДВОРА", font=_font("DejaVuSans-Bold", 15), fill=C_ACCENT)
-    d.text(
-        (40, 42),
-        "многоквартирного дома № 29 по ул. Пушкина, г. Симферополь",
-        font=_font("DejaVuSans", 10),
-        fill=C_INK,
-    )
-    d.text(
-        (40, 60),
-        "Приложение № 1 к коллективному обращению от 26.10.2026  ·  участок ЗУ3 — зоны покрытия",
-        font=_font("DejaVuSans", 8),
-        fill=C_MUTED,
-    )
-    return im
-
-
-def _compose_legend(pw: int) -> Image.Image:
-    h = 52
-    im = Image.new("RGB", (pw, h), (255, 255, 255))
-    d = ImageDraw.Draw(im)
-    card_w = (pw - 20 * 2 - 10) // 2
-    cards = [
-        (20, "asphalt", "Асфальт", "проезд · розовый контур"),
-        (20 + card_w + 10, "tile", "Плитка", "пешеходная зона · синий контур"),
+    items = [
+        ("asphalt", "А — асфальтовое покрытие (проезд / внутри розового контура)"),
+        ("tile", "Пл — плиточное покрытие (пешеходная зона / внутри синего контура)"),
     ]
-    for x0, kind, title, desc in cards:
-        d.rounded_rectangle([x0, 2, x0 + card_w, h - 2], radius=7, fill=C_PANEL, outline=C_LINE, width=1)
-        sw = _legend_swatch(kind, 28)
-        im.paste(sw, (x0 + 10, 12))
-        d.text((x0 + 48, 8), title, font=_font("DejaVuSans-Bold", 11), fill=C_INK)
-        d.text((x0 + 48, 28), desc, font=_font("DejaVuSans", 8), fill=C_MUTED)
-    return im
+    for kind, text in items:
+        sw = _legend_swatch(kind, 26)
+        c.drawImage(ImageReader(sw), 52, y - 4, width=26, height=26, mask="auto")
+        c.setFont(FONT_REG, 11)
+        c.setFillColorRGB(0, 0, 0)
+        c.drawString(88, y + 4, text)
+        y -= 36
 
+    y -= 8
+    c.setFont(FONT_BOLD, 11)
+    c.drawString(48, y, "Примечание:")
+    y -= 18
+    c.setFont(FONT_REG, 10)
+    for line in (
+        "На листе 1 показан участок ЗУ3 по чертежу территории (фрагмент).",
+        "Розовый контур — предлагаемая зона асфальта; синий контур — зона плитки.",
+        "Комбинированное покрытие двора вместо сплошного асфальта.",
+    ):
+        c.drawString(48, y, line)
+        y -= 15
 
-def _compose_footer(pw: int) -> Image.Image:
-    h = 44
-    im = Image.new("RGB", (pw, h), (255, 255, 255))
-    d = ImageDraw.Draw(im)
-    d.line([20, 1, pw - 20, 1], fill=C_LINE, width=1)
-    d.text(
-        (20, 8),
-        "Основа: чертёж территории, ООО «ГЕОАЛЬЯНС», 2021, кв. 90:22:010301, М 1:500",
-        font=_font("DejaVuSans", 7),
-        fill=C_MUTED,
+    c.setFont(FONT_REG, 8)
+    c.drawString(
+        36,
+        52,
+        "Основа: чертёж территории, ООО «ГЕОАЛЬЯНС», 2021, кадастровый квартал 90:22:010301, М 1:500.",
     )
-    d.text(
-        (20, 22),
-        "Уполномоченное лицо: Валюкевич Н.Г., кв. 18   ·   лист 1 из 1   ·   редакция 2026-10-26",
-        font=_font("DejaVuSans", 7),
-        fill=C_INK,
+    c.drawString(
+        36,
+        38,
+        "На листе 1 — северная/центральная часть участка ЗУ3 (редакция 2026-10-26).",
     )
-    return im
-
-
-def _frame_plan(plan: Image.Image, max_w: int, max_h: int) -> Image.Image:
-    """Вписать план крупно в рамку с полями."""
-    pad = 10
-    # обрезать лишнюю белую кайму у плана — больше полезной площади
-    plan = trim_white(plan, thr=248)
-    iw, ih = plan.size
-    scale = min((max_w - pad * 2) / iw, (max_h - pad * 2) / ih)
-    nw, nh = max(1, int(iw * scale)), max(1, int(ih * scale))
-    resized = plan.resize((nw, nh), Image.Resampling.LANCZOS)
-
-    # рамка плотно по плану, без огромных пустых полей
-    box_w = min(max_w, nw + pad * 2)
-    box_h = min(max_h, nh + pad * 2)
-    canvas_im = Image.new("RGB", (max_w, max_h), (255, 255, 255))
-    bx = (max_w - box_w) // 2
-    by = (max_h - box_h) // 2
-    d = ImageDraw.Draw(canvas_im)
-    d.rounded_rectangle(
-        [bx, by, bx + box_w - 1, by + box_h - 1],
-        radius=8,
-        fill=C_PANEL,
-        outline=C_LINE,
-        width=1,
-    )
-    ox = bx + (box_w - nw) // 2
-    oy = by + (box_h - nh) // 2
-    canvas_im.paste(resized, (ox, oy))
-    return canvas_im
+    c.drawString(36, 18, "Уполномоченное лицо: Валюкевич Н.Г., кв. 18  _____________  (подпись)")
 
 
 def build_pdf(plan: Image.Image) -> None:
@@ -423,40 +382,23 @@ def build_pdf(plan: Image.Image) -> None:
     c.setAuthor("Пушкина 29")
     c.setSubject("Приложение 1 — зоны покрытия (плитка / асфальт)")
 
-    header = _compose_header(int(pw))
-    legend = _compose_legend(int(pw))
-    footer = _compose_footer(int(pw))
+    # —— лист 1 ——
+    y_top = _draw_title(c, pw, ph, "лист 1 из 2")
+    footer_top = 68
+    max_w = pw - 48
+    max_h = y_top - footer_top - 8
+    plan = trim_white(plan, thr=248)
+    iw, ih = plan.size
+    scale = min(max_w / iw, max_h / ih)
+    dw, dh = iw * scale, ih * scale
+    x = (pw - dw) / 2
+    y = footer_top + (max_h - dh) / 2
+    c.drawImage(ImageReader(plan), x, y, width=dw, height=dh, mask="auto")
+    _draw_footer_page1(c, pw)
+    c.showPage()
 
-    header_h = header.size[1]
-    legend_h = legend.size[1]
-    footer_h = footer.size[1]
-    gap = 6
-
-    c.drawImage(ImageReader(header), 0, ph - header_h, width=pw, height=header_h, mask="auto")
-    c.drawImage(
-        ImageReader(legend),
-        0,
-        ph - header_h - legend_h - gap,
-        width=pw,
-        height=legend_h,
-        mask="auto",
-    )
-
-    max_w = int(pw - 28)
-    max_h = int(ph - header_h - legend_h - footer_h - gap * 3)
-    framed = _frame_plan(plan, max_w, max_h)
-    plan_y = footer_h + gap
-    c.drawImage(
-        ImageReader(framed),
-        (pw - max_w) / 2,
-        plan_y,
-        width=max_w,
-        height=max_h,
-        preserveAspectRatio=True,
-        anchor="c",
-        mask="auto",
-    )
-    c.drawImage(ImageReader(footer), 0, 0, width=pw, height=footer_h, mask="auto")
+    # —— лист 2 ——
+    _draw_legend_page(c, pw, ph)
     c.save()
 
 
