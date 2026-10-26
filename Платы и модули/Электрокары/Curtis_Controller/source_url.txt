@@ -1,0 +1,6 @@
+# Curtis Controller — источники
+# Обновлено: 2026-10-26
+
+https://faultcodes.curtisinstruments.com/
+https://www.hpevs.com/Site/images/pdf/troubleshooting/troubleshoot_acos26.pdf
+https://dealers.roxiecarts.com/wp-content/uploads/2024/10/Curtis-Fault-Code.pdf
