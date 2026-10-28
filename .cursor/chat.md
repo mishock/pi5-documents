@@ -1,3 +1,30 @@
+## Фокус (21:09, 2026-10-28) — Профиль Артёма → Drive
+
+Записан полный профиль + решение по «Скултех». Локально: `Проекты/artem-study-drive/data/00_Профиль_Артём.md`, обновлены сводка и `knowledge-base.json`. Drive «Учёба Артём»: профиль [1-oOJJE-…](https://drive.google.com/file/d/1-oOJJE-Obtx2cV5M77TejKMjGZnU6HIq/view), сводка обновлена. ДР 20.06.2009, С-Ин-25, курс Скултех — не регистрироваться.
+
+## Фокус (16:50, 2026-10-27) — Must 4 кВт → Drive
+
+Рабочие настройки PV18-4024 PRO II залиты в Drive: `J.A.R.V.I.S — файлы` / `Must_PV18-4024_PRO_II_рабочие_настройки_2026-10-27`.
+Ссылка: https://drive.google.com/drive/folders/16LslR2X3XMfSLfRcnrGrPpsTGI8IdNJZ
+Файлы: WORKING_PROFILE.md, working_profile.registers.json, inverter_working.{txt,json}, README.md (live дамп 2026-10-27 10:16).
+
+## Фокус (12:10, 2026-10-27) — Lcd_can v2.3 CH4200
+
+Профиль CH4200 по CAN_LOG: TX 0x19C + 0x98100543, RX статус. UP: ELCON@125→250→CH4200@250. notes/CH4200_CAN.md. Сборка+flash — см. ответ.
+
+## Фокус (11:18, 2026-10-27) — Lcd_can_battery_controller прошит
+
+Uno R3 на Pi 5 `/dev/ttyACM0` (CDC ACM 2341:0043). Залит `firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex` через `scripts/flash.sh` (urclock). OK.
+
+## Фокус (10:19, 2026-10-27) — Must PV18-4024: заливка рабочих
+
+На Pi 5 `/dev/ttyUSB0` (CH340): снимок до `factory-settings/inverter_factory_20261027_101116.*`, заливка `working_profile.registers.json` (**20 рег.**) — verify **20/20 OK**. Дамп после: `applied-settings/inverter_working.*` (10:16).
+
+## Фокус (19:30, 2026-10-26) — Curtis LED: код 47
+
+Паттерн 1×красный + 4×жёлтый + 2×красный + 7×жёлтый = **один код 47** (HPD/Sequencing), не 14+27.
+Шпаргалка: `Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md`.
+
 ## Фокус (14:35, 2026-10-26) — Пушкина 29: стиль как «Схема двора»
 
 PDF зон покрытия переделан **в стиле** `Приложение 1 - Схема двора` (08.10): 2 листа, простой чёрный заголовок, крупный план, лист 2 — условные обозначения А/Пл + подпись Валюкевич. Без цветных карточек. Ред. 2026-10-26. Drive sync.
@@ -584,3 +611,13 @@ egram:** только пополнение / TP / успешный BUY (`notify_
 - PDF обновлён, Drive sync OK. Плитка/асфальт пока не нанесены.
 - Скрипт: `Пушкина_29/scripts/generate_coverage_scheme_pdf.py`
 
+## 2026-10-27 — Lcd_can v2.6 Elcon U+I
+- Активный проект: `Проекты/Arduino` / firmware `Lcd_can_battery_controller`
+- Elcon: UP=U 15/29/58/97 В, DOWN=I 10/20/30/40 А; CH4200 U=57.6 I≤30
+- Сборка+прошивка `/dev/ttyACM1` OK (avrdude verified)
+- Доки: README, notes/elcon/ELCON_CAN.md, CHANGELOG
+
+## 2026-10-27 — Lcd_can v2.7 порядок UI
+- Активный: `Проекты/Arduino` / `Lcd_can_battery_controller`
+- Экраны: Заряд (U/I/SEL), Профиль (E125/E250/C250), Батарея, Мощность, Накрутка
+- Прошито v2.7 на ACM1
