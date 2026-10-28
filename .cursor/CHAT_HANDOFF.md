@@ -1,3 +1,10 @@
+## Фокус — Профиль Артёма / Drive (2026-10-28)
+
+- Файл: `Проекты/artem-study-drive/data/00_Профиль_Артём.md` + обновлённая сводка
+- Drive «Учёба Артём»: профиль `1-oOJJE-Obtx2cV5M77TejKMjGZnU6HIq`, сводка обновлена
+- Решение: курс Скултех/Квантастика — **не регистрироваться**
+- PR: https://github.com/mishock/pi5-documents/pull/7
+
 ## Фокус — Must PV18-4024 PRO II заливка (2026-10-27)
 
 - **Must 4 кВт рабочие на Drive** — папка Drive `16LslR2X3XMfSLfRcnrGrPpsTGI8IdNJZ` (2026-10-27).
