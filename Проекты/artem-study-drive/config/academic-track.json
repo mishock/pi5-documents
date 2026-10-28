@@ -1,0 +1,116 @@
+{
+  "studentFullName": "Шпак Артём Михайлович",
+  "studentShort": "Шпак",
+  "namePatterns": [
+    "Шпак Артём",
+    "Шпак Артем",
+    "Шпак А.",
+    "Шпак А ",
+    "Шпак Арт",
+    "Shpak"
+  ],
+  "specialtyCode": "09.02.07",
+  "group": "С-Ин-25",
+  "groupPatterns": ["С-Ин-25", "С-Ин"],
+  "course": 1,
+  "emailTo": "mishock24@gmail.com",
+  "emailFromScript": "/home/pi/bin/send-email.sh",
+  "listKeywords": {
+    "negative": [
+      "неуспевающ",
+      "не успевающ",
+      "акademическ задолжен",
+      "академическ задолжен",
+      "акadem zadolzhen",
+      "отчислен",
+      "хвост",
+      "не допущен",
+      "недопуск",
+      "должник"
+    ],
+    "positive": [
+      "допущен",
+      "допуск к",
+      "допущенные",
+      "список допущен"
+    ],
+    "neutral": [
+      "список",
+      "перечень",
+      "успеваем",
+      "аттестац",
+      "приказ",
+      "итог"
+    ]
+  },
+  "linkKeywords": [
+    "неуспевающ",
+    "допущен",
+    "аттестац",
+    "акadem zadolzhen",
+    "акademическ задолжен",
+    "задолженност",
+    "09.02"
+  ],
+  "strongListKeywords": [
+    "неуспевающ",
+    "не успевающ",
+    "допущен к аттестации",
+    "допущенные к аттестации",
+    "список допущен",
+    "список неуспевающ",
+    "акadem zadolzhen",
+    "акademichesk zadolzhen",
+    "акademическ задолжен",
+    "академическ задолжен"
+  ],
+  "excludeUrlPatterns": [
+    "/abiturientu/",
+    "/sotrudniku/",
+    "/nauka",
+    "priemnoj-komissii",
+    "priema-v-",
+    "pravila-priema",
+    "konkurs",
+    "kafedr",
+    "attestatsiya-pedagog",
+    "algoritm-postupleniya",
+    "obshchezhit",
+    "ipk.kipu-rc.ru",
+    "Por_ob_pr"
+  ],
+  "excludeTitlePatterns": [
+    "правила приема",
+    "поступлен",
+    "зачислен",
+    "конкурс",
+    "кафедр",
+    "общежит",
+    "положение о",
+    "порядок приема",
+    "алгоритм поступления",
+    "аттестация педагог"
+  ],
+  "seedUrls": [
+    "https://kipu-rc.ru/studentu-tsspo",
+    "https://kipu-rc.ru/student/",
+    "https://kipu-rc.ru/student/resheniya-komissii-ob-akademicheskikh-otpuskakh",
+    "https://kipu-rc.ru/novosti-kipu/"
+  ],
+  "policyDocs": [],
+  "temporal": {
+    "onlyCurrentAndFuture": true,
+    "note": "Списки и результаты прошлых учебных лет не мониторятся"
+  },
+  "specialtyFilter": {
+    "onlyCode": "09.02.07",
+    "onlyName": "Информационные системы и программирование",
+    "note": "Не мониторить другие специальности СПО и другие подразделения (ИПК, БТСТ, вуз) подряд"
+  },
+  "crawl": {
+    "maxPages": 25,
+    "maxDepth": 2,
+    "hostPattern": "kipu-rc.ru",
+    "extraHosts": []
+  }
+}

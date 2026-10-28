@@ -1,0 +1,59 @@
+{
+  "documents": {
+    "https://kipu-rc.ru/raspisanie-promezhutochnoj-attestatsii": {
+      "url": "https://kipu-rc.ru/raspisanie-promezhutochnoj-attestatsii",
+      "title": "Расписание промежуточной аттестации - Крымский инженерно-педагогический университет имени Февзи Якубова",
+      "contentHash": "8ddc195b0cd99156",
+      "classification": "neutral",
+      "studentFound": false,
+      "mentions": [],
+      "relevant": false,
+      "firstSeen": "2026-08-31T15:32:43.393Z",
+      "lastChecked": "2026-08-31T15:41:14.495Z"
+    },
+    "https://kipu-rc.ru/downloads/2026/cspo/rasp_zima_2025-26.pdf": {
+      "url": "https://kipu-rc.ru/downloads/2026/cspo/rasp_zima_2025-26.pdf",
+      "title": "Расписание промежуточной аттестации",
+      "contentHash": "0cd72e3691e8fd97",
+      "classification": "neutral",
+      "studentFound": false,
+      "mentions": [],
+      "relevant": false,
+      "firstSeen": "2026-08-31T15:32:43.556Z",
+      "lastChecked": "2026-08-31T15:42:54.851Z"
+    },
+    "https://kipu-rc.ru/downloads/2026/cspo/rasp_leto_2026-27.pdf": {
+      "url": "https://kipu-rc.ru/downloads/2026/cspo/rasp_leto_2026-27.pdf",
+      "title": "Расписание промежуточной аттестации",
+      "contentHash": "005a8695a6564871",
+      "classification": "neutral",
+      "studentFound": false,
+      "mentions": [],
+      "relevant": false,
+      "firstSeen": "2026-10-19T06:00:48.258Z",
+      "lastChecked": "2026-10-19T06:00:48.258Z"
+    }
+  },
+  "emailedAlerts": [],
+  "liveDocDriveId": "1DLssLZZO_WurAjJNCW0XfH47ZFr6J1uk",
+  "journal": [
+    {
+      "date": "2026-08-31",
+      "summary": "обновлён: Расписание промежуточной аттестации - Крымский инженерно-педагогический университет имени Февзи Якубова"
+    },
+    {
+      "date": "2026-08-31",
+      "summary": "обновлён: Расписание промежуточной аттестации - Крымский инженерно-педагогический университет имени Февзи Якубова"
+    },
+    {
+      "date": "2026-08-31",
+      "summary": "обновлён: Расписание промежуточной аттестации - Крымский инженерно-педагогический университет имени Февзи Якубова"
+    },
+    {
+      "date": "2026-08-31",
+      "summary": "обновлён: Расписание промежуточной аттестации - Крымский инженерно-педагогический университет имени Февзи Якубова"
+    }
+  ],
+  "baselineEstablished": true,
+  "lastCheck": "2026-10-19T06:00:48.261Z"
+}

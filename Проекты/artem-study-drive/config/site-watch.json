@@ -1,0 +1,80 @@
+{
+  "site": "https://kipu-rc.ru",
+  "student": "Шпак Артём Михайлович",
+  "specialty": "09.02.07 «Информационные системы и программирование»",
+  "college": "ЦСПО / колледж КИПУ",
+  "contractBaseline": {
+    "yearCostOld": "123 520 ₽",
+    "yearCostNew": "128 700 ₽",
+    "semesterCost": "64 350 ₽",
+    "paymentDates": "1 сентября и 1 февраля",
+    "contractNo": "65",
+    "contractDate": "2025-08-25",
+    "siteUrl": "https://kipu-rc.ru/",
+    "personalAccount": "8021119369000",
+    "bankAccount": "03224643350000003200",
+    "bik": "012202102"
+  },
+  "pages": [
+    {
+      "id": "paid_edu",
+      "title": "Платные образовательные услуги",
+      "url": "https://kipu-rc.ru/sveden/paid_edu/",
+      "keywords": ["стоим", "приказ", "договор", "оплат", "2025", "2026", "измен", "СПО", "средн"]
+    },
+    {
+      "id": "schedule",
+      "title": "Расписание 2025/2026",
+      "url": "https://kipu-rc.ru/student/2015-09-02-07-28-16",
+      "keywords": ["распис", "семестр", "2025", "2026", "09.02", "информ"]
+    },
+    {
+      "id": "documents",
+      "title": "Документы вуза",
+      "url": "https://kipu-rc.ru/sveden/document/",
+      "keywords": ["приказ", "положен", "правил", "стоим", "оплат", "компенсац", "393"]
+    },
+    {
+      "id": "spo_admission",
+      "title": "Правила приёма СПО 2026/2027",
+      "url": "https://kipu-rc.ru/abiturientu/pravila-priema-v-gbouvo-rk-kipu-imeni-fevzi-yakubova-po-spetsialnostyam-srednego-professionalnogo-obrazovaniya-na-2026-2027-uchebnyj-god",
+      "keywords": ["прием", "стоим", "зачисл", "договор"]
+    },
+    {
+      "id": "student_support",
+      "title": "Меры поддержки / стипендии",
+      "url": "https://kipu-rc.ru/sveden/grants/",
+      "keywords": ["стипенд", "компенсац", "поддерж", "многодет"]
+    },
+    {
+      "id": "news_main",
+      "title": "Главная — новости",
+      "url": "https://kipu-rc.ru/",
+      "keywords": ["СПО", "колледж", "стоим", "приказ", "обучен", "ЦСПО", "набор"]
+    },
+    {
+      "id": "cspo_student",
+      "title": "Студенту ЦСПО",
+      "url": "https://kipu-rc.ru/studentu-tsspo",
+      "keywords": ["распис", "аттестац", "ЦСПО", "2025", "2026", "09.02", "список", "приказ"]
+    },
+    {
+      "id": "common_info",
+      "title": "Основные сведения (лицензия, аккредитация)",
+      "url": "https://kipu-rc.ru/sveden/common/",
+      "keywords": ["лиценз", "аккредит", "реестр", "свидетель", "измен"]
+    },
+    {
+      "id": "education",
+      "title": "Образование / программы",
+      "url": "https://kipu-rc.ru/sveden/education/",
+      "keywords": ["09.02", "СПО", "программ", "аккредит", "специальност", "2025", "2026"]
+    },
+    {
+      "id": "cspo_news",
+      "title": "Новости КИПУ",
+      "url": "https://kipu-rc.ru/novosti-kipu/",
+      "keywords": ["ЦСПО", "колледж", "стоим", "приказ", "СПО", "09.02", "аттестац", "набор"]
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "checkedAt": "2026-10-19T06:00:36.148Z",
+  "changes": [
+    {
+      "id": "paid_edu",
+      "title": "Платные образовательные услуги",
+      "url": "https://kipu-rc.ru/sveden/paid_edu/",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/sveden/paid_edu/downloads/2026/pk/perechen_neobkhodimih_dokov.pdf",
+          "text": "Перечень необходимых документов"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/05/445.pdf",
+          "text": "стоимость обучения в 2026-2027 учебном году;"
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "43c52a10977a15b3",
+      "newHash": "ac2eb7e41b654b55"
+    },
+    {
+      "id": "schedule",
+      "title": "Расписание 2025/2026",
+      "url": "https://kipu-rc.ru/student/2015-09-02-07-28-16",
+      "newLinks": [],
+      "textChanged": true,
+      "oldHash": "142ba697a2ef0b9e",
+      "newHash": "1c61970eeb55ae70"
+    },
+    {
+      "id": "documents",
+      "title": "Документы вуза",
+      "url": "https://kipu-rc.ru/sveden/document/",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/sveden/document/downloads/2026/pk/perechen_neobkhodimih_dokov.pdf",
+          "text": "Перечень необходимых документов"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/1.pdf",
+          "text": "Правила приема (программы среднего профессионального образования) на обучение в КИПУ имени Февзи Якубова"
+        },
+        {
+          "href": "https://kipu-rc.ru/poloj/polojenie_o_tekushem_kontrole_uspevaemosti_i_promezhytochnoy_attestacii.pdf",
+          "text": "Положение о текущем контроле успеваемости и промежуточной аттестации обучающихся"
+        },
+        {
+          "href": "https://kipu-rc.ru/poloj/poloj_o_prom_attest_DPO.pdf",
+          "text": "Положение о проведении промежуточной аттестации слушателей по дополнительным профессиональным программам"
+        },
+        {
+          "href": "https://kipu-rc.ru/poloj/poloj_promejut_att_Akademia.pdf",
+          "text": "Положение о текущем контроле успеваемости и промежуточной аттестации обучающихся Академии профессионального обучения"
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "fa2f9d4015564b6b",
+      "newHash": "ea44d919eb8d5f36"
+    },
+    {
+      "id": "spo_admission",
+      "title": "Правила приёма СПО 2026/2027",
+      "url": "https://kipu-rc.ru/abiturientu/pravila-priema-v-gbouvo-rk-kipu-imeni-fevzi-yakubova-po-spetsialnostyam-srednego-professionalnogo-obrazovaniya-na-2026-2027-uchebnyj-god",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/1.pdf",
+          "text": "Правила приема в ЦСПО КИПУ имени Февзи Якубова по специальностям среднего профессионального образования на 2026/2027 учебный год"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/2.pdf",
+          "text": "Информация об условиях приема на обучение по договорам об оказании платных образовательных услуг в ЦСПО КИПУ имени Февзи Якубова на 2026/27 учебный год"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/3.pdf",
+          "text": "Перечень специальностей, по которым ЦСПО КИПУ имени Февзи Якубова объявляет прием в соответствии с лицензией на осуществлении образовательной деятельности"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/4.pdf",
+          "text": "Требования к уровню образования, которое необходимо для поступления на обучение в ЦСПО КИПУ имени Февзи Якубова на 2026/27 учебный год"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/5.pdf",
+          "text": "Перечень и форма проведения вступительных испытаний при приеме на обучение в ЦСПО КИПУ имени Февзи Якубова на 2026/27 учебный год"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/6.pdf",
+          "text": "Особенности проведения вступительных испытаний для инвалидов и лиц с ограниченными возможностями здоровья при приеме на обучение ЦСПО КИПУ имени Февзи Якубова на 2026/27 учебный год"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/7.pdf",
+          "text": "Информация об общем количестве мест для приема по каждой специальности, в том числе по различным формам получения образования"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/8.pdf",
+          "text": "Правила подачи и рассмотрения апелляций по результатам вступительных испытаний"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/9.pdf",
+          "text": "Информация о наличии общежития и количестве мест в общежитиях для поступающих в ЦСПО КИПУ имени Февзи Якубова на 2026/27 учебный год"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/10.pdf",
+          "text": "Программа вступительного испытания"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/dvustr_in.pdf",
+          "text": "двусторонний для иностранцев;"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/dvustr.pdf",
+          "text": "двусторонний;"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/trehstr_in.pdf",
+          "text": "трехсторонний для иностранцев;"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/trehstr.pdf",
+          "text": "трехсторонний."
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/05/445.pdf",
+          "text": "Стоимость одного года обучения для лиц приема 2026-2027 учебного года"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/2026/pk/cspo/rasp_cspo.pdf",
+          "text": "Расписание вступительных испытаний"
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "c4c27d5375ea58d7",
+      "newHash": "8efbd838d578d4ee"
+    },
+    {
+      "id": "student_support",
+      "title": "Меры поддержки / стипендии",
+      "url": "https://kipu-rc.ru/sveden/grants/",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/sveden/grants",
+          "text": "Стипендии и меры поддержки обучающихся"
+        },
+        {
+          "href": "https://kipu-rc.ru/sveden/grants",
+          "text": "Стипендии и меры поддержки обучающихся"
+        },
+        {
+          "href": "https://kipu-rc.ru/sveden/grants/downloads/2026/pk/perechen_neobkhodimih_dokov.pdf",
+          "text": "Перечень необходимых документов"
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "1cacdaa23e6acfeb",
+      "newHash": "a76adaaab24e6637"
+    },
+    {
+      "id": "news_main",
+      "title": "Главная — новости",
+      "url": "https://kipu-rc.ru/",
+      "newLinks": [],
+      "textChanged": true,
+      "oldHash": "373397da7f65f4bd",
+      "newHash": "dc067745b1a09d1b"
+    },
+    {
+      "id": "cspo_student",
+      "title": "Студенту ЦСПО",
+      "url": "https://kipu-rc.ru/studentu-tsspo",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/studentu-tsspo",
+          "text": "Студенту ЦСПО"
+        },
+        {
+          "href": "https://kipu-rc.ru/raspisanie-promezhutochnoj-attestatsii",
+          "text": "Расписание промежуточной аттестации"
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "ab217a3941da8f91",
+      "newHash": "4ba13020cabc9a8d"
+    },
+    {
+      "id": "common_info",
+      "title": "Основные сведения (лицензия, аккредитация)",
+      "url": "https://kipu-rc.ru/sveden/common/",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/sveden/common/downloads/2026/pk/perechen_neobkhodimih_dokov.pdf",
+          "text": "Перечень необходимых документов"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/important/vipiska.pdf",
+          "text": "Выписка из реестра лицензий на осуществление образовательной деятельности"
+        },
+        {
+          "href": "https://kipu-rc.ru/downloads/important/reestrovaya_vipiska.pdf",
+          "text": "Выписка из государственной информационной системы \"Реестр организаций, осуществляющих образовательную деятельность по имеющим государственную аккредитацию образовательным программам\""
+        },
+        {
+          "href": "https://isga.obrnadzor.gov.ru/accredreestr/details/0b0f130c-130a-0f0d-0d0a-0c110f130d0a",
+          "text": "Сведения об университете из государственной информационной системы \"Реестр организаций, осуществляющих образовательную деятельность по имеющим государственную аккредитацию образовательным программам\""
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "0e41bbb59bf59796",
+      "newHash": "ec6c4357e7c56f37"
+    },
+    {
+      "id": "education",
+      "title": "Образование / программы",
+      "url": "https://kipu-rc.ru/sveden/education/",
+      "newLinks": [
+        {
+          "href": "https://kipu-rc.ru/opop/2026/rpp/cspo/S-B_25_PP.02.01.pdf",
+          "text": "2026"
+        },
+        {
+          "href": "https://kipu-rc.ru/opop/2026/rpp/cspo/S-YUR-25_PDP.pdf",
+          "text": "2026"
+        }
+      ],
+      "textChanged": true,
+      "oldHash": "5091081db86ac260",
+      "newHash": "0df62abded2dae7e"
+    },
+    {
+      "id": "cspo_news",
+      "title": "Новости КИПУ",
+      "url": "https://kipu-rc.ru/novosti-kipu/",
+      "newLinks": [],
+      "textChanged": true,
+      "oldHash": "8917ccb8175f687b",
+      "newHash": "22453c9365efcdcc"
+    }
+  ],
+  "driveId": "1IDIKXiBbQcLhAQXlFPUzm04BH6qeqPAD"
+}

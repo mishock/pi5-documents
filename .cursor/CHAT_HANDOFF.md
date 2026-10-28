@@ -1,3 +1,25 @@
+## Фокус — Профиль Артёма / Drive (2026-10-28)
+
+- Файл: `Проекты/artem-study-drive/data/00_Профиль_Артём.md` + обновлённая сводка
+- Drive «Учёба Артём»: профиль `1-oOJJE-Obtx2cV5M77TejKMjGZnU6HIq`, сводка обновлена
+- Решение: курс Скултех/Квантастика — **не регистрироваться**
+- PR: https://github.com/mishock/pi5-documents/pull/7
+
+## Фокус — Must PV18-4024 PRO II заливка (2026-10-27)
+
+- **Must 4 кВт рабочие на Drive** — папка Drive `16LslR2X3XMfSLfRcnrGrPpsTGI8IdNJZ` (2026-10-27).
+- Порт: `/dev/ttyUSB0` CH340, Modbus 19200 slave 4
+- До заливки: `factory-settings/inverter_factory_20261027_101116.*`
+- Заливка + verify: **20/20 OK**
+- После: `applied-settings/inverter_working.*` (10:16); профиль эталон 20 рег. (2026-07-25)
+- Повтор: `bash …/scripts/must-apply-working.sh` → `must-verify-profile.sh`
+
+## Фокус — Curtis контроллер LED (2026-10-26)
+
+- Паттерн 1R+4Y+2R+7Y → код **47** HPD/Sequencing (не 14 и 27)
+- Док: `Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md`
+- Действие: педаль в ноль → нейтраль → цикл ключа; проверить порядок KSI/interlock/направление/газ
+
 ## Фокус — Пушкина 29: схема плитка/асфальт (2026-10-26)
 
 - PDF: `Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf` (ред. 2026-10-26, **2 листа**)
@@ -398,3 +420,19 @@ MCP прошит; LED=ON в Serial; пульс mostly-ON.
 ## 2026-09-30 komunalka
 - Стабильно: Крымэнерго обновляется через вкладку «Сайты» (прокси komunalka timeout 300 с); даты платежей в формате ДД.ММ.ГГГГ.
 - Проверка: `journalctl --user -u komunalka.service | grep "\[energy\]"` — строка `оплаты: последний=…, чеков=5`.
+
+## Текущий фокус
+Lcd_can_battery_controller **v2.6** — Elcon U+I с LCD (прошито).
+
+## Стабильное состояние
+- Профиль ELCON: U 15/29/58/97, I 10/20/30/40; CH4200: U 57.6, I≤30
+- HEX: `Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex`
+
+## Быстрые проверки
+- LCD: `E250 97V 20A`; UP крутит V, DOWN — A, SELECT — заряд
+- `bash …/scripts/build.sh` + flash на ACM*
+
+## 2026-10-27 — Lcd_can v2.7 порядок UI
+- Активный: `Проекты/Arduino` / `Lcd_can_battery_controller`
+- Экраны: Заряд (U/I/SEL), Профиль (E125/E250/C250), Батарея, Мощность, Накрутка
+- Прошито v2.7 на ACM1
