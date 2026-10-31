@@ -1,12 +1,21 @@
 # JK АКБ 4S 230Ah — BLE → Home Assistant (Pi 3 → Pi 5)
 
-Обновлено: 2026-10-31
+Обновлено: 2026-10-31 (дашборд на Pi3)
 
 - BMS: JK-B2A8S20P, BLE-имя **AKB-4S-230**, MAC `C8:47:80:53:0F:B6`
 - На Pi 3: `/home/pi/jk4s-ble/` (venv + `jk4s_bumble_probe.py` + `run_once.sh`)
 - Снимок HA (Pi 5): `Проекты/Apple HomeKit accessory/home_assistant/config/host_status/jk4s.json`
 - Дашборд: **JK АКБ 4S 230Ah** (`/jk-akb-4s-230/home`)
 - Пакет: `…/config/packages/jk4s.yaml`
+
+## Где смотреть
+
+**Канон UI — HA на Pi 3** (`http://10.0.20.56:8123/jk-akb-4s-230/home`).
+В боковой панели: **JK АКБ 4S 230Ah** (иконка батареи).
+Пакет/дашборд: `~/Raspberry_Pi_3_HomePortable/ha_config/{packages,dashboards}/`.
+Кнопка опроса локально: `jk4s-ha-poll-pi3.path` → `ha_poll_local.sh`.
+
+Зеркало на Pi5 HA тоже есть, но основной — Pi3.
 
 ## Кнопка короткого опроса (рекомендуемый режим)
 

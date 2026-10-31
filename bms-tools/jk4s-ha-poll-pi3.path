@@ -1,0 +1,9 @@
+[Unit]
+Description=JK4S HA Pi3: watch poll request
+
+[Path]
+PathChanged=/home/pi/Raspberry_Pi_3_HomePortable/ha_config/host_status/jk4s_poll.request
+Unit=jk4s-ha-poll-pi3.service
+
+[Install]
+WantedBy=multi-user.target
