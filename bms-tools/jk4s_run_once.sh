@@ -17,6 +17,7 @@ if command -v iwconfig >/dev/null; then
 fi
 
 cleanup() {
+  # ЖЁСТКО: после опроса BLE от батареи отключить
   pkill -9 -f jk4s_bumble_probe.py 2>/dev/null || true
   hciconfig hci0 down 2>/dev/null || true
   if [[ "$MASKED" -eq 1 ]]; then
@@ -25,6 +26,7 @@ cleanup() {
   systemctl start bluetooth 2>/dev/null || true
   sleep 1
   bluetoothctl power on >/dev/null 2>&1 || true
+  bluetoothctl disconnect "$MAC" >/dev/null 2>&1 || true
   if [[ -n "${OLD_TX:-}" ]]; then
     iwconfig wlan0 txpower "$OLD_TX" 2>/dev/null || iwconfig wlan0 txpower 31 2>/dev/null || true
   else

@@ -8,8 +8,30 @@ views:
       - type: markdown
         content: |
           ## АКБ 12 В 230 А·ч — JK-B2A8S20P
-          BLE с Pi 3 (`AKB-4S-230`). Опрос ~1 мин. Графики без нулей при offline.
+          BLE с Pi 3 (`AKB-4S-230`). Кнопка — короткий опрос; после него Bluetooth от батареи отключается.
           Ячейки: 4S LiFePO4. Разброс > 30 мВ — красный.
+
+      - type: button
+        name: Опросить батарею
+        icon: mdi:bluetooth-connect
+        show_name: true
+        show_icon: true
+        tap_action:
+          action: call-service
+          service: input_button.press
+          target:
+            entity_id: input_button.jk4s_poll
+
+      - type: entities
+        title: Опрос BLE
+        show_header_toggle: false
+        entities:
+          - entity: sensor.jk4s_poll_state
+            name: Статус опроса
+          - entity: sensor.jk4s_poll_status
+            name: Детали
+          - entity: sensor.jk4s_mode
+            name: Режим (последний снимок)
 
       - type: entities
         title: Сейчас

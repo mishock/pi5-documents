@@ -1,3 +1,14 @@
+## Текущий фокус (2026-10-31 20:19 MSK)
+
+**JK АКБ 4S в HA:** дашборд `/jk-akb-4s-230/home`, кнопка опроса, BLE disconnect после. `jk4s-ha-poll.path` enabled. Timer Pi3 disabled. Wi‑Fi never off.
+
+### Быстрые проверки
+- `systemctl is-active jk4s-ha-poll.path` → active
+- HA: кнопка «Опросить батарею» / `sensor.jk4s_poll_status`
+- `journalctl -u jk4s-ha-poll.service -n 40`
+- Pi3: `systemctl is-enabled jk4s-ble-logger.timer` → disabled
+
+
 ## ЖЁСТКО — Wi‑Fi гаража (2026-10-31)
 
 - **Никогда** не `wifi off` / rfkill на Pi3/Kali: GARAGE = основной интернет + NetBird.

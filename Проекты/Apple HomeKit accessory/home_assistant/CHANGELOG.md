@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2026-10-31 — JK АКБ 4S 230Ah: кнопка короткого опроса
+
+- Дашборд **JK АКБ 4S 230Ah** (`/jk-akb-4s-230/home`): кнопка **«Опросить батарею»**.
+- `input_button.jk4s_poll` + `shell_command.jk4s_poll_request` → `jk4s_poll.request`.
+- Хост: `jk4s-ha-poll.path` / `jk4s_ha_poll.sh` → SSH Pi3 `sudo run_once.sh` → scp `jk4s.json`; после опроса BLE отключается.
+- Сенсоры статуса: `sensor.jk4s_poll_state`, `sensor.jk4s_poll_status`.
+- Периодический `jk4s-ble-logger.timer` на Pi3 — **disabled**.
+
 ## 2026-10-31 — JK АКБ 4S 230Ah (гараж) в HA
 
 - Дашборд **JK АКБ 4S 230Ah** (`/jk-akb-4s-230/home`) — стиль как ANT BMS24C.

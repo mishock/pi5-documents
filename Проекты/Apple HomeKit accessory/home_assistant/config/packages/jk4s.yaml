@@ -1,8 +1,39 @@
 # JK АКБ 4S 12V 230Ah (JK-B2A8S20P / AKB-4S-230) — BLE с Pi 3 → host_status/jk4s.json
 # Обновлено: 2026-10-31
 # Числовые сенсоры: пустой ответ = unavailable (без «иголок» 0 при offline).
+# Кнопка «Опрос» → shell_command → jk4s_poll.request → systemd path → SSH Pi3 → BLE disconnect.
+# (в этой версии HA нет command_line button — input_button + shell_command)
+
+shell_command:
+  jk4s_poll_request: "date '+%s' > /config/host_status/jk4s_poll.request"
+
+input_button:
+  jk4s_poll:
+    name: JK4S Poll
+    icon: mdi:bluetooth-connect
+
+automation:
+  - id: jk4s_poll_on_button
+    alias: "JK4S: короткий опрос BLE по кнопке"
+    description: "Пишет jk4s_poll.request; хост SSH на Pi3, после опроса BLE отключается."
+    mode: single
+    trigger:
+      - platform: state
+        entity_id: input_button.jk4s_poll
+    action:
+      - service: shell_command.jk4s_poll_request
 
 command_line:
+  - sensor:
+      name: "JK4S Poll Status"
+      unique_id: jk4s_poll_status
+      command: "cat /config/host_status/jk4s_poll_status.txt 2>/dev/null || echo 'idle|—|—'"
+      scan_interval: 5
+  - sensor:
+      name: "JK4S Poll State"
+      unique_id: jk4s_poll_state
+      command: "python3 -c \"print(open('/config/host_status/jk4s_poll_status.txt').read().split('|',1)[0].strip() if open('/config/host_status/jk4s_poll_status.txt').read().strip() else 'idle')\" 2>/dev/null || echo idle"
+      scan_interval: 5
   - sensor:
       name: "JK4S Pack Voltage"
       unique_id: jk4s_pack_voltage

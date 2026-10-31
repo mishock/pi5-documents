@@ -1,17 +1,34 @@
-# JK АКБ 4S 230Ah — BLE logger (Pi 3)
+# JK АКБ 4S 230Ah — BLE → Home Assistant (Pi 3 → Pi 5)
 
 Обновлено: 2026-10-31
 
 - BMS: JK-B2A8S20P, BLE-имя **AKB-4S-230**, MAC `C8:47:80:53:0F:B6`
-- Логгер: `jk4s_ble_logger.py` (на Pi 3: `/home/pi/jk4s-ble/`)
-- Сервис: `jk4s-ble-logger.service`
+- На Pi 3: `/home/pi/jk4s-ble/` (venv + `jk4s_bumble_probe.py` + `run_once.sh`)
 - Снимок HA (Pi 5): `Проекты/Apple HomeKit accessory/home_assistant/config/host_status/jk4s.json`
 - Дашборд: **JK АКБ 4S 230Ah** (`/jk-akb-4s-230/home`)
+- Пакет: `…/config/packages/jk4s.yaml`
 
-Проверка на Pi 3:
+## Кнопка короткого опроса (рекомендуемый режим)
+
+Периодический таймер **disabled** (Wi‑Fi в гараже не глушить; Cypress рвёт BLE).
+
+1. В HA нажать **«Опросить батарею»** (`input_button.jk4s_poll`).
+2. HA пишет `host_status/jk4s_poll.request`.
+3. systemd `jk4s-ha-poll.path` → `jk4s_ha_poll.sh` (Pi 5) → SSH `sudo …/run_once.sh` на Pi 3.
+4. После опроса BLE **обязательно отключается** (cleanup + `bluetoothctl disconnect`).
+5. Статус: `sensor.jk4s_poll_state` / `sensor.jk4s_poll_status`.
+
+Проверка на Pi 5:
 
 ```bash
-sudo systemctl status jk4s-ble-logger.service
-tail -f /home/pi/jk4s-ble/logs/../ # journalctl -u jk4s-ble-logger -f
-cat /home/pi/jk4s-ble/jk4s.json
+systemctl status jk4s-ha-poll.path
+date '+%s' > "…/host_status/jk4s_poll.request"
+journalctl -u jk4s-ha-poll.service -f
+cat "…/host_status/jk4s_poll_status.txt"
 ```
+
+## Жёсткие правила
+
+- Wi‑Fi в гараже **никогда** не отключать (`garage-wifi-never-off.mdc`).
+- Не путать с ANT BMS24C — в гараже только JK AKB-4S-230.
+- Кадр `0x02` на встроенном BT Pi 3 нестабилен (HCI -84 / disconnect 8); при неудаче прошлый снимок в HA сохраняется.

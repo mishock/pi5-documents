@@ -244,14 +244,20 @@ async def once(device: Device, addr: str, *, skip_adv: bool = False) -> dict:
                 return
             await asyncio.sleep(0.08)
 
-    # Быстрый путь: сразу cell info 0x96; если пошёл JK-поток — больше не пинаем
+    # Быстрый путь: 0x96. Кадр 0x01 приходит первым; 0x02 часто не успевает
+    # до HCI disconnect 8/62 — после 0x01 ещё 1–2 TX, не «listen only» сразу.
     await asyncio.sleep(0.1)
     if not disconnected.is_set():
         await ask(0x96)
         try:
             await asyncio.wait_for(got_jk.wait(), timeout=2.5)
-            print("JK header seen — listen only", file=sys.stderr, flush=True)
-            await listen(max_s=6.0)
+            print("JK header seen — добиваем 0x02", file=sys.stderr, flush=True)
+            await listen(max_s=1.5)
+            for extra_cmd, wait_s in ((0x96, 2.5), (0x97, 2.5), (0x96, 3.0)):
+                if disconnected.is_set() or b"\x55\xaa\xeb\x90\x02" in buf:
+                    break
+                await ask(extra_cmd)
+                await listen(max_s=wait_s)
         except asyncio.TimeoutError:
             if not disconnected.is_set():
                 await ask(0x97)
