@@ -1,36 +1,44 @@
 #!/usr/bin/env python3
-"""JK-B2A8S20P BLE через Bumble HCI USER (обход BlueZ/Cypress на Pi 3).
+"""JK-B2A8S20P BLE через Bumble HCI USER (Pi 3 / BCM43438 UART).
 
 Обновлено: 2026-10-31
-Требования: bluetoothd stop, hci0 DOWN, root. UUID FFE1.
+
+Корневая проблема Pi3: Wi‑Fi и BT на одном чипе (BCM43438A1). В dmesg —
+«Frame reassembly failed (-84)»; линк живёт 1–3 с (HCI reason 8/62), полного
+кадра 0x02 (~300 B) часто не хватает. Wi‑Fi ОТКЛЮЧАТЬ НЕЛЬЗЯ (гараж = интернет).
+
+Стратегия:
+- без GATT discover;
+- write только FFE2@0x10 (FFE1@0x12 сыпет AT\\r\\n);
+- после первого JK-заголовка больше не TX — только слушать;
+- короткий connect, мало попыток;
+- Wi‑Fi только txpower↓ в обёртке, никогда radio off.
 """
 from __future__ import annotations
 
 import argparse
 import asyncio
 import json
+import struct
 import sys
 import time
 from datetime import datetime
+from pathlib import Path
 
 import bumble.device as bumble_device
-from bumble.core import PhysicalTransport, UUID
+from bumble.core import PhysicalTransport
 from bumble.device import Device, Peer
 from bumble.hci import Address, OwnAddressType
 from bumble.transport import open_transport
 
-# Сосуществование с Wi‑Fi
-bumble_device.DEVICE_DEFAULT_CONNECT_SCAN_INTERVAL = 100
-bumble_device.DEVICE_DEFAULT_CONNECT_SCAN_WINDOW = 30
-bumble_device.DEVICE_DEFAULT_CONNECTION_SUPERVISION_TIMEOUT = 4000
+# Узкое окно скана + длинный supervision (мс в API Bumble)
+bumble_device.DEVICE_DEFAULT_CONNECT_SCAN_INTERVAL = 80
+bumble_device.DEVICE_DEFAULT_CONNECT_SCAN_WINDOW = 40
+bumble_device.DEVICE_DEFAULT_CONNECTION_SUPERVISION_TIMEOUT = 8000
 
-FFE1 = UUID("FFE1")
 MAC_DEFAULT = "C8:47:80:53:0F:B6"
-
-
-def is_uuid(ch_uuid, short: str) -> bool:
-    u = str(ch_uuid).upper()
-    return ch_uuid == UUID(short) or f"0000{short.upper()}" in u
+FFE2_WRITE = 0x10
+FFE1_CCCD = 0x13
 
 
 def csum(data: bytes) -> int:
@@ -114,28 +122,46 @@ def mode_of(sample: dict) -> str:
     return "idle"
 
 
-async def wait_adv(device: Device, addr: str, seconds: float = 20.0) -> bool:
-    """Скан ADV; при таймауте всё равно пробуем connect (как Daly)."""
+def frame_types(raw: bytes) -> list[int]:
+    out: list[int] = []
+    i = 0
+    while True:
+        j = raw.find(b"\x55\xaa\xeb\x90", i)
+        if j < 0 or j + 5 > len(raw):
+            break
+        out.append(raw[j + 4])
+        i = j + 5
+    return out
+
+
+def save_rx(raw: bytes) -> None:
+    if not raw:
+        return
+    try:
+        Path("/home/pi/jk4s-ble/logs").mkdir(parents=True, exist_ok=True)
+        Path("/home/pi/jk4s-ble/logs/last_rx.bin").write_bytes(raw)
+        Path("/home/pi/jk4s-ble/logs/last_rx.hex").write_text(raw.hex(" "), encoding="utf-8")
+        Path("/tmp/jk4s_last_rx.bin").write_bytes(raw)
+        Path(f"/home/pi/jk4s-ble/logs/rx-{int(time.time())}.bin").write_bytes(raw)
+    except Exception:
+        pass
+
+
+async def wait_adv(device: Device, addr: str, seconds: float = 8.0) -> bool:
     target = addr.upper().replace("-", ":")
     found = asyncio.Event()
 
     def on_adv(advertisement) -> None:
         try:
-            a = str(advertisement.address).upper().replace("-", ":")
-            # Bumble часто даёт "XX:YY:…/P" или "/R"
-            a_clean = a.split("/")[0]
-            if a_clean == target or target in a:
+            a = str(advertisement.address).upper().replace("-", ":").split("/")[0]
+            if a == target or target in a:
                 print(f"ADV {a}", file=sys.stderr, flush=True)
                 found.set()
         except Exception:
             pass
 
     device.on("advertisement", on_adv)
-    await device.start_scanning(
-        filter_duplicates=True,
-        scan_interval=100,
-        scan_window=30,
-    )
+    await device.start_scanning(filter_duplicates=True, scan_interval=80, scan_window=40)
     try:
         try:
             await asyncio.wait_for(found.wait(), timeout=seconds)
@@ -145,11 +171,12 @@ async def wait_adv(device: Device, addr: str, seconds: float = 20.0) -> bool:
             return False
     finally:
         await device.stop_scanning()
-        await asyncio.sleep(0.15)
+        await asyncio.sleep(0.05)
 
 
-async def once(device: Device, addr: str) -> dict:
-    await wait_adv(device, addr, seconds=18.0)
+async def once(device: Device, addr: str, *, skip_adv: bool = False) -> dict:
+    if not skip_adv:
+        await wait_adv(device, addr, seconds=8.0)
 
     peer_addr = Address(addr, Address.PUBLIC_DEVICE_ADDRESS)
     print("connecting…", file=sys.stderr, flush=True)
@@ -157,7 +184,7 @@ async def once(device: Device, addr: str) -> dict:
         peer_addr,
         transport=PhysicalTransport.LE,
         own_address_type=OwnAddressType.PUBLIC,
-        timeout=40.0,
+        timeout=25.0,
     )
     print("CONNECTED", connection.handle, file=sys.stderr, flush=True)
     disconnected = asyncio.Event()
@@ -169,174 +196,113 @@ async def once(device: Device, addr: str) -> dict:
         disconnected.set()
 
     connection.on("disconnection", on_disc)
-
-    # Минимальная пауза: JK сыпет notify сразу — надо быстро найти FFE1 и подписаться
-    try:
-        await asyncio.wait_for(disconnected.wait(), timeout=0.6)
-        raise RuntimeError(f"early disconnect {disc_reason}")
-    except asyncio.TimeoutError:
-        print("STABLE", file=sys.stderr, flush=True)
+    # Не update_parameters — на Cypress часто reason 62.
 
     peer = Peer(connection)
+    client = peer.gatt_client
     buf = bytearray()
+    got_jk = asyncio.Event()
 
     def on_value(value: bytes) -> None:
-        buf.extend(bytes(value))
-        print(f"+{len(value)} total={len(buf)}", file=sys.stderr, flush=True)
+        raw = bytes(value)
+        if not raw or raw in (b"AT\r\n", b"OK\r\n", b"ERROR\r\n"):
+            return
+        # отрезать ведущие AT\r\n в том же куске
+        if raw.startswith(b"AT\r\n"):
+            raw = raw[4:]
+            if not raw:
+                return
+        buf.extend(raw)
+        print(f"+{len(raw)} total={len(buf)}", file=sys.stderr, flush=True)
+        if b"\x55\xaa\xeb\x90" in buf:
+            got_jk.set()
 
-    # Только сервис FFE0 — быстрее полного discover
-    notify_c = write_c = None
-    for attempt in range(4):
-        if disconnected.is_set():
-            raise RuntimeError(f"disc during discover: {disc_reason}")
-        try:
-            await asyncio.wait_for(
-                peer.discover_services([UUID("FFE0")]),
-                timeout=12,
-            )
-            for service in peer.services:
-                # только FFE0 — иначе discover всех сервисов рвёт линк (notify flood)
-                if not is_uuid(service.uuid, "FFE0"):
-                    continue
-                await asyncio.wait_for(service.discover_characteristics(), timeout=8)
-                for ch in service.characteristics:
-                    print(" CHAR", ch.uuid, ch.properties, file=sys.stderr, flush=True)
-                    if is_uuid(ch.uuid, "FFE1"):
-                        notify_c = ch
-                        if write_c is None:
-                            write_c = ch
-                    elif is_uuid(ch.uuid, "FFE2"):
-                        write_c = ch
-            if notify_c and write_c:
-                break
-        except Exception as e:
-            print(f"discover attempt {attempt+1}: {type(e).__name__} {e}", file=sys.stderr, flush=True)
-            await asyncio.sleep(0.6)
-    else:
-        # fallback: полный discover
-        await asyncio.wait_for(peer.discover_services(), timeout=15)
-        for service in peer.services:
-            await service.discover_characteristics()
-            for ch in service.characteristics:
-                if is_uuid(ch.uuid, "FFE1"):
-                    notify_c = ch
-                    if write_c is None:
-                        write_c = ch
-                elif is_uuid(ch.uuid, "FFE2"):
-                    write_c = ch
+    for h in (0x12, 0x10, 0x05, 0x03, 0x11, 0x13):
+        client.notification_subscribers.setdefault(h, set()).add(on_value)
 
-    if not notify_c or not write_c:
-        raise RuntimeError("no FFE1 characteristic")
-
-    await notify_c.subscribe(on_value)
-    await asyncio.sleep(0.25)
+    # CCCD без response; ошибка не фатальна
+    try:
+        await peer.write_value(FFE1_CCCD, struct.pack("<H", 0x0001), with_response=False)
+        print(f"CCCD @{FFE1_CCCD:#x}", file=sys.stderr, flush=True)
+    except Exception as e:
+        print(f"CCCD skip: {e}", file=sys.stderr, flush=True)
 
     async def ask(cmd: int) -> None:
-        payload = req(cmd)
-        for target in (write_c, notify_c):
-            if target is None:
-                continue
-            try:
-                await target.write_value(payload, with_response=False)
-                print(f"TX 0x{cmd:02x} → {target.uuid}", file=sys.stderr, flush=True)
+        if disconnected.is_set():
+            return
+        try:
+            await peer.write_value(FFE2_WRITE, req(cmd), with_response=False)
+            print(f"TX 0x{cmd:02x} → ffe2@{FFE2_WRITE:#x}", file=sys.stderr, flush=True)
+        except Exception as e:
+            print(f"TX fail: {e}", file=sys.stderr, flush=True)
+
+    async def listen(max_s: float) -> None:
+        t0 = time.time()
+        while time.time() - t0 < max_s and not disconnected.is_set():
+            sample = parse_jk02_32s(bytes(buf))
+            if sample and sample.get("cell_count", 0) >= 4:
                 return
-            except Exception as e:
-                print(f"write {target.uuid} fail: {e}", file=sys.stderr, flush=True)
-
-    # На Pi5 0x02 шёл потоком после 0x97/длительного коннекта; 0x96 часто даёт 0x01.
-    for cmd in (0x96, 0x97, 0x96, 0x96):
-        if disconnected.is_set():
-            break
-        await ask(cmd)
-        await asyncio.sleep(0.8)
-
-    # Ждём 0x02 до 18 с, пока линк жив
-    t0 = time.time()
-    while time.time() - t0 < 18.0:
-        if b"\x55\xaa\xeb\x90\x02" in buf:
-            break
-        if disconnected.is_set():
-            break
-        # периодически пинаем cell info
-        if int(time.time() - t0) in (5, 10, 14):
-            await ask(0x96)
-            await asyncio.sleep(0.3)
-        await asyncio.sleep(0.15)
-
-    # добрать хвост кадра 0x02
-    if b"\x55\xaa\xeb\x90\x02" in buf:
-        last = len(buf)
-        stable = 0
-        for _ in range(50):
             await asyncio.sleep(0.08)
-            if len(buf) == last:
-                stable += 1
-                if stable >= 6:
-                    break
-            else:
-                last = len(buf)
-                stable = 0
+
+    # Быстрый путь: сразу cell info 0x96; если пошёл JK-поток — больше не пинаем
+    await asyncio.sleep(0.1)
+    if not disconnected.is_set():
+        await ask(0x96)
+        try:
+            await asyncio.wait_for(got_jk.wait(), timeout=2.5)
+            print("JK header seen — listen only", file=sys.stderr, flush=True)
+            await listen(max_s=6.0)
+        except asyncio.TimeoutError:
+            if not disconnected.is_set():
+                await ask(0x97)
+                await listen(max_s=4.0)
+            if not disconnected.is_set() and b"\x55\xaa\xeb\x90\x02" not in buf:
+                await ask(0x96)
+                await listen(max_s=5.0)
 
     raw = bytes(buf)
-    # отладка: сохранить сырой BLE-буфер
-    try:
-        Path = __import__("pathlib").Path
-        Path("/home/pi/jk4s-ble/logs").mkdir(parents=True, exist_ok=True)
-        Path("/home/pi/jk4s-ble/logs/last_rx.bin").write_bytes(raw)
-        Path("/home/pi/jk4s-ble/logs/last_rx.hex").write_text(raw.hex(" "), encoding="utf-8")
-    except Exception:
-        pass
-
+    save_rx(raw)
     sample = parse_jk02_32s(raw)
-    if not sample:
-        # любой JK header (0x01 settings / 0x02 cell / 0x03 device)
-        idx = raw.find(b"\x55\xaa\xeb\x90")
-        print(
-            f"parse miss idx={idx} head={raw[:80].hex(' ') if raw else ''}",
-            file=sys.stderr,
-            flush=True,
-        )
-        if idx >= 0 and len(raw) > idx + 5 and raw[idx + 4] != 0x02:
-            # дождаться/запросить ещё раз cell info
-            try:
-                await write_c.write_value(req(0x96), with_response=False)
-                await asyncio.sleep(3.0)
-                raw = bytes(buf)
-                sample = parse_jk02_32s(raw)
-            except Exception:
-                pass
+    types = frame_types(raw)
+    print(f"rx={len(raw)} types={types} disc={disc_reason}", file=sys.stderr, flush=True)
+
     try:
         if not disconnected.is_set():
             await connection.disconnect()
     except Exception:
         pass
+
     if not sample:
-        raise RuntimeError(f"no JK02 frame rx={len(raw)} disc={disc_reason}")
+        head = raw[:64].hex(" ") if raw else ""
+        raise RuntimeError(
+            f"no JK02 frame rx={len(raw)} types={types} disc={disc_reason} head={head}"
+        )
     return sample
 
 
 async def run(addr: str, attempts: int) -> dict:
-    last_err: Exception | None = None
+    last_err: BaseException | None = None
     async with await open_transport("hci-socket:0") as (source, sink):
         device = Device.with_hci("Pi3-JK4S", "F0:F1:F2:F3:F4:F6", source, sink)
         await device.power_on()
-        await asyncio.sleep(0.4)
+        await asyncio.sleep(0.25)
         for i in range(1, attempts + 1):
             print(f"=== attempt {i}/{attempts} ===", file=sys.stderr, flush=True)
             try:
-                sample = await once(device, addr)
-                return sample
-            except Exception as e:
+                return await once(device, addr, skip_adv=(i > 1))
+            except BaseException as e:
+                if isinstance(e, (KeyboardInterrupt, SystemExit)):
+                    raise
                 last_err = e
                 print(f"FAIL {type(e).__name__}: {e}", file=sys.stderr, flush=True)
-                await asyncio.sleep(4.0 if i < attempts else 0)
+                await asyncio.sleep(2.5 if i < attempts else 0)
     raise RuntimeError(str(last_err) if last_err else "failed")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("addr", nargs="?", default=MAC_DEFAULT)
-    ap.add_argument("-n", "--attempts", type=int, default=6)
+    ap.add_argument("-n", "--attempts", type=int, default=3)
     ap.add_argument("-o", "--out", default="")
     args = ap.parse_args()
     sample = asyncio.run(run(args.addr, args.attempts))
@@ -354,8 +320,7 @@ def main() -> int:
     text = json.dumps(snap, ensure_ascii=False, indent=2)
     print(text)
     if args.out:
-        with open(args.out, "w", encoding="utf-8") as f:
-            f.write(text)
+        Path(args.out).write_text(text, encoding="utf-8")
     return 0
 
 

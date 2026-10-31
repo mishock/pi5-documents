@@ -1,3 +1,12 @@
+## Фокус (20:08, 2026-10-31) — JK BLE Pi3: причина и правки
+
+Корень: BCM43438 UART + Wi‑Fi → HCI -84, disconnect 8/62 за 1–3 с, 0x02 не успевает.
+Правки: быстрый probe (0x96, listen-only, write@0x10), Wi‑Fi never off. Тест 3×: был 0x01 40B. Таймер disabled. Док: `…/notes/BLE_PI3_ROOT_CAUSE_2026-10-31.md`.
+
+## Фокус (19:59, 2026-10-31) — Wi‑Fi гаража НЕ отключать
+
+ЖЁСТКО: на Pi3/в гараже Wi‑Fi (GARAGE) — основной интернет/NetBird. Запрет wifi off / rfkill. Правило `.cursor/rules/garage-wifi-never-off.mdc`. JK BLE timer disabled.
+
 ## Фокус (16:08, 2026-10-30) — BLE-имя AKB-4S-230
 
 На моей 4S (MAC `C8:47:80:53:0F:B6`) advertising = **AKB-4S-230** (reg `0x9B`). Было `C8-47-80-53-0F-B6`.

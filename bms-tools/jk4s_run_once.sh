@@ -1,16 +1,19 @@
 #!/bin/bash
-# Разовый опрос JK АКБ 4S через Bumble. Обновлено: 2026-10-31
+# Разовый опрос JK АКБ 4S (AKB-4S-230) через Bumble.
+# Обновлено: 2026-10-31
+# ЖЁСТКО: Wi‑Fi НЕ отключать (гараж = основной интернет). Только txpower↓.
 set -uo pipefail
 VENV=/home/pi/jk4s-ble/.venv
 PROBE=/home/pi/jk4s-ble/jk4s_bumble_probe.py
 OUT=/home/pi/jk4s-ble/jk4s.json
 MAC=C8:47:80:53:0F:B6
+ATTEMPTS="${JK4S_ATTEMPTS:-3}"
 
 OLD_TX=""
 MASKED=0
 if command -v iwconfig >/dev/null; then
   OLD_TX=$(iwconfig wlan0 2>/dev/null | awk -F'=' '/Tx-Power/{print $2}' | awk '{print $1}')
-  iwconfig wlan0 txpower 8 2>/dev/null || true
+  iwconfig wlan0 txpower 5 2>/dev/null || true
 fi
 
 cleanup() {
@@ -27,27 +30,28 @@ cleanup() {
   else
     iwconfig wlan0 txpower 31 2>/dev/null || true
   fi
+  # Wi‑Fi radio всегда on
+  nmcli radio wifi on 2>/dev/null || true
 }
 trap cleanup EXIT
 
-echo "stop+mask bluetoothd…"
+echo "stop bluetoothd (Wi‑Fi stays ON)…"
 systemctl stop bluetooth 2>/dev/null || true
 systemctl mask bluetooth 2>/dev/null && MASKED=1 || true
 killall -9 bluetoothd btmon 2>/dev/null || true
 pkill -9 -f jk4s_bumble_probe.py 2>/dev/null || true
-sleep 2
+sleep 1
 hciconfig hci0 down 2>/dev/null || true
 rfkill unblock bluetooth 2>/dev/null || true
-sleep 1
+rfkill unblock wifi 2>/dev/null || true
+sleep 0.5
 
-echo "probe…"
-"$VENV/bin/python" "$PROBE" "$MAC" -n 5 -o "$OUT"
+echo "probe attempts=$ATTEMPTS…"
+"$VENV/bin/python" "$PROBE" "$MAC" -n "$ATTEMPTS" -o "$OUT"
 RC=$?
 echo "probe rc=$RC"
 if [[ $RC -eq 0 ]]; then
-  cp -f "$OUT" /home/pi/Raspberry_Pi_3_HomePortable/ha_config/host_status/jk4s.json
-  scp -o ConnectTimeout=8 -o BatchMode=yes "$OUT" \
-    "pi@100.102.159.200:/home/pi/Documents/Проекты/Apple HomeKit accessory/home_assistant/config/host_status/jk4s.json" || true
-  head -50 "$OUT"
+  cp -f "$OUT" /home/pi/Raspberry_Pi_3_HomePortable/ha_config/host_status/jk4s.json 2>/dev/null || true
+  head -40 "$OUT"
 fi
 exit $RC

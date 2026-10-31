@@ -1,3 +1,9 @@
+## ЖЁСТКО — Wi‑Fi гаража (2026-10-31)
+
+- **Никогда** не `wifi off` / rfkill на Pi3/Kali: GARAGE = основной интернет + NetBird.
+- Правило: `.cursor/rules/garage-wifi-never-off.mdc`
+- JK BLE timer на Pi3: **disabled**
+
 ## Фокус — JK АКБ 4S гараж / Pi3 BLE / HA (2026-10-31)
 
 - MAC `C8:47:80:53:0F:B6`, имя `AKB-4S-230`
