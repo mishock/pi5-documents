@@ -1,0 +1,201 @@
+# JK АКБ 4S 12V 230Ah (JK-B2A8S20P / AKB-4S-230) — BLE с Pi 3 → host_status/jk4s.json
+# Обновлено: 2026-10-31
+# Числовые сенсоры: пустой ответ = unavailable (без «иголок» 0 при offline).
+
+command_line:
+  - sensor:
+      name: "JK4S Pack Voltage"
+      unique_id: jk4s_pack_voltage
+      command: "python3 /config/host_status/jk4s_read.py pack_V"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Current"
+      unique_id: jk4s_current
+      command: "python3 /config/host_status/jk4s_read.py current_A"
+      unit_of_measurement: "A"
+      device_class: current
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S SOC"
+      unique_id: jk4s_soc
+      command: "python3 /config/host_status/jk4s_read.py soc"
+      unit_of_measurement: "%"
+      device_class: battery
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Remaining"
+      unique_id: jk4s_remain
+      command: "python3 /config/host_status/jk4s_read.py remain_Ah"
+      unit_of_measurement: "Ah"
+      state_class: measurement
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Voltage Min Seen"
+      unique_id: jk4s_pack_v_min
+      command: "python3 /config/host_status/jk4s_read.py pack_v_min"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Voltage Max Seen"
+      unique_id: jk4s_pack_v_max
+      command: "python3 /config/host_status/jk4s_read.py pack_v_max"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Last Charge Peak"
+      unique_id: jk4s_last_charge_peak
+      command: "python3 /config/host_status/jk4s_read.py last_charge_peak_V"
+      unit_of_measurement: "V"
+      device_class: voltage
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Last Discharge Floor"
+      unique_id: jk4s_last_discharge_floor
+      command: "python3 /config/host_status/jk4s_read.py last_discharge_floor_V"
+      unit_of_measurement: "V"
+      device_class: voltage
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Mode"
+      unique_id: jk4s_mode
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/jk4s.json')).get('mode') or 'offline')\""
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Charge MOS"
+      unique_id: jk4s_charge_mos
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/jk4s.json')).get('charge_mos') or '—')\""
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Discharge MOS"
+      unique_id: jk4s_discharge_mos
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/jk4s.json')).get('discharge_mos') or '—')\""
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Balancer"
+      unique_id: jk4s_balancer
+      command: "python3 -c \"import json;print(json.load(open('/config/host_status/jk4s.json')).get('balancer') if json.load(open('/config/host_status/jk4s.json')).get('balancer') is not None else '—')\""
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Cell Min"
+      unique_id: jk4s_cell_min
+      command: "python3 /config/host_status/jk4s_read.py cell_min_V"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Cell Max"
+      unique_id: jk4s_cell_max
+      command: "python3 /config/host_status/jk4s_read.py cell_max_V"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Cell Delta"
+      unique_id: jk4s_cell_delta
+      command: "python3 /config/host_status/jk4s_read.py cell_delta_mV"
+      unit_of_measurement: "mV"
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Temp 1"
+      unique_id: jk4s_temp1
+      command: "python3 /config/host_status/jk4s_read.py temp1_C"
+      unit_of_measurement: "°C"
+      device_class: temperature
+      state_class: measurement
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Temp 2"
+      unique_id: jk4s_temp2
+      command: "python3 /config/host_status/jk4s_read.py temp2_C"
+      unit_of_measurement: "°C"
+      device_class: temperature
+      state_class: measurement
+      scan_interval: 60
+  - sensor:
+      name: "JK4S MOS Temp"
+      unique_id: jk4s_mos_temp
+      command: "python3 /config/host_status/jk4s_read.py mos_temp_C"
+      unit_of_measurement: "°C"
+      device_class: temperature
+      state_class: measurement
+      scan_interval: 60
+  - sensor:
+      name: "JK4S Cell 1 Voltage"
+      unique_id: jk4s_cell_1_voltage
+      command: "python3 /config/host_status/jk4s_read.py cell_1"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Cell 2 Voltage"
+      unique_id: jk4s_cell_2_voltage
+      command: "python3 /config/host_status/jk4s_read.py cell_2"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Cell 3 Voltage"
+      unique_id: jk4s_cell_3_voltage
+      command: "python3 /config/host_status/jk4s_read.py cell_3"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+  - sensor:
+      name: "JK4S Cell 4 Voltage"
+      unique_id: jk4s_cell_4_voltage
+      command: "python3 /config/host_status/jk4s_read.py cell_4"
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
+      scan_interval: 30
+
+# Графики: без offline-нулей; мёртвая зона от дребезга BMS
+template:
+  - sensor:
+      - name: "JK4S Pack Voltage Graph"
+        unique_id: jk4s_pack_voltage_graph
+        unit_of_measurement: "V"
+        device_class: voltage
+        state_class: measurement
+        availability: "{{ states('sensor.jk4s_pack_voltage') | float(-1) >= 8 }}"
+        state: >-
+          {% set new = states('sensor.jk4s_pack_voltage') | float | round(2) %}
+          {% set old = this.state | float(0) %}
+          {{ new if old == 0 or (new - old) | abs >= 0.05 else old }}
+      - name: "JK4S Current Graph"
+        unique_id: jk4s_current_graph
+        unit_of_measurement: "A"
+        device_class: current
+        state_class: measurement
+        availability: "{{ states('sensor.jk4s_current') not in ['unknown', 'unavailable'] }}"
+        state: >-
+          {% set new = states('sensor.jk4s_current') | float | round(2) %}
+          {{ 0.0 if new | abs < 0.2 else new }}
+      - name: "JK4S SOC Graph"
+        unique_id: jk4s_soc_graph
+        unit_of_measurement: "%"
+        device_class: battery
+        state_class: measurement
+        availability: >-
+          {% set s = states('sensor.jk4s_soc') | float(-1) %}
+          {% set v = states('sensor.jk4s_pack_voltage') | float(-1) %}
+          {{ s >= 0 and v >= 8 }}
+        state: >-
+          {% set new = states('sensor.jk4s_soc') | float | round(1) %}
+          {% set old = this.state | float(-1) %}
+          {{ new if old < 0 or (new - old) | abs >= 1.0 else old }}

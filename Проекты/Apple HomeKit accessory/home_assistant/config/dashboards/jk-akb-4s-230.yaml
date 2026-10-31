@@ -1,0 +1,141 @@
+# Обновлено: 2026-10-31 — АКБ 4S 12V 230Ah (JK / AKB-4S-230), стиль как ANT BMS24C
+title: JK АКБ 4S 230Ah
+views:
+  - title: JK АКБ 4S
+    path: home
+    icon: mdi:car-battery
+    cards:
+      - type: markdown
+        content: |
+          ## АКБ 12 В 230 А·ч — JK-B2A8S20P
+          BLE с Pi 3 (`AKB-4S-230`). Опрос ~1 мин. Графики без нулей при offline.
+          Ячейки: 4S LiFePO4. Разброс > 30 мВ — красный.
+
+      - type: entities
+        title: Сейчас
+        entities:
+          - entity: sensor.jk4s_pack_voltage
+            name: Напряжение пакета
+          - entity: sensor.jk4s_current
+            name: Ток (− заряд / + разряд)
+          - entity: sensor.jk4s_soc
+            name: SOC
+          - entity: sensor.jk4s_remaining
+            name: Остаток
+          - entity: sensor.jk4s_cell_delta
+            name: Разброс ячеек
+            icon: mdi:scale-unbalanced
+            card_mod:
+              style: |
+                :host {
+                  {% set d = states('sensor.jk4s_cell_delta') | float(-1) %}
+                  {% if d > 30 %}
+                  --state-icon-color: var(--error-color);
+                  --paper-item-icon-color: var(--error-color);
+                  color: var(--error-color);
+                  font-weight: bold;
+                  {% elif d >= 0 %}
+                  --state-icon-color: var(--success-color);
+                  --paper-item-icon-color: var(--success-color);
+                  {% endif %}
+                }
+          - entity: sensor.jk4s_mode
+            name: Режим
+          - entity: sensor.jk4s_charge_mos
+            name: Зарядный MOS
+          - entity: sensor.jk4s_discharge_mos
+            name: Разрядный MOS
+          - entity: sensor.jk4s_balancer
+            name: Балансир (код)
+          - entity: sensor.jk4s_temp_1
+            name: Темп. 1
+          - entity: sensor.jk4s_temp_2
+            name: Темп. 2
+          - entity: sensor.jk4s_mos_temp
+            name: Темп. MOS
+
+      - type: markdown
+        content: |
+          ## Ячейки
+          {% set ns = namespace(v=[]) -%}
+          {% for i in range(1, 5) -%}
+          {% set ns.v = ns.v + [states('sensor.jk4s_cell_' ~ i ~ '_voltage') | float(0)] -%}
+          {% endfor -%}
+          {% set ok = ns.v | select('gt', 0) | list -%}
+          {% set hi = ok | max if ok else 0 -%}
+          {% set lo = ok | min if ok else 0 -%}
+          {% macro c(v) -%}
+          {% set t = '%.3f' | format(v) -%}
+          {% if hi > lo and v == hi %}<font color="#e53935">{{ t }}</font>{% elif hi > lo and v == lo %}<font color="#1e88e5">{{ t }}</font>{% else %}{{ t }}{% endif -%}
+          {% endmacro -%}
+          **Мин:** <font color="#1e88e5">{{ '%.3f' | format(states('sensor.jk4s_cell_min') | float(0)) }}</font> V | **Макс:** <font color="#e53935">{{ '%.3f' | format(states('sensor.jk4s_cell_max') | float(0)) }}</font> V | **Разброс:** {{ states('sensor.jk4s_cell_delta') }} mV
+
+          1: **{{ c(ns.v[0]) }}** V | 2: **{{ c(ns.v[1]) }}** V | 3: **{{ c(ns.v[2]) }}** V | 4: **{{ c(ns.v[3]) }}** V
+
+      - type: entities
+        title: До какого напряжения
+        entities:
+          - entity: sensor.jk4s_last_charge_peak
+            name: Пик заряда (когда ушёл с charge)
+          - entity: sensor.jk4s_last_discharge_floor
+            name: Пол разряда (когда ушёл с discharge)
+          - entity: sensor.jk4s_voltage_max_seen
+            name: Максимум за всё время лога
+          - entity: sensor.jk4s_voltage_min_seen
+            name: Минимум за всё время лога
+
+      - type: gauge
+        entity: sensor.jk4s_pack_voltage
+        name: Пакет 12 В
+        unit: V
+        min: 10
+        max: 14.6
+        needle: true
+        severity:
+          red: 10
+          yellow: 12.0
+          green: 13.2
+
+      - type: gauge
+        entity: sensor.jk4s_soc
+        name: SOC
+        unit: "%"
+        min: 0
+        max: 100
+        needle: true
+        severity:
+          red: 0
+          yellow: 30
+          green: 70
+
+      - type: history-graph
+        title: Напряжение пакета — 24 часа
+        hours_to_show: 24
+        refresh_interval: 300
+        min_y_axis: 11
+        max_y_axis: 14.6
+        fit_y_data: true
+        entities:
+          - entity: sensor.jk4s_pack_voltage_graph
+            name: Пакет V
+
+      - type: history-graph
+        title: Ток — 24 часа
+        hours_to_show: 24
+        refresh_interval: 300
+        min_y_axis: -20
+        max_y_axis: 20
+        fit_y_data: true
+        entities:
+          - entity: sensor.jk4s_current_graph
+            name: Ток A
+
+      - type: history-graph
+        title: SOC — 24 часа
+        hours_to_show: 24
+        refresh_interval: 300
+        min_y_axis: 0
+        max_y_axis: 100
+        entities:
+          - entity: sensor.jk4s_soc_graph
+            name: SOC
