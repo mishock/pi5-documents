@@ -64,10 +64,4 @@ lovelace:
       icon: mdi:car-battery
       show_in_sidebar: true
       filename: dashboards/ant-bms-24c.yaml
-    jk-akb-4s-230:
-      mode: yaml
-      title: JK АКБ 4S 230Ah
-      icon: mdi:battery-high
-      show_in_sidebar: true
-      filename: dashboards/jk-akb-4s-230.yaml
 
