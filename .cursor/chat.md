@@ -1,3 +1,70 @@
+## Фокус (20:30, 2026-10-31) — JK только на Pi3 HA
+
+С Pi5 HA убраны дашборд/пакет JK и `jk4s-ha-poll.path`. Канон: `10.0.20.56` → **JK АКБ 4S 230Ah**.
+
+## Фокус (20:28, 2026-10-31) — JK дашборд на Pi3 HA
+
+Пользователь смотрел ворота на `10.0.20.56`. Дашборд **JK АКБ 4S 230Ah** установлен в HA Pi3: сайдбар + `/jk-akb-4s-230/home`, кнопка опроса через `jk4s-ha-poll-pi3.path`.
+
+## Фокус (20:19, 2026-10-31) — JK HA: дашборд + кнопка опроса
+
+Дашборд **JK АКБ 4S 230Ah** установлен. Кнопка «Опросить батарею» → `jk4s-ha-poll.path` → SSH Pi3 `sudo run_once` → после опроса BLE disconnect. Таймер disabled. Кадр 0x02 на Cypress всё ещё нестабилен; прошлый снимок (19:43) в HA сохранён.
+
+## Фокус (20:08, 2026-10-31) — JK BLE Pi3: причина и правки
+
+Корень: BCM43438 UART + Wi‑Fi → HCI -84, disconnect 8/62 за 1–3 с, 0x02 не успевает.
+Правки: быстрый probe (0x96, listen-only, write@0x10), Wi‑Fi never off. Тест 3×: был 0x01 40B. Таймер disabled. Док: `…/notes/BLE_PI3_ROOT_CAUSE_2026-10-31.md`.
+
+## Фокус (19:59, 2026-10-31) — Wi‑Fi гаража НЕ отключать
+
+ЖЁСТКО: на Pi3/в гараже Wi‑Fi (GARAGE) — основной интернет/NetBird. Запрет wifi off / rfkill. Правило `.cursor/rules/garage-wifi-never-off.mdc`. JK BLE timer disabled.
+
+## Фокус (16:08, 2026-10-30) — BLE-имя AKB-4S-230
+
+На моей 4S (MAC `C8:47:80:53:0F:B6`) advertising = **AKB-4S-230** (reg `0x9B`). Было `C8-47-80-53-0F-B6`.
+
+## Фокус (18:08, 2026-10-31) — JK АКБ 4S в гараже → Pi3 BLE + HA
+
+Pi 3: BT размаскирован, scan видит **AKB-4S-230** (`C8:47:80:53:0F:B6`). Опрос через Bumble (BlueZ рвёт линк). Таймер `jk4s-ble-logger.timer` каждые 2 мин.
+HA Pi5: дашборд **JK АКБ 4S 230Ah**, пакет `packages/jk4s.yaml`, 25 сенсоров. Живой `0x02` ещё нестабилен — закрыть JK App, нажать кнопку на BMS.
+
+## Фокус (15:47, 2026-10-30) — «моя батарея» = 4S
+
+Зафиксировано: настройка/BLE «моей батареи» → только `АКБ_LiFePO4_12V_230Ah` / JK-B2A8S20P `C8:47:80:53:0F:B6`. Правило `.cursor/rules/my-battery-4s.mdc`. 16S — только если явно.
+
+## Фокус (15:05, 2026-10-30) — шаблон 16S 235Ah JK_B2A20S20P
+
+Зеркало профиля 4S EVE: 16S, **235 Ач**, Display always ON, заряд/разряд 200 А, SOC-100% 3.50, Start Balance 3.40, OTP 65 °C.  
+`notes/SETTINGS_16S_235Ah.md`, `.jkcfg` + PDF + Drive. Старый 230 Ач — архив.
+
+## Фокус (14:40, 2026-10-30) — дисплей JK гаснет
+
+На JK-B2A8S20P выключил «Display always on» (BLE `0x2B`), Smart Sleep ON, delay 10 ч. Подтверждено: `display_always_on=false`. Заметка: `Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/SETTINGS.md`, снимок `notes/display_sleep_2026-10-30.json`.
+
+## Фокус (14:18, 2026-10-30) — настройки АКБ 12V
+
+JK-B2A8S20P на АКБ 4S 230Ah: проверил и записал профиль LiFePO4 по BLE. Профиль EVE LF230 (тока 200А, SOC-100%=3.50, Start Balance 3.40). Журнал: `Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/SETTINGS.md`.
+
+## Фокус (14:07, 2026-10-30) — BMS/JK_B2A8S20P возвращена
+
+Папка модуля BMS снова в `Платы и модули/BMS/JK_B2A8S20P/`. Канон файлов пакета 12V — `АКБ_LiFePO4_12V_230Ah/`; в BMS — симлинки. До первого BLE-коннекта этой папки в BMS не было.
+
+## Фокус (14:04, 2026-10-30) — папка АКБ 12V 230Ah
+
+Всё по 12‑вольтовой АКБ LiFePO4 230 А·ч (4S + JK-B2A8S20P) — только в `Платы и модули/АКБ_LiFePO4_12V_230Ah/`. Папка `BMS/JK_B2A8S20P` перенесена туда, не дублировать.
+
+## Фокус (14:01, 2026-10-30) — JK-B2A8S20P BLE
+
+Подключился по BLE с Pi 5 к **JK-B2A8S20P** MAC `C8:47:80:53:0F:B6` (АКБ 4S 12V 230Ah). FW 19.31, SN 60126332C000495. Пакет 13.72 В, SOC 100%, яч.4 ниже на ~48 мВ. Папка: `Платы и модули/BMS/JK_B2A8S20P/`.
+
+## Фокус (11:15, 2026-10-30) — Curtis FAULT_CODES → PDF
+
+PDF полной таблицы RU: `Платы и модули/Электрокары/Curtis_Controller/downloads/Curtis_FAULT_CODES_RU.pdf` (2 стр., ред. 2026-10-30). Генератор: `scripts/generate_fault_codes_pdf.py`.
+
+## Фокус (11:12, 2026-10-30) — Curtis: полная RU-таблица кодов
+
+Готовой русской таблицы в сети нет. Собрал полный список по официальному [faultcodes.curtisinstruments.com](https://faultcodes.curtisinstruments.com/list.php?action=Submit&mc=1238) + перевод в `Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md`. PDF: Roxie + RICO в `downloads/`.
+
 ## Фокус (21:09, 2026-10-28) — Профиль Артёма → Drive
 
 Записан полный профиль + решение по «Скултех». Локально: `Проекты/artem-study-drive/data/00_Профиль_Артём.md`, обновлены сводка и `knowledge-base.json`. Drive «Учёба Артём»: профиль [1-oOJJE-…](https://drive.google.com/file/d/1-oOJJE-Obtx2cV5M77TejKMjGZnU6HIq/view), сводка обновлена. ДР 20.06.2009, С-Ин-25, курс Скултех — не регистрироваться.

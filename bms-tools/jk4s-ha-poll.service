@@ -1,0 +1,14 @@
+[Unit]
+Description=JK4S HA: разовый опрос BLE (Pi3) по кнопке
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=pi
+Environment=JK4S_ATTEMPTS=3
+ExecStart=/home/pi/Documents/bms-tools/jk4s_ha_poll.sh
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

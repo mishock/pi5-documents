@@ -1,0 +1,24 @@
+[Unit]
+Description=JK АКБ 4S 230Ah BLE logger via Bumble (AKB-4S-230) → HA
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+RestartSec=15
+Environment=PYTHONUNBUFFERED=1
+Environment=JK4S_MAC=C8:47:80:53:0F:B6
+Environment=JK4S_INTERVAL=60
+Environment=JK4S_BASE=/home/pi/jk4s-ble
+Environment=JK4S_VENV=/home/pi/jk4s-ble/.venv
+Environment=JK4S_PROBE=/home/pi/jk4s-ble/jk4s_bumble_probe.py
+Environment=JK4S_HA_JSON=/home/pi/jk4s-ble/jk4s.json
+Environment=JK4S_HA_JSON_REMOTE=/home/pi/Raspberry_Pi_3_HomePortable/ha_config/host_status/jk4s.json
+Environment=JK4S_SCP_TARGET=pi@100.102.159.200:/home/pi/Documents/Проекты/Apple HomeKit accessory/home_assistant/config/host_status/jk4s.json
+ExecStart=/bin/bash /home/pi/jk4s-ble/jk4s_bumble_logger.sh
+
+[Install]
+WantedBy=multi-user.target

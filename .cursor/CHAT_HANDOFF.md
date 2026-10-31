@@ -1,3 +1,56 @@
+## Текущий фокус (2026-10-31 20:19 MSK)
+
+**JK АКБ 4S в HA:** дашборд `/jk-akb-4s-230/home`, кнопка опроса, BLE disconnect после. `jk4s-ha-poll.path` enabled. Timer Pi3 disabled. Wi‑Fi never off.
+
+### Быстрые проверки
+- `systemctl is-active jk4s-ha-poll.path` → active
+- HA: кнопка «Опросить батарею» / `sensor.jk4s_poll_status`
+- `journalctl -u jk4s-ha-poll.service -n 40`
+- Pi3: `systemctl is-enabled jk4s-ble-logger.timer` → disabled
+
+
+## ЖЁСТКО — Wi‑Fi гаража (2026-10-31)
+
+- **Никогда** не `wifi off` / rfkill на Pi3/Kali: GARAGE = основной интернет + NetBird.
+- Правило: `.cursor/rules/garage-wifi-never-off.mdc`
+- JK BLE timer на Pi3: **disabled**
+
+## Фокус — JK АКБ 4S гараж / Pi3 BLE / HA (2026-10-31)
+
+- MAC `C8:47:80:53:0F:B6`, имя `AKB-4S-230`
+- Pi3: `/home/pi/jk4s-ble/`, timer `jk4s-ble-logger.timer`, Bumble probe
+- HA Pi5: `/jk-akb-4s-230/home`, `packages/jk4s.yaml`, `host_status/jk4s.json`
+- Если offline: закрыть JK App на телефоне + кнопка на дисплее BMS
+
+## ЖЁСТКО — «моя батарея» = 4S (2026-10-30)
+
+- Папка: `Платы и модули/АКБ_LiFePO4_12V_230Ah/`
+- BMS JK-B2A8S20P, MAC **`C8:47:80:53:0F:B6`**, BLE-имя **`AKB-4S-230`**
+- Любая настройка/BLE «моей батареи» без явного 16S → только сюда
+- Правило: `.cursor/rules/my-battery-4s.mdc`
+
+## Фокус — JK_B2A20S20P шаблон 16S 235Ah (2026-10-30)
+
+- Канон: `Платы и модули/BMS/JK_B2A20S20P/notes/SETTINGS_16S_235Ah.md`
+- `.jkcfg`: `notes/configs/ELTAVR_48V235Ah_16S_template/`
+- PDF: `generated/ШАБЛОН_НАСТРОЕК_JK-B2A20S20P_АКБ_ЭЛЬТАВР_48V235Ah.pdf`
+- Drive: см. `…/ELTAVR_48V235Ah_16S_template/drive.json`
+- Пересборка: `cd …/scripts && python3 make_jkcfg.py && python3 upload_jkcfg_drive.py && python3 generate_jk_template_pdf.py`
+
+## Фокус — АКБ LiFePO4 12V 230Ah (2026-10-30)
+
+- Единственная папка: `Платы и модули/АКБ_LiFePO4_12V_230Ah/`
+- BMS JK-B2A8S20P, MAC `C8:47:80:53:0F:B6`, FW 19.31; модуль `BMS/JK_B2A8S20P` — симлинки на канон АКБ
+- Настройки EVE LF230 + **дисплей гаснет** (Display always on OFF, Smart Sleep ON)
+- BLE: `python3 "Платы и модули/АКБ_LiFePO4_12V_230Ah/scripts/jk_bms_ble_probe.py" --addr C8:47:80:53:0F:B6`
+
+
+## Фокус — Curtis FAULT_CODES RU (2026-10-30)
+
+- Полная таблица LED-кодов 1236/1238 на русском: `Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md`
+- Источник: официальный список 1238 + HPEVS extract + Roxie/RICO PDF
+- Готовой RU-таблицы в открытом доступе не найдено — сделан свой перевод
+
 ## Фокус — Профиль Артёма / Drive (2026-10-28)
 
 - Файл: `Проекты/artem-study-drive/data/00_Профиль_Артём.md` + обновлённая сводка

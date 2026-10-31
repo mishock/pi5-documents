@@ -2,6 +2,8 @@ homeassistant:
   packages: !include_dir_named packages
 
 frontend:
+  extra_module_url:
+    - /local/card-mod.js?v=4.2.1
 config:
 history:
 logbook:
@@ -11,6 +13,8 @@ zeroconf:
 sun:
 system_health:
 mobile_app:
+# Живое видео камер (HLS/WebRTC) — нужно для camera.elektrotsekh (Hikvision, RTSP).
+stream:
 
 # Температура CPU Pi5. Значения публикует systemd timer pi5-ha-cpu-temp.timer
 # (scripts/publish_cpu_temp.sh → config/host_status/cpu_temp.txt) каждые 5 минут.
@@ -41,20 +45,9 @@ homekit:
         - switch.switch_2
         - switch.led2_2
         # switch.gpio13 отключён: BCM 13 = пищалка многофункциональной HAT
-  # ESP Camera HK — временно отключён: camera.esp_camera нет (камера offline / без pairing).
-  # Вернуть блок ниже после pairing (finish-esp-camera-ha.sh), затем restart HA.
-  # - name: ESP Camera HK
-  #   pincode: 126-31-126
-  #   port: 21065
-  #   ip_address: 0.0.0.0
-  #   advertise_ip: 10.1.30.126
-  #   mode: accessory
-  #   filter:
-  #     include_entities:
-  #       - camera.esp_camera
-  #   entity_config:
-  #     camera.esp_camera:
-  #       video_codec: copy
+  # ВНИМАНИЕ: рабочий мост «HASS Bridge:21064» создан через UI (source=user) —
+  # этот YAML к нему НЕ применяется. Состав моста (камера электроцеха и т.д.)
+  # меняется в UI: Настройки → Интеграции → HomeKit Bridge → Настроить.
 
 lovelace:
   mode: storage

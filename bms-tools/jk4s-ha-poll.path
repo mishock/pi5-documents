@@ -1,0 +1,9 @@
+[Unit]
+Description=JK4S HA: watch poll request from Home Assistant button
+
+[Path]
+PathChanged=/home/pi/Documents/Проекты/Apple HomeKit accessory/home_assistant/config/host_status/jk4s_poll.request
+Unit=jk4s-ha-poll.service
+
+[Install]
+WantedBy=multi-user.target
