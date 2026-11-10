@@ -1,3 +1,87 @@
+## Текущий фокус (2026-11-10 14:32 MSK)
+
+### Kali Self-Hosted Worker
+- Worker **Документы на Kali** Connected: https://cursor.com/agents#workerId=c47e6c35-8494-441d-9d8e-d5b15aeacaf0
+- Репо: `mishock/kali-documents` · путь `/home/kali/Documents`
+- Сервисы: `xray-kali`, `cursor-proxy-http`, `cursor-self-hosted-worker` (user systemd, linger on)
+- Телефон: Runtime → Self-Hosted → **Документы на Kali**
+- Док: `REMOTE_CONTROL.md`
+
+## Текущий фокус (2026-11-10 13:15 MSK)
+
+### VPN прод = Cursor_Cloud
+- VLESS/WG/panel на `130.17.8.47`; старый `89.127.199.6` stop.
+- Проверки: `vpn-switch status` → exit `130.17.8.47`; `ssh cursor-cloud-shell` worker; `rpi-connect` отдельно.
+- Подписки: `https://130.17.8.47:2096/sub/...` (см. vpn-guide.md).
+- NetBird Cloud: NeedsLogin (SSH/VPN по публичному IP OK).
+
+## Текущий фокус (2026-11-10 12:57 MSK)
+
+### Pi5 Connect + spare VPN (2026-11-10 12:57)
+- rpi-connect Pi5 → прокси `127.0.0.1:10809` (не Pi3 tinyproxy). Doctor: API/WS/STUN/TURN ✓.
+- Pi5+Pi3: `vpn-switch` **spare** Fornex, exit `145.223.33.133`.
+- Проверки: `rpi-connect doctor`; `vpn-switch status` на Pi5 и Pi3.
+
+### krimsvet / Яндекс (2026-11-10 11:17)
+- Черновик Директ SMB `1926612213541230087`: Эльтавр, Крым, 8 нед 28200₽ PROMO25. Баланс 0 — ждать пополнения.
+- Метрика 114159186 OK. Дальше: цели + запуск после оплаты.
+
+**krimsvet.ru:** сайт жив. Проверка: `curl -I https://krimsvet.ru/` → 200; калькулятор + `lead.php` + `bundles.json`.
+
+### Быстрые проверки
+- `rpi-connect doctor`
+- `vpn-switch status`
+- `curl -sI https://krimsvet.ru/ | head`
+
+## Текущий фокус (2026-11-09 12:28 MSK)
+
+**Офис XKeen:** mode=**spare** Fornex. Проверка: `sshpass -p keenetic ssh -p 222 root@192.168.1.1 '/opt/bin/vpn-switch-office.sh status'`. Док: `keenetic-routers.md`, скрипт `install-office-xkeen-fornex-spare.sh`.
+
+### Быстрые проверки
+- status → mode=spare, socks=145.223.33.133
+- откат: `... vpn-switch-office.sh primary`
+
+## Текущий фокус (2026-11-09 12:22 MSK)
+
+**Fornex VPN** заказ `301-122585` = **запасной** на Pi 5. Команды: `vpn-switch spare|primary|status`. Канон: `Проекты/fornex-vpn-etizer/`.
+
+### Быстрые проверки
+- `vpn-switch status` → mode=primary, socks=89.127.199.6
+- `vpn-switch test-spare` → spare OK и restore
+- `vpn-status`
+
+## Текущий фокус (2026-11-09 12:08 MSK)
+
+**Fornex VPN Etizer** заказ `301-122585` — запомнен. Папка: `Проекты/fornex-vpn-etizer/`. Рабочий VPN малинок по-прежнему свой xray `89.127.199.6`.
+
+### Быстрые проверки
+- `ls Проекты/fornex-vpn-etizer/`
+- `cat Проекты/fornex-vpn-etizer/notes/INSTANCE.md`
+
+## Текущий фокус (2026-11-06 09:17 MSK)
+
+**Must PV18-4024:** заряд от сети **50 A** (reg 20125). Профиль/дамп обновлены.
+
+## Текущий фокус (2026-11-06 09:12 MSK)
+
+**Must PV18-4024 PRO II:** заливка рабочих на Pi 5 — verify **20/20 OK**. Dump до: `factory-settings/inverter_factory_20261106_090932.*`; после: `applied-settings/inverter_working.*`.
+
+### Быстрые проверки
+- `bash Платы\ и\ модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/scripts/must-verify-profile.sh`
+- порт: `/dev/ttyUSB0`, slave 4, 19200
+
+## Текущий фокус (2026-11-05 11:14 MSK)
+
+**Deye Cloud Ак-Як 33:** plant `62828303`, **3 логгера** — `1538096135` + новые `1538043002`/`2607261406`, `1535998111`/`2607251664`. Док: `Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md`.
+
+## Текущий фокус (2026-11-05 08:17 MSK)
+
+**HC-06 Bluetooth Module:** папка `Платы и модули/HC-06_Bluetooth_Module/` — datasheet, PINOUT, TECH_SUMMARY.
+
+### Быстрые проверки
+- `ls "Платы и модули/HC-06_Bluetooth_Module/"`
+- PDF: `…/downloads/HC-06_datasheet_wavesen_troniction.pdf`
+
 ## Текущий фокус (2026-10-31 20:19 MSK)
 
 **JK АКБ 4S в HA:** дашборд `/jk-akb-4s-230/home`, кнопка опроса, BLE disconnect после. `jk4s-ha-poll.path` enabled. Timer Pi3 disabled. Wi‑Fi never off.
@@ -130,11 +214,12 @@ MCP прошит; LED=ON в Serial; пульс mostly-ON.
 - Телефон: Runtime → Self-Hosted → Документы на Pi5 (не Cloud). Док: `REMOTE_CONTROL.md`.
 
 
-- Plant **62828303** Online; logger **1538096135**; INV **2607253382**.
+- Plant **62828303** Online; **Логгер (3):** `1538096135`, `1538043002`, `1535998111`.
+- INV: `2607253382` + Auto-adding `2607261406` (OG03), `2607251664` (SG03) — 2026-11-05.
 - Аккаунт mishock24@gmail.com; env `~/.config/deyecloud.env`.
 - **Шаблон ЭЛЬТАВР записан** (перечитано OK): **235 Ah** (факт на объекте), 100/140 A, Activate OFF, Grid 50 A, Gen 48 V/40 A, LowPower+MPPT ON.
 - Grid Start enable **выкл** (шаблон) → 00E4=49 В нормально.
-- Заметки: `…/notes/DEYE_CLOUD_AK_YAK_33.md`, `…/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md`.
+- Заметки: `…/notes/DEYE_CLOUD_AK_YAK_33.md`, `…/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md`, `…/notes/instances_2026-11-05/`.
 
 ## Deye 6.6K — генератор / Gen Force (2026-10-20)
 
@@ -489,3 +574,11 @@ Lcd_can_battery_controller **v2.6** — Elcon U+I с LCD (прошито).
 - Активный: `Проекты/Arduino` / `Lcd_can_battery_controller`
 - Экраны: Заряд (U/I/SEL), Профиль (E125/E250/C250), Батарея, Мощность, Накрутка
 - Прошито v2.7 на ACM1
+
+## VPN Pi5 (2026-11-10)
+- mode=spare (Fornex), exit 145.223.33.133
+- tunnel disabled; cloud NetBird Idle
+- VPN email alerts OFF (VPN_ALERT_EMAIL=0)
+
+### 2026-11-10 krimsvet
+- krimsvet Метрика 114159186: профиль OK, код в index.html; осталось цели/Вебмастер/Директ
