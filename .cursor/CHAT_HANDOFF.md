@@ -1,3 +1,12 @@
+## Текущий фокус
+krimsvet Директ (2026-11-10 18:09 MSK): кампания `1926612213541230087` — **На модерации** (не одобрена). Живой кабинет недоступен. См. `Проекты/krimsvet/notes/YANDEX_SETUP.md`.
+
+## Текущий фокус
+HA Assist Pi5 починен (2026-11-10 16:28): pipeline `conversation.home_assistant` + `tts.google_en_com`; custom sentences приветствия.
+
+## Текущий фокус
+krimsvet: hero-баннер на главной (2026-11-10 16:17).
+
 ## Текущий фокус (2026-11-10 14:32 MSK)
 
 ### Kali Self-Hosted Worker
