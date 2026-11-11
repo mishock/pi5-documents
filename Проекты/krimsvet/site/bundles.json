@@ -1,0 +1,445 @@
+{
+  "meta": {
+    "version": "1.1",
+    "region": "Crimea",
+    "phone": "+79789858707",
+    "company": "ООО НПП «ЭЛЬТАВР»"
+  },
+  "components": {
+    "inverters": [
+      {
+        "id": "inv_4kw_24v",
+        "voltage": 24,
+        "power_kw": 4,
+        "power_peak_kw": 8
+      },
+      {
+        "id": "inv_6kw_48v",
+        "voltage": 48,
+        "power_kw": 6,
+        "power_peak_kw": 12
+      },
+      {
+        "id": "inv_12kw_48v",
+        "voltage": 48,
+        "power_kw": 12,
+        "power_peak_kw": 24
+      }
+    ],
+    "batteries": [
+      {
+        "id": "bat_100_24v",
+        "voltage": 24,
+        "capacity_ah": 100,
+        "usable_kwh": 2.1
+      },
+      {
+        "id": "bat_100_48v",
+        "voltage": 48,
+        "capacity_ah": 100,
+        "usable_kwh": 4.1
+      },
+      {
+        "id": "bat_230_48v",
+        "voltage": 48,
+        "capacity_ah": 230,
+        "usable_kwh": 9.4
+      }
+    ],
+    "usable_ratio": 0.8
+  },
+  "steps": {
+    "object_types": [
+      {
+        "id": "apartment",
+        "label": "Квартира"
+      },
+      {
+        "id": "house",
+        "label": "Дом / дача"
+      },
+      {
+        "id": "business",
+        "label": "Бизнес"
+      }
+    ],
+    "tiers": {
+      "apartment": [
+        {
+          "id": "economy",
+          "label": "Эконом",
+          "hint": "Минимум, базовый набор",
+          "price_from": 140000
+        },
+        {
+          "id": "comfort",
+          "label": "Комфорт",
+          "hint": "Стандарт на 12 ч",
+          "price_from": 224000
+        },
+        {
+          "id": "premium",
+          "label": "Премиум",
+          "hint": "С запасом, без экономии",
+          "price_from": 330000
+        }
+      ],
+      "house": [
+        {
+          "id": "economy",
+          "label": "Эконом",
+          "hint": "Базовый дом",
+          "price_from": 224000
+        },
+        {
+          "id": "comfort",
+          "label": "Комфорт",
+          "hint": "Насос + котёл",
+          "price_from": 374000
+        },
+        {
+          "id": "premium",
+          "label": "Премиум",
+          "hint": "Большой дом, двойной запас",
+          "price_from": 617000
+        }
+      ],
+      "business": [
+        {
+          "id": "economy",
+          "label": "Эконом",
+          "hint": "Касса + холод",
+          "price_from": 255000
+        },
+        {
+          "id": "comfort",
+          "label": "Комфорт",
+          "hint": "Офис + холод",
+          "price_from": 367000
+        },
+        {
+          "id": "premium",
+          "label": "Премиум",
+          "hint": "Трёхфазная система",
+          "price_from": 1175000
+        }
+      ]
+    }
+  },
+  "lookup": {
+    "apartment": {
+      "economy": "EL-PWR-KV-ECO",
+      "comfort": "EL-PWR-KV-COM",
+      "premium": "EL-PWR-KV-PRM"
+    },
+    "house": {
+      "economy": "EL-PWR-DM-ECO",
+      "comfort": "EL-PWR-DM-COM",
+      "premium": "EL-PWR-DM-PRM"
+    },
+    "business": {
+      "economy": "EL-PWR-BZ-ECO",
+      "comfort": "EL-PWR-BZ-COM",
+      "premium": "EL-PWR-BZ-PRM36"
+    }
+  },
+  "business_premium_override": {
+    "1ph": {
+      "sku": "EL-PWR-BZ-COM",
+      "note": "Максимум для одной фазы. Для трёх фаз — Бизнес Премиум 36."
+    },
+    "3ph": {
+      "sku": "EL-PWR-BZ-PRM36",
+      "note": null
+    }
+  },
+  "bundles": [
+    {
+      "sku": "EL-PWR-KV-ECO",
+      "name": "Квартира Эконом",
+      "group": "apartment",
+      "tier": "economy",
+      "phases": 1,
+      "inverter_id": "inv_4kw_24v",
+      "inverter_qty": 1,
+      "reference_load_w": 250,
+      "works": [
+        "свет",
+        "Wi‑Fi",
+        "ТВ",
+        "холодильник"
+      ],
+      "not_for": [
+        "насос",
+        "котёл",
+        "кондиционер"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_default",
+          "battery_id": "bat_100_24v",
+          "qty": 1,
+          "price_rub": 140000,
+          "default": true
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-KV-COM",
+      "name": "Квартира Комфорт",
+      "group": "apartment",
+      "tier": "comfort",
+      "phases": 1,
+      "inverter_id": "inv_6kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 300,
+      "works": [
+        "холодильник",
+        "котёл",
+        "интернет",
+        "свет"
+      ],
+      "not_for": [
+        "насос скважины",
+        "кондиционер"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_100",
+          "battery_id": "bat_100_48v",
+          "qty": 1,
+          "price_rub": 224000,
+          "default": true
+        },
+        {
+          "id": "opt_230",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 330000
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-KV-PRM",
+      "name": "Квартира Премиум",
+      "group": "apartment",
+      "tier": "premium",
+      "phases": 1,
+      "inverter_id": "inv_6kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 300,
+      "works": [
+        "вся квартира с запасом на 12+ ч"
+      ],
+      "not_for": [
+        "всё здание",
+        "3 фазы"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_100",
+          "battery_id": "bat_100_48v",
+          "qty": 1,
+          "price_rub": 224000
+        },
+        {
+          "id": "opt_230",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 330000,
+          "default": true
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-DM-ECO",
+      "name": "Дом Эконом",
+      "group": "house",
+      "tier": "economy",
+      "phases": 1,
+      "inverter_id": "inv_6kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 300,
+      "works": [
+        "дом",
+        "котёл",
+        "интернет"
+      ],
+      "not_for": [
+        "насос постоянно"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_100",
+          "battery_id": "bat_100_48v",
+          "qty": 1,
+          "price_rub": 224000,
+          "default": true
+        },
+        {
+          "id": "opt_230",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 330000
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-DM-COM",
+      "name": "Дом Комфорт",
+      "group": "house",
+      "tier": "comfort",
+      "phases": 1,
+      "inverter_id": "inv_12kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 500,
+      "works": [
+        "насос",
+        "котёл",
+        "холодильник"
+      ],
+      "not_for": [
+        "электроплита"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_100",
+          "battery_id": "bat_100_48v",
+          "qty": 1,
+          "price_rub": 255000
+        },
+        {
+          "id": "opt_230",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 374000,
+          "default": true
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-DM-PRM",
+      "name": "Дом Премиум",
+      "group": "house",
+      "tier": "premium",
+      "phases": 1,
+      "inverter_id": "inv_12kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 800,
+      "works": [
+        "большой дом без жёсткой экономии"
+      ],
+      "not_for": [],
+      "battery_options": [
+        {
+          "id": "opt_230_1",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 374000
+        },
+        {
+          "id": "opt_230_2",
+          "battery_id": "bat_230_48v",
+          "qty": 2,
+          "price_rub": 617000,
+          "default": true
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-BZ-ECO",
+      "name": "Бизнес Эконом",
+      "group": "business",
+      "tier": "economy",
+      "phases": 1,
+      "inverter_id": "inv_12kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 500,
+      "works": [
+        "касса",
+        "Wi‑Fi",
+        "холодильник"
+      ],
+      "not_for": [
+        "компрессоры",
+        "производство"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_100",
+          "battery_id": "bat_100_48v",
+          "qty": 1,
+          "price_rub": 255000,
+          "default": true
+        },
+        {
+          "id": "opt_230",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 367000
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-BZ-COM",
+      "name": "Бизнес Комфорт",
+      "group": "business",
+      "tier": "comfort",
+      "phases": 1,
+      "inverter_id": "inv_12kw_48v",
+      "inverter_qty": 1,
+      "reference_load_w": 500,
+      "works": [
+        "касса",
+        "холодильники",
+        "офис"
+      ],
+      "not_for": [
+        "кухня целиком"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_100",
+          "battery_id": "bat_100_48v",
+          "qty": 1,
+          "price_rub": 255000
+        },
+        {
+          "id": "opt_230",
+          "battery_id": "bat_230_48v",
+          "qty": 1,
+          "price_rub": 367000,
+          "default": true
+        }
+      ]
+    },
+    {
+      "sku": "EL-PWR-BZ-PRM36",
+      "name": "Бизнес Премиум 36",
+      "group": "business",
+      "tier": "premium",
+      "phases": 3,
+      "inverter_id": "inv_12kw_48v",
+      "inverter_qty": 3,
+      "reference_load_w": 5000,
+      "works": [
+        "офис",
+        "кассы",
+        "сервер",
+        "3 фазы"
+      ],
+      "not_for": [
+        "всё производство"
+      ],
+      "battery_options": [
+        {
+          "id": "opt_3x230",
+          "battery_id": "bat_230_48v",
+          "qty": 3,
+          "price_rub": 1175000,
+          "default": true
+        }
+      ]
+    }
+  ]
+}
