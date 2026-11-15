@@ -1,3 +1,4 @@
+/* Обновлено: 2026-11-15 — цели Метрики calc_complete / lead_submit */
 const state = {
   step: 1,
   objectType: null,
@@ -9,6 +10,36 @@ const state = {
   computedBundle: null,
   overrideNote: null,
 };
+
+let lastCalcGoalKey = null;
+
+function trackGoal(name, params) {
+  if (typeof window.krimsvetReachGoal === "function") {
+    window.krimsvetReachGoal(name, params);
+    return;
+  }
+  try {
+    if (typeof window.ym === "function") {
+      if (params) window.ym(114159186, "reachGoal", name, params);
+      else window.ym(114159186, "reachGoal", name);
+    }
+  } catch (_err) {
+    /* ignore */
+  }
+}
+
+function trackCalcComplete() {
+  if (!state.computedBundle) return;
+  const key = `${state.computedBundle.sku}|${state.computedBundle.battery_option_id || ""}|${state.computedBundle.price_rub}`;
+  if (key === lastCalcGoalKey) return;
+  lastCalcGoalKey = key;
+  trackGoal("calc_complete", {
+    sku: state.computedBundle.sku,
+    group: state.computedBundle.group,
+    tier: state.computedBundle.tier,
+    price: state.computedBundle.price_rub,
+  });
+}
 
 const ruFormatter = new Intl.NumberFormat("ru-RU");
 const tierOrder = ["economy", "comfort", "premium"];
@@ -443,6 +474,7 @@ function render() {
       </button>
     `;
     renderResult();
+    trackCalcComplete();
   }
 }
 
@@ -488,6 +520,7 @@ stepOptions.addEventListener("click", (event) => {
     state.selectedBatteryOptionId = null;
     state.computedBundle = null;
     state.overrideNote = null;
+    lastCalcGoalKey = null;
     leadOutput.textContent = "";
     if (leadSummary) {
       leadSummary.textContent = "Сначала подберите комплект в калькуляторе";
@@ -549,6 +582,10 @@ if (leadForm) leadForm.addEventListener("submit", (event) => {
       }
       leadOutput.classList.add("success");
       leadOutput.textContent = "Заявка отправлена. Мы свяжемся с вами в ближайшее время.";
+      trackGoal("lead_submit", {
+        sku: state.computedBundle ? state.computedBundle.sku : payload.sku,
+        city: payload.city || "",
+      });
       leadForm.reset();
       document.getElementById("leadCity").value = "Симферополь";
       fillLead(state.computedBundle);
