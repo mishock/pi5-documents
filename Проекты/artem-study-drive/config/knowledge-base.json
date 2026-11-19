@@ -114,7 +114,12 @@
     "documentsPage": "https://kipu-rc.ru/sveden/document/",
     "licenseRegistry": "Реестр лицензий на осуществление образовательной деятельности",
     "accreditationRegistry": "Реестр организаций с государственной аккредитацией образовательных программ",
-    "note": "Выписки из реестров — на странице «Документы» и «Основные сведения»"
+    "specialtyCode": "09.02.07",
+    "monthlyCheck": true,
+    "emailOnChange": "mishock24@gmail.com",
+    "timer": "artem-study-accreditation.timer",
+    "statusFile": "00_Аккредитация_09.02.07.md",
+    "note": "Выписки из реестров — на странице «Основные сведения». Месячный монитор: scripts/accreditation-monitor.mjs (с 2026-11-19). На 2026-11-19: 09.02.07 в выписке госаккредитации не найдена, лицензия есть."
   },
   "support": {
     "compensation393": "Постановление №393 — компенсация части родительской платы (файлы 05_–06_ на Drive)",

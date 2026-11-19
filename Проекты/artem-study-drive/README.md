@@ -1,5 +1,7 @@
 # Учёба Артём — мониторинг Google Drive
 
+> **Обновлено:** 2026-11-19
+
 Папка на Drive: **Учёба Артём** · id `1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V`  
 https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V
 
@@ -11,6 +13,7 @@ https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V
 2. **Анализирует** PDF/фото/договоры, **транскрибирует** аудио.
 3. **Обновляет сводку** `.md` на Drive (аккуратно, по разделам).
 4. Временные фото — удалять после переноса в сводку (если пользователь просил).
+5. **Раз в месяц** — госаккредитация **09.02.07** на сайте КИПУ; при изменении — письмо на **mishock24@gmail.com**.
 
 Правило Cursor: `Документы/.cursor/rules/artem-study-drive.mdc`
 
@@ -18,11 +21,14 @@ https://drive.google.com/drive/folders/1kJfRYBl7QKTVLEWlw32nK_J_sG-dVb5V
 
 ```bash
 bash Проекты/artem-study-drive/scripts/install-weekly-timer.sh
+bash Проекты/artem-study-drive/scripts/install-monthly-accreditation-timer.sh
 ```
 
 - Таймер: **понедельник 09:00** — полная проверка **раз в неделю**
+- Таймер: **1-е число, 10:00 MSK** — **аккредитация 09.02.07** (`artem-study-accreditation.timer`)
 - Фильтр актуальности: `scripts/temporal-filter.mjs` (текущий учебный год + будущее)
-- Лог: `~/logs/artem-study-drive.log`
+- Лог (неделя): `~/logs/artem-study-drive.log`
+- Лог (аккредитация): `~/logs/artem-accreditation.log`
 - Очередь для агента: `~/logs/cursor-work/pending-artem-study.md`
 - Манифест файлов: `data/manifest.json`
 - Транскрипты аудио: `data/transcripts/`
@@ -32,6 +38,7 @@ bash Проекты/artem-study-drive/scripts/install-weekly-timer.sh
 ```bash
 bash Проекты/artem-study-drive/scripts/weekly-drive-check.sh
 node Проекты/artem-study-drive/scripts/academic-monitor.mjs   # только успеваемость
+node Проекты/artem-study-drive/scripts/accreditation-monitor.mjs   # аккредитация 09.02.07
 ```
 
 ## Единый справочник (ответы на любые вопросы)
@@ -48,6 +55,15 @@ node Проекты/artem-study-drive/scripts/academic-monitor.mjs   # толь�
 - Сводка на Drive: **`00_Успеваемость_Артём.md`**
 - Email при попадании в негативный список → **mishock24@gmail.com**
 - Когда узнаете **номер группы** — добавить в `group` и `groupPatterns` в конфиге
+
+## Госаккредитация 09.02.07 (месяц)
+
+- Скрипт: `scripts/accreditation-monitor.mjs`
+- Конфиг: `config/accreditation-watch.json`
+- Источники: [sveden/common](https://kipu-rc.ru/sveden/common/), PDF выписки аккредитации и лицензии
+- Снимок: `data/accreditation-snapshot.json`
+- Сводка: `data/00_Аккредитация_09.02.07.md`
+- Email **только при изменении** (или `--notify-baseline` / `--force-email`) → **mishock24@gmail.com**
 
 ## Именование файлов на Drive
 

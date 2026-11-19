@@ -31,6 +31,1356 @@ bash Документы/.cursor/scripts/agent-change-backup.sh --agent cursor --
 
 ## Записи (новые сверху)
 
+### 2026-11-19 18:42 — месячный монитор аккредитации 09.02.07 + email
+
+- **Агент:** cursor
+- **Проект:** artem-study-drive
+- **Файлы:** \`Проекты/artem-study-drive/scripts/accreditation-monitor.mjs\`, \`Проекты/artem-study-drive/scripts/monthly-accreditation-check.sh\`, \`Проекты/artem-study-drive/scripts/install-monthly-accreditation-timer.sh\`, \`Проекты/artem-study-drive/config/accreditation-watch.json\`, \`Проекты/artem-study-drive/README.md\`, \`Проекты/artem-study-drive/CHANGELOG.md\`, \`Проекты/artem-study-drive/POLICY.md\`, \`Проекты/artem-study-drive/config/knowledge-base.json\`, \`.cursor/rules/artem-study-drive.mdc\`, \`Проекты/artem-study-drive/data/00_Аккредитация_09.02.07.md\`, \`Проекты/artem-study-drive/data/accreditation-snapshot.json\`
+- **Снимок:** `.cursor/backups/20261119T184247/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261119T184247`
+
+
+### 2026-11-18 15:46 — Kali on space
+
+- **Агент:** cursor
+- **Проект:** vless-space-vpn
+- **Файлы:** \`Проекты/vless-space-vpn/scripts/vpn-switch-kali.sh\`, \`Проекты/vless-space-vpn/downloads/config.space.kali.json\`, \`Проекты/vless-space-vpn/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261118T154615/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261118T154615`
+
+
+### 2026-11-18 15:39 — Pi3 Pi5 on space
+
+- **Агент:** cursor
+- **Проект:** vless-space-vpn
+- **Файлы:** \`Проекты/vless-space-vpn/downloads/config.space.pi3.json\`, \`Проекты/vless-space-vpn/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261118T153907/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261118T153907`
+
+
+### 2026-11-18 15:31 — retire Fornex, office to space
+
+- **Агент:** cursor
+- **Проект:** vless-space-vpn
+- **Файлы:** \`Проекты/vless-space-vpn\`, \`Проекты/fornex-vpn-etizer\`, \`.cursor/scripts/install-office-xkeen-space.sh\`, \`.cursor/scripts/install-office-xkeen-fornex-spare.sh\`, \`Проекты/vless-space-vpn/scripts/vpn-switch.sh\`
+- **Снимок:** `.cursor/backups/20261118T153101/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261118T153101`
+
+
+### 2026-11-18 15:25 — VLESS SPACE + vpn-switch space
+
+- **Агент:** cursor
+- **Проект:** vless-space-vpn
+- **Файлы:** \`Проекты/vless-space-vpn\`, \`Проекты/fornex-vpn-etizer/scripts/vpn-switch.sh\`, \`Проекты/fornex-vpn-etizer/README.md\`, \`Проекты/fornex-vpn-etizer/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261118T152507/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261118T152507`
+
+
+### 2026-11-17 17:03 — v0.1.10 BAT Ver 0x35F
+
+- **Агент:** cursor
+- **Проект:** jk_uart_pylon_deye
+- **Файлы:** \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/include/jk_telemetry.h\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/jk_uart.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/pylon_can.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/main.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/README.md\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/releases/jk_uart_pylon_deye_v0.1.10.bin\`
+- **Снимок:** `.cursor/backups/20261117T170311/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T170311`
+
+
+### 2026-11-17 16:37 — v0.1.9 limits from JK OCP
+
+- **Агент:** cursor
+- **Проект:** jk_uart_pylon_deye
+- **Файлы:** \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/include/jk_telemetry.h\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/jk_uart.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/pylon_can.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/main.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/platformio.ini\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/README.md\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/releases/jk_uart_pylon_deye_v0.1.9.bin\`
+- **Снимок:** `.cursor/backups/20261117T163725/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T163725`
+
+
+### 2026-11-17 16:34 — v0.1.8 JK_FRESH 10s
+
+- **Агент:** cursor
+- **Проект:** jk_uart_pylon_deye
+- **Файлы:** \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/platformio.ini\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/main.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/include/pylon_can.h\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/README.md\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/scripts/flash.sh\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/releases/jk_uart_pylon_deye_v0.1.8.bin\`
+- **Снимок:** `.cursor/backups/20261117T163439/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T163439`
+
+
+### 2026-11-17 15:15 — Happ core error bypass
+
+- **Агент:** cursor
+- **Проект:** pc-happ-vpn
+- **Файлы:** \`Проекты/pc-happ-vpn/notes/CORE_ERROR_FIX.md\`, \`Проекты/pc-happ-vpn/CHANGELOG.md\`, \`Проекты/pc-happ-vpn/README.md\`, \`Проекты/pc-happ-vpn/scripts/serve-happ-sub.py\`
+- **Снимок:** `.cursor/backups/20261117T151522/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T151522`
+
+
+### 2026-11-17 14:59 — LAN sites DNS fix
+
+- **Агент:** cursor
+- **Проект:** pc-happ-vpn
+- **Файлы:** \`Проекты/pc-happ-vpn/notes/LAN_SITES_FIX.md\`, \`Проекты/pc-happ-vpn/scripts/serve-happ-sub.py\`, \`Проекты/pc-happ-vpn/README.md\`, \`Проекты/pc-happ-vpn/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261117T145943/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T145943`
+
+
+### 2026-11-17 14:41 — fix Happ sub error
+
+- **Агент:** cursor
+- **Проект:** pc-happ-vpn
+- **Файлы:** \`Проекты/pc-happ-vpn/README.md\`, \`Проекты/pc-happ-vpn/CHANGELOG.md\`, \`Проекты/pc-happ-vpn/notes/HAPP_ERROR_FIX.md\`, \`Проекты/pc-happ-vpn/scripts/serve-happ-sub.py\`, \`Проекты/pc-happ-vpn/sub/fornex.txt\`
+- **Снимок:** `.cursor/backups/20261117T144141/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T144141`
+
+
+### 2026-11-17 14:33 — LAN bypass for Happ
+
+- **Агент:** cursor
+- **Проект:** pc-happ-vpn
+- **Файлы:** \`Проекты/pc-happ-vpn/README.md\`, \`Проекты/pc-happ-vpn/CHANGELOG.md\`, \`Проекты/pc-happ-vpn/notes/LAN_BYPASS.md\`
+- **Снимок:** `.cursor/backups/20261117T143343/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T143343`
+
+
+### 2026-11-17 14:20 — UART sniff CP2103 NO_RX
+
+- **Агент:** cursor
+- **Проект:** JK_B2A20S20P
+- **Файлы:** \`Платы и модули/BMS/JK_B2A20S20P/notes/uart_sniff_2026-11-17.txt\`, \`Платы и модули/BMS/JK_B2A20S20P/scripts/jk_uart_sniff_cp2103.py\`, \`Платы и модули/BMS/JK_B2A20S20P/scripts/jk_uart_probe_multibaud.py\`
+- **Снимок:** `.cursor/backups/20261117T142049/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T142049`
+
+
+### 2026-11-17 14:15 — UART1 BMS 0517 = 4G-GPS
+
+- **Агент:** cursor
+- **Проект:** JK_B2A20S20P
+- **Файлы:** \`Платы и модули/BMS/JK_B2A20S20P/notes/ble_protocol_0517_2026-11-17.md\`, \`Платы и модули/BMS/JK_B2A20S20P/scripts/jk_ble_set_uart1_0517.py\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261117T141536/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T141536`
+
+
+### 2026-11-17 14:08 — BLE протокол порта BMS 0517
+
+- **Агент:** cursor
+- **Проект:** JK_B2A20S20P
+- **Файлы:** \`Платы и модули/BMS/JK_B2A20S20P/notes/ble_protocol_0517_2026-11-17.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261117T140821/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T140821`
+
+
+### 2026-11-17 12:05 — sniffer 16MHz + H503 0.1.1 audit
+
+- **Агент:** cursor
+- **Проект:** bitrate-audit
+- **Файлы:** \`Проекты/Arduino/firmware/CAN_Sniffer_Shield_LCD/CAN_Sniffer_Shield_LCD.ino\`, \`Проекты/Arduino/firmware/CAN_Sniffer_Shield_LCD/README.md\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261117T120502/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T120502`
+
+
+### 2026-11-17 11:52 — CAN_Sniffer touch fix rot2/hit/pressure
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/CAN_Sniffer_Shield_LCD/CAN_Sniffer_Shield_LCD.ino\`, \`Проекты/Arduino/firmware/CAN_Sniffer_Shield_LCD/CAN_Sniffer_Shield_LCD.hex\`, \`Проекты/Arduino/firmware/CAN_Sniffer_Shield_LCD/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261117T115249/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T115249`
+
+
+### 2026-11-17 11:18 — jk_uart_pylon_deye v0.1.0 scaffold
+
+- **Агент:** cursor
+- **Проект:** PB_MCU01_H503A
+- **Файлы:** \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye\`, \`Платы и модули/PB_MCU01_H503A/PINOUT.md\`, \`Платы и модули/PB_MCU01_H503A/TECH_SUMMARY.md\`, \`Платы и модули/BMS/JK_B2A20S20P/TECH_SUMMARY.md\`, \`Платы и модули/BMS/JK_B2A20S20P/README.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`
+- **Снимок:** `.cursor/backups/20261117T111824/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T111824`
+
+
+### 2026-11-17 11:14 — Happ Fornex Etizer on PC
+
+- **Агент:** cursor
+- **Проект:** pc-happ-vpn
+- **Файлы:** \`Проекты/pc-happ-vpn/README.md\`, \`Проекты/pc-happ-vpn/CHANGELOG.md\`, \`Проекты/pc-happ-vpn/notes/HAPP_FORNEX.md\`, \`Проекты/pc-happ-vpn/notes/HAPP_NETBIRD.md\`
+- **Снимок:** `.cursor/backups/20261117T111438/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261117T111438`
+
+
+### 2026-11-15 14:10 — цели Метрики на сайте
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site/metrika-goals.js\`, \`Проекты/krimsvet/site/app.js\`, \`Проекты/krimsvet/site/index.html\`, \`Проекты/krimsvet/notes/YANDEX_SETUP.md\`, \`Проекты/krimsvet/scripts/metrika-create-goals.py\`, \`Проекты/krimsvet/scripts/ftp-upload-metrika-goals.py\`
+- **Снимок:** `.cursor/backups/20261115T141013/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261115T141013`
+
+
+### 2026-11-13 14:34 — правило изображения только Recraft
+
+- **Агент:** cursor
+- **Проект:** recraft-cursor
+- **Файлы:** \`.cursor/rules/recraft-images-only.mdc\`, \`Проекты/recraft-cursor/README.md\`, \`Проекты/recraft-cursor/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261113T143404/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261113T143404`
+
+
+### 2026-11-13 14:30 — Recraft API token MCP в Cursor Pi5+ПК
+
+- **Агент:** cursor
+- **Проект:** recraft-cursor
+- **Файлы:** \`Проекты/recraft-cursor/README.md\`, \`Проекты/recraft-cursor/CHANGELOG.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261113T143051/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261113T143051`
+
+
+### 2026-11-13 10:52 — USB2CANFD: Cangaroo+SavvyCAN + README
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/usb2canfd_software\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN.md\`
+- **Снимок:** `.cursor/backups/20261113T105239/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261113T105239`
+
+
+### 2026-11-13 09:36 — A11034R6 RDP unlock via AIRCR+st-flash for remote
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Eltavr_firmware/A11034R6/scripts/flash-openocd.sh\`, \`Проекты/Arduino/firmware/Eltavr_firmware/A11034R6/scripts/flash-stlink.sh\`, \`Проекты/Arduino/firmware/Eltavr_firmware/A11034R6/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`, \`Проекты/ai_assistant/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261113T093634/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261113T093634`
+
+
+### 2026-11-12 16:41 — A11034R6 flash-stlink OpenOCD path fix for remote
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Eltavr_firmware/A11034R6/scripts/flash-stlink.sh\`, \`Проекты/Arduino/firmware/Eltavr_firmware/A11034R6/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`, \`Проекты/ai_assistant/scripts/argon-eltavr-flash-item.sh\`, \`Проекты/ai_assistant/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261112T164151/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261112T164151`
+
+
+### 2026-11-11 18:01 — рубрика отзывов + видео Ария
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site/index.html\`, \`Проекты/krimsvet/site/styles.css\`, \`Проекты/krimsvet/site/otzyvy/index.html\`, \`Проекты/krimsvet/site/sitemap.xml\`, \`Проекты/krimsvet/site/.htaccess\`, \`Проекты/krimsvet/README.md\`, \`Проекты/krimsvet/notes/REVIEW_01_ARIA.md\`, \`Проекты/krimsvet/scripts/ftp-upload-reviews.py\`, \`Проекты/krimsvet/site/media/reviews/review-01.mp4\`, \`Проекты/krimsvet/site/media/reviews/review-01-poster.jpg\`, \`Проекты/krimsvet/site/media/reviews/review-01-gear.jpg\`, \`Проекты/krimsvet/site/kvartira/index.html\`, \`Проекты/krimsvet/site/dom/index.html\`, \`Проекты/krimsvet/site/biznes/index.html\`, \`Проекты/krimsvet/site/cena/index.html\`, \`Проекты/krimsvet/site/simferopol/index.html\`
+- **Снимок:** `.cursor/backups/20261111T180104/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261111T180104`
+
+
+### 2026-11-11 12:54 — карточки: фото на всю ширину 4/3 contain
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site/styles.css\`, \`Проекты/krimsvet/site/index.html\`
+- **Снимок:** `.cursor/backups/20261111T125444/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261111T125444`
+
+
+### 2026-11-11 12:34 — фотокарточки комплектов DEYE MUST солнце
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site/index.html\`, \`Проекты/krimsvet/site/styles.css\`, \`Проекты/krimsvet/site/app.js\`, \`Проекты/krimsvet/site/pic/card-hit-deye.jpg\`, \`Проекты/krimsvet/site/pic/card-entry-must.jpg\`, \`Проекты/krimsvet/site/pic/card-solar-deye.jpg\`, \`Проекты/krimsvet/README.md\`
+- **Снимок:** `.cursor/backups/20261111T123442/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261111T123442`
+
+
+### 2026-11-11 09:00 — Директ модерация пройдена — статус Активна
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/notes/YANDEX_SETUP.md\`
+- **Снимок:** `.cursor/backups/20261111T090021/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261111T090021`
+
+
+### 2026-11-10 16:28 — HA Assist pipeline fix + greeting sentences
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/.storage/assist_pipeline.pipelines\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/packages/assist.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/custom_sentences/ru/assist.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261110T162837/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T162837`
+
+
+### 2026-11-10 16:18 — hero-баннер резервное питание на главной
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site/index.html\`, \`Проекты/krimsvet/site/styles.css\`, \`Проекты/krimsvet/site/pic/hero-backup-power.jpg\`, \`Проекты/krimsvet/README.md\`, \`Проекты/krimsvet/ads/banner-rezervnoe-pitanie.jpg\`
+- **Снимок:** `.cursor/backups/20261110T161805/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T161805`
+
+
+### 2026-11-10 14:34 — Kali self-hosted worker docs
+
+- **Агент:** cursor
+- **Проект:** workspace
+- **Файлы:** \`REMOTE_CONTROL.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261110T143419/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T143419`
+
+
+### 2026-11-10 14:00 — NetBird 0.82.1 + Kali xray Cloud
+
+- **Агент:** cursor
+- **Проект:** ai_assistant
+- **Файлы:** \`Проекты/ai_assistant/config/xray-kali/config.json\`, \`Проекты/ai_assistant/scripts/upgrade-netbird-kali-and-vpn.sh\`, \`Проекты/ai_assistant/scripts/upgrade-netbird-pi3.sh\`, \`Проекты/ai_assistant/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261110T140057/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T140057`
+
+
+### 2026-11-10 13:19 — 3x-ui VPN panel → Cursor_Cloud
+
+- **Агент:** cursor
+- **Проект:** Cursor Agent
+- **Файлы:** \`Проекты/Cursor Agent/api/sites_proxy.py\`, \`Проекты/Cursor Agent/api/vpn_server.py\`, \`Проекты/Cursor Agent/config/nodes.json\`, \`Проекты/Cursor Agent/api/cursor_chat.py\`, \`Проекты/Cursor Agent/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261110T131959/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T131959`
+
+
+### 2026-11-10 13:14 — VPN migrate to Cursor_Cloud
+
+- **Агент:** cursor
+- **Проект:** vpn-server-migrate
+- **Файлы:** \`Проекты/vpn-server-migrate/README.md\`, \`vpn-guide.md\`, \`.cursor/VPN_SERVER.md\`, \`Проекты/fornex-vpn-etizer/scripts/vpn-switch.sh\`, \`.cursor/chat.md\`
+- **Снимок:** `.cursor/backups/20261110T131423/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T131423`
+
+
+### 2026-11-10 12:58 — rpi-connect local proxy 10809; Pi3 spare VPN
+
+- **Агент:** cursor
+- **Проект:** ai_assistant
+- **Файлы:** \`Проекты/ai_assistant/scripts/rpi-connect-watchdog.sh\`, \`Проекты/ai_assistant/config/systemd/rpi-connect.service.d/proxy.conf\`, \`Проекты/fornex-vpn-etizer/scripts/vpn-switch-pi3.sh\`, \`Проекты/fornex-vpn-etizer/CHANGELOG.md\`, \`Проекты/fornex-vpn-etizer/README.md\`, \`Проекты/fornex-vpn-etizer/notes/INSTANCE.md\`, \`Проекты/ai_assistant/CHANGELOG.md\`, \`.cursor/chat.md\`
+- **Снимок:** `.cursor/backups/20261110T125808/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T125808`
+
+
+### 2026-11-10 12:40 — SEO H1 homepage
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site/index.html\`, \`Проекты/krimsvet/README.md\`
+- **Снимок:** `.cursor/backups/20261110T124019/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T124019`
+
+
+### 2026-11-10 12:02 — save REG.RU hosting credentials
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/credentials/README.md\`, \`Проекты/krimsvet/README.md\`, \`Проекты/krimsvet/.gitignore\`
+- **Снимок:** `.cursor/backups/20261110T120214/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T120214`
+
+
+### 2026-11-10 11:59 — SEO landing pages kvartira/dom/biznes/cena/simferopol
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/site\`, \`Проекты/krimsvet/README.md\`, \`Проекты/krimsvet/notes/YANDEX_SETUP.md\`
+- **Снимок:** `.cursor/backups/20261110T115904/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T115904`
+
+
+### 2026-11-10 11:41 — CH4200 PDF инструкция CAN-лога для магазина
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN_LOG_INSTRUCTION.pdf\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN.md\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`
+- **Снимок:** `.cursor/backups/20261110T114117/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T114117`
+
+
+### 2026-11-10 11:32 — Metrika counter verified OK
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/notes/YANDEX_SETUP.md\`
+- **Снимок:** `.cursor/backups/20261110T113248/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T113248`
+
+
+### 2026-11-10 11:18 — Yandex Direct SMB draft status
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/notes/YANDEX_SETUP.md\`, \`Проекты/krimsvet/ads/direct-campaign-draft.md\`
+- **Снимок:** `.cursor/backups/20261110T111829/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T111829`
+
+
+### 2026-11-10 10:42 — metrika profile+counter on site
+
+- **Агент:** cursor
+- **Проект:** krimsvet
+- **Файлы:** \`Проекты/krimsvet/notes/YANDEX_SETUP.md\`, \`Проекты/krimsvet/README.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261110T104253/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T104253`
+
+
+### 2026-11-10 08:14 — spare on + VPN email alerts off
+
+- **Агент:** cursor
+- **Проект:** fornex-vpn-etizer
+- **Файлы:** \`Проекты/fornex-vpn-etizer/scripts/vpn-switch.sh\`, \`Проекты/fornex-vpn-etizer/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261110T081400/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261110T081400`
+
+
+### 2026-11-09 12:41 — CH4200: письмо дилеру Electric Boats
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN.md\`
+- **Снимок:** `.cursor/backups/20261109T124105/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261109T124105`
+
+
+### 2026-11-09 12:28 — Fornex spare на офисный XKeen
+
+- **Агент:** cursor
+- **Проект:** keenetic-office
+- **Файлы:** \`keenetic-routers.md\`, \`.cursor/scripts/install-office-xkeen-fornex-spare.sh\`, \`Проекты/fornex-vpn-etizer/README.md\`, \`Проекты/fornex-vpn-etizer/notes/INSTANCE.md\`, \`Проекты/fornex-vpn-etizer/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261109T122830/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261109T122830`
+
+
+### 2026-11-09 12:22 — запасной Fornex Xray + vpn-switch
+
+- **Агент:** cursor
+- **Проект:** fornex-vpn-etizer
+- **Файлы:** \`Проекты/fornex-vpn-etizer/README.md\`, \`Проекты/fornex-vpn-etizer/notes/INSTANCE.md\`, \`Проекты/fornex-vpn-etizer/CHANGELOG.md\`, \`Проекты/fornex-vpn-etizer/scripts/vpn-switch.sh\`
+- **Снимок:** `.cursor/backups/20261109T122205/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261109T122205`
+
+
+### 2026-11-09 12:08 — запомнен купленный Fornex VPN 301-122585
+
+- **Агент:** cursor
+- **Проект:** fornex-vpn-etizer
+- **Файлы:** \`Проекты/fornex-vpn-etizer/README.md\`, \`Проекты/fornex-vpn-etizer/notes/INSTANCE.md\`, \`Проекты/fornex-vpn-etizer/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261109T120835/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261109T120835`
+
+
+### 2026-11-06 10:23 — CH4200: запись об email официалам
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN.md\`
+- **Снимок:** `.cursor/backups/20261106T102345/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261106T102345`
+
+
+### 2026-11-06 09:17 — заряд сети 50A в рабочие 2026-11-06
+
+- **Агент:** cursor
+- **Проект:** Must_PV18-4024_PRO_II
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/CHANGELOG.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/README.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/working_profile.registers.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/WORKING_PROFILE.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/inverter_working.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/inverter_working.txt\`
+- **Снимок:** `.cursor/backups/20261106T091703/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261106T091703`
+
+
+### 2026-11-06 09:12 — заливка рабочих настроек 2026-11-06 verify 20/20
+
+- **Агент:** cursor
+- **Проект:** Must_PV18-4024_PRO_II
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/CHANGELOG.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/README.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/factory-settings/README.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/WORKING_PROFILE.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/inverter_working.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/inverter_working.txt\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/factory-settings/inverter_factory_20261106_090932.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/factory-settings/inverter_factory_20261106_090932.txt\`
+- **Снимок:** `.cursor/backups/20261106T091244/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261106T091244`
+
+
+### 2026-11-05 15:51 — ANT24C enable experimental.brush + 1d selection
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T155127/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T155127`
+
+
+### 2026-11-05 15:50 — ANT24C chart 1d window brush 7d zoom 1h
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T155003/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T155003`
+
+
+### 2026-11-05 15:48 — ANT24C auto-width horizontal-stack gauges
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T154833/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T154833`
+
+
+### 2026-11-05 15:41 — ANT24C square gauges aspect-ratio 1:1
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T154146/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T154146`
+
+
+### 2026-11-05 15:39 — ANT24C bigger gauges, cubes 2x2 below
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T153951/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153951`
+
+
+### 2026-11-05 15:38 — ANT24C tiles equal rows 6 no scroll
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T153801/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153801`
+
+
+### 2026-11-05 15:36 — ANT24C volt axis 39-55, fix pack_v_min
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`, \`bms-tools/ant24c_logger.py\`
+- **Снимок:** `.cursor/backups/20261105T153635/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153635`
+
+
+### 2026-11-05 15:35 — ANT24C wider tiles columns 6
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T153545/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153545`
+
+
+### 2026-11-05 15:35 — ANT24C chart top, tiles below
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T153502/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153502`
+
+
+### 2026-11-05 15:33 — ANT24C chart full width horizontal
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T153322/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153322`
+
+
+### 2026-11-05 15:32 — ANT24C one tall chart again
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`
+- **Снимок:** `.cursor/backups/20261105T153214/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153214`
+
+
+### 2026-11-05 15:30 — ANT24C dashboard declutter
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`, \`Проекты/Apple HomeKit accessory/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261105T153039/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T153039`
+
+
+### 2026-11-05 15:28 — ANT24C combined apexcharts week+zoom
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/configuration.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/www/apexcharts-card.js\`, \`Проекты/Apple HomeKit accessory/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261105T152837/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T152837`
+
+
+### 2026-11-05 15:25 — ANT24C capacity gauge+graphs
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/packages/ant24c.yaml\`, \`Проекты/Apple HomeKit accessory/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261105T152511/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T152511`
+
+
+### 2026-11-05 15:22 — ANT24C HA nominal capacity card
+
+- **Агент:** cursor
+- **Проект:** Apple HomeKit accessory
+- **Файлы:** \`bms-tools/ant24c_logger.py\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/packages/ant24c.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/ant-bms-24c.yaml\`, \`Проекты/Apple HomeKit accessory/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261105T152245/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T152245`
+
+
+### 2026-11-05 15:12 — ANT24C SILA reg47=101 MAC attempt
+
+- **Агент:** cursor
+- **Проект:** bms-tools
+- **Файлы:** \`bms-tools/ant_bt_mac_change_2026-11-05.json\`, \`bms-tools/notes_ANT24C_SILA_MAC.md\`
+- **Снимок:** `.cursor/backups/20261105T151255/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T151255`
+
+
+### 2026-11-05 12:52 — plant 19.8 kWp
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`
+- **Снимок:** `.cursor/backups/20261105T125215/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T125215`
+
+
+### 2026-11-05 11:42 — проверка настроек Ак-Як 33
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33_ПРОВЕРКА_2026-11-05.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`
+- **Снимок:** `.cursor/backups/20261105T114215/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T114215`
+
+
+### 2026-11-05 11:31 — исправление OG03 на шильдиках
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`
+- **Снимок:** `.cursor/backups/20261105T113118/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T113118`
+
+
+### 2026-11-05 11:28 — Ак-Як 33 топология 3ф параллель
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`
+- **Снимок:** `.cursor/backups/20261105T112840/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T112840`
+
+
+### 2026-11-05 11:14 — Ак-Як 33: +2 logger в Cloud
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/instances_2026-11-05\`
+- **Снимок:** `.cursor/backups/20261105T111442/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T111442`
+
+
+### 2026-11-05 08:26 — HC-06: канон Bluetooth 2.1+EDR
+
+- **Агент:** cursor
+- **Проект:** modules
+- **Файлы:** \`Платы и модули/HC-06_Bluetooth_Module/TECH_SUMMARY.md\`, \`Платы и модули/HC-06_Bluetooth_Module/README.md\`, \`.cursor/rules/module-docs-priority.mdc\`
+- **Снимок:** `.cursor/backups/20261105T082631/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T082631`
+
+
+### 2026-11-05 08:17 — HC-06_Bluetooth_Module folder created 2026-11-05
+
+- **Агент:** cursor
+- **Проект:** modules
+- **Файлы:** \`Платы и модули/HC-06_Bluetooth_Module/README.md\`, \`Платы и модули/HC-06_Bluetooth_Module/PINOUT.md\`, \`Платы и модули/HC-06_Bluetooth_Module/TECH_SUMMARY.md\`, \`Платы и модули/HC-06_Bluetooth_Module/source_url.txt\`, \`Платы и модули/HC-06_Bluetooth_Module/download_report.json\`, \`.cursor/rules/module-docs-priority.mdc\`
+- **Снимок:** `.cursor/backups/20261105T081725/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261105T081725`
+
+
+### 2026-10-31 20:19 — JK4S dashboard + poll button BLE disconnect
+
+- **Агент:** cursor
+- **Проект:** apple-homekit-ha
+- **Файлы:** \`Проекты/Apple HomeKit accessory/home_assistant/config/packages/jk4s.yaml\`, \`Проекты/Apple HomeKit accessory/home_assistant/config/dashboards/jk-akb-4s-230.yaml\`, \`bms-tools/jk4s_ha_poll.sh\`, \`bms-tools/jk4s-ha-poll.service\`, \`bms-tools/jk4s-ha-poll.path\`, \`bms-tools/jk4s_run_once.sh\`, \`bms-tools/jk4s_bumble_probe.py\`, \`bms-tools/README_jk4s_logger.md\`
+- **Снимок:** `.cursor/backups/20261031T201924/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261031T201924`
+
+
+### 2026-10-31 20:08 — BLE root cause + probe without wifi-off
+
+- **Агент:** cursor
+- **Проект:** jk4s-ble
+- **Файлы:** \`bms-tools/jk4s_bumble_probe.py\`, \`bms-tools/jk4s_run_once.sh\`, \`.cursor/rules/garage-wifi-never-off.mdc\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/BLE_PI3_ROOT_CAUSE_2026-10-31.md\`
+- **Снимок:** `.cursor/backups/20261031T200827/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261031T200827`
+
+
+### 2026-10-30 16:09 — BLE name AKB-4S-230
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/INSTANCE.md\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/SETTINGS.md\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/ble_name_2026-10-30.json\`, \`.cursor/rules/my-battery-4s.mdc\`
+- **Снимок:** `.cursor/backups/20261030T160919/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T160919`
+
+
+### 2026-10-30 15:48 — Правило: моя батарея = 4S
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`.cursor/rules/my-battery-4s.mdc\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/INSTANCE.md\`
+- **Снимок:** `.cursor/backups/20261030T154810/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T154810`
+
+
+### 2026-10-30 15:05 — Шаблон 16S 235Ah как 4S + display ON
+
+- **Агент:** cursor
+- **Проект:** JK_B2A20S20P
+- **Файлы:** \`Платы и модули/BMS/JK_B2A20S20P/scripts/make_jkcfg.py\`, \`Платы и модули/BMS/JK_B2A20S20P/scripts/generate_jk_template_pdf.py\`, \`Платы и модули/BMS/JK_B2A20S20P/notes/SETTINGS_16S_235Ah.md\`, \`Платы и модули/BMS/JK_B2A20S20P/README.md\`, \`Платы и модули/BMS/JK_B2A20S20P/notes/configs/ELTAVR_48V235Ah_16S_template\`, \`Платы и модули/BMS/JK_B2A20S20P/generated/ШАБЛОН_НАСТРОЕК_JK-B2A20S20P_АКБ_ЭЛЬТАВР_48V235Ah.pdf\`
+- **Снимок:** `.cursor/backups/20261030T150510/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T150510`
+
+
+### 2026-10-30 14:40 — Display always on OFF + Smart Sleep
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/SETTINGS.md\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/display_sleep_2026-10-30.json\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes/settings_frame_0x01_after.bin\`
+- **Снимок:** `.cursor/backups/20261030T144018/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T144018`
+
+
+### 2026-10-30 14:32 — Доводка настроек JK под EVE LF230
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`Платы и модули/АКБ_LiFePO4_12V_230Ah/notes\`
+- **Снимок:** `.cursor/backups/20261030T143243/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T143243`
+
+
+### 2026-10-30 14:28 — Температуры JK по EVE LF230
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`Платы и модули/АКБ_LiFePO4_12V_230Ah\`
+- **Снимок:** `.cursor/backups/20261030T142818/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T142818`
+
+
+### 2026-10-30 14:18 — Настройки JK 12V проверены и применены
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`Платы и модули/АКБ_LiFePO4_12V_230Ah\`
+- **Снимок:** `.cursor/backups/20261030T141839/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T141839`
+
+
+### 2026-10-30 14:07 — Восстановлен BMS/JK_B2A8S20P; instance в АКБ
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/JK_B2A8S20P\`, \`Платы и модули/BMS/README.md\`, \`Платы и модули/АКБ_LiFePO4_12V_230Ah/README.md\`, \`.cursor/rules/module-docs-priority.mdc\`
+- **Снимок:** `.cursor/backups/20261030T140715/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T140715`
+
+
+### 2026-10-30 14:04 — Вынесена отдельная папка АКБ 12V; убрано из BMS/
+
+- **Агент:** cursor
+- **Проект:** АКБ_LiFePO4_12V_230Ah
+- **Файлы:** \`Платы и модули/АКБ_LiFePO4_12V_230Ah\`, \`Платы и модули/BMS/README.md\`, \`.cursor/rules/module-docs-priority.mdc\`
+- **Снимок:** `.cursor/backups/20261030T140401/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T140401`
+
+
+### 2026-10-30 14:01 — JK-B2A8S20P BLE connect + module folder
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/JK_B2A8S20P\`, \`Платы и модули/BMS/README.md\`, \`.cursor/rules/module-docs-priority.mdc\`
+- **Снимок:** `.cursor/backups/20261030T140141/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T140141`
+
+
+### 2026-10-30 11:25 — downloads: manuals/ + fault_codes/
+
+- **Агент:** cursor
+- **Проект:** Curtis_Controller
+- **Файлы:** \`Платы и модули/Электрокары/Curtis_Controller/downloads\`, \`Платы и модули/Электрокары/Curtis_Controller/README.md\`, \`Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md\`, \`Платы и модули/Электрокары/Curtis_Controller/CAN.md\`, \`Платы и модули/Электрокары/Curtis_Controller/PINOUT.md\`, \`Платы и модули/Электрокары/Curtis_Controller/download_report.json\`, \`Платы и модули/Электрокары/Curtis_Controller/scripts/generate_fault_codes_pdf.py\`
+- **Снимок:** `.cursor/backups/20261030T112519/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T112519`
+
+
+### 2026-10-30 11:19 — FAULT_CODES PDF: полный список 74 строки, OEM 51-67, варианты
+
+- **Агент:** cursor
+- **Проект:** Curtis_Controller
+- **Файлы:** \`Платы и модули/Электрокары/Curtis_Controller/downloads/Curtis_FAULT_CODES_RU.pdf\`, \`Платы и модули/Электрокары/Curtis_Controller/scripts/generate_fault_codes_pdf.py\`, \`Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md\`
+- **Снимок:** `.cursor/backups/20261030T111911/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T111911`
+
+
+### 2026-10-30 11:15 — PDF полной таблицы FAULT_CODES RU
+
+- **Агент:** cursor
+- **Проект:** Curtis_Controller
+- **Файлы:** \`Платы и модули/Электрокары/Curtis_Controller/downloads/Curtis_FAULT_CODES_RU.pdf\`, \`Платы и модули/Электрокары/Curtis_Controller/scripts/generate_fault_codes_pdf.py\`, \`Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md\`, \`Платы и модули/Электрокары/Curtis_Controller/README.md\`
+- **Снимок:** `.cursor/backups/20261030T111516/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T111516`
+
+
+### 2026-10-30 11:12 — FAULT_CODES полная RU-таблица 1236/1238 + PDF Roxie/RICO
+
+- **Агент:** cursor
+- **Проект:** Curtis_Controller
+- **Файлы:** \`Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md\`, \`Платы и модули/Электрокары/Curtis_Controller/README.md\`, \`Платы и модули/Электрокары/Curtis_Controller/source_url.txt\`, \`Платы и модули/Электрокары/Curtis_Controller/notes/hpevs_troubleshooting_acos26_extract.txt\`, \`Платы и модули/Электрокары/Curtis_Controller/downloads/Curtis_Fault_Code_Roxie.pdf\`, \`Платы и модули/Электрокары/Curtis_Controller/downloads/Curtis_RICO_1236E_Troubleshooting.pdf\`
+- **Снимок:** `.cursor/backups/20261030T111209/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261030T111209`
+
+
+### 2026-10-28 21:09 — Профиль Артёма + сводка + Drive
+
+- **Агент:** cursor
+- **Проект:** artem-study-drive
+- **Файлы:** \`Проекты/artem-study-drive/data/00_Профиль_Артём.md\`, \`Проекты/artem-study-drive/data/00_Сводка_учёба_Артём.md\`, \`Проекты/artem-study-drive/config/knowledge-base.json\`, \`Проекты/artem-study-drive/CHANGELOG.md\`, \`Проекты/artem-study-drive/README.md\`, \`.cursor/rules/artem-study-drive.mdc\`
+- **Снимок:** `.cursor/backups/20261028T210933/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261028T210933`
+
+
+### 2026-10-27 16:07 — Curtis 1236/1238 CAN docs
+
+- **Агент:** cursor
+- **Проект:** modules
+- **Файлы:** \`Платы и модули/Электрокары/Curtis_Controller\`, \`Платы и модули/Электрокары/README.md\`
+- **Снимок:** `.cursor/backups/20261027T160732/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T160732`
+
+
+### 2026-10-27 14:33 — Lcd_can v2.8 pack V from charger CAN
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T143311/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T143311`
+
+
+### 2026-10-27 14:25 — Lcd_can v2.7 clear UI
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/elcon/ELCON_CAN.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T142522/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T142522`
+
+
+### 2026-10-27 14:20 — Lcd_can v2.6.2 E125/E250 on charge page
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T142054/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T142054`
+
+
+### 2026-10-27 14:15 — Lcd_can v2.6.1 LCD uint8 print fix
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T141509/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T141509`
+
+
+### 2026-10-27 14:11 — Lcd_can v2.6 Elcon U+I
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.hex\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/elcon/ELCON_CAN.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T141103/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T141103`
+
+
+### 2026-10-27 14:04 — Elcon/TC CAN spec saved locally
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/elcon/ELCON_CAN.md\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/elcon/source_url.txt\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/downloads/Elcon-CAN-Specification.pdf\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/downloads/Elcon-CAN-Commands.txt\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/downloads/Elcon-CAN-3865.pdf\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T140437/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T140437`
+
+
+### 2026-10-27 12:20 — Lcd_can v2.4 BMS cmd not echo
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN.md\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T122006/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T122006`
+
+
+### 2026-10-27 12:12 — Lcd_can v2.3 CH4200
+
+- **Агент:** cursor
+- **Проект:** Arduino
+- **Файлы:** \`Проекты/Arduino/firmware/Lcd_can_battery_controller/Lcd_can_battery_controller.ino\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/README.md\`, \`Проекты/Arduino/firmware/Lcd_can_battery_controller/notes/CH4200_CAN.md\`, \`Проекты/Arduino/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261027T121252/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T121252`
+
+
+### 2026-10-27 10:19 — заливка рабочего профиля 20/20 OK 2026-10-27
+
+- **Агент:** cursor
+- **Проект:** Must_PV18-4024_PRO_II
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/CHANGELOG.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/inverter_working.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/inverter_working.txt\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/working_profile.registers.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/WORKING_PROFILE.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/applied-settings/README.md\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/factory-settings/inverter_factory_20261027_101116.json\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/factory-settings/inverter_factory_20261027_101116.txt\`, \`Платы и модули/Солнечные_инверторы/Must_PV18-4024_PRO_II/factory-settings/README.md\`
+- **Снимок:** `.cursor/backups/20261027T101931/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T101931`
+
+
+### 2026-10-27 08:19 — DO 3.3V under load correction
+
+- **Агент:** cursor
+- **Проект:** Daly_BMS_7-17S_200A
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/HEATING.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/PINOUT.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/INSTANCE.md\`
+- **Снимок:** `.cursor/backups/20261027T081920/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261027T081920`
+
+
+### 2026-10-26 19:28 — Curtis LED код 47 HPD
+
+- **Агент:** cursor
+- **Проект:** Электрокары
+- **Файлы:** \`Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md\`, \`Платы и модули/Электрокары/Curtis_Controller/README.md\`, \`Платы и модули/Электрокары/Curtis_Controller/TECH_SUMMARY.md\`, \`Платы и модули/Электрокары/README.md\`
+- **Снимок:** `.cursor/backups/20261026T192846/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T192846`
+
+
+### 2026-10-26 16:43 — укорочен текст PDF, убрана Основа
+
+- **Агент:** cursor
+- **Проект:** Pushkina_29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`
+- **Снимок:** `.cursor/backups/20261026T164300/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T164300`
+
+
+### 2026-10-26 14:36 — Стиль как Схема двора 08.10
+
+- **Агент:** cursor
+- **Проект:** Pushkina_29
+- **Файлы:** \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`, \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/notes/zu3_fragment_zones_2026-10-26.png\`
+- **Снимок:** `.cursor/backups/20261026T143623/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T143623`
+
+
+### 2026-10-26 14:32 — Оформление схемы плитка/асфальт
+
+- **Агент:** cursor
+- **Проект:** Pushkina_29
+- **Файлы:** \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`, \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/notes/zu3_fragment_zones_2026-10-26.png\`, \`Пушкина_29/notes/zu3_fragment_vertical_2026-10-26.png\`
+- **Снимок:** `.cursor/backups/20261026T143224/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T143224`
+
+
+### 2026-10-26 14:21 — зоны асфальт/плитка на схеме ЗУ3
+
+- **Агент:** cursor
+- **Проект:** Pushkina_29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`, \`Пушкина_29/notes/zu3_fragment_zones_2026-10-26.png\`
+- **Снимок:** `.cursor/backups/20261026T142114/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T142114`
+
+
+### 2026-10-26 14:16 — ЗУ3 фрагмент вертикально
+
+- **Агент:** cursor
+- **Проект:** Pushkina_29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`, \`Пушкина_29/notes/zu3_fragment_source_2026-10-26.png\`, \`Пушкина_29/notes/zu3_fragment_vertical_2026-10-26.png\`
+- **Снимок:** `.cursor/backups/20261026T141645/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T141645`
+
+
+### 2026-10-26 14:12 — ЗУ3 вырез по чёрному контуру Paint
+
+- **Агент:** cursor
+- **Проект:** Pushkina_29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`, \`Пушкина_29/notes/zu3_black_contour_guide_2026-10-26.jpg\`
+- **Снимок:** `.cursor/backups/20261026T141207/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T141207`
+
+
+### 2026-10-26 14:02 — ЗУ3 строго по красному контуру
+
+- **Агент:** cursor
+- **Проект:** pushkina29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`
+- **Снимок:** `.cursor/backups/20261026T140253/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T140253`
+
+
+### 2026-10-26 13:53 — вырез ЗУ3 по чёрной рамке со скрина
+
+- **Агент:** cursor
+- **Проект:** pushkina29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`
+- **Снимок:** `.cursor/backups/20261026T135316/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T135316`
+
+
+### 2026-10-26 13:39 — обрезка схемы ЗУ3 по красному контуру
+
+- **Агент:** cursor
+- **Проект:** pushkina29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`
+- **Снимок:** `.cursor/backups/20261026T133934/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T133934`
+
+
+### 2026-10-26 13:32 — схема ЗУ3 из Прил.2 без плитки/асфальта
+
+- **Агент:** cursor
+- **Проект:** pushkina29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`
+- **Снимок:** `.cursor/backups/20261026T133250/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T133250`
+
+
+### 2026-10-26 13:07 — схема зон покрытия плитка-асфальт 2026-10-26
+
+- **Агент:** cursor
+- **Проект:** pushkina29
+- **Файлы:** \`Пушкина_29/Приложение 1 - Схема зон покрытия (плитка-асфальт) - Пушкина 29.pdf\`, \`Пушкина_29/scripts/generate_coverage_scheme_pdf.py\`
+- **Снимок:** `.cursor/backups/20261026T130743/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T130743`
+
+
+### 2026-10-26 11:43 — BLE HCI USER connect+read OK
+
+- **Агент:** cursor
+- **Проект:** Daly_BMS_7-17S_200A
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A/scripts/daly_ble_probe.py\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/scripts/daly_ble_connect.sh\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/BLE_PI5.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/INSTANCE.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/README.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/PINOUT.md\`
+- **Снимок:** `.cursor/backups/20261026T114352/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T114352`
+
+
+### 2026-10-26 10:51 — Daly DO 12V при ручном нагреве
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/HEATING.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/PINOUT.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/INSTANCE.md\`
+- **Снимок:** `.cursor/backups/20261026T105139/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T105139`
+
+
+### 2026-10-26 10:48 — Daly APP RS485/CAN протокол
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A/TECH_SUMMARY.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/HEATING.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/INSTANCE.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/PINOUT.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/app_protocol_overview.png\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/app_protocol_rs485_can.png\`
+- **Снимок:** `.cursor/backups/20261026T104830/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T104830`
+
+
+### 2026-10-26 10:22 — Daly APP ручной нагрев подтверждён
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/HEATING.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/INSTANCE.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/app_quick_settings_heating.png\`
+- **Снимок:** `.cursor/backups/20261026T102253/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T102253`
+
+
+### 2026-10-26 10:07 — Daly HEATING DO реле + BLE probe
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/HEATING.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/INSTANCE.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/notes/app_scan_DL-73C142001510.png\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/PINOUT.md\`, \`Платы и модули/BMS/Daly_BMS_7-17S_200A/README.md\`, \`Платы и модули/BMS/README.md\`
+- **Снимок:** `.cursor/backups/20261026T100730/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T100730`
+
+
+### 2026-10-26 09:50 — папка Daly Smart BMS 7-17S 200A
+
+- **Агент:** cursor
+- **Проект:** BMS
+- **Файлы:** \`Платы и модули/BMS/Daly_BMS_7-17S_200A\`, \`Платы и модули/BMS/README.md\`, \`.cursor/rules/module-docs-priority.mdc\`
+- **Снимок:** `.cursor/backups/20261026T095017/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261026T095017`
+
+
+### 2026-10-23 20:14 — Мануалы TSS RE + готовность подключения
+
+- **Агент:** cursor
+- **Проект:** deye20k-tss
+- **Файлы:** \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/downloads/TSS_AD-16C-T400_Standart_RE.pdf\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/downloads/TSS_AD-16S-T400-1RKM5_datasheet.pdf\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/notes/ГОТОВНОСТЬ_ПОДКЛЮЧЕНИЕ_2026-10-23.md\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/TECH_SUMMARY.md\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/README.md\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/source_url.txt\`
+- **Снимок:** `.cursor/backups/20261023T201458/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T201458`
+
+
+### 2026-10-23 20:07 — Параллель dry contact оба INV + один автомат GEN
+
+- **Агент:** cursor
+- **Проект:** deye20k-tss
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/notes/АВТОЗАПУСК_ГЕНЕРАТОР_TSS_2xDeye20K.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/generated/АВТОЗАПУСК_TSS_TQc22_2xDeye20K.pdf\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/scripts/generate_autostart_tss_pdf.py\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/TECH_SUMMARY.md\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/README.md\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/pic/panel_INV1_INV2_GEN_breaker_2026-10-23.jpg\`, \`.cursor/chat.md\`
+- **Снимок:** `.cursor/backups/20261023T200749/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T200749`
+
+
+### 2026-10-23 19:56 — Автозапуск TSS TQc22 + 2x Deye20K чеклист PDF
+
+- **Агент:** cursor
+- **Проект:** deye20k-tss
+- **Файлы:** \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/README.md\`, \`Платы и модули/Дизельные_генераторы/TSS_TQc_22TS_ST_АД-16С-Т400/TECH_SUMMARY.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/notes/АВТОЗАПУСК_ГЕНЕРАТОР_TSS_2xDeye20K.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/generated/АВТОЗАПУСК_TSS_TQc22_2xDeye20K.pdf\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/scripts/generate_autostart_tss_pdf.py\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-20K-SG05LP3-EU-SM2/TECH_SUMMARY.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261023T195616/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T195616`
+
+
+### 2026-10-23 15:45 — date-stamp-on-changes alwaysApply
+
+- **Агент:** cursor
+- **Проект:** cursor-rules
+- **Файлы:** \`.cursor/rules/date-stamp-on-changes.mdc\`, \`.cursor/rules/core-standards-and-workflow.mdc\`, \`.cursor/rules/workspace-global-mandatory.mdc\`, \`.cursor/RULES_MASTER_PLAN.md\`, \`.cursor/chat.md\`
+- **Снимок:** `.cursor/backups/20261023T154546/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T154546`
+
+
+### 2026-10-23 11:41 — jk_ble_pylon_deye 0.1.7 CAN лог TX+RX флеш
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/include/can_rx_log.h\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/can_rx_log.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/twai_bus.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/main.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/platformio.ini\`
+- **Снимок:** `.cursor/backups/20261023T114109/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T114109`
+
+
+### 2026-10-23 11:28 — jk_ble_pylon_deye 0.1.6 CAN RX лог во флеш LittleFS
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/include/can_rx_log.h\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/can_rx_log.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/main.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/platformio.ini\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/README.md\`, \`Платы и модули/ESP32-S3-RS485-CAN/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261023T112816/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T112816`
+
+
+### 2026-10-23 11:15 — v0.1.5 can rx log
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/can_rx_log.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/twai_bus.cpp\`
+- **Снимок:** `.cursor/backups/20261023T111526/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T111526`
+
+
+### 2026-10-23 11:11 — v0.1.4 no auto after scan, CAN SOC hold
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/jk_ble.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/pylon_can.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`
+- **Снимок:** `.cursor/backups/20261023T111102/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T111102`
+
+
+### 2026-10-23 10:51 — v0.1.3 ble reset pairing
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/jk_ble.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/include/jk_ble.h\`
+- **Снимок:** `.cursor/backups/20261023T105141/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T105141`
+
+
+### 2026-10-23 10:40 — v0.1.2 scan disconnect discover-only
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/jk_ble.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/platformio.ini\`
+- **Снимок:** `.cursor/backups/20261023T104034/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T104034`
+
+
+### 2026-10-23 10:14 — XKeen OOM-guard офисный роутер
+
+- **Агент:** cursor
+- **Проект:** keenetic-office
+- **Файлы:** \`keenetic-routers.md\`, \`.cursor/scripts/install-office-xkeen-oom-guard.sh\`
+- **Снимок:** `.cursor/backups/20261023T101434/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T101434`
+
+
+### 2026-10-23 10:06 — jk_ble_pylon_deye v0.1.1 captive portal
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/web_ui.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/platformio.ini\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/README.md\`, \`Платы и модули/ESP32-S3-RS485-CAN/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261023T100615/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T100615`
+
+
+### 2026-10-23 09:55 — jk_ble_pylon_deye v0.1.0: JK BLE → Pylon CAN Deye + SoftAP
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye\`, \`Платы и модули/ESP32-S3-RS485-CAN/README.md\`, \`Платы и модули/ESP32-S3-RS485-CAN/CHANGELOG.md\`, \`Платы и модули/ESP32-S3-RS485-CAN/TECH_SUMMARY.md\`, \`Платы и модули/BMS/JK_B2A20S20P/README.md\`, \`Платы и модули/BMS/JK_B2A20S20P/TECH_SUMMARY.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`
+- **Снимок:** `.cursor/backups/20261023T095559/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261023T095559`
+
+
+### 2026-10-21 16:57 — MIN v0.4.6 radioForceOff no SoftAP
+
+- **Агент:** cursor
+- **Проект:** Polaris_GEM_e6_2017
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main_can_min.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/platformio.ini\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`
+- **Снимок:** `.cursor/backups/20261021T165700/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T165700`
+
+
+### 2026-10-21 16:51 — MIN v0.4.5b LED heartbeat mostly-ON
+
+- **Агент:** cursor
+- **Проект:** Polaris_GEM_e6_2017
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main_can_min.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/scripts/flash-can-min.sh\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/scripts/build.sh\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.5_MCP2515.bin\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.5_TJA1050.bin\`
+- **Снимок:** `.cursor/backups/20261021T165102/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T165102`
+
+
+### 2026-10-21 16:46 — v0.4.4 LED blink fix
+
+- **Агент:** cursor
+- **Проект:** gem-bmc-esp32c3
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main_can_min.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`
+- **Снимок:** `.cursor/backups/20261021T164653/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T164653`
+
+
+### 2026-10-21 16:24 — v0.4.3 10F3=1Hz factory
+
+- **Агент:** cursor
+- **Проект:** gem-bmc-esp32c3
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main_can_min.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`
+- **Снимок:** `.cursor/backups/20261021T162448/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T162448`
+
+
+### 2026-10-21 15:31 — Pi5 worker auth gmail + REMOTE_CONTROL
+
+- **Агент:** cursor
+- **Проект:** remote-control
+- **Файлы:** \`REMOTE_CONTROL.md\`
+- **Снимок:** `.cursor/backups/20261021T153105/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T153105`
+
+
+### 2026-10-21 15:14 — PINOUT: делитель SO для MCP2515 5V
+
+- **Агент:** cursor
+- **Проект:** gem-bmc-esp32c3
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/PINOUT.md\`
+- **Снимок:** `.cursor/backups/20261021T151456/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T151456`
+
+
+### 2026-10-21 14:25 — bench-bmc-gap-check.sh стенд без машины
+
+- **Агент:** cursor
+- **Проект:** gem-bmc
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/scripts/bench-bmc-gap-check.sh\`
+- **Снимок:** `.cursor/backups/20261021T142541/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T142541`
+
+
+### 2026-10-21 14:22 — v0.4.2 up/GAP + can-watch-bmc-vcm
+
+- **Агент:** cursor
+- **Проект:** gem-bmc-esp32c3
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/scripts/can-watch-bmc-vcm.py\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main_can_min.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.2_TJA1050.bin\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.2_MCP2515.bin\`
+- **Снимок:** `.cursor/backups/20261021T142230/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T142230`
+
+
+### 2026-10-21 14:09 — MIN v0.4.1 P1820/PAYLOAD_10
+
+- **Агент:** cursor
+- **Проект:** gem-bmc-esp32c3
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/bmc_can_gen.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/include/bmc_can_gen.h\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/main_can_min.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/scripts/build.sh\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/scripts/flash-can-min.sh\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.1_TJA1050.bin\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/releases/gem_bmc_esp32c3_v0.4.1_MCP2515.bin\`
+- **Снимок:** `.cursor/backups/20261021T140923/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T140923`
+
+
+### 2026-10-21 14:08 — до фикса P1820/PAYLOAD_10
+
+- **Агент:** cursor
+- **Проект:** gem-bmc-esp32c3
+- **Файлы:** \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/src/bmc_can_gen.cpp\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/include/bmc_can_gen.h\`, \`Платы и модули/Электрокары/Polaris_GEM_e6_2017/firmware/gem_bmc_can_emu_esp32c3/README.md\`
+- **Снимок:** `.cursor/backups/20261021T140819/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T140819`
+
+
+### 2026-10-21 13:07 — ёмкость АКБ 235 Ah факт
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md\`
+- **Снимок:** `.cursor/backups/20261021T130755/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T130755`
+
+
+### 2026-10-21 13:03 — настройки Ак-Як 33 по шаблону ЭЛЬТАВР
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md\`
+- **Снимок:** `.cursor/backups/20261021T130317/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T130317`
+
+
+### 2026-10-21 10:48 — snapshot inverter settings Ak-Yak
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33_НАСТРОЙКИ.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`
+- **Снимок:** `.cursor/backups/20261021T104834/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T104834`
+
+
+### 2026-10-21 10:20 — RUB Moscow plant settings
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`
+- **Снимок:** `.cursor/backups/20261021T102039/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T102039`
+
+
+### 2026-10-21 10:14 — Deye Cloud Ак-Як 33 plant+logger
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/DEYE_CLOUD_AK_YAK_33.md\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261021T101458/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261021T101458`
+
+
+### 2026-10-20 15:58 — PDF GEN: FAQ Gen Force vs Start
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/scripts/generate_gen_setup_pdf.py\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/generated/НАСТРОЙКА_ГЕНЕРАТОРА_Deye6.6K_Load_и_заряд_АКБ.pdf\`
+- **Снимок:** `.cursor/backups/20261020T155858/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261020T155858`
+
+
+### 2026-10-20 15:19 — PDF настройка генератора Load+заряд без Gen Force
+
+- **Агент:** cursor
+- **Проект:** Deye_SUN-6.6K
+- **Файлы:** \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/scripts/generate_gen_setup_pdf.py\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/generated/НАСТРОЙКА_ГЕНЕРАТОРА_Deye6.6K_Load_и_заряд_АКБ.pdf\`, \`Платы и модули/Солнечные_инверторы/Deye_SUN-6.6K-OG03LP1-EU-AM2/notes/README.md\`
+- **Снимок:** `.cursor/backups/20261020T151936/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261020T151936`
+
+
 ### 2026-10-20 13:46 — PDF описания неисправности для СЦ + материалы video Drive
 
 - **Агент:** cursor
