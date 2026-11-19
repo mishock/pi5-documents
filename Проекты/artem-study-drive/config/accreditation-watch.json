@@ -1,0 +1,12 @@
+{
+  "updated": "2026-11-19",
+  "specialtyCode": "09.02.07",
+  "specialtyName": "Информационные системы и программирование",
+  "emailTo": "mishock24@gmail.com",
+  "emailFromScript": "/home/pi/bin/send-email.sh",
+  "commonPageUrl": "https://kipu-rc.ru/sveden/common/",
+  "accredPdfUrl": "https://kipu-rc.ru/downloads/important/reestrovaya_vipiska.pdf",
+  "licensePdfUrl": "https://kipu-rc.ru/downloads/important/vipiska.pdf",
+  "registryUrl": "https://isga.obrnadzor.gov.ru/accredreestr/details/0b0f130c-130a-0f0d-0d0a-0c110f130d0a",
+  "note": "Раз в месяц проверять госаккредитацию 09.02.07 на сайте КИПУ; при любом изменении — письмо на emailTo"
+}

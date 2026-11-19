@@ -1,5 +1,12 @@
 # CHANGELOG — artem-study-drive
 
+## 2026-11-19
+
+- Месячный монитор **госаккредитации 09.02.07**: `scripts/accreditation-monitor.mjs`, конфиг `config/accreditation-watch.json`.
+- Таймер `artem-study-accreditation.timer` — **1-е число, 10:00 MSK**; при изменении PDF/статуса/страницы — письмо на **mishock24@gmail.com**.
+- Сводка `data/00_Аккредитация_09.02.07.md`, снимок `data/accreditation-snapshot.json`, лог `~/logs/artem-accreditation.log`.
+- Установка: `scripts/install-monthly-accreditation-timer.sh`.
+
 ## 2026-10-28
 
 - Добавлен **`00_Профиль_Артём.md`** (ДР 20.06.2009, семья, учёба, решение по курсу «Скултех»/Квантастика — не регистрироваться).

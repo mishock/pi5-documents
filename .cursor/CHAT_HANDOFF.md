@@ -1,4 +1,61 @@
 ## Текущий фокус
+Учёба Артём — аккредитация 09.02.07 (2026-11-19 18:42): месячный таймер `artem-study-accreditation.timer`, email при изменении на mishock24@gmail.com. Сводка `Проекты/artem-study-drive/data/00_Аккредитация_09.02.07.md`.
+
+## Текущий фокус
+Fornex снят (2026-11-18 15:32). vpn-switch primary|space. Офис space OK. RETIRED.md в fornex-vpn-etizer.
+
+## Текущий фокус
+VLESS SPACE (2026-11-18 15:22): подписка активна; Pi5 режим `space` в vpn-switch; primary OK. Папка `Проекты/vless-space-vpn/`.
+
+## Текущий фокус
+JK …0517 BLE (2026-11-17 14:15): UART1 записан **0 = 4G-GPS V4.2** (было Modbus). Verify OK. MAC `C8:47:80:74:A5:9B`. Скрипт `…/JK_B2A20S20P/scripts/jk_ble_set_uart1_0517.py`. Далее — проверка H503 моста по UART.
+
+## Текущий фокус
+CAN_Sniffer_Shield_LCD (2026-11-17): тач починен и прошит на Uno. Проверить пальцем чекбоксы 100–1000.
+
+## Текущий фокус
+JK→Deye H503 (2026-11-17 11:40): `jk_uart_pylon_deye` v0.1.0 **прошит** (OpenOCD verify OK). Проверка: LED, Deye Lithium+Pylon, SOC.
+
+## Текущий фокус
+Happ ПК (2026-11-17 11:13): Fornex Etizer FR, exit `145.223.33.133`, TUN `happ-xray` Up. Не NetBird/VPS.
+
+## Текущий фокус
+VPN ПК (2026-11-17 10:42): Happ TUN blackhole на `130.17.8.47` Vision; Etizer с работы закрыт; NetBird на ПК нет.
+
+## Текущий фокус
+VPN Pi5 (2026-11-17 10:28): primary OK, exit Cursor_Cloud `130.17.8.47`, tunnel/xray/proxy/watchdog active. NetBird Connected.
+
+## Текущий фокус
+krimsvet Яндекс (2026-11-15 13:57): Директ Активна, по логам ~190 кликов (`yclid`), сегодня 167. Лидов нет. Цели Метрики ещё нет. Кабинет — только с ПК.
+
+## Текущий фокус
+ЭЛЬТАВР podium spin (2026-11-13): ждём API-юниты Recraft. Папка `Платы и модули/Электрокары/Eltavr_shuttle_showroom_spin/`.
+
+## Текущий фокус
+Изображения только Recraft (2026-11-13): правило `recraft-images-only.mdc`. MCP `recraft` на Pi5+ПК.
+
+## Текущий фокус
+Recraft MCP в Cursor (2026-11-13): API-токен Cursor → Pi5 + ПК. См. `Проекты/recraft-cursor/README.md`.
+
+## Текущий фокус
+Кириллица УП (2026-11-13): CIMCO «иероглифы» = CP1252 поверх CP1251. Пост SolidCAM OK. См. `Платы и модули/M350_CNC_Controller/notes/GCODE_CYRILLIC_ENCODING.md`.
+
+## Текущий фокус
+A11034R6 пульт (2026-11-13): unlock после RDP починен (`flash-openocd.sh` AIRCR+st-flash). Проверка: `sudo argon-eltavr-flash-item.sh a11034r6_v49` → ok.
+
+## Текущий фокус
+A11034R6 с пульта (2026-11-12): починен путь OpenOCD в `flash-stlink.sh`. Проверка: `sudo argon-eltavr-flash-item.sh a11034r6_v49` → ok.
+
+## Текущий фокус
+krimsvet: рубрика отзывов (2026-11-11). Главная `#otzyvy` + `/otzyvy/`, видео review-01. Цели Метрики ещё нет.
+
+## Текущий фокус
+krimsvet: фотокарточки комплектов на сайте (2026-11-11). Цели Метрики ещё нет.
+
+## Текущий фокус
+krimsvet Директ: кампания Активна (2026-11-11). Цели Метрики ещё нет.
+
+## Текущий фокус
 krimsvet Директ (2026-11-10 18:09 MSK): кампания `1926612213541230087` — **На модерации** (не одобрена). Живой кабинет недоступен. См. `Проекты/krimsvet/notes/YANDEX_SETUP.md`.
 
 ## Текущий фокус

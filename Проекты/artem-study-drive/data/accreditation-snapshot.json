@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-11-19T15:42:41.405Z",
+  "checkedAtMsk": "19.11.2026, 18:42:41",
+  "specialtyCode": "09.02.07",
+  "specialtyName": "Информационные системы и программирование",
+  "registryUrl": "https://isga.obrnadzor.gov.ru/accredreestr/details/0b0f130c-130a-0f0d-0d0a-0c110f130d0a",
+  "page": {
+    "url": "https://kipu-rc.ru/sveden/common/",
+    "hash": "d1e52eacb50abde98214e4bf5eae0b9413d1aeb3dffb529dd291475e85419b1c",
+    "links": [
+      {
+        "text": "Выписка из реестра лицензий на осуществление образовательной деятельности",
+        "href": "https://kipu-rc.ru/downloads/important/vipiska.pdf"
+      },
+      {
+        "text": "Выписка из государственной информационной системы \"Реестр организаций, осуществляющих образовательную деятельность по имеющим государственную аккредитацию образовательным программам\"",
+        "href": "https://kipu-rc.ru/downloads/important/reestrovaya_vipiska.pdf"
+      },
+      {
+        "text": "Сведения об университете из государственной информационной системы \"Реестр организаций, осуществляющих образовательную деятельность по имеющим государственную аккредитацию образовательным программам\"",
+        "href": "https://isga.obrnadzor.gov.ru/accredreestr/details/0B0F130C-120B-1310-0F0F-100B13130E0E0C0F110D"
+      },
+      {
+        "text": "Выписка из Реестра организаций, оказывающих услуги в области охраны труда",
+        "href": "https://kipu-rc.ru/downloads/2023/02/vipiska_2023.pdf"
+      },
+      {
+        "text": "Сведения об университете из Реестра организаций, оказывающих услуги в области охраны труда",
+        "href": "https://akot.rosmintrud.ru/ot/organizations/info/59378?returnUrl=https%3A%2F%2Fakot.rosmintrud.ru%2Fot%2Forganizations%3FFilter.ProtectionPageNo%3D1%26Filter.AttestationPageNo%3D1%26Filter.TrainingPageNo%3D1%26tabs%3D%26Filter.IsFilter%3Dtrue%26Filter.NumberInReestr%3D6595%26Filter.Text%3D%26Filter.INN%3D%26Filter.OGRN%3D%26Filter.OrganizationStatusIds%3D2%26Filter.OrganizationStatusIds%3D5%26Filter.OrganizationOPFId%3D%26Filter.RegionId%3D%26Filter.Address%3D%26Filter.IsReestrSout%3D0%26DateReestrFrom%3D%26DateReestrTo%3D%26DateEditFrom%3D%26DateEditTo%3D%26DateExcludeFrom%3D%26DateExcludeTo%3D"
+      }
+    ]
+  },
+  "accredPdf": {
+    "url": "https://kipu-rc.ru/downloads/important/reestrovaya_vipiska.pdf",
+    "sha256": "c6a1ddbc5cef5778bc2af4766d751cf04edeafd7a78b43cf4308889cda7729e5",
+    "bytes": 84216,
+    "asOf": null,
+    "specialtyPresent": false,
+    "specialtyStatus": null,
+    "context": []
+  },
+  "licensePdf": {
+    "url": "https://kipu-rc.ru/downloads/important/vipiska.pdf",
+    "sha256": "8cd402b815809499fd374e116968d83abc15c205e9c97aaf830a1e8e265f87b5",
+    "bytes": 188290,
+    "specialtyPresent": true,
+    "specialtyStatus": null,
+    "context": [
+      "среднее профессиональное образование - программы подготовки специалистов среднего звена",
+      "5                09.02.07          Информационные системы и           Среднее                   -",
+      "программирование           профессиональное",
+      "образование",
+      "6                09.02.11           Разработка и управление           Среднее                   -",
+      "программным обеспечением      профессиональное"
+    ]
+  },
+  "summary": "09.02.07: лицензия есть, госаккредитация в выписке НЕ найдена"
+}

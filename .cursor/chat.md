@@ -1,31 +1,28 @@
-## Фокус (18:09, 2026-11-10) — krimsvet модерация Директ
+## Фокус (18:42, 2026-11-19) — Аккредитация 09.02.07 месяц + email
 
-Кампания `1926612213541230087` — **ещё на модерации** (последнее OK 15:51). В 18:09 живой кабинет недоступен (ПК offline, нет сессии Ya на Pi5). Детали: `Проекты/krimsvet/notes/YANDEX_SETUP.md`.
+Таймер `artem-study-accreditation.timer` (1-е число 10:00 MSK). Письмо на mishock24@gmail.com при изменении выписки/статуса. Скрипт `Проекты/artem-study-drive/scripts/accreditation-monitor.mjs`.
+---
+## Фокус (18:35, 2026-11-19) — Учёба Артём / аккредитация 09.02.07
 
-## Фокус (16:28, 2026-11-10) — HA Assist Pi5
+По выписке госаккредитации на сайте КИПУ (состояние 14.04.2025) специальность **09.02.07** не числится. Лицензия на 09.02.07 есть. На Drive отдельного подтверждения аккредитации нет.
+---
+## Фокус (15:45, 2026-11-18) — Kali на VLESS SPACE
 
-Assist починен: engine `conversation.home_assistant`, TTS Google Translate; «ты тут?» → «Да, я на связи…». Папка: `Проекты/Apple HomeKit accessory/home_assistant/`.
+Pi5+Pi3+Kali+офис = space. Kali exit DE.
+---
+## Фокус (15:38, 2026-11-18) — Pi3/Pi5 на VLESS SPACE
 
-## Фокус (16:17, 2026-11-10) — krimsvet hero-баннер
+Оба узла `mode=space`, exit DE. Pi3: config.space.pi3 (NetBird 10809).
+---
+## Фокус (15:32, 2026-11-18) — Fornex снят
 
-На главную `krimsvet.ru` поставлен баннер «Резервное питание» (`site/pic/hero-backup-power.jpg`), og:image обновлён, залито FTP. Копия креатива: `ads/banner-rezervnoe-pitanie.jpg`.
+Fornex Etizer retired. Запасной = VLESS SPACE. Офис Keenetic mode=space (exit DE). Pi5/Pi3 primary. Канон: `Проекты/vless-space-vpn/`.
+---
+## Фокус (15:22, 2026-11-18) — VLESS SPACE
 
-## Фокус (15:00, 2026-11-10) — krimsvet Директ пополнен
+Подписка usr81158 до 2026-12-19. ПК Happ OK. Pi5: `vpn-switch space` (DE exit проверен ~89.19.222.7). Канон: `Проекты/vless-space-vpn/`. Primary восстановлен.
+---
+## Фокус (17:03, 2026-11-17) — H503 v0.1.10
 
-Баланс **37 600 ₽**. Кампания `1926612213541230087` — **На модерации**. Ждём одобрения, затем показы. Цели Метрики ещё не настроены.
-
-## Фокус (14:32, 2026-11-10) — Kali Self-Hosted Worker
-
-Добавлен worker **Документы на Kali** (`mishock/kali-documents`, workerId `c47e6c35-…`) — Connected. Стек: `xray-kali` + `cursor-proxy-http:10809` + `cursor-self-hosted-worker`. Док: `REMOTE_CONTROL.md`.
-
-## Фокус (14:00, 2026-11-10) — NetBird 0.82.1 + Kali VPN
-
-NetBird 0.82.1: Pi5, Pi3, Kali. Kali xray primary → Cursor_Cloud exit `130.17.8.47` (`von`).
-
-## Фокус (13:15, 2026-11-10) — VPN на Cursor_Cloud
-
-Прод VPN (3x-ui+WG) перенесён на `130.17.8.47`. Cursor worker жив. Старый `89.127.199.6` — сервисы stop. Pi5/Pi3 primary exit Cloud. Подписки обновить на `:2096` нового IP.
-
-## Фокус (12:57, 2026-11-10) — Pi5 Connect + spare VPN
-
-Pi5 rpi-connect на локальный `127.0.0.1:10809`. Doctor ✓.
+Добавлен CAN `0x35F` (BAT Ver). JK SW 19.31 → на Deye ожидается **1931**.
+`releases/jk_uart_pylon_deye_v0.1.10.bin` прошит.
