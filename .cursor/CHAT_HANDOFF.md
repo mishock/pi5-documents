@@ -1,4 +1,13 @@
 ## Текущий фокус
+Bybit автотрейдер (2026-11-23 17:48): картбланш на весь свободный USDT (~49.6$). Конфиг `.cursor/data/bybit-auto-confirm.json`. Таймер `bybit-auto-trader.timer`.
+
+## Текущий фокус
+Текущий фокус: jk_ble_pylon_deye v0.1.9 — BAT Ver на Deye+Pylon=0 ожидаемо (0x35F не мапится).
+
+## Текущий фокус
+jk_ble_pylon_deye v0.1.8 (2026-11-20): паритет H503 на ESP32-S3-RS485-CAN. Артефакт `…/releases/jk_ble_pylon_deye_v0.1.8.bin`. Прошить и проверить на Deye.
+
+## Текущий фокус
 Учёба Артём — аккредитация 09.02.07 (2026-11-19 18:42): месячный таймер `artem-study-accreditation.timer`, email при изменении на mishock24@gmail.com. Сводка `Проекты/artem-study-drive/data/00_Аккредитация_09.02.07.md`.
 
 ## Текущий фокус

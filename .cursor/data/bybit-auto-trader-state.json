@@ -1,0 +1,28 @@
+{
+  "entries": {
+    "BTC": {
+      "entry": 62784.4,
+      "peak": 62970.6,
+      "sl": 59796.7,
+      "source": "manual_carte_blanche"
+    }
+  },
+  "drawdown_alerted": {},
+  "wallet": {
+    "avail": 0.1538,
+    "coins": {
+      "BTC": 0.00078658,
+      "ETH": 5.6e-07,
+      "SOL": 4.544e-05,
+      "USDT": 0.15392215,
+      "SUI": 0.002704
+    }
+  },
+  "updated": "2026-11-23T14:55:35.367265+00:00",
+  "last_buy": {
+    "symbol": "BTCUSDT",
+    "usdt": 49.53,
+    "kind": "manual_pullback",
+    "entry": 62784.4
+  }
+}

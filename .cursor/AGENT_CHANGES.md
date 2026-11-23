@@ -31,6 +31,42 @@ bash Документы/.cursor/scripts/agent-change-backup.sh --agent cursor --
 
 ## Записи (новые сверху)
 
+### 2026-11-23 17:48 — картбланш весь USDT депозита
+
+- **Агент:** cursor
+- **Проект:** bybit
+- **Файлы:** \`.cursor/data/bybit-auto-confirm.json\`, \`.cursor/scripts/bybit-auto-trader.py\`, \`.cursor/rules/bybit-watch.mdc\`, \`AGENTS.d/pi5.md\`
+- **Снимок:** `.cursor/backups/20261123T174853/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261123T174853`
+
+
+### 2026-11-20 12:35 — README SoftAP пароль явно
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/README.md\`
+- **Снимок:** `.cursor/backups/20261120T123538/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261120T123538`
+
+
+### 2026-11-20 11:17 — v0.1.10 убран TX 0x35F
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/pylon_can.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/platformio.ini\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/README.md\`, \`Платы и модули/ESP32-S3-RS485-CAN/TECH_SUMMARY.md\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/src/pylon_can.cpp\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/platformio.ini\`, \`Платы и модули/PB_MCU01_H503A/firmware/jk_uart_pylon_deye/README.md\`
+- **Снимок:** `.cursor/backups/20261120T111716/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261120T111716`
+
+
+### 2026-11-20 10:14 — jk_ble_pylon_deye v0.1.8 паритет H503
+
+- **Агент:** cursor
+- **Проект:** ESP32-S3-RS485-CAN
+- **Файлы:** \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/pylon_can.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/src/jk_ble.cpp\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/include/jk_ble.h\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/include/pylon_can.h\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/platformio.ini\`, \`Платы и модули/ESP32-S3-RS485-CAN/firmware/jk_ble_pylon_deye/README.md\`, \`Платы и модули/ESP32-S3-RS485-CAN/CHANGELOG.md\`
+- **Снимок:** `.cursor/backups/20261120T101445/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261120T101445`
+
+
 ### 2026-11-19 18:42 — месячный монитор аккредитации 09.02.07 + email
 
 - **Агент:** cursor

@@ -1,0 +1,25 @@
+---
+description: Мониторинг Bybit и автотрейдер (Pi 5). Обновлено 2026-11-23.
+alwaysApply: true
+---
+
+# Bybit watch (только Pi 5)
+
+**Биржа и API-ключи — только Raspberry Pi 5.** На Pi 3 скрипты не ставить и не вызывать; бот `/bybit` работает на Pi 5 (J.A.R.V.I.S, сервис `ai-assistant-telegram`).
+
+По запросам «что купить», «подзаработать», «следи за биржей», «идеи по рынку»:
+
+1. Кратко: `bybit-dashboard` или `bybit-watch` (то же). Подробно: `bybit-watch --full`.
+2. Показывать вывод пользователю; **не** выставлять ордера без `CONFIRM` (ручные сделки агента).
+3. Баланс: `bybit-balance`.
+4. **Telegram:** по запросу — `/bybit` в боте или `bybit-watch`. Авто-push **выключен** (таймер `bybit-watch.timer` disabled); включить: `install-bybit-watch-timer.sh`.
+5. Лог: `~/bybit-watch.log`. Переустановка таймера: `bash Документы/.cursor/scripts/install-bybit-watch-timer.sh`.
+
+## Автотрейдер (2026-11-23)
+
+- Таймер: `bybit-auto-trader.timer` (~30 мин). Конфиг: `.cursor/data/bybit-auto-confirm.json`.
+- **Картбланш:** `use_all_usdt=true`, `max_usdt_per_trade=all` — на сигнал идёт **весь свободный USDT** депозита (не лимит 10$).
+- Один активный вход (`allow_parallel=false`). Пары: BTC/ETH/SOL/SUI. Trailing SL: BE +2.5%, trail −2.5%, SL −5%.
+- Лог: `~/bybit-auto-trader.log`.
+
+Скрипт watch только читает публичные данные Bybit; ручные сделки агента — по карточке + CONFIRM.
