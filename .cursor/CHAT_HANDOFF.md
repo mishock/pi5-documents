@@ -1,4 +1,9 @@
 ## Текущий фокус
+ЭЛЬТАВР бот — Ошибки Curtis (2026-11-23 21:36): Сервис → Ошибки Curtis. Файлы `knowledge/service/curtis_fault_codes.*`, `bot.py`. `eltavr-bot` Up.
+## Текущий фокус
+Эко-отель «Богатый лес» НГ-2027 (2026-11-23 18:20): пакет открыт, сводка в `Проекты/bogatyj-les-ny2027/README.md`.
+
+## Текущий фокус
 Bybit автотрейдер (2026-11-23 17:48): картбланш на весь свободный USDT (~49.6$). Конфиг `.cursor/data/bybit-auto-confirm.json`. Таймер `bybit-auto-trader.timer`.
 
 ## Текущий фокус

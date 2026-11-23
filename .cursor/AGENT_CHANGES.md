@@ -31,6 +31,33 @@ bash Документы/.cursor/scripts/agent-change-backup.sh --agent cursor --
 
 ## Записи (новые сверху)
 
+### 2026-11-23 21:36 — Меню Ошибки Curtis LED
+
+- **Агент:** cursor
+- **Проект:** telegram_bot
+- **Файлы:** \`Проекты/telegram_bot/bot.py\`, \`Проекты/telegram_bot/CHANGELOG.md\`, \`Проекты/telegram_bot/README.md\`, \`Проекты/telegram_bot/knowledge/service/curtis_fault_codes.json\`, \`Проекты/telegram_bot/knowledge/service/curtis_fault_codes_ru.pdf\`, \`Платы и модули/Электрокары/Curtis_Controller/FAULT_CODES.md\`
+- **Снимок:** `.cursor/backups/20261123T213620/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261123T213620`
+
+
+### 2026-11-23 18:32 — фото домика с чаном
+
+- **Агент:** cursor
+- **Проект:** bogatyj-les-ny2027
+- **Файлы:** \`Проекты/bogatyj-les-ny2027/README.md\`, \`Проекты/bogatyj-les-ny2027/pic/01_afrejm_eksterier.jpeg\`
+- **Снимок:** `.cursor/backups/20261123T183201/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261123T183201`
+
+
+### 2026-11-23 18:19 — Сводка НГ-2027 Богатый лес
+
+- **Агент:** cursor
+- **Проект:** bogatyj-les-ny2027
+- **Файлы:** \`Проекты/bogatyj-les-ny2027/README.md\`, \`.cursor/chat.md\`, \`.cursor/CHAT_HANDOFF.md\`
+- **Снимок:** `.cursor/backups/20261123T181942/`
+- **Откат:** `bash Документы/.cursor/scripts/agent-change-revert.sh 20261123T181942`
+
+
 ### 2026-11-23 17:48 — картбланш весь USDT депозита
 
 - **Агент:** cursor
