@@ -338,8 +338,13 @@ def wallet_rows() -> tuple[float, dict[str, float]]:
         coin = c.get("coin")
         if not coin:
             continue
-        eq = float(c.get("equity") or 0)
-        if eq > 0.01:
+        # equity в единицах монеты: у BTC 0.0007 << 0.01 — старый порог eq>0.01
+        # скрывал позицию и ломал trailing/SL.
+        eq = float(c.get("equity") or c.get("walletBalance") or 0)
+        if eq <= 0:
+            continue
+        usd = float(c.get("usdValue") or 0)
+        if coin == "USDT" or coin in TRADE_COINS or usd >= 1.0:
             coins[coin] = eq
     return avail, coins
 
