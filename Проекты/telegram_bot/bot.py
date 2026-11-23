@@ -706,6 +706,16 @@ CURTIS_SUBMENU_KEY = "curtis_submenu_active"
 CURTIS_FAULT_CODES_FILE = "knowledge/service/curtis_fault_codes.json"
 CURTIS_FAULT_PDF_FILE = "knowledge/service/curtis_fault_codes_ru.pdf"
 TELEGRAM_MESSAGE_LIMIT = 3900
+# Короткое напоминание: как правильно читать мигание LED Curtis
+CURTIS_LED_REMINDER = (
+    "Напоминание: как читать светодиодные ошибки Curtis\n"
+    "Это ОДИН двузначный код, не два отдельных.\n"
+    "1) 1 вспышка КРАСНОГО → считайте жёлтые = первая цифра\n"
+    "2) 2 вспышки КРАСНОГО → считайте жёлтые = вторая цифра\n"
+    "Пример: 1 красный + 4 жёлтых, затем 2 красных + 7 жёлтых = код 47 "
+    "(не «14 и 27»).\n"
+    "Только жёлтый мигает — норма. Красный постоянно — цикл ключа (KSI)."
+)
 
 def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
@@ -814,15 +824,32 @@ def format_curtis_code_entry(entry: dict) -> str:
     )
 
 
+def get_curtis_led_reminder(data: dict | None = None) -> str:
+    """Короткое напоминание, как правильно читать LED-код."""
+    if data:
+        custom = (data.get("reminder") or "").strip()
+        if custom:
+            return custom
+    return CURTIS_LED_REMINDER
+
+
 def build_curtis_how_to_text(data: dict) -> str:
+    reminder = get_curtis_led_reminder(data)
     lines = data.get("how_to_read") or []
     body = "\n".join(lines)
     family = data.get("family") or "Curtis AC"
-    return f"Ошибки LED контроллеров Curtis\nСемейство: {family}\n\n{body}"
+    return (
+        f"Ошибки LED контроллеров Curtis\n"
+        f"Семейство: {family}\n\n"
+        f"{reminder}\n\n"
+        f"{body}"
+    )
 
 
 def build_curtis_all_codes_text(data: dict) -> str:
     parts = [
+        get_curtis_led_reminder(data),
+        "",
         "Полная расшифровка LED-кодов Curtis.",
         "Для каждого кода: суть и как устранять.",
         "",
@@ -1553,7 +1580,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Плановое ТО — даты обслуживания по VIN/шасси.\n"
             "Поиск по VIN — данные по отгрузке и комплектации.\n"
             "Инструкции и сервисные книжки — отправка PDF.\n"
-            "Ошибки Curtis — расшифровка светодиодных кодов контроллера."
+            "Ошибки Curtis — расшифровка светодиодных кодов контроллера "
+            "(с напоминанием, как правильно считать вспышки LED)."
         )
         log_message(user_id, "USER", text, username)
         log_message(user_id, "BOT", response, username)
@@ -1572,7 +1600,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "Плановое ТО — даты обслуживания по VIN/шасси.\n"
             "Поиск по VIN — данные по отгрузке и комплектации.\n"
             "Инструкции и сервисные книжки — отправка PDF.\n"
-            "Ошибки Curtis — расшифровка светодиодных кодов контроллера."
+            "Ошибки Curtis — расшифровка светодиодных кодов контроллера "
+            "(с напоминанием, как правильно считать вспышки LED)."
         )
         log_message(user_id, "USER", text, username)
         log_message(user_id, "BOT", response, username)
@@ -1642,12 +1671,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             log_message(user_id, "BOT", response, username)
             await update.message.reply_text(response, reply_markup=get_service_keyboard())
             return
+        reminder = get_curtis_led_reminder(data)
         intro = (
-            "Раздел ошибок LED контроллеров Curtis.\n"
-            "Как читать LED — правила мигания красный/жёлтый.\n"
-            "Все коды Curtis — полная таблица: что за ошибка и как устранить.\n"
+            "Раздел ошибок LED контроллеров Curtis.\n\n"
+            f"{reminder}\n\n"
+            "Кнопки:\n"
+            "Как читать LED — подробная памятка по вспышкам.\n"
+            "Все коды Curtis — таблица: что за ошибка и как устранить.\n"
             "PDF кодов Curtis — файл для печати/поля.\n"
-            "Или просто пришлите номер кода (например 47)."
+            "Или пришлите номер кода (например 47)."
         )
         how_to = build_curtis_how_to_text(data)
         log_message(user_id, "USER", text, username)
@@ -1690,7 +1722,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data[CURTIS_SUBMENU_KEY] = True
         context.user_data[AWAITING_CURTIS_CODE_KEY] = True
         log_message(user_id, "USER", text, username)
-        intro = "Отправляю PDF полной таблицы кодов Curtis (RU)."
+        data = load_curtis_fault_data()
+        reminder = get_curtis_led_reminder(data)
+        intro = (
+            f"{reminder}\n\n"
+            "Отправляю PDF полной таблицы кодов Curtis (RU)."
+        )
         log_message(user_id, "BOT", intro, username)
         await update.message.reply_text(intro, reply_markup=get_curtis_keyboard())
         sent = await send_doc_if_exists(update, CURTIS_FAULT_PDF_FILE)
@@ -1720,16 +1757,22 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         matches = lookup_curtis_codes(data, text)
         unused = {str(n) for n in (data.get("unused_codes") or [])}
         numbers = re.findall(r"\d{1,3}", text)
+        reminder = get_curtis_led_reminder(data)
         if matches:
-            response = "\n\n".join(format_curtis_code_entry(e) for e in matches)
-            response += "\n\nМожно прислать другой номер кода или открыть «Все коды Curtis»."
+            response = (
+                f"{reminder}\n\n"
+                + "\n\n".join(format_curtis_code_entry(e) for e in matches)
+                + "\n\nМожно прислать другой номер кода или открыть «Все коды Curtis»."
+            )
         elif numbers and any(n in unused or n.zfill(2) in unused for n in numbers):
             response = (
+                f"{reminder}\n\n"
                 f"Код {numbers[0]} на LED не используется (свободный номер).\n"
-                "Проверьте счёт вспышек: это один двузначный код, не два отдельных."
+                "Проверьте счёт вспышек ещё раз."
             )
         else:
             response = (
+                f"{reminder}\n\n"
                 "Код не распознан. Пришлите номер вроде 47 или 23.\n"
                 "Или нажмите «Все коды Curtis» / «Как читать LED»."
             )
