@@ -867,6 +867,45 @@ def build_curtis_all_codes_text(data: dict) -> str:
     return "\n".join(parts).strip()
 
 
+def looks_like_curtis_code_query(text: str) -> bool:
+    """Сообщение похоже на запрос LED-кода Curtis: «47», «код 12», «73»."""
+    raw = (text or "").strip()
+    if not raw or len(raw) > 24:
+        return False
+    if re.fullmatch(r"\d{1,3}", raw):
+        return True
+    if re.fullmatch(r"(?i)(код|code|ошибка|fault)\s*[:=\-]?\s*\d{1,3}", raw):
+        return True
+    if re.fullmatch(r"\d{2}\s*[-–—]\s*\d{2}", raw):
+        return True
+    return False
+
+
+def build_curtis_lookup_response(data: dict, text: str) -> str:
+    """Текст ответа по номеру кода + напоминание, как читать LED."""
+    matches = lookup_curtis_codes(data, text)
+    unused = {str(n) for n in (data.get("unused_codes") or [])}
+    numbers = re.findall(r"\d{1,3}", text)
+    reminder = get_curtis_led_reminder(data)
+    if matches:
+        return (
+            f"{reminder}\n\n"
+            + "\n\n".join(format_curtis_code_entry(e) for e in matches)
+            + "\n\nМожно прислать другой номер кода или открыть «Все коды Curtis»."
+        )
+    if numbers and any(n in unused or n.zfill(2) in unused for n in numbers):
+        return (
+            f"{reminder}\n\n"
+            f"Код {numbers[0]} на LED не используется (свободный номер).\n"
+            "Проверьте счёт вспышек ещё раз."
+        )
+    return (
+        f"{reminder}\n\n"
+        "Код не распознан. Пришлите номер вроде 47 или 23.\n"
+        "Или нажмите «Все коды Curtis» / «Как читать LED»."
+    )
+
+
 def lookup_curtis_codes(data: dict, code_raw: str) -> list[dict]:
     """Ищет код(ы) по номеру: 47, код 47, 51-67 и т.п."""
     normalized = (code_raw or "").strip().upper()
@@ -1754,28 +1793,27 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             log_message(user_id, "BOT", response, username)
             await update.message.reply_text(response, reply_markup=get_curtis_keyboard())
             return
-        matches = lookup_curtis_codes(data, text)
-        unused = {str(n) for n in (data.get("unused_codes") or [])}
-        numbers = re.findall(r"\d{1,3}", text)
-        reminder = get_curtis_led_reminder(data)
-        if matches:
-            response = (
-                f"{reminder}\n\n"
-                + "\n\n".join(format_curtis_code_entry(e) for e in matches)
-                + "\n\nМожно прислать другой номер кода или открыть «Все коды Curtis»."
-            )
-        elif numbers and any(n in unused or n.zfill(2) in unused for n in numbers):
-            response = (
-                f"{reminder}\n\n"
-                f"Код {numbers[0]} на LED не используется (свободный номер).\n"
-                "Проверьте счёт вспышек ещё раз."
-            )
-        else:
-            response = (
-                f"{reminder}\n\n"
-                "Код не распознан. Пришлите номер вроде 47 или 23.\n"
-                "Или нажмите «Все коды Curtis» / «Как читать LED»."
-            )
+        response = build_curtis_lookup_response(data, text)
+        log_message(user_id, "BOT", response[:300], username)
+        await send_curtis_text_chunks(update, response, reply_markup=get_curtis_keyboard())
+        return
+
+    # В разделе Сервис номер вроде «47» / «код 12» — сразу расшифровка Curtis
+    if (
+        context.user_data.get(SERVICE_SUBMENU_KEY)
+        and looks_like_curtis_code_query(text)
+        and not context.user_data.get(AWAITING_FRAME_LOOKUP_KEY)
+        and not context.user_data.get(AWAITING_MAINTENANCE_LOOKUP_KEY)
+    ):
+        data = load_curtis_fault_data()
+        log_message(user_id, "USER", text, username)
+        if data is None:
+            response = "Таблица кодов Curtis сейчас недоступна."
+            await update.message.reply_text(response, reply_markup=get_service_keyboard())
+            return
+        context.user_data[CURTIS_SUBMENU_KEY] = True
+        context.user_data[AWAITING_CURTIS_CODE_KEY] = True
+        response = build_curtis_lookup_response(data, text)
         log_message(user_id, "BOT", response[:300], username)
         await send_curtis_text_chunks(update, response, reply_markup=get_curtis_keyboard())
         return
@@ -1797,7 +1835,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ):
         response = (
             "Выберите: «Плановое ТО», «Поиск по VIN», «Инструкции», "
-            "«Сервисные книжки» или «Ошибки Curtis»."
+            "«Сервисные книжки» или «Ошибки Curtis».\n"
+            "Номер LED-кода Curtis можно прислать цифрами, например 47."
         )
         log_message(user_id, "USER", text, username)
         log_message(user_id, "BOT", response, username)
@@ -1909,6 +1948,31 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         log_message(user_id, "BOT", response, username)
         await update.message.reply_text(response, reply_markup=get_service_keyboard())
         return
+
+    # LED-код Curtis без меню (после рестарта бота флаги user_data сбрасываются)
+    if looks_like_curtis_code_query(text):
+        data = load_curtis_fault_data()
+        if data is not None:
+            matches = lookup_curtis_codes(data, text)
+            unused = {str(n) for n in (data.get("unused_codes") or [])}
+            numbers = re.findall(r"\d{1,3}", text)
+            known_or_unused = bool(matches) or any(
+                n in unused or n.zfill(2) in unused for n in numbers
+            )
+            # Двузначный номер / «код N» — всегда через таблицу Curtis, не в AI
+            if known_or_unused or re.fullmatch(r"\d{2}", text.strip()) or re.search(
+                r"(?i)(код|code|ошибка|fault)", text
+            ):
+                context.user_data[SERVICE_SUBMENU_KEY] = True
+                context.user_data[CURTIS_SUBMENU_KEY] = True
+                context.user_data[AWAITING_CURTIS_CODE_KEY] = True
+                response = build_curtis_lookup_response(data, text)
+                log_message(user_id, "USER", text, username)
+                log_message(user_id, "BOT", response[:300], username)
+                await send_curtis_text_chunks(
+                    update, response, reply_markup=get_curtis_keyboard()
+                )
+                return
     
     log_message(user_id, "USER", text, username)
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {user_id}: {text[:50]}")
